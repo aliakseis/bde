@@ -265,7 +265,7 @@ BSLS_IDENT("$Id: $")
         // Exceptions enabled: 'throw SPEC'
         // Exceptions disabled: empty
 
-#   define BSLS_NOTHROW_SPEC throw ()
+#   define BSLS_NOTHROW_SPEC noexcept
         // Declare that a function does not throw any exceptions:
         // Usage:
         //..

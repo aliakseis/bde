@@ -56,7 +56,8 @@ BSLS_IDENT("$Id$")
 
 #ifndef INCLUDED_DECSINGLE
 extern "C" {
-#include <decnumber/decSingle.h>
+//#include <decnumber/decSingle.h>
+#include <decSingle.h>
 }
 #endif
 

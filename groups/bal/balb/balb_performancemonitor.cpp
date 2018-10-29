@@ -1222,7 +1222,7 @@ bsl::string balb::PerformanceMonitor::Collector<bsls::Platform::OsWindows>
     }
 
     char moduleExeName[MAX_PATH];
-    GetModuleBaseName(process, 0, moduleExeName, MAX_PATH);
+    GetModuleBaseNameA(process, 0, moduleExeName, MAX_PATH);
 
     CloseHandle(process);
 
@@ -1243,7 +1243,7 @@ int balb::PerformanceMonitor::Collector<bsls::Platform::OsWindows>
 
     for (unsigned int index = 0; true; ++index)
     {
-        PDH_COUNTER_PATH_ELEMENTS cpe = {
+        PDH_COUNTER_PATH_ELEMENTS_A cpe = {
             0,
             "Process",
             (LPSTR) moduleName.c_str(),
@@ -1255,7 +1255,7 @@ int balb::PerformanceMonitor::Collector<bsls::Platform::OsWindows>
         char  fullPath[MAX_PATH];
         DWORD pathSize = sizeof(fullPath);
 
-        if (ERROR_SUCCESS != (rc = PdhMakeCounterPath(&cpe,
+        if (ERROR_SUCCESS != (rc = PdhMakeCounterPathA(&cpe,
                                                       fullPath,
                                                       &pathSize,
                                                       0)))
@@ -1264,7 +1264,7 @@ int balb::PerformanceMonitor::Collector<bsls::Platform::OsWindows>
         }
 
         PDH_HCOUNTER counter;
-        if (ERROR_SUCCESS != (rc = PdhAddCounter(query,
+        if (ERROR_SUCCESS != (rc = PdhAddCounterA(query,
                                                  fullPath,
                                                  0,
                                                  &counter)))
@@ -1316,7 +1316,7 @@ int balb::PerformanceMonitor::Collector<bsls::Platform::OsWindows>
 
     counters->resize(COUNTER_MAX);
 
-    PDH_COUNTER_PATH_ELEMENTS counterPathElements[COUNTER_MAX] = {
+    PDH_COUNTER_PATH_ELEMENTS_A counterPathElements[COUNTER_MAX] = {
         { 0, "Process", (char*) name, 0, instanceIndex, "% Processor Time" },
         { 0, "Process", (char*) name, 0, instanceIndex, "% User Time"      },
         { 0, "Process", (char*) name, 0, instanceIndex, "Thread Count"     },
@@ -1332,7 +1332,7 @@ int balb::PerformanceMonitor::Collector<bsls::Platform::OsWindows>
         char  fullPath[MAX_PATH];
         DWORD pathSize = sizeof(fullPath);
 
-        if (ERROR_SUCCESS != (rc = PdhMakeCounterPath(&counterPathElements[i],
+        if (ERROR_SUCCESS != (rc = PdhMakeCounterPathA(&counterPathElements[i],
                                                       fullPath,
                                                       &pathSize, 0)))
         {
@@ -1340,7 +1340,7 @@ int balb::PerformanceMonitor::Collector<bsls::Platform::OsWindows>
             return -1;
         }
 
-        if (ERROR_SUCCESS != (rc = PdhAddCounter(query,
+        if (ERROR_SUCCESS != (rc = PdhAddCounterA(query,
                                                  fullPath,
                                                  0,
                                                  &(*counters)[i])))

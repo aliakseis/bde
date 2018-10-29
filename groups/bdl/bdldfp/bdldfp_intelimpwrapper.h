@@ -98,9 +98,9 @@ BSLS_IDENT("$Id$")
 #undef SWAP
 
 extern "C" {
-    #include <inteldfp/bid_conf.h>
-    #include <inteldfp/bid_functions.h>
-    #include <inteldfp/bid_internal.h>
+    #include <bid_conf.h>
+    #include <bid_functions.h>
+    #include <bid_internal.h>
 }
 
 #undef SWAP
