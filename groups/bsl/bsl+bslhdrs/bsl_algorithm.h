@@ -76,7 +76,6 @@ namespace bsl {
     using native_std::pop_heap;
     using native_std::prev_permutation;
     using native_std::push_heap;
-    using native_std::random_shuffle;
     using native_std::remove;
     using native_std::remove_copy;
     using native_std::remove_copy_if;
