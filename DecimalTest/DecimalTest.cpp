@@ -12,6 +12,8 @@
 
 #include <string_view>
 
+#include <time.h>
+
 #include <bdldfp_decimal.h>
 
 //#include <bid_conf.h>
@@ -48,15 +50,50 @@ BDEC::Decimal128 GetDecimal128(const std::string_view& v)
 
 int main()
 {
-    BDEC::Decimal128 dec1;
+    {
+        BDEC::Decimal128 dec1;
 
-    std::istringstream("123.45") >> dec1;
+        std::istringstream("123.45") >> dec1;
 
-    BDEC::Decimal128 dec2 = GetDecimal128("67.89");
+        BDEC::Decimal128 dec2 = GetDecimal128("67.89");
 
-    std::cout << dec1 << ", " << dec2 << '\n';
+        std::cout << dec1 << ", " << dec2 << '\n';
 
-    std::cout << dec1 * dec2 << '\n';
-    std::cout << (dec1 * dec2) / 5 << '\n';
-    std::cout << (dec1 + dec2) << '\n';
+        std::cout << dec1 * dec2 << '\n';
+        std::cout << (dec1 * dec2) / 5 << '\n';
+        std::cout << (dec1 + dec2) << '\n';
+    }
+
+    {
+        BDEC::Decimal128 dec1(1);
+        BDEC::Decimal128 dec2 = GetDecimal128("1.00000001");
+
+        clock_t start = clock();
+
+        for (int i = 0; i < 100000000; ++i)
+        {
+            dec1 *= dec2;
+        }
+
+        std::cout << "Looping time: " <<
+            (double)(clock() - start) / CLOCKS_PER_SEC <<
+            " seconds\n";
+        std::cout << dec1 << '\n';
+    }
+    {
+        double dec1(1);
+        double dec2 = 1.00000001;
+
+        clock_t start = clock();
+
+        for (int i = 0; i < 100000000; ++i)
+        {
+            dec1 *= dec2;
+        }
+
+        std::cout << "Looping time: " <<
+            (double)(clock() - start) / CLOCKS_PER_SEC <<
+            " seconds\n";
+        std::cout << dec1 << '\n';
+    }
 }
