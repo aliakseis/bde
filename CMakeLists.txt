@@ -17,5 +17,9 @@ add_definitions(-DHAVE_CONFIG_H)
 add_definitions(-DSUPPORT_UNICODE)
 
 add_definitions(-DWNT)
+add_definitions(-DDECIMAL_CALL_BY_REFERENCE=0)
+add_definitions(-DDECIMAL_GLOBAL_ROUNDING=1)
+add_definitions(-DDECIMAL_GLOBAL_EXCEPTION_FLAGS=0)
+add_definitions(-DBID_BIG_ENDIAN=0)
 
 include( ${CMAKE_SOURCE_DIR}/ModuleDirs.cmake )
