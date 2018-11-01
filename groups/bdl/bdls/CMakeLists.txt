@@ -25,14 +25,14 @@ set( HEADER_FILES
 
 set( SOURCE_FILES 
   bdls_fdstreambuf.cpp
-  bdls_filedescriptorguard.cpp
-  bdls_filesystemutil.cpp
-  bdls_memoryutil.cpp
-  bdls_osutil.cpp
-  bdls_pathutil.cpp
-  bdls_pipeutil.cpp
-  bdls_processutil.cpp
   bdls_testutil.cpp
+  bdls_filedescriptorguard.cpp
+  bdls_processutil.cpp
+  bdls_filesystemutil.cpp
+  bdls_pipeutil.cpp
+  bdls_memoryutil.cpp
+  bdls_pathutil.cpp
+  bdls_osutil.cpp
 )
 
 # Make sure the PLATFORM_HEADER_FILES variable is always defined
@@ -49,3 +49,131 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} bdlde bdlf bdlsb bdlscm bdlt )
 
 include_directories( ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlc ../bdlde ../bdlf ../bdlma ../bdlsb ../bdlscm ../bdlt . )
+
+
+    add_executable( bdls_bdls_osutil "bdls_osutil.t.cpp" )
+    target_link_libraries( bdls_bdls_osutil ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdls_bdls_osutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlc ../bdlde ../bdlf ../bdlma ../bdlsb ../bdlscm ../bdlt .  )
+    add_test( bdls_bdls_osutil bdls_bdls_osutil )
+    set_tests_properties( bdls_bdls_osutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdls_bdls_osutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdls_bdls_osutil 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdls_bdls_memoryutil "bdls_memoryutil.t.cpp" )
+    target_link_libraries( bdls_bdls_memoryutil ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdls_bdls_memoryutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlc ../bdlde ../bdlf ../bdlma ../bdlsb ../bdlscm ../bdlt .  )
+    add_test( bdls_bdls_memoryutil bdls_bdls_memoryutil )
+    set_tests_properties( bdls_bdls_memoryutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdls_bdls_memoryutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdls_bdls_memoryutil 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdls_bdls_pathutil "bdls_pathutil.t.cpp" )
+    target_link_libraries( bdls_bdls_pathutil ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdls_bdls_pathutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlc ../bdlde ../bdlf ../bdlma ../bdlsb ../bdlscm ../bdlt .  )
+    add_test( bdls_bdls_pathutil bdls_bdls_pathutil )
+    set_tests_properties( bdls_bdls_pathutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdls_bdls_pathutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdls_bdls_pathutil 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdls_bdls_filesystemutil "bdls_filesystemutil.t.cpp" )
+    target_link_libraries( bdls_bdls_filesystemutil ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdls_bdls_filesystemutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlc ../bdlde ../bdlf ../bdlma ../bdlsb ../bdlscm ../bdlt .  )
+    add_test( bdls_bdls_filesystemutil bdls_bdls_filesystemutil )
+    set_tests_properties( bdls_bdls_filesystemutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdls_bdls_filesystemutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdls_bdls_filesystemutil 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdls_bdls_pipeutil "bdls_pipeutil.t.cpp" )
+    target_link_libraries( bdls_bdls_pipeutil ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdls_bdls_pipeutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlc ../bdlde ../bdlf ../bdlma ../bdlsb ../bdlscm ../bdlt .  )
+    add_test( bdls_bdls_pipeutil bdls_bdls_pipeutil )
+    set_tests_properties( bdls_bdls_pipeutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdls_bdls_pipeutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdls_bdls_pipeutil 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdls_bdls_filedescriptorguard "bdls_filedescriptorguard.t.cpp" )
+    target_link_libraries( bdls_bdls_filedescriptorguard ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdls_bdls_filedescriptorguard PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlc ../bdlde ../bdlf ../bdlma ../bdlsb ../bdlscm ../bdlt .  )
+    add_test( bdls_bdls_filedescriptorguard bdls_bdls_filedescriptorguard )
+    set_tests_properties( bdls_bdls_filedescriptorguard 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdls_bdls_filedescriptorguard 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdls_bdls_filedescriptorguard 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdls_bdls_processutil "bdls_processutil.t.cpp" )
+    target_link_libraries( bdls_bdls_processutil ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdls_bdls_processutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlc ../bdlde ../bdlf ../bdlma ../bdlsb ../bdlscm ../bdlt .  )
+    add_test( bdls_bdls_processutil bdls_bdls_processutil )
+    set_tests_properties( bdls_bdls_processutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdls_bdls_processutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdls_bdls_processutil 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdls_bdls_fdstreambuf "bdls_fdstreambuf.t.cpp" )
+    target_link_libraries( bdls_bdls_fdstreambuf ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdls_bdls_fdstreambuf PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlc ../bdlde ../bdlf ../bdlma ../bdlsb ../bdlscm ../bdlt .  )
+    add_test( bdls_bdls_fdstreambuf bdls_bdls_fdstreambuf )
+    set_tests_properties( bdls_bdls_fdstreambuf 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdls_bdls_fdstreambuf 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdls_bdls_fdstreambuf 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdls_bdls_testutil "bdls_testutil.t.cpp" )
+    target_link_libraries( bdls_bdls_testutil ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdls_bdls_testutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlc ../bdlde ../bdlf ../bdlma ../bdlsb ../bdlscm ../bdlt .  )
+    add_test( bdls_bdls_testutil bdls_bdls_testutil )
+    set_tests_properties( bdls_bdls_testutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdls_bdls_testutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdls_bdls_testutil 
+            PROPERTIES
+            TIMEOUT 120)
+    

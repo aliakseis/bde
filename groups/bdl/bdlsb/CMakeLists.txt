@@ -23,12 +23,12 @@ set( HEADER_FILES
 
 set( SOURCE_FILES 
   bdlsb_fixedmeminput.cpp
-  bdlsb_fixedmeminstreambuf.cpp
-  bdlsb_fixedmemoutput.cpp
-  bdlsb_fixedmemoutstreambuf.cpp
-  bdlsb_memoutstreambuf.cpp
-  bdlsb_overflowmemoutput.cpp
   bdlsb_overflowmemoutstreambuf.cpp
+  bdlsb_fixedmeminstreambuf.cpp
+  bdlsb_overflowmemoutput.cpp
+  bdlsb_fixedmemoutput.cpp
+  bdlsb_memoutstreambuf.cpp
+  bdlsb_fixedmemoutstreambuf.cpp
 )
 
 # Make sure the PLATFORM_HEADER_FILES variable is always defined
@@ -45,3 +45,103 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} bdlscm )
 
 include_directories( ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlscm . )
+
+
+    add_executable( bdlsb_bdlsb_fixedmemoutstreambuf "bdlsb_fixedmemoutstreambuf.t.cpp" )
+    target_link_libraries( bdlsb_bdlsb_fixedmemoutstreambuf ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlsb_bdlsb_fixedmemoutstreambuf PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlscm .  )
+    add_test( bdlsb_bdlsb_fixedmemoutstreambuf bdlsb_bdlsb_fixedmemoutstreambuf )
+    set_tests_properties( bdlsb_bdlsb_fixedmemoutstreambuf 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlsb_bdlsb_fixedmemoutstreambuf 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlsb_bdlsb_fixedmemoutstreambuf 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlsb_bdlsb_fixedmemoutput "bdlsb_fixedmemoutput.t.cpp" )
+    target_link_libraries( bdlsb_bdlsb_fixedmemoutput ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlsb_bdlsb_fixedmemoutput PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlscm .  )
+    add_test( bdlsb_bdlsb_fixedmemoutput bdlsb_bdlsb_fixedmemoutput )
+    set_tests_properties( bdlsb_bdlsb_fixedmemoutput 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlsb_bdlsb_fixedmemoutput 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlsb_bdlsb_fixedmemoutput 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlsb_bdlsb_memoutstreambuf "bdlsb_memoutstreambuf.t.cpp" )
+    target_link_libraries( bdlsb_bdlsb_memoutstreambuf ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlsb_bdlsb_memoutstreambuf PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlscm .  )
+    add_test( bdlsb_bdlsb_memoutstreambuf bdlsb_bdlsb_memoutstreambuf )
+    set_tests_properties( bdlsb_bdlsb_memoutstreambuf 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlsb_bdlsb_memoutstreambuf 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlsb_bdlsb_memoutstreambuf 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlsb_bdlsb_fixedmeminstreambuf "bdlsb_fixedmeminstreambuf.t.cpp" )
+    target_link_libraries( bdlsb_bdlsb_fixedmeminstreambuf ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlsb_bdlsb_fixedmeminstreambuf PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlscm .  )
+    add_test( bdlsb_bdlsb_fixedmeminstreambuf bdlsb_bdlsb_fixedmeminstreambuf )
+    set_tests_properties( bdlsb_bdlsb_fixedmeminstreambuf 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlsb_bdlsb_fixedmeminstreambuf 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlsb_bdlsb_fixedmeminstreambuf 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlsb_bdlsb_overflowmemoutput "bdlsb_overflowmemoutput.t.cpp" )
+    target_link_libraries( bdlsb_bdlsb_overflowmemoutput ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlsb_bdlsb_overflowmemoutput PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlscm .  )
+    add_test( bdlsb_bdlsb_overflowmemoutput bdlsb_bdlsb_overflowmemoutput )
+    set_tests_properties( bdlsb_bdlsb_overflowmemoutput 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlsb_bdlsb_overflowmemoutput 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlsb_bdlsb_overflowmemoutput 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlsb_bdlsb_fixedmeminput "bdlsb_fixedmeminput.t.cpp" )
+    target_link_libraries( bdlsb_bdlsb_fixedmeminput ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlsb_bdlsb_fixedmeminput PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlscm .  )
+    add_test( bdlsb_bdlsb_fixedmeminput bdlsb_bdlsb_fixedmeminput )
+    set_tests_properties( bdlsb_bdlsb_fixedmeminput 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlsb_bdlsb_fixedmeminput 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlsb_bdlsb_fixedmeminput 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlsb_bdlsb_overflowmemoutstreambuf "bdlsb_overflowmemoutstreambuf.t.cpp" )
+    target_link_libraries( bdlsb_bdlsb_overflowmemoutstreambuf ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlsb_bdlsb_overflowmemoutstreambuf PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlscm .  )
+    add_test( bdlsb_bdlsb_overflowmemoutstreambuf bdlsb_bdlsb_overflowmemoutstreambuf )
+    set_tests_properties( bdlsb_bdlsb_overflowmemoutstreambuf 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlsb_bdlsb_overflowmemoutstreambuf 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlsb_bdlsb_overflowmemoutstreambuf 
+            PROPERTIES
+            TIMEOUT 120)
+    

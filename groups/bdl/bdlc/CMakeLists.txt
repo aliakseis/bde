@@ -22,11 +22,11 @@ set( HEADER_FILES
 
 set( SOURCE_FILES 
   bdlc_bitarray.cpp
+  bdlc_queue.cpp
   bdlc_hashtable.cpp
+  bdlc_packedintarrayutil.cpp
   bdlc_indexclerk.cpp
   bdlc_packedintarray.cpp
-  bdlc_packedintarrayutil.cpp
-  bdlc_queue.cpp
 )
 
 # Make sure the PLATFORM_HEADER_FILES variable is always defined
@@ -43,3 +43,89 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} bdlb bdlma bdlsb bdlscm )
 
 include_directories( ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlf ../bdlma ../bdlsb ../bdlscm . )
+
+
+    add_executable( bdlc_bdlc_indexclerk "bdlc_indexclerk.t.cpp" )
+    target_link_libraries( bdlc_bdlc_indexclerk ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlc_bdlc_indexclerk PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlf ../bdlma ../bdlsb ../bdlscm .  )
+    add_test( bdlc_bdlc_indexclerk bdlc_bdlc_indexclerk )
+    set_tests_properties( bdlc_bdlc_indexclerk 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlc_bdlc_indexclerk 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlc_bdlc_indexclerk 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlc_bdlc_packedintarray "bdlc_packedintarray.t.cpp" )
+    target_link_libraries( bdlc_bdlc_packedintarray ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlc_bdlc_packedintarray PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlf ../bdlma ../bdlsb ../bdlscm .  )
+    add_test( bdlc_bdlc_packedintarray bdlc_bdlc_packedintarray )
+    set_tests_properties( bdlc_bdlc_packedintarray 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlc_bdlc_packedintarray 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlc_bdlc_packedintarray 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlc_bdlc_hashtable "bdlc_hashtable.t.cpp" )
+    target_link_libraries( bdlc_bdlc_hashtable ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlc_bdlc_hashtable PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlf ../bdlma ../bdlsb ../bdlscm .  )
+    add_test( bdlc_bdlc_hashtable bdlc_bdlc_hashtable )
+    set_tests_properties( bdlc_bdlc_hashtable 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlc_bdlc_hashtable 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlc_bdlc_hashtable 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlc_bdlc_packedintarrayutil "bdlc_packedintarrayutil.t.cpp" )
+    target_link_libraries( bdlc_bdlc_packedintarrayutil ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlc_bdlc_packedintarrayutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlf ../bdlma ../bdlsb ../bdlscm .  )
+    add_test( bdlc_bdlc_packedintarrayutil bdlc_bdlc_packedintarrayutil )
+    set_tests_properties( bdlc_bdlc_packedintarrayutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlc_bdlc_packedintarrayutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlc_bdlc_packedintarrayutil 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlc_bdlc_bitarray "bdlc_bitarray.t.cpp" )
+    target_link_libraries( bdlc_bdlc_bitarray ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlc_bdlc_bitarray PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlf ../bdlma ../bdlsb ../bdlscm .  )
+    add_test( bdlc_bdlc_bitarray bdlc_bdlc_bitarray )
+    set_tests_properties( bdlc_bdlc_bitarray 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlc_bdlc_bitarray 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlc_bdlc_bitarray 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bdlc_bdlc_queue "bdlc_queue.t.cpp" )
+    target_link_libraries( bdlc_bdlc_queue ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( bdlc_bdlc_queue PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bdlb ../bdlf ../bdlma ../bdlsb ../bdlscm .  )
+    add_test( bdlc_bdlc_queue bdlc_bdlc_queue )
+    set_tests_properties( bdlc_bdlc_queue 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bdlc_bdlc_queue 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bdlc_bdlc_queue 
+            PROPERTIES
+            TIMEOUT 120)
+    

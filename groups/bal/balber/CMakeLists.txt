@@ -23,12 +23,12 @@ set( HEADER_FILES
 
 set( SOURCE_FILES 
   balber_berconstants.cpp
-  balber_berdecoder.cpp
-  balber_berdecoderoptions.cpp
-  balber_berencoder.cpp
-  balber_berencoderoptions.cpp
-  balber_beruniversaltagnumber.cpp
   balber_berutil.cpp
+  balber_berdecoder.cpp
+  balber_beruniversaltagnumber.cpp
+  balber_berdecoderoptions.cpp
+  balber_berencoderoptions.cpp
+  balber_berencoder.cpp
 )
 
 # Make sure the PLATFORM_HEADER_FILES variable is always defined
@@ -45,3 +45,103 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} balscm )
 
 include_directories( ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../balscm . )
+
+
+    add_executable( balber_balber_berencoder "balber_berencoder.t.cpp" )
+    target_link_libraries( balber_balber_berencoder ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balber_balber_berencoder PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../balscm .  )
+    add_test( balber_balber_berencoder balber_balber_berencoder )
+    set_tests_properties( balber_balber_berencoder 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balber_balber_berencoder 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balber_balber_berencoder 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balber_balber_berdecoderoptions "balber_berdecoderoptions.t.cpp" )
+    target_link_libraries( balber_balber_berdecoderoptions ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balber_balber_berdecoderoptions PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../balscm .  )
+    add_test( balber_balber_berdecoderoptions balber_balber_berdecoderoptions )
+    set_tests_properties( balber_balber_berdecoderoptions 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balber_balber_berdecoderoptions 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balber_balber_berdecoderoptions 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balber_balber_berencoderoptions "balber_berencoderoptions.t.cpp" )
+    target_link_libraries( balber_balber_berencoderoptions ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balber_balber_berencoderoptions PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../balscm .  )
+    add_test( balber_balber_berencoderoptions balber_balber_berencoderoptions )
+    set_tests_properties( balber_balber_berencoderoptions 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balber_balber_berencoderoptions 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balber_balber_berencoderoptions 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balber_balber_berdecoder "balber_berdecoder.t.cpp" )
+    target_link_libraries( balber_balber_berdecoder ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balber_balber_berdecoder PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../balscm .  )
+    add_test( balber_balber_berdecoder balber_balber_berdecoder )
+    set_tests_properties( balber_balber_berdecoder 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balber_balber_berdecoder 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balber_balber_berdecoder 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balber_balber_beruniversaltagnumber "balber_beruniversaltagnumber.t.cpp" )
+    target_link_libraries( balber_balber_beruniversaltagnumber ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balber_balber_beruniversaltagnumber PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../balscm .  )
+    add_test( balber_balber_beruniversaltagnumber balber_balber_beruniversaltagnumber )
+    set_tests_properties( balber_balber_beruniversaltagnumber 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balber_balber_beruniversaltagnumber 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balber_balber_beruniversaltagnumber 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balber_balber_berconstants "balber_berconstants.t.cpp" )
+    target_link_libraries( balber_balber_berconstants ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balber_balber_berconstants PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../balscm .  )
+    add_test( balber_balber_berconstants balber_balber_berconstants )
+    set_tests_properties( balber_balber_berconstants 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balber_balber_berconstants 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balber_balber_berconstants 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balber_balber_berutil "balber_berutil.t.cpp" )
+    target_link_libraries( balber_balber_berutil ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balber_balber_berutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../balscm .  )
+    add_test( balber_balber_berutil balber_balber_berutil )
+    set_tests_properties( balber_balber_berutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balber_balber_berutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balber_balber_berutil 
+            PROPERTIES
+            TIMEOUT 120)
+    

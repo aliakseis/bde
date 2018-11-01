@@ -25,14 +25,14 @@ set( HEADER_FILES
 
 set( SOURCE_FILES 
   btlsc_cbchannel.cpp
-  btlsc_cbchannelallocator.cpp
-  btlsc_channel.cpp
-  btlsc_channelallocator.cpp
-  btlsc_flags.cpp
-  btlsc_timedcbchannel.cpp
-  btlsc_timedcbchannelallocator.cpp
-  btlsc_timedchannel.cpp
   btlsc_timedchannelallocator.cpp
+  btlsc_cbchannelallocator.cpp
+  btlsc_timedchannel.cpp
+  btlsc_channel.cpp
+  btlsc_timedcbchannelallocator.cpp
+  btlsc_channelallocator.cpp
+  btlsc_timedcbchannel.cpp
+  btlsc_flags.cpp
 )
 
 # Make sure the PLATFORM_HEADER_FILES variable is always defined
@@ -49,3 +49,131 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} btls btlscm )
 
 include_directories( ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlscm . )
+
+
+    add_executable( btlsc_btlsc_flags "btlsc_flags.t.cpp" )
+    target_link_libraries( btlsc_btlsc_flags ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlscm decnumber inteldfp pcre2)
+    target_include_directories( btlsc_btlsc_flags PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlscm .  )
+    add_test( btlsc_btlsc_flags btlsc_btlsc_flags )
+    set_tests_properties( btlsc_btlsc_flags 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsc_btlsc_flags 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsc_btlsc_flags 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsc_btlsc_channelallocator "btlsc_channelallocator.t.cpp" )
+    target_link_libraries( btlsc_btlsc_channelallocator ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlscm decnumber inteldfp pcre2)
+    target_include_directories( btlsc_btlsc_channelallocator PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlscm .  )
+    add_test( btlsc_btlsc_channelallocator btlsc_btlsc_channelallocator )
+    set_tests_properties( btlsc_btlsc_channelallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsc_btlsc_channelallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsc_btlsc_channelallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsc_btlsc_timedcbchannel "btlsc_timedcbchannel.t.cpp" )
+    target_link_libraries( btlsc_btlsc_timedcbchannel ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlscm decnumber inteldfp pcre2)
+    target_include_directories( btlsc_btlsc_timedcbchannel PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlscm .  )
+    add_test( btlsc_btlsc_timedcbchannel btlsc_btlsc_timedcbchannel )
+    set_tests_properties( btlsc_btlsc_timedcbchannel 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsc_btlsc_timedcbchannel 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsc_btlsc_timedcbchannel 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsc_btlsc_channel "btlsc_channel.t.cpp" )
+    target_link_libraries( btlsc_btlsc_channel ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlscm decnumber inteldfp pcre2)
+    target_include_directories( btlsc_btlsc_channel PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlscm .  )
+    add_test( btlsc_btlsc_channel btlsc_btlsc_channel )
+    set_tests_properties( btlsc_btlsc_channel 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsc_btlsc_channel 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsc_btlsc_channel 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsc_btlsc_timedcbchannelallocator "btlsc_timedcbchannelallocator.t.cpp" )
+    target_link_libraries( btlsc_btlsc_timedcbchannelallocator ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlscm decnumber inteldfp pcre2)
+    target_include_directories( btlsc_btlsc_timedcbchannelallocator PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlscm .  )
+    add_test( btlsc_btlsc_timedcbchannelallocator btlsc_btlsc_timedcbchannelallocator )
+    set_tests_properties( btlsc_btlsc_timedcbchannelallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsc_btlsc_timedcbchannelallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsc_btlsc_timedcbchannelallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsc_btlsc_cbchannelallocator "btlsc_cbchannelallocator.t.cpp" )
+    target_link_libraries( btlsc_btlsc_cbchannelallocator ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlscm decnumber inteldfp pcre2)
+    target_include_directories( btlsc_btlsc_cbchannelallocator PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlscm .  )
+    add_test( btlsc_btlsc_cbchannelallocator btlsc_btlsc_cbchannelallocator )
+    set_tests_properties( btlsc_btlsc_cbchannelallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsc_btlsc_cbchannelallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsc_btlsc_cbchannelallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsc_btlsc_timedchannel "btlsc_timedchannel.t.cpp" )
+    target_link_libraries( btlsc_btlsc_timedchannel ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlscm decnumber inteldfp pcre2)
+    target_include_directories( btlsc_btlsc_timedchannel PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlscm .  )
+    add_test( btlsc_btlsc_timedchannel btlsc_btlsc_timedchannel )
+    set_tests_properties( btlsc_btlsc_timedchannel 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsc_btlsc_timedchannel 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsc_btlsc_timedchannel 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsc_btlsc_cbchannel "btlsc_cbchannel.t.cpp" )
+    target_link_libraries( btlsc_btlsc_cbchannel ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlscm decnumber inteldfp pcre2)
+    target_include_directories( btlsc_btlsc_cbchannel PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlscm .  )
+    add_test( btlsc_btlsc_cbchannel btlsc_btlsc_cbchannel )
+    set_tests_properties( btlsc_btlsc_cbchannel 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsc_btlsc_cbchannel 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsc_btlsc_cbchannel 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsc_btlsc_timedchannelallocator "btlsc_timedchannelallocator.t.cpp" )
+    target_link_libraries( btlsc_btlsc_timedchannelallocator ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlscm decnumber inteldfp pcre2)
+    target_include_directories( btlsc_btlsc_timedchannelallocator PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlscm .  )
+    add_test( btlsc_btlsc_timedchannelallocator btlsc_btlsc_timedchannelallocator )
+    set_tests_properties( btlsc_btlsc_timedchannelallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsc_btlsc_timedchannelallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsc_btlsc_timedchannelallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    

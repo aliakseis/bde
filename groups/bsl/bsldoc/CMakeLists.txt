@@ -33,3 +33,19 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} bsls bslscm )
 
 include_directories( ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm . )
+
+
+    add_executable( bsldoc_bsldoc_glossary "bsldoc_glossary.t.cpp" )
+    target_link_libraries( bsldoc_bsldoc_glossary ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsldoc_bsldoc_glossary PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm .  )
+    add_test( bsldoc_bsldoc_glossary bsldoc_bsldoc_glossary )
+    set_tests_properties( bsldoc_bsldoc_glossary 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsldoc_bsldoc_glossary 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsldoc_bsldoc_glossary 
+            PROPERTIES
+            TIMEOUT 120)
+    

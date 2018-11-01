@@ -50,39 +50,39 @@ set( HEADER_FILES
 
 set( SOURCE_FILES 
   bslma_allocator.cpp
+  bslma_usesbslmaallocator.cpp
   bslma_allocatoradaptor.cpp
+  bslma_testallocatormonitor.cpp
   bslma_allocatortraits.cpp
+  bslma_testallocatorexception.cpp
   bslma_autodeallocator.cpp
+  bslma_testallocator.cpp
   bslma_autodestructor.cpp
+  bslma_stdtestallocator.cpp
   bslma_autorawdeleter.cpp
+  bslma_stdallocator.cpp
   bslma_constructionutil.cpp
+  bslma_sharedptrrep.cpp
   bslma_deallocatorguard.cpp
+  bslma_sharedptroutofplacerep.cpp
   bslma_deallocatorproctor.cpp
+  bslma_sharedptrinplacerep.cpp
   bslma_default.cpp
+  bslma_rawdeleterproctor.cpp
   bslma_defaultallocatorguard.cpp
+  bslma_rawdeleterguard.cpp
   bslma_deleterhelper.cpp
+  bslma_newdeleteallocator.cpp
   bslma_destructionutil.cpp
+  bslma_managedptr_pairproxy.cpp
   bslma_destructorguard.cpp
+  bslma_managedptr_members.cpp
   bslma_destructorproctor.cpp
+  bslma_managedptr_factorydeleter.cpp
   bslma_exceptionguard.cpp
+  bslma_managedptrdeleter.cpp
   bslma_mallocfreeallocator.cpp
   bslma_managedptr.cpp
-  bslma_managedptrdeleter.cpp
-  bslma_managedptr_factorydeleter.cpp
-  bslma_managedptr_members.cpp
-  bslma_managedptr_pairproxy.cpp
-  bslma_newdeleteallocator.cpp
-  bslma_rawdeleterguard.cpp
-  bslma_rawdeleterproctor.cpp
-  bslma_sharedptrinplacerep.cpp
-  bslma_sharedptroutofplacerep.cpp
-  bslma_sharedptrrep.cpp
-  bslma_stdallocator.cpp
-  bslma_stdtestallocator.cpp
-  bslma_testallocator.cpp
-  bslma_testallocatorexception.cpp
-  bslma_testallocatormonitor.cpp
-  bslma_usesbslmaallocator.cpp
 )
 
 # Make sure the PLATFORM_HEADER_FILES variable is always defined
@@ -99,3 +99,481 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} bslmf bslscm bsls )
 
 include_directories( ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx . )
+
+
+    add_executable( bslma_bslma_mallocfreeallocator "bslma_mallocfreeallocator.t.cpp" )
+    target_link_libraries( bslma_bslma_mallocfreeallocator ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_mallocfreeallocator PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_mallocfreeallocator bslma_bslma_mallocfreeallocator )
+    set_tests_properties( bslma_bslma_mallocfreeallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_mallocfreeallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_mallocfreeallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_managedptr "bslma_managedptr.t.cpp" )
+    target_link_libraries( bslma_bslma_managedptr ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_managedptr PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_managedptr bslma_bslma_managedptr )
+    set_tests_properties( bslma_bslma_managedptr 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_managedptr 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_managedptr 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_exceptionguard "bslma_exceptionguard.t.cpp" )
+    target_link_libraries( bslma_bslma_exceptionguard ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_exceptionguard PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_exceptionguard bslma_bslma_exceptionguard )
+    set_tests_properties( bslma_bslma_exceptionguard 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_exceptionguard 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_exceptionguard 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_managedptrdeleter "bslma_managedptrdeleter.t.cpp" )
+    target_link_libraries( bslma_bslma_managedptrdeleter ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_managedptrdeleter PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_managedptrdeleter bslma_bslma_managedptrdeleter )
+    set_tests_properties( bslma_bslma_managedptrdeleter 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_managedptrdeleter 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_managedptrdeleter 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_destructorproctor "bslma_destructorproctor.t.cpp" )
+    target_link_libraries( bslma_bslma_destructorproctor ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_destructorproctor PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_destructorproctor bslma_bslma_destructorproctor )
+    set_tests_properties( bslma_bslma_destructorproctor 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_destructorproctor 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_destructorproctor 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_managedptr_factorydeleter "bslma_managedptr_factorydeleter.t.cpp" )
+    target_link_libraries( bslma_bslma_managedptr_factorydeleter ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_managedptr_factorydeleter PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_managedptr_factorydeleter bslma_bslma_managedptr_factorydeleter )
+    set_tests_properties( bslma_bslma_managedptr_factorydeleter 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_managedptr_factorydeleter 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_managedptr_factorydeleter 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_destructorguard "bslma_destructorguard.t.cpp" )
+    target_link_libraries( bslma_bslma_destructorguard ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_destructorguard PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_destructorguard bslma_bslma_destructorguard )
+    set_tests_properties( bslma_bslma_destructorguard 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_destructorguard 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_destructorguard 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_managedptr_members "bslma_managedptr_members.t.cpp" )
+    target_link_libraries( bslma_bslma_managedptr_members ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_managedptr_members PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_managedptr_members bslma_bslma_managedptr_members )
+    set_tests_properties( bslma_bslma_managedptr_members 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_managedptr_members 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_managedptr_members 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_destructionutil "bslma_destructionutil.t.cpp" )
+    target_link_libraries( bslma_bslma_destructionutil ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_destructionutil PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_destructionutil bslma_bslma_destructionutil )
+    set_tests_properties( bslma_bslma_destructionutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_destructionutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_destructionutil 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_managedptr_pairproxy "bslma_managedptr_pairproxy.t.cpp" )
+    target_link_libraries( bslma_bslma_managedptr_pairproxy ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_managedptr_pairproxy PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_managedptr_pairproxy bslma_bslma_managedptr_pairproxy )
+    set_tests_properties( bslma_bslma_managedptr_pairproxy 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_managedptr_pairproxy 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_managedptr_pairproxy 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_deleterhelper "bslma_deleterhelper.t.cpp" )
+    target_link_libraries( bslma_bslma_deleterhelper ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_deleterhelper PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_deleterhelper bslma_bslma_deleterhelper )
+    set_tests_properties( bslma_bslma_deleterhelper 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_deleterhelper 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_deleterhelper 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_newdeleteallocator "bslma_newdeleteallocator.t.cpp" )
+    target_link_libraries( bslma_bslma_newdeleteallocator ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_newdeleteallocator PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_newdeleteallocator bslma_bslma_newdeleteallocator )
+    set_tests_properties( bslma_bslma_newdeleteallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_newdeleteallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_newdeleteallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_defaultallocatorguard "bslma_defaultallocatorguard.t.cpp" )
+    target_link_libraries( bslma_bslma_defaultallocatorguard ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_defaultallocatorguard PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_defaultallocatorguard bslma_bslma_defaultallocatorguard )
+    set_tests_properties( bslma_bslma_defaultallocatorguard 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_defaultallocatorguard 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_defaultallocatorguard 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_rawdeleterguard "bslma_rawdeleterguard.t.cpp" )
+    target_link_libraries( bslma_bslma_rawdeleterguard ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_rawdeleterguard PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_rawdeleterguard bslma_bslma_rawdeleterguard )
+    set_tests_properties( bslma_bslma_rawdeleterguard 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_rawdeleterguard 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_rawdeleterguard 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_default "bslma_default.t.cpp" )
+    target_link_libraries( bslma_bslma_default ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_default PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_default bslma_bslma_default )
+    set_tests_properties( bslma_bslma_default 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_default 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_default 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_rawdeleterproctor "bslma_rawdeleterproctor.t.cpp" )
+    target_link_libraries( bslma_bslma_rawdeleterproctor ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_rawdeleterproctor PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_rawdeleterproctor bslma_bslma_rawdeleterproctor )
+    set_tests_properties( bslma_bslma_rawdeleterproctor 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_rawdeleterproctor 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_rawdeleterproctor 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_deallocatorproctor "bslma_deallocatorproctor.t.cpp" )
+    target_link_libraries( bslma_bslma_deallocatorproctor ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_deallocatorproctor PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_deallocatorproctor bslma_bslma_deallocatorproctor )
+    set_tests_properties( bslma_bslma_deallocatorproctor 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_deallocatorproctor 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_deallocatorproctor 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_sharedptrinplacerep "bslma_sharedptrinplacerep.t.cpp" )
+    target_link_libraries( bslma_bslma_sharedptrinplacerep ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_sharedptrinplacerep PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_sharedptrinplacerep bslma_bslma_sharedptrinplacerep )
+    set_tests_properties( bslma_bslma_sharedptrinplacerep 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_sharedptrinplacerep 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_sharedptrinplacerep 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_deallocatorguard "bslma_deallocatorguard.t.cpp" )
+    target_link_libraries( bslma_bslma_deallocatorguard ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_deallocatorguard PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_deallocatorguard bslma_bslma_deallocatorguard )
+    set_tests_properties( bslma_bslma_deallocatorguard 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_deallocatorguard 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_deallocatorguard 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_sharedptroutofplacerep "bslma_sharedptroutofplacerep.t.cpp" )
+    target_link_libraries( bslma_bslma_sharedptroutofplacerep ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_sharedptroutofplacerep PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_sharedptroutofplacerep bslma_bslma_sharedptroutofplacerep )
+    set_tests_properties( bslma_bslma_sharedptroutofplacerep 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_sharedptroutofplacerep 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_sharedptroutofplacerep 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_constructionutil "bslma_constructionutil.t.cpp" )
+    target_link_libraries( bslma_bslma_constructionutil ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_constructionutil PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_constructionutil bslma_bslma_constructionutil )
+    set_tests_properties( bslma_bslma_constructionutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_constructionutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_constructionutil 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_sharedptrrep "bslma_sharedptrrep.t.cpp" )
+    target_link_libraries( bslma_bslma_sharedptrrep ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_sharedptrrep PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_sharedptrrep bslma_bslma_sharedptrrep )
+    set_tests_properties( bslma_bslma_sharedptrrep 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_sharedptrrep 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_sharedptrrep 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_autorawdeleter "bslma_autorawdeleter.t.cpp" )
+    target_link_libraries( bslma_bslma_autorawdeleter ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_autorawdeleter PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_autorawdeleter bslma_bslma_autorawdeleter )
+    set_tests_properties( bslma_bslma_autorawdeleter 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_autorawdeleter 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_autorawdeleter 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_stdallocator "bslma_stdallocator.t.cpp" )
+    target_link_libraries( bslma_bslma_stdallocator ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_stdallocator PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_stdallocator bslma_bslma_stdallocator )
+    set_tests_properties( bslma_bslma_stdallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_stdallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_stdallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_autodestructor "bslma_autodestructor.t.cpp" )
+    target_link_libraries( bslma_bslma_autodestructor ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_autodestructor PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_autodestructor bslma_bslma_autodestructor )
+    set_tests_properties( bslma_bslma_autodestructor 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_autodestructor 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_autodestructor 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_stdtestallocator "bslma_stdtestallocator.t.cpp" )
+    target_link_libraries( bslma_bslma_stdtestallocator ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_stdtestallocator PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_stdtestallocator bslma_bslma_stdtestallocator )
+    set_tests_properties( bslma_bslma_stdtestallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_stdtestallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_stdtestallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_autodeallocator "bslma_autodeallocator.t.cpp" )
+    target_link_libraries( bslma_bslma_autodeallocator ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_autodeallocator PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_autodeallocator bslma_bslma_autodeallocator )
+    set_tests_properties( bslma_bslma_autodeallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_autodeallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_autodeallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_testallocator "bslma_testallocator.t.cpp" )
+    target_link_libraries( bslma_bslma_testallocator ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_testallocator PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_testallocator bslma_bslma_testallocator )
+    set_tests_properties( bslma_bslma_testallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_testallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_testallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_allocatortraits "bslma_allocatortraits.t.cpp" )
+    target_link_libraries( bslma_bslma_allocatortraits ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_allocatortraits PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_allocatortraits bslma_bslma_allocatortraits )
+    set_tests_properties( bslma_bslma_allocatortraits 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_allocatortraits 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_allocatortraits 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_testallocatorexception "bslma_testallocatorexception.t.cpp" )
+    target_link_libraries( bslma_bslma_testallocatorexception ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_testallocatorexception PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_testallocatorexception bslma_bslma_testallocatorexception )
+    set_tests_properties( bslma_bslma_testallocatorexception 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_testallocatorexception 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_testallocatorexception 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_allocatoradaptor "bslma_allocatoradaptor.t.cpp" )
+    target_link_libraries( bslma_bslma_allocatoradaptor ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_allocatoradaptor PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_allocatoradaptor bslma_bslma_allocatoradaptor )
+    set_tests_properties( bslma_bslma_allocatoradaptor 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_allocatoradaptor 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_allocatoradaptor 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_testallocatormonitor "bslma_testallocatormonitor.t.cpp" )
+    target_link_libraries( bslma_bslma_testallocatormonitor ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_testallocatormonitor PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_testallocatormonitor bslma_bslma_testallocatormonitor )
+    set_tests_properties( bslma_bslma_testallocatormonitor 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_testallocatormonitor 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_testallocatormonitor 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_allocator "bslma_allocator.t.cpp" )
+    target_link_libraries( bslma_bslma_allocator ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_allocator PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_allocator bslma_bslma_allocator )
+    set_tests_properties( bslma_bslma_allocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_allocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_allocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslma_bslma_usesbslmaallocator "bslma_usesbslmaallocator.t.cpp" )
+    target_link_libraries( bslma_bslma_usesbslmaallocator ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslma_bslma_usesbslmaallocator PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx .  )
+    add_test( bslma_bslma_usesbslmaallocator bslma_bslma_usesbslmaallocator )
+    set_tests_properties( bslma_bslma_usesbslmaallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslma_bslma_usesbslmaallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslma_bslma_usesbslmaallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    

@@ -19,8 +19,8 @@ set( HEADER_FILES
 
 set( SOURCE_FILES 
   bslscm_patchversion.cpp
-  bslscm_version.cpp
   bslscm_versiontag.cpp
+  bslscm_version.cpp
 )
 
 # Make sure the PLATFORM_HEADER_FILES variable is always defined
@@ -37,3 +37,47 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} bsls )
 
 include_directories( ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls . )
+
+
+    add_executable( bslscm_bslscm_version "bslscm_version.t.cpp" )
+    target_link_libraries( bslscm_bslscm_version ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslscm_bslscm_version PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls .  )
+    add_test( bslscm_bslscm_version bslscm_bslscm_version )
+    set_tests_properties( bslscm_bslscm_version 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslscm_bslscm_version 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslscm_bslscm_version 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslscm_bslscm_patchversion "bslscm_patchversion.t.cpp" )
+    target_link_libraries( bslscm_bslscm_patchversion ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslscm_bslscm_patchversion PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls .  )
+    add_test( bslscm_bslscm_patchversion bslscm_bslscm_patchversion )
+    set_tests_properties( bslscm_bslscm_patchversion 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslscm_bslscm_patchversion 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslscm_bslscm_patchversion 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslscm_bslscm_versiontag "bslscm_versiontag.t.cpp" )
+    target_link_libraries( bslscm_bslscm_versiontag ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslscm_bslscm_versiontag PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls .  )
+    add_test( bslscm_bslscm_versiontag bslscm_bslscm_versiontag )
+    set_tests_properties( bslscm_bslscm_versiontag 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslscm_bslscm_versiontag 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslscm_bslscm_versiontag 
+            PROPERTIES
+            TIMEOUT 120)
+    

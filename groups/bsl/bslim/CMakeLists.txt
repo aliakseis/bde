@@ -19,8 +19,8 @@ set( HEADER_FILES
 
 set( SOURCE_FILES 
   bslim_bslstandardheadertest.cpp
-  bslim_printer.cpp
   bslim_testutil.cpp
+  bslim_printer.cpp
 )
 
 # Make sure the PLATFORM_HEADER_FILES variable is always defined
@@ -37,3 +37,47 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} bsl+bslhdrs bsl+stdhdrs bslalg bslma bslmf bsls bslscm bslstl bsltf )
 
 include_directories( ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsl+bslhdrs ../bsl+stdhdrs ../bsl+stdhdrs/sys ../bslalg ../bslma ../bslmf ../bsls ../bslscm ../bslstl ../bsltf . )
+
+
+    add_executable( bslim_bslim_printer "bslim_printer.t.cpp" )
+    target_link_libraries( bslim_bslim_printer ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslim_bslim_printer PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsl+bslhdrs ../bsl+stdhdrs ../bsl+stdhdrs/sys ../bslalg ../bslma ../bslmf ../bsls ../bslscm ../bslstl ../bsltf .  )
+    add_test( bslim_bslim_printer bslim_bslim_printer )
+    set_tests_properties( bslim_bslim_printer 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslim_bslim_printer 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslim_bslim_printer 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslim_bslim_bslstandardheadertest "bslim_bslstandardheadertest.t.cpp" )
+    target_link_libraries( bslim_bslim_bslstandardheadertest ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslim_bslim_bslstandardheadertest PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsl+bslhdrs ../bsl+stdhdrs ../bsl+stdhdrs/sys ../bslalg ../bslma ../bslmf ../bsls ../bslscm ../bslstl ../bsltf .  )
+    add_test( bslim_bslim_bslstandardheadertest bslim_bslim_bslstandardheadertest )
+    set_tests_properties( bslim_bslim_bslstandardheadertest 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslim_bslim_bslstandardheadertest 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslim_bslim_bslstandardheadertest 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bslim_bslim_testutil "bslim_testutil.t.cpp" )
+    target_link_libraries( bslim_bslim_testutil ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bslim_bslim_testutil PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsl+bslhdrs ../bsl+stdhdrs ../bsl+stdhdrs/sys ../bslalg ../bslma ../bslmf ../bsls ../bslscm ../bslstl ../bsltf .  )
+    add_test( bslim_bslim_testutil bslim_bslim_testutil )
+    set_tests_properties( bslim_bslim_testutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bslim_bslim_testutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bslim_bslim_testutil 
+            PROPERTIES
+            TIMEOUT 120)
+    

@@ -29,18 +29,18 @@ set( HEADER_FILES
 
 set( SOURCE_FILES 
   balst_assertionlogger.cpp
-  balst_objectfileformat.cpp
-  balst_stacktrace.cpp
-  balst_stacktraceframe.cpp
-  balst_stacktraceprintutil.cpp
-  balst_stacktraceresolverimpl_dladdr.cpp
-  balst_stacktraceresolverimpl_elf.cpp
-  balst_stacktraceresolverimpl_windows.cpp
-  balst_stacktraceresolverimpl_xcoff.cpp
-  balst_stacktraceresolver_dwarfreader.cpp
-  balst_stacktraceresolver_filehelper.cpp
-  balst_stacktracetestallocator.cpp
   balst_stacktraceutil.cpp
+  balst_objectfileformat.cpp
+  balst_stacktracetestallocator.cpp
+  balst_stacktrace.cpp
+  balst_stacktraceresolver_filehelper.cpp
+  balst_stacktraceframe.cpp
+  balst_stacktraceresolver_dwarfreader.cpp
+  balst_stacktraceprintutil.cpp
+  balst_stacktraceresolverimpl_xcoff.cpp
+  balst_stacktraceresolverimpl_dladdr.cpp
+  balst_stacktraceresolverimpl_windows.cpp
+  balst_stacktraceresolverimpl_elf.cpp
 )
 
 # Make sure the PLATFORM_HEADER_FILES variable is always defined
@@ -57,3 +57,187 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} ball balscm )
 
 include_directories( ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm . )
+
+
+    add_executable( balst_balst_stacktraceresolverimpl_elf "balst_stacktraceresolverimpl_elf.t.cpp" )
+    target_link_libraries( balst_balst_stacktraceresolverimpl_elf ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktraceresolverimpl_elf PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktraceresolverimpl_elf balst_balst_stacktraceresolverimpl_elf )
+    set_tests_properties( balst_balst_stacktraceresolverimpl_elf 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktraceresolverimpl_elf 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktraceresolverimpl_elf 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_stacktraceresolverimpl_dladdr "balst_stacktraceresolverimpl_dladdr.t.cpp" )
+    target_link_libraries( balst_balst_stacktraceresolverimpl_dladdr ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktraceresolverimpl_dladdr PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktraceresolverimpl_dladdr balst_balst_stacktraceresolverimpl_dladdr )
+    set_tests_properties( balst_balst_stacktraceresolverimpl_dladdr 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktraceresolverimpl_dladdr 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktraceresolverimpl_dladdr 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_stacktraceresolverimpl_windows "balst_stacktraceresolverimpl_windows.t.cpp" )
+    target_link_libraries( balst_balst_stacktraceresolverimpl_windows ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktraceresolverimpl_windows PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktraceresolverimpl_windows balst_balst_stacktraceresolverimpl_windows )
+    set_tests_properties( balst_balst_stacktraceresolverimpl_windows 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktraceresolverimpl_windows 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktraceresolverimpl_windows 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_stacktraceprintutil "balst_stacktraceprintutil.t.cpp" )
+    target_link_libraries( balst_balst_stacktraceprintutil ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktraceprintutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktraceprintutil balst_balst_stacktraceprintutil )
+    set_tests_properties( balst_balst_stacktraceprintutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktraceprintutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktraceprintutil 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_stacktraceresolverimpl_xcoff "balst_stacktraceresolverimpl_xcoff.t.cpp" )
+    target_link_libraries( balst_balst_stacktraceresolverimpl_xcoff ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktraceresolverimpl_xcoff PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktraceresolverimpl_xcoff balst_balst_stacktraceresolverimpl_xcoff )
+    set_tests_properties( balst_balst_stacktraceresolverimpl_xcoff 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktraceresolverimpl_xcoff 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktraceresolverimpl_xcoff 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_stacktraceframe "balst_stacktraceframe.t.cpp" )
+    target_link_libraries( balst_balst_stacktraceframe ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktraceframe PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktraceframe balst_balst_stacktraceframe )
+    set_tests_properties( balst_balst_stacktraceframe 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktraceframe 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktraceframe 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_stacktraceresolver_dwarfreader "balst_stacktraceresolver_dwarfreader.t.cpp" )
+    target_link_libraries( balst_balst_stacktraceresolver_dwarfreader ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktraceresolver_dwarfreader PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktraceresolver_dwarfreader balst_balst_stacktraceresolver_dwarfreader )
+    set_tests_properties( balst_balst_stacktraceresolver_dwarfreader 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktraceresolver_dwarfreader 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktraceresolver_dwarfreader 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_stacktrace "balst_stacktrace.t.cpp" )
+    target_link_libraries( balst_balst_stacktrace ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktrace PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktrace balst_balst_stacktrace )
+    set_tests_properties( balst_balst_stacktrace 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktrace 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktrace 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_stacktraceresolver_filehelper "balst_stacktraceresolver_filehelper.t.cpp" )
+    target_link_libraries( balst_balst_stacktraceresolver_filehelper ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktraceresolver_filehelper PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktraceresolver_filehelper balst_balst_stacktraceresolver_filehelper )
+    set_tests_properties( balst_balst_stacktraceresolver_filehelper 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktraceresolver_filehelper 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktraceresolver_filehelper 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_objectfileformat "balst_objectfileformat.t.cpp" )
+    target_link_libraries( balst_balst_objectfileformat ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_objectfileformat PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_objectfileformat balst_balst_objectfileformat )
+    set_tests_properties( balst_balst_objectfileformat 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_objectfileformat 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_objectfileformat 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_stacktracetestallocator "balst_stacktracetestallocator.t.cpp" )
+    target_link_libraries( balst_balst_stacktracetestallocator ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktracetestallocator PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktracetestallocator balst_balst_stacktracetestallocator )
+    set_tests_properties( balst_balst_stacktracetestallocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktracetestallocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktracetestallocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_assertionlogger "balst_assertionlogger.t.cpp" )
+    target_link_libraries( balst_balst_assertionlogger ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_assertionlogger PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_assertionlogger balst_balst_assertionlogger )
+    set_tests_properties( balst_balst_assertionlogger 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_assertionlogger 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_assertionlogger 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( balst_balst_stacktraceutil "balst_stacktraceutil.t.cpp" )
+    target_link_libraries( balst_balst_stacktraceutil ${MODULE_NAME}  balb balber baljsn ball balm balscm balst baltzo balxml bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx decnumber inteldfp pcre2)
+    target_include_directories( balst_balst_stacktraceutil PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bal ../../bal/balb ../../bal/balber ../../bal/baljsn ../../bal/balm ../../bal/balscm ../../bal/balst ../../bal/baltzo ../../bal/balxml ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../ball ../balscm .  )
+    add_test( balst_balst_stacktraceutil balst_balst_stacktraceutil )
+    set_tests_properties( balst_balst_stacktraceutil 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( balst_balst_stacktraceutil 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( balst_balst_stacktraceutil 
+            PROPERTIES
+            TIMEOUT 120)
+    

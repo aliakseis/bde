@@ -126,3 +126,1279 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} bsls bslscm bslstl )
 
 include_directories( ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl . )
+
+
+    add_executable( bsl+bslhdrs_bsl_algorithm "test/bsl_algorithm.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_algorithm ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_algorithm PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_algorithm bsl+bslhdrs_bsl_algorithm )
+    set_tests_properties( bsl+bslhdrs_bsl_algorithm 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_algorithm 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_algorithm 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_array "test/bsl_array.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_array ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_array PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_array bsl+bslhdrs_bsl_array )
+    set_tests_properties( bsl+bslhdrs_bsl_array 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_array 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_array 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_atomic "test/bsl_atomic.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_atomic ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_atomic PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_atomic bsl+bslhdrs_bsl_atomic )
+    set_tests_properties( bsl+bslhdrs_bsl_atomic 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_atomic 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_atomic 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_bitset "test/bsl_bitset.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_bitset ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_bitset PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_bitset bsl+bslhdrs_bsl_bitset )
+    set_tests_properties( bsl+bslhdrs_bsl_bitset 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_bitset 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_bitset 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cassert "test/bsl_cassert.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cassert ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cassert PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cassert bsl+bslhdrs_bsl_cassert )
+    set_tests_properties( bsl+bslhdrs_bsl_cassert 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cassert 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cassert 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cctype "test/bsl_cctype.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cctype ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cctype PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cctype bsl+bslhdrs_bsl_cctype )
+    set_tests_properties( bsl+bslhdrs_bsl_cctype 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cctype 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cctype 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cerrno "test/bsl_cerrno.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cerrno ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cerrno PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cerrno bsl+bslhdrs_bsl_cerrno )
+    set_tests_properties( bsl+bslhdrs_bsl_cerrno 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cerrno 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cerrno 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cfenv "test/bsl_cfenv.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cfenv ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cfenv PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cfenv bsl+bslhdrs_bsl_cfenv )
+    set_tests_properties( bsl+bslhdrs_bsl_cfenv 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cfenv 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cfenv 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cfloat "test/bsl_cfloat.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cfloat ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cfloat PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cfloat bsl+bslhdrs_bsl_cfloat )
+    set_tests_properties( bsl+bslhdrs_bsl_cfloat 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cfloat 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cfloat 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_chrono "test/bsl_chrono.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_chrono ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_chrono PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_chrono bsl+bslhdrs_bsl_chrono )
+    set_tests_properties( bsl+bslhdrs_bsl_chrono 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_chrono 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_chrono 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cinttypes "test/bsl_cinttypes.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cinttypes ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cinttypes PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cinttypes bsl+bslhdrs_bsl_cinttypes )
+    set_tests_properties( bsl+bslhdrs_bsl_cinttypes 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cinttypes 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cinttypes 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_ciso646 "test/bsl_ciso646.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_ciso646 ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_ciso646 PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_ciso646 bsl+bslhdrs_bsl_ciso646 )
+    set_tests_properties( bsl+bslhdrs_bsl_ciso646 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_ciso646 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_ciso646 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_climits "test/bsl_climits.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_climits ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_climits PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_climits bsl+bslhdrs_bsl_climits )
+    set_tests_properties( bsl+bslhdrs_bsl_climits 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_climits 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_climits 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_clocale "test/bsl_clocale.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_clocale ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_clocale PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_clocale bsl+bslhdrs_bsl_clocale )
+    set_tests_properties( bsl+bslhdrs_bsl_clocale 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_clocale 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_clocale 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cmath "test/bsl_cmath.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cmath ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cmath PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cmath bsl+bslhdrs_bsl_cmath )
+    set_tests_properties( bsl+bslhdrs_bsl_cmath 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cmath 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cmath 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_complex "test/bsl_complex.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_complex ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_complex PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_complex bsl+bslhdrs_bsl_complex )
+    set_tests_properties( bsl+bslhdrs_bsl_complex 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_complex 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_complex 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_condition_variable "test/bsl_condition_variable.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_condition_variable ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_condition_variable PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_condition_variable bsl+bslhdrs_bsl_condition_variable )
+    set_tests_properties( bsl+bslhdrs_bsl_condition_variable 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_condition_variable 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_condition_variable 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_csetjmp "test/bsl_csetjmp.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_csetjmp ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_csetjmp PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_csetjmp bsl+bslhdrs_bsl_csetjmp )
+    set_tests_properties( bsl+bslhdrs_bsl_csetjmp 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_csetjmp 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_csetjmp 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_csignal "test/bsl_csignal.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_csignal ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_csignal PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_csignal bsl+bslhdrs_bsl_csignal )
+    set_tests_properties( bsl+bslhdrs_bsl_csignal 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_csignal 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_csignal 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cstdarg "test/bsl_cstdarg.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cstdarg ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cstdarg PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cstdarg bsl+bslhdrs_bsl_cstdarg )
+    set_tests_properties( bsl+bslhdrs_bsl_cstdarg 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cstdarg 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cstdarg 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cstdbool "test/bsl_cstdbool.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cstdbool ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cstdbool PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cstdbool bsl+bslhdrs_bsl_cstdbool )
+    set_tests_properties( bsl+bslhdrs_bsl_cstdbool 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cstdbool 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cstdbool 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cstddef "test/bsl_cstddef.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cstddef ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cstddef PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cstddef bsl+bslhdrs_bsl_cstddef )
+    set_tests_properties( bsl+bslhdrs_bsl_cstddef 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cstddef 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cstddef 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cstdint "test/bsl_cstdint.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cstdint ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cstdint PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cstdint bsl+bslhdrs_bsl_cstdint )
+    set_tests_properties( bsl+bslhdrs_bsl_cstdint 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cstdint 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cstdint 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cstdio "test/bsl_cstdio.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cstdio ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cstdio PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cstdio bsl+bslhdrs_bsl_cstdio )
+    set_tests_properties( bsl+bslhdrs_bsl_cstdio 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cstdio 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cstdio 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cstdlib "test/bsl_cstdlib.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cstdlib ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cstdlib PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cstdlib bsl+bslhdrs_bsl_cstdlib )
+    set_tests_properties( bsl+bslhdrs_bsl_cstdlib 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cstdlib 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cstdlib 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cstring "test/bsl_cstring.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cstring ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cstring PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cstring bsl+bslhdrs_bsl_cstring )
+    set_tests_properties( bsl+bslhdrs_bsl_cstring 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cstring 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cstring 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_ctgmath "test/bsl_ctgmath.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_ctgmath ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_ctgmath PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_ctgmath bsl+bslhdrs_bsl_ctgmath )
+    set_tests_properties( bsl+bslhdrs_bsl_ctgmath 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_ctgmath 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_ctgmath 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_ctime "test/bsl_ctime.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_ctime ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_ctime PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_ctime bsl+bslhdrs_bsl_ctime )
+    set_tests_properties( bsl+bslhdrs_bsl_ctime 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_ctime 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_ctime 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cuchar "test/bsl_cuchar.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cuchar ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cuchar PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cuchar bsl+bslhdrs_bsl_cuchar )
+    set_tests_properties( bsl+bslhdrs_bsl_cuchar 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cuchar 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cuchar 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cwchar "test/bsl_cwchar.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cwchar ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cwchar PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cwchar bsl+bslhdrs_bsl_cwchar )
+    set_tests_properties( bsl+bslhdrs_bsl_cwchar 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cwchar 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cwchar 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_cwctype "test/bsl_cwctype.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_cwctype ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_cwctype PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_cwctype bsl+bslhdrs_bsl_cwctype )
+    set_tests_properties( bsl+bslhdrs_bsl_cwctype 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_cwctype 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_cwctype 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_assert "test/bsl_c_assert.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_assert ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_assert PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_assert bsl+bslhdrs_bsl_c_assert )
+    set_tests_properties( bsl+bslhdrs_bsl_c_assert 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_assert 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_assert 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_ctype "test/bsl_c_ctype.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_ctype ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_ctype PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_ctype bsl+bslhdrs_bsl_c_ctype )
+    set_tests_properties( bsl+bslhdrs_bsl_c_ctype 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_ctype 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_ctype 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_errno "test/bsl_c_errno.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_errno ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_errno PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_errno bsl+bslhdrs_bsl_c_errno )
+    set_tests_properties( bsl+bslhdrs_bsl_c_errno 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_errno 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_errno 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_float "test/bsl_c_float.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_float ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_float PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_float bsl+bslhdrs_bsl_c_float )
+    set_tests_properties( bsl+bslhdrs_bsl_c_float 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_float 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_float 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_iso646 "test/bsl_c_iso646.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_iso646 ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_iso646 PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_iso646 bsl+bslhdrs_bsl_c_iso646 )
+    set_tests_properties( bsl+bslhdrs_bsl_c_iso646 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_iso646 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_iso646 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_limits "test/bsl_c_limits.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_limits ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_limits PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_limits bsl+bslhdrs_bsl_c_limits )
+    set_tests_properties( bsl+bslhdrs_bsl_c_limits 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_limits 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_limits 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_locale "test/bsl_c_locale.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_locale ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_locale PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_locale bsl+bslhdrs_bsl_c_locale )
+    set_tests_properties( bsl+bslhdrs_bsl_c_locale 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_locale 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_locale 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_math "test/bsl_c_math.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_math ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_math PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_math bsl+bslhdrs_bsl_c_math )
+    set_tests_properties( bsl+bslhdrs_bsl_c_math 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_math 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_math 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_setjmp "test/bsl_c_setjmp.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_setjmp ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_setjmp PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_setjmp bsl+bslhdrs_bsl_c_setjmp )
+    set_tests_properties( bsl+bslhdrs_bsl_c_setjmp 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_setjmp 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_setjmp 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_signal "test/bsl_c_signal.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_signal ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_signal PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_signal bsl+bslhdrs_bsl_c_signal )
+    set_tests_properties( bsl+bslhdrs_bsl_c_signal 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_signal 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_signal 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_stdarg "test/bsl_c_stdarg.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_stdarg ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_stdarg PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_stdarg bsl+bslhdrs_bsl_c_stdarg )
+    set_tests_properties( bsl+bslhdrs_bsl_c_stdarg 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_stdarg 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_stdarg 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_stddef "test/bsl_c_stddef.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_stddef ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_stddef PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_stddef bsl+bslhdrs_bsl_c_stddef )
+    set_tests_properties( bsl+bslhdrs_bsl_c_stddef 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_stddef 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_stddef 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_stdio "test/bsl_c_stdio.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_stdio ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_stdio PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_stdio bsl+bslhdrs_bsl_c_stdio )
+    set_tests_properties( bsl+bslhdrs_bsl_c_stdio 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_stdio 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_stdio 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_stdlib "test/bsl_c_stdlib.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_stdlib ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_stdlib PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_stdlib bsl+bslhdrs_bsl_c_stdlib )
+    set_tests_properties( bsl+bslhdrs_bsl_c_stdlib 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_stdlib 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_stdlib 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_string "test/bsl_c_string.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_string ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_string PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_string bsl+bslhdrs_bsl_c_string )
+    set_tests_properties( bsl+bslhdrs_bsl_c_string 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_string 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_string 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_sys_time "test/bsl_c_sys_time.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_sys_time ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_sys_time PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_sys_time bsl+bslhdrs_bsl_c_sys_time )
+    set_tests_properties( bsl+bslhdrs_bsl_c_sys_time 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_sys_time 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_sys_time 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_time "test/bsl_c_time.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_time ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_time PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_time bsl+bslhdrs_bsl_c_time )
+    set_tests_properties( bsl+bslhdrs_bsl_c_time 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_time 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_time 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_wchar "test/bsl_c_wchar.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_wchar ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_wchar PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_wchar bsl+bslhdrs_bsl_c_wchar )
+    set_tests_properties( bsl+bslhdrs_bsl_c_wchar 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_wchar 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_wchar 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_c_wctype "test/bsl_c_wctype.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_c_wctype ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_c_wctype PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_c_wctype bsl+bslhdrs_bsl_c_wctype )
+    set_tests_properties( bsl+bslhdrs_bsl_c_wctype 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_c_wctype 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_c_wctype 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_deque "test/bsl_deque.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_deque ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_deque PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_deque bsl+bslhdrs_bsl_deque )
+    set_tests_properties( bsl+bslhdrs_bsl_deque 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_deque 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_deque 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_exception "test/bsl_exception.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_exception ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_exception PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_exception bsl+bslhdrs_bsl_exception )
+    set_tests_properties( bsl+bslhdrs_bsl_exception 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_exception 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_exception 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_fstream "test/bsl_fstream.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_fstream ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_fstream PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_fstream bsl+bslhdrs_bsl_fstream )
+    set_tests_properties( bsl+bslhdrs_bsl_fstream 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_fstream 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_fstream 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_functional "test/bsl_functional.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_functional ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_functional PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_functional bsl+bslhdrs_bsl_functional )
+    set_tests_properties( bsl+bslhdrs_bsl_functional 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_functional 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_functional 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_future "test/bsl_future.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_future ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_future PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_future bsl+bslhdrs_bsl_future )
+    set_tests_properties( bsl+bslhdrs_bsl_future 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_future 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_future 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_initializer_list "test/bsl_initializer_list.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_initializer_list ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_initializer_list PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_initializer_list bsl+bslhdrs_bsl_initializer_list )
+    set_tests_properties( bsl+bslhdrs_bsl_initializer_list 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_initializer_list 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_initializer_list 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_iomanip "test/bsl_iomanip.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_iomanip ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_iomanip PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_iomanip bsl+bslhdrs_bsl_iomanip )
+    set_tests_properties( bsl+bslhdrs_bsl_iomanip 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_iomanip 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_iomanip 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_ios "test/bsl_ios.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_ios ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_ios PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_ios bsl+bslhdrs_bsl_ios )
+    set_tests_properties( bsl+bslhdrs_bsl_ios 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_ios 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_ios 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_iosfwd "test/bsl_iosfwd.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_iosfwd ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_iosfwd PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_iosfwd bsl+bslhdrs_bsl_iosfwd )
+    set_tests_properties( bsl+bslhdrs_bsl_iosfwd 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_iosfwd 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_iosfwd 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_iostream "test/bsl_iostream.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_iostream ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_iostream PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_iostream bsl+bslhdrs_bsl_iostream )
+    set_tests_properties( bsl+bslhdrs_bsl_iostream 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_iostream 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_iostream 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_istream "test/bsl_istream.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_istream ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_istream PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_istream bsl+bslhdrs_bsl_istream )
+    set_tests_properties( bsl+bslhdrs_bsl_istream 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_istream 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_istream 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_iterator "test/bsl_iterator.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_iterator ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_iterator PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_iterator bsl+bslhdrs_bsl_iterator )
+    set_tests_properties( bsl+bslhdrs_bsl_iterator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_iterator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_iterator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_limits "test/bsl_limits.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_limits ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_limits PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_limits bsl+bslhdrs_bsl_limits )
+    set_tests_properties( bsl+bslhdrs_bsl_limits 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_limits 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_limits 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_list "test/bsl_list.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_list ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_list PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_list bsl+bslhdrs_bsl_list )
+    set_tests_properties( bsl+bslhdrs_bsl_list 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_list 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_list 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_locale "test/bsl_locale.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_locale ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_locale PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_locale bsl+bslhdrs_bsl_locale )
+    set_tests_properties( bsl+bslhdrs_bsl_locale 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_locale 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_locale 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_map "test/bsl_map.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_map ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_map PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_map bsl+bslhdrs_bsl_map )
+    set_tests_properties( bsl+bslhdrs_bsl_map 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_map 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_map 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_memory "test/bsl_memory.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_memory ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_memory PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_memory bsl+bslhdrs_bsl_memory )
+    set_tests_properties( bsl+bslhdrs_bsl_memory 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_memory 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_memory 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_mutex "test/bsl_mutex.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_mutex ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_mutex PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_mutex bsl+bslhdrs_bsl_mutex )
+    set_tests_properties( bsl+bslhdrs_bsl_mutex 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_mutex 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_mutex 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_new "test/bsl_new.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_new ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_new PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_new bsl+bslhdrs_bsl_new )
+    set_tests_properties( bsl+bslhdrs_bsl_new 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_new 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_new 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_numeric "test/bsl_numeric.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_numeric ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_numeric PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_numeric bsl+bslhdrs_bsl_numeric )
+    set_tests_properties( bsl+bslhdrs_bsl_numeric 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_numeric 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_numeric 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_ostream "test/bsl_ostream.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_ostream ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_ostream PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_ostream bsl+bslhdrs_bsl_ostream )
+    set_tests_properties( bsl+bslhdrs_bsl_ostream 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_ostream 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_ostream 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_queue "test/bsl_queue.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_queue ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_queue PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_queue bsl+bslhdrs_bsl_queue )
+    set_tests_properties( bsl+bslhdrs_bsl_queue 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_queue 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_queue 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_random "test/bsl_random.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_random ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_random PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_random bsl+bslhdrs_bsl_random )
+    set_tests_properties( bsl+bslhdrs_bsl_random 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_random 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_random 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_ratio "test/bsl_ratio.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_ratio ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_ratio PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_ratio bsl+bslhdrs_bsl_ratio )
+    set_tests_properties( bsl+bslhdrs_bsl_ratio 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_ratio 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_ratio 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_regex "test/bsl_regex.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_regex ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_regex PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_regex bsl+bslhdrs_bsl_regex )
+    set_tests_properties( bsl+bslhdrs_bsl_regex 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_regex 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_regex 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_scoped_allocator "test/bsl_scoped_allocator.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_scoped_allocator ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_scoped_allocator PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_scoped_allocator bsl+bslhdrs_bsl_scoped_allocator )
+    set_tests_properties( bsl+bslhdrs_bsl_scoped_allocator 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_scoped_allocator 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_scoped_allocator 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_set "test/bsl_set.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_set ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_set PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_set bsl+bslhdrs_bsl_set )
+    set_tests_properties( bsl+bslhdrs_bsl_set 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_set 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_set 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_sstream "test/bsl_sstream.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_sstream ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_sstream PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_sstream bsl+bslhdrs_bsl_sstream )
+    set_tests_properties( bsl+bslhdrs_bsl_sstream 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_sstream 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_sstream 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_stack "test/bsl_stack.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_stack ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_stack PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_stack bsl+bslhdrs_bsl_stack )
+    set_tests_properties( bsl+bslhdrs_bsl_stack 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_stack 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_stack 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_stdexcept "test/bsl_stdexcept.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_stdexcept ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_stdexcept PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_stdexcept bsl+bslhdrs_bsl_stdexcept )
+    set_tests_properties( bsl+bslhdrs_bsl_stdexcept 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_stdexcept 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_stdexcept 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_streambuf "test/bsl_streambuf.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_streambuf ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_streambuf PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_streambuf bsl+bslhdrs_bsl_streambuf )
+    set_tests_properties( bsl+bslhdrs_bsl_streambuf 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_streambuf 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_streambuf 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_string "test/bsl_string.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_string ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_string PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_string bsl+bslhdrs_bsl_string )
+    set_tests_properties( bsl+bslhdrs_bsl_string 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_string 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_string 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_strstream "test/bsl_strstream.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_strstream ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_strstream PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_strstream bsl+bslhdrs_bsl_strstream )
+    set_tests_properties( bsl+bslhdrs_bsl_strstream 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_strstream 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_strstream 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_system_error "test/bsl_system_error.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_system_error ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_system_error PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_system_error bsl+bslhdrs_bsl_system_error )
+    set_tests_properties( bsl+bslhdrs_bsl_system_error 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_system_error 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_system_error 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_thread "test/bsl_thread.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_thread ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_thread PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_thread bsl+bslhdrs_bsl_thread )
+    set_tests_properties( bsl+bslhdrs_bsl_thread 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_thread 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_thread 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_tuple "test/bsl_tuple.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_tuple ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_tuple PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_tuple bsl+bslhdrs_bsl_tuple )
+    set_tests_properties( bsl+bslhdrs_bsl_tuple 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_tuple 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_tuple 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_typeindex "test/bsl_typeindex.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_typeindex ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_typeindex PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_typeindex bsl+bslhdrs_bsl_typeindex )
+    set_tests_properties( bsl+bslhdrs_bsl_typeindex 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_typeindex 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_typeindex 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_typeinfo "test/bsl_typeinfo.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_typeinfo ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_typeinfo PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_typeinfo bsl+bslhdrs_bsl_typeinfo )
+    set_tests_properties( bsl+bslhdrs_bsl_typeinfo 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_typeinfo 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_typeinfo 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_utility "test/bsl_utility.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_utility ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_utility PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_utility bsl+bslhdrs_bsl_utility )
+    set_tests_properties( bsl+bslhdrs_bsl_utility 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_utility 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_utility 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_valarray "test/bsl_valarray.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_valarray ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_valarray PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_valarray bsl+bslhdrs_bsl_valarray )
+    set_tests_properties( bsl+bslhdrs_bsl_valarray 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_valarray 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_valarray 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( bsl+bslhdrs_bsl_vector "test/bsl_vector.t.cpp" )
+    target_link_libraries( bsl+bslhdrs_bsl_vector ${MODULE_NAME}  bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx)
+    target_include_directories( bsl+bslhdrs_bsl_vector PRIVATE ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../bsls ../bslscm ../bslstl .  )
+    add_test( bsl+bslhdrs_bsl_vector bsl+bslhdrs_bsl_vector )
+    set_tests_properties( bsl+bslhdrs_bsl_vector 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( bsl+bslhdrs_bsl_vector 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( bsl+bslhdrs_bsl_vector 
+            PROPERTIES
+            TIMEOUT 120)
+    

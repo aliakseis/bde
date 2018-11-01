@@ -42,3 +42,5 @@ TAGS
 *.suo
 *.sdf
 *.opensdf
+
+.vs/

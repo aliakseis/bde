@@ -28,17 +28,17 @@ set( HEADER_FILES
 
 set( SOURCE_FILES 
   btlsos_tcpacceptor.cpp
+  btlsos_tcptimedconnector.cpp
   btlsos_tcpcbacceptor.cpp
+  btlsos_tcptimedchannel.cpp
   btlsos_tcpcbchannel.cpp
+  btlsos_tcptimedcbconnector.cpp
   btlsos_tcpcbconnector.cpp
+  btlsos_tcptimedcbchannel.cpp
   btlsos_tcpchannel.cpp
+  btlsos_tcptimedcbacceptor.cpp
   btlsos_tcpconnector.cpp
   btlsos_tcptimedacceptor.cpp
-  btlsos_tcptimedcbacceptor.cpp
-  btlsos_tcptimedcbchannel.cpp
-  btlsos_tcptimedcbconnector.cpp
-  btlsos_tcptimedchannel.cpp
-  btlsos_tcptimedconnector.cpp
 )
 
 # Make sure the PLATFORM_HEADER_FILES variable is always defined
@@ -55,3 +55,173 @@ add_library( ${MODULE_NAME} STATIC ${ALL_FILES} )
 add_dependencies( ${MODULE_NAME} btls btlsc btlscm btlso )
 
 include_directories( ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso . )
+
+
+    add_executable( btlsos_btlsos_tcpconnector "btlsos_tcpconnector.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcpconnector ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcpconnector PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcpconnector btlsos_btlsos_tcpconnector )
+    set_tests_properties( btlsos_btlsos_tcpconnector 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcpconnector 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcpconnector 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcptimedacceptor "btlsos_tcptimedacceptor.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcptimedacceptor ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcptimedacceptor PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcptimedacceptor btlsos_btlsos_tcptimedacceptor )
+    set_tests_properties( btlsos_btlsos_tcptimedacceptor 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcptimedacceptor 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcptimedacceptor 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcpchannel "btlsos_tcpchannel.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcpchannel ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcpchannel PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcpchannel btlsos_btlsos_tcpchannel )
+    set_tests_properties( btlsos_btlsos_tcpchannel 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcpchannel 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcpchannel 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcptimedcbacceptor "btlsos_tcptimedcbacceptor.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcptimedcbacceptor ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcptimedcbacceptor PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcptimedcbacceptor btlsos_btlsos_tcptimedcbacceptor )
+    set_tests_properties( btlsos_btlsos_tcptimedcbacceptor 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcptimedcbacceptor 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcptimedcbacceptor 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcpcbconnector "btlsos_tcpcbconnector.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcpcbconnector ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcpcbconnector PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcpcbconnector btlsos_btlsos_tcpcbconnector )
+    set_tests_properties( btlsos_btlsos_tcpcbconnector 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcpcbconnector 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcpcbconnector 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcptimedcbchannel "btlsos_tcptimedcbchannel.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcptimedcbchannel ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcptimedcbchannel PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcptimedcbchannel btlsos_btlsos_tcptimedcbchannel )
+    set_tests_properties( btlsos_btlsos_tcptimedcbchannel 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcptimedcbchannel 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcptimedcbchannel 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcpcbchannel "btlsos_tcpcbchannel.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcpcbchannel ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcpcbchannel PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcpcbchannel btlsos_btlsos_tcpcbchannel )
+    set_tests_properties( btlsos_btlsos_tcpcbchannel 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcpcbchannel 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcpcbchannel 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcptimedcbconnector "btlsos_tcptimedcbconnector.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcptimedcbconnector ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcptimedcbconnector PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcptimedcbconnector btlsos_btlsos_tcptimedcbconnector )
+    set_tests_properties( btlsos_btlsos_tcptimedcbconnector 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcptimedcbconnector 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcptimedcbconnector 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcpcbacceptor "btlsos_tcpcbacceptor.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcpcbacceptor ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcpcbacceptor PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcpcbacceptor btlsos_btlsos_tcpcbacceptor )
+    set_tests_properties( btlsos_btlsos_tcpcbacceptor 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcpcbacceptor 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcpcbacceptor 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcptimedchannel "btlsos_tcptimedchannel.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcptimedchannel ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcptimedchannel PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcptimedchannel btlsos_btlsos_tcptimedchannel )
+    set_tests_properties( btlsos_btlsos_tcptimedchannel 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcptimedchannel 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcptimedchannel 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcpacceptor "btlsos_tcpacceptor.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcpacceptor ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcpacceptor PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcpacceptor btlsos_btlsos_tcpacceptor )
+    set_tests_properties( btlsos_btlsos_tcpacceptor 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcpacceptor 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcpacceptor 
+            PROPERTIES
+            TIMEOUT 120)
+    
+    add_executable( btlsos_btlsos_tcptimedconnector "btlsos_tcptimedconnector.t.cpp" )
+    target_link_libraries( btlsos_btlsos_tcptimedconnector ${MODULE_NAME}  bdlat bdlb bdlc bdlcc bdld bdlde bdldfp bdlf bdlma bdlmt bdlpcre bdls bdlsb bdlscm bdlsta bdlt bsl+bslhdrs bsl+stdhdrs bslalg bsldoc bslh bslim bslma bslmf bslmf bslscm bsls bslmt bsls bsls bslscm bslalg bslma bslmf bsltf bslh bsls bslscm bslma bslmf bsls bslscm bslma bslmf bsltf bsls bslscm bslmf bslscm bslstl bsltf bslx btlb btls btlsc btlscm btlso decnumber inteldfp pcre2)
+    target_include_directories( btlsos_btlsos_tcptimedconnector PRIVATE ../../../thirdparty/decnumber ../../../thirdparty/inteldfp/LIBRARY/float128 ../../../thirdparty/inteldfp/LIBRARY/src/inteldfp ../../../thirdparty/pcre2 ../../../thirdparty/pcre2/sljit ../../bdl ../../bdl/bdlat ../../bdl/bdlb ../../bdl/bdlc ../../bdl/bdlcc ../../bdl/bdld ../../bdl/bdlde ../../bdl/bdldfp ../../bdl/bdlf ../../bdl/bdlma ../../bdl/bdlmt ../../bdl/bdlpcre ../../bdl/bdls ../../bdl/bdlsb ../../bdl/bdlscm ../../bdl/bdlsta ../../bdl/bdlt ../../bsl ../../bsl/bsl+bslhdrs ../../bsl/bsl+stdhdrs ../../bsl/bslalg ../../bsl/bsldoc ../../bsl/bslh ../../bsl/bslim ../../bsl/bslma ../../bsl/bslmf ../../bsl/bslmt ../../bsl/bsls ../../bsl/bslscm ../../bsl/bslstl ../../bsl/bsltf ../../bsl/bslx ../../btl ../../btl/btlb ../../btl/btlscm ../btlb ../btls ../btlsc ../btlscm ../btlso .  )
+    add_test( btlsos_btlsos_tcptimedconnector btlsos_btlsos_tcptimedconnector )
+    set_tests_properties( btlsos_btlsos_tcptimedconnector 
+        PROPERTIES
+        PASS_REGULAR_EXPRESSION "Test passed")
+    set_tests_properties( btlsos_btlsos_tcptimedconnector 
+        PROPERTIES
+        FAIL_REGULAR_EXPRESSION "(Exception|Test failed)")
+        set_tests_properties( btlsos_btlsos_tcptimedconnector 
+            PROPERTIES
+            TIMEOUT 120)
+    
