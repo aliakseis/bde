@@ -2,10 +2,6 @@
 #ifndef INCLUDED_BDLDFP_DECIMALCONVERTUTIL_DECNUMBER
 #define INCLUDED_BDLDFP_DECIMALCONVERTUTIL_DECNUMBER
 
-#ifndef INCLUDED_BSLS_IDENT
-#include <bsls_ident.h>
-#endif
-BSLS_IDENT("$Id$")
 
 //@PURPOSE: Provide decimal floating-point conversion functions for decNumber.
 //
@@ -40,9 +36,7 @@ BSLS_IDENT("$Id$")
 #include <bdldfp_decimalimputil.h>
 #endif
 
-#ifndef INCLUDED_BSLS_ASSERT
-#include <bsls_assert.h>
-#endif
+#include <cassert>
 
 namespace BloombergLP {
 namespace bdldfp {
@@ -257,7 +251,7 @@ void
 DecimalConvertUtil_DecNumber::decimal32ToDenselyPacked(unsigned char *buffer,
                                                        Decimal32      decimal)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     decimalToDenselyPacked(buffer, decimal);
 }
@@ -267,7 +261,7 @@ void
 DecimalConvertUtil_DecNumber::decimal64ToDenselyPacked(unsigned char *buffer,
                                                        Decimal64      decimal)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     decimalToDenselyPacked(buffer, decimal);
 }
@@ -277,7 +271,7 @@ void
 DecimalConvertUtil_DecNumber::decimal128ToDenselyPacked(unsigned char *buffer,
                                                         Decimal128     decimal)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     decimalToDenselyPacked(buffer, decimal);
 }
@@ -287,7 +281,7 @@ void
 DecimalConvertUtil_DecNumber::decimalToDenselyPacked(unsigned char *buffer,
                                                      Decimal32      decimal)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     bsl::memcpy(buffer, &decimal, sizeof(decimal));
 }
@@ -297,7 +291,7 @@ void
 DecimalConvertUtil_DecNumber::decimalToDenselyPacked(unsigned char *buffer,
                                                      Decimal64      decimal)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     bsl::memcpy(buffer, &decimal, sizeof(decimal));
 }
@@ -307,7 +301,7 @@ void
 DecimalConvertUtil_DecNumber::decimalToDenselyPacked(unsigned char *buffer,
                                                      Decimal128     decimal)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     bsl::memcpy(buffer, &decimal, sizeof(decimal));
 }
@@ -319,7 +313,7 @@ Decimal32
 DecimalConvertUtil_DecNumber::decimal32FromDenselyPacked(
                                                    const unsigned char *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     Decimal32 result;
     bsl::memcpy(&result, buffer, sizeof(result));
@@ -331,7 +325,7 @@ Decimal64
 DecimalConvertUtil_DecNumber::decimal64FromDenselyPacked(
                                                    const unsigned char *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     Decimal64 result;
     bsl::memcpy(&result, buffer, sizeof(result));
@@ -343,7 +337,7 @@ Decimal128
 DecimalConvertUtil_DecNumber::decimal128FromDenselyPacked(
                                                    const unsigned char *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     Decimal128 result;
     bsl::memcpy(&result, buffer, sizeof(result));
@@ -356,8 +350,8 @@ DecimalConvertUtil_DecNumber::decimalFromDenselyPacked(
                                                   Decimal32           *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal);
-    BSLS_ASSERT(buffer);
+    assert(decimal);
+    assert(buffer);
 
     *decimal = decimal32FromDenselyPacked(buffer);
 }
@@ -368,8 +362,8 @@ DecimalConvertUtil_DecNumber::decimalFromDenselyPacked(
                                                   Decimal64           *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal);
-    BSLS_ASSERT(buffer);
+    assert(decimal);
+    assert(buffer);
 
     *decimal = decimal64FromDenselyPacked(buffer);
 }
@@ -380,8 +374,8 @@ DecimalConvertUtil_DecNumber::decimalFromDenselyPacked(
                                                   Decimal128          *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal);
-    BSLS_ASSERT(buffer);
+    assert(decimal);
+    assert(buffer);
 
     *decimal = decimal128FromDenselyPacked(buffer);
 }

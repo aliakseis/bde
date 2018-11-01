@@ -1,8 +1,6 @@
 // bdldfp_decimalimputil_inteldfp.cpp                                 -*-C++-*-
 #include <bdldfp_decimalimputil_inteldfp.h>
 
-#include <bsls_ident.h>
-BSLS_IDENT_RCSID(bdldfp_decimalconvertutil_inteldfp_cpp,"$Id$ $CSID$")
 
 // ----------------------------------------------------------------------------
 // Copyright 2014 Bloomberg Finance L.P.

@@ -1,22 +1,23 @@
 // bdldfp_decimal.cpp                                                 -*-C++-*-
 #include <bdldfp_decimal.h>
 
-#include <bsls_ident.h>
-BSLS_IDENT_RCSID(bdldfp_decimal_cpp,"$Id$ $CSID$")
 
-#include <bsls_exceptionutil.h>
+//#include <bsls_exceptionutil.h>
 #include <bsls_performancehint.h>
 
-#include <bsl_algorithm.h>
-#include <bsl_cstring.h>
-#include <bsl_functional.h>
-#include <bsl_istream.h>
-#include <bsl_limits.h>
-#include <bsl_ostream.h>
-#include <bsl_sstream.h>
+//#include <bsl_algorithm.h>
+//#include <bsl_cstring.h>
+//#include <bsl_functional.h>
+//#include <bsl_istream.h>
+//#include <bsl_limits.h>
+//#include <bsl_ostream.h>
+//#include <bsl_sstream.h>
+//
+//#include <bslim_printer.h>
+//#include <bslmf_assert.h>
 
-#include <bslim_printer.h>
-#include <bslmf_assert.h>
+#include <istream>
+
 
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
 #include <math.h>
@@ -56,9 +57,9 @@ namespace {
 template <class CHARTYPE>
 class NotIsSpace {
     // Helper function object type used to skip spaces in strings
-    const bsl::ctype<CHARTYPE>& d_ctype;
+    const std::ctype<CHARTYPE>& d_ctype;
   public:
-    explicit NotIsSpace(const bsl::ctype<CHARTYPE>& ctype);
+    explicit NotIsSpace(const std::ctype<CHARTYPE>& ctype);
         // Construct a 'NotIsSpace' object, using the specified 'ctype'.
     bool operator()(CHARTYPE character) const;
         // Return 'true' if the specified 'character' is a space (according to
@@ -70,7 +71,7 @@ class NotIsSpace {
                     // ----------------
 
 template <class CHARTYPE>
-NotIsSpace<CHARTYPE>::NotIsSpace(const bsl::ctype<CHARTYPE>& ctype)
+NotIsSpace<CHARTYPE>::NotIsSpace(const std::ctype<CHARTYPE>& ctype)
 : d_ctype(ctype)
 {
 }
@@ -85,8 +86,8 @@ NotIsSpace<CHARTYPE>::operator()(CHARTYPE character) const
                          // Print helper function
 
 template <class CHARTYPE, class TRAITS, class DECIMAL>
-bsl::basic_ostream<CHARTYPE, TRAITS>&
-printImpl(bsl::basic_ostream<CHARTYPE, TRAITS>& out,
+std::basic_ostream<CHARTYPE, TRAITS>&
+printImpl(std::basic_ostream<CHARTYPE, TRAITS>& out,
           DECIMAL                               value)
 {
     BSLS_TRY {
@@ -116,8 +117,8 @@ printImpl(bsl::basic_ostream<CHARTYPE, TRAITS>& out,
                          // Read helper function
 
 template <class CHARTYPE, class TRAITS, class DECIMAL>
-bsl::basic_istream<CHARTYPE, TRAITS>&
-read(bsl::basic_istream<CHARTYPE, TRAITS>& in,
+std::basic_istream<CHARTYPE, TRAITS>&
+read(std::basic_istream<CHARTYPE, TRAITS>& in,
      DECIMAL&                              value)
 {
     typename bsl::basic_istream<CHARTYPE, TRAITS>::sentry kerberos(in);
@@ -160,7 +161,7 @@ ITER_TYPE fillN(ITER_TYPE iter, int numCharacters, CHAR_TYPE character)
 template <class ITER_TYPE, class CHAR_TYPE>
 ITER_TYPE
 doPutCommon(ITER_TYPE       out,
-            bsl::ios_base&  format,
+            std::ios_base&  format,
             CHAR_TYPE       fillCharacter,
             char           *buffer)
     // Widen the specified 'buffer' into a string of the specified 'CHAR_TYPE',
@@ -262,7 +263,7 @@ template <class CHAR_TYPE, class ITER_TYPE>
 ITER_TYPE
 doGetCommon(ITER_TYPE                    begin,
             ITER_TYPE                    end,
-            bsl::ctype<CHAR_TYPE> const& ctype,
+            std::ctype<CHAR_TYPE> const& ctype,
             char*                        to,
             const char*                  toEnd,
             CHAR_TYPE                    separator,
@@ -377,7 +378,7 @@ doGetCommon(ITER_TYPE                    begin,
                             // --------------------
 
 // ACCESSORS
-bsl::ostream& Decimal_Type64::print(bsl::ostream& stream,
+std::ostream& Decimal_Type64::print(std::ostream& stream,
                                     int           level,
                                     int           spacesPerLevel) const
 {
@@ -398,7 +399,7 @@ bsl::ostream& Decimal_Type64::print(bsl::ostream& stream,
                             // -------------------
 
 template <class CHARTYPE, class INPUTITERATOR>
-bsl::locale::id DecimalNumGet<CHARTYPE, INPUTITERATOR>::id;
+std::locale::id DecimalNumGet<CHARTYPE, INPUTITERATOR>::id;
 
 #ifdef BSLS_PLATFORM_CMP_SUN
 template <class CHARTYPE, class INPUTITERATOR>

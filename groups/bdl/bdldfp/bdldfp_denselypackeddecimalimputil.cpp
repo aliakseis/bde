@@ -2,20 +2,22 @@
 
 #include <bdldfp_denselypackeddecimalimputil.h>
 
-#include <bsls_ident.h>
-BSLS_IDENT("$Id$")
 
 #include <bdldfp_decimalplatform.h>
 #include <bdldfp_uint128.h>
 
-#include <bsls_assert.h>
-#include <bsl_algorithm.h>
-#include <bsl_bitset.h>
-#include <bsl_cstring.h>
-#include <bsl_string.h>
-#include <bsl_cstdlib.h>
+//#include <bsls_assert.h>
 
-#include <bslmf_assert.h>
+//#include <bsl_algorithm.h>
+//#include <bsl_bitset.h>
+//#include <bsl_cstring.h>
+//#include <bsl_string.h>
+//#include <bsl_cstdlib.h>
+
+//#include <bslmf_assert.h>
+
+#include <algorithm>
+#include <cassert>
 
 // Even in hardware and intel modes, we need decNumber functions.
 
@@ -414,7 +416,7 @@ void makeDecimalRaw(typename Properties<Size>::StorageType *target,
                    std::numeric_limits<long long>::max()) + 1, exponent, true);
     }
     else {
-        bits = toDecimalRaw<Size>(bsl::max(-mantissa, mantissa),
+        bits = toDecimalRaw<Size>(std::max(-mantissa, mantissa),
                                   exponent,
                                   mantissa < 0);
     }
@@ -454,7 +456,7 @@ void makeDecimalRaw(typename Properties<Size>::StorageType *target,
 
 unsigned DenselyPackedDecimalImpUtil::encodeDeclet(unsigned digits)
 {
-    BSLS_ASSERT(digits < 1000);
+    assert(digits < 1000);
     return declets[digits];
 }
 
@@ -462,13 +464,13 @@ unsigned DenselyPackedDecimalImpUtil::encodeDeclet(unsigned digits)
 
 unsigned DenselyPackedDecimalImpUtil::decodeDeclet(unsigned declet)
 {
-    BSLS_ASSERT(declet < 1024);
+    assert(declet < 1024);
     const unsigned short *loc= std::find(declets, declets + 1000, declet);
 
     // Undefined behavior, if declet isn't in DPD format.  We require that
     // there are zeros in the "don't care" bits.
 
-    BSLS_ASSERT(loc != declets + 1000);
+    assert(loc != declets + 1000);
 
     return static_cast<unsigned>(loc - declets);
 }
@@ -477,9 +479,9 @@ DenselyPackedDecimalImpUtil::StorageType32
 DenselyPackedDecimalImpUtil::makeDecimalRaw32(int mantissa,
                                               int exponent)
 {
-    BSLS_ASSERT(-101     <= exponent);
-    BSLS_ASSERT(exponent <= 90);
-    BSLS_ASSERT(bsl::max(mantissa, -mantissa) <= 9999999);
+    assert(-101     <= exponent);
+    assert(exponent <= 90);
+    assert(std::max(mantissa, -mantissa) <= 9999999);
 
     StorageType32 storagetype32;
     makeDecimalRaw<32>(&storagetype32, mantissa, exponent);
@@ -490,9 +492,9 @@ DenselyPackedDecimalImpUtil::StorageType64
 DenselyPackedDecimalImpUtil::makeDecimalRaw64(unsigned long long mantissa,
                                               int                exponent)
 {
-    BSLS_ASSERT(-398     <= exponent);
-    BSLS_ASSERT(exponent <= 369);
-    BSLS_ASSERT(mantissa <= 9999999999999999LL);
+    assert(-398     <= exponent);
+    assert(exponent <= 369);
+    assert(mantissa <= 9999999999999999LL);
 
     StorageType64 storagetype64;
     makeDecimalRaw<64>(&storagetype64, mantissa, exponent);
@@ -503,9 +505,9 @@ DenselyPackedDecimalImpUtil::StorageType64
 DenselyPackedDecimalImpUtil::makeDecimalRaw64(long long mantissa,
                                               int       exponent)
 {
-    BSLS_ASSERT(-398     <= exponent);
-    BSLS_ASSERT(exponent <= 369);
-    BSLS_ASSERT(std::max(mantissa, -mantissa) <= 9999999999999999LL);
+    assert(-398     <= exponent);
+    assert(exponent <= 369);
+    assert(std::max(mantissa, -mantissa) <= 9999999999999999LL);
 
     StorageType64 storagetype64;
     makeDecimalRaw<64>(&storagetype64, mantissa, exponent);
@@ -516,8 +518,8 @@ DenselyPackedDecimalImpUtil::StorageType64
 DenselyPackedDecimalImpUtil::makeDecimalRaw64(unsigned int mantissa,
                                               int          exponent)
 {
-    BSLS_ASSERT(-398     <= exponent);
-    BSLS_ASSERT(exponent <= 369);
+    assert(-398     <= exponent);
+    assert(exponent <= 369);
 
     StorageType64 storagetype64;
     makeDecimalRaw<64>(&storagetype64, mantissa, exponent);
@@ -528,8 +530,8 @@ DenselyPackedDecimalImpUtil::StorageType64
 DenselyPackedDecimalImpUtil::makeDecimalRaw64(int mantissa,
                                               int exponent)
 {
-    BSLS_ASSERT(-398     <= exponent);
-    BSLS_ASSERT(exponent <= 369);
+    assert(-398     <= exponent);
+    assert(exponent <= 369);
 
     StorageType64 storagetype64;
     makeDecimalRaw<64>(&storagetype64, mantissa, exponent);
@@ -540,8 +542,8 @@ DenselyPackedDecimalImpUtil::StorageType128
 DenselyPackedDecimalImpUtil::makeDecimalRaw128(unsigned long long mantissa,
                                                int                exponent)
 {
-    BSLS_ASSERT(-6176    <= exponent);
-    BSLS_ASSERT(exponent <= 6111);
+    assert(-6176    <= exponent);
+    assert(exponent <= 6111);
 
     StorageType128 storagetype128;
     makeDecimalRaw<128>(&storagetype128, mantissa, exponent);
@@ -552,8 +554,8 @@ DenselyPackedDecimalImpUtil::StorageType128
 DenselyPackedDecimalImpUtil::makeDecimalRaw128(long long  mantissa,
                                                int        exponent)
 {
-    BSLS_ASSERT(-6176    <= exponent);
-    BSLS_ASSERT(exponent <= 6111);
+    assert(-6176    <= exponent);
+    assert(exponent <= 6111);
 
     StorageType128 storagetype128;
     makeDecimalRaw<128>(&storagetype128, mantissa, exponent);
@@ -564,8 +566,8 @@ DenselyPackedDecimalImpUtil::StorageType128
 DenselyPackedDecimalImpUtil::makeDecimalRaw128(unsigned int mantissa,
                                                int          exponent)
 {
-    BSLS_ASSERT(-6176    <= exponent);
-    BSLS_ASSERT(exponent <= 6111);
+    assert(-6176    <= exponent);
+    assert(exponent <= 6111);
 
     StorageType128 storagetype128;
     makeDecimalRaw<128>(&storagetype128, mantissa, exponent);
@@ -576,8 +578,8 @@ DenselyPackedDecimalImpUtil::StorageType128
 DenselyPackedDecimalImpUtil::makeDecimalRaw128(int mantissa,
                                                int exponent)
 {
-    BSLS_ASSERT(-6176    <= exponent);
-    BSLS_ASSERT(exponent <= 6111);
+    assert(-6176    <= exponent);
+    assert(exponent <= 6111);
 
     StorageType128 storagetype128;
     makeDecimalRaw<128>(&storagetype128, mantissa, exponent);

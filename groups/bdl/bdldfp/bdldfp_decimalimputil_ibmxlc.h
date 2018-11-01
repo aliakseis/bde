@@ -2,10 +2,6 @@
 #ifndef INCLUDED_BDLDFP_DECIMALIMPUTIL_IBMXLC
 #define INCLUDED_BDLDFP_DECIMALIMPUTIL_IBMXLC
 
-#ifndef INCLUDED_BSLS_IDENT
-#include <bsls_ident.h>
-#endif
-BSLS_IDENT("$Id$")
 
 //@PURPOSE: Provide utility to implement decimal 'float's on the IBM compiler.
 //
@@ -36,9 +32,6 @@ BSLS_IDENT("$Id$")
 #include <bdldfp_denselypackeddecimalimputil.h>
 #endif
 
-#ifndef INCLUDED_BSL_CSTRING
-#include <bsl_cstring.h>
-#endif
 
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
 

@@ -3,10 +3,6 @@
 #ifndef INCLUDED_BDLDFP_DECIMALIMPUTIL
 #define INCLUDED_BDLDFP_DECIMALIMPUTIL
 
-#ifndef INCLUDED_BSLS_IDENT
-#include <bsls_ident.h>
-#endif
-BSLS_IDENT("$Id$")
 
 //@PURPOSE: Provide a unified low-level interface for decimal floating point.
 //
@@ -152,21 +148,8 @@ BSLS_IDENT("$Id$")
 #include <bdldfp_denselypackeddecimalimputil.h>
 #endif
 
-#ifndef INCLUDED_BSLS_ASSERT
-#include <bsls_assert.h>
-#endif
-
-#ifndef INCLUDED_BSLMF_ASSERT
-#include <bslmf_assert.h>
-#endif
-
-#ifndef INCLUDED_BSL_ALGORITHM
-#include <bsl_algorithm.h>
-#endif
-
-#ifndef INCLUDED_BSL_CMATH
-#include <bsl_cmath.h>
-#endif
+#include <algorithm>
+#include <cassert>
 
 #ifndef BSLS_NOTHROW_SPEC
 #define BSLS_NOTHROW_SPEC noexcept
@@ -1565,9 +1548,9 @@ inline
 DecimalImpUtil::ValueType32
 DecimalImpUtil::makeDecimalRaw32(int significand, int exponent)
 {
-    BSLS_ASSERT(-101 <= exponent);
-    BSLS_ASSERT(        exponent <= 90);
-    BSLS_ASSERT(bsl::max(significand, -significand) <= 9999999);
+    assert(-101 <= exponent);
+    assert(        exponent <= 90);
+    assert(std::max(significand, -significand) <= 9999999);
     return Imp::makeDecimalRaw32(significand, exponent);
 }
 
@@ -1576,9 +1559,9 @@ inline
 DecimalImpUtil::ValueType64
 DecimalImpUtil::makeDecimalRaw64(unsigned long long significand, int exponent)
 {
-    BSLS_ASSERT(-398 <= exponent);
-    BSLS_ASSERT(        exponent <= 369);
-    BSLS_ASSERT(significand <= 9999999999999999LL);
+    assert(-398 <= exponent);
+    assert(        exponent <= 369);
+    assert(significand <= 9999999999999999LL);
 
     return Imp::makeDecimalRaw64(significand, exponent);
 }
@@ -1587,9 +1570,9 @@ inline
 DecimalImpUtil::ValueType64
 DecimalImpUtil::makeDecimalRaw64(long long significand, int exponent)
 {
-    BSLS_ASSERT(-398 <= exponent);
-    BSLS_ASSERT(        exponent <= 369);
-    BSLS_ASSERT(std::max(significand, -significand) <= 9999999999999999LL);
+    assert(-398 <= exponent);
+    assert(        exponent <= 369);
+    assert(std::max(significand, -significand) <= 9999999999999999LL);
 
     return Imp::makeDecimalRaw64(significand, exponent);
 }
@@ -1598,8 +1581,8 @@ inline
 DecimalImpUtil::ValueType64
 DecimalImpUtil::makeDecimalRaw64(unsigned int significand, int exponent)
 {
-    BSLS_ASSERT(-398 <= exponent);
-    BSLS_ASSERT(        exponent <= 369);
+    assert(-398 <= exponent);
+    assert(        exponent <= 369);
 
     return Imp::makeDecimalRaw64(significand, exponent);
 }
@@ -1608,8 +1591,8 @@ inline
 DecimalImpUtil::ValueType64
 DecimalImpUtil::makeDecimalRaw64(int significand, int exponent)
 {
-    BSLS_ASSERT(-398 <= exponent);
-    BSLS_ASSERT(        exponent <= 369);
+    assert(-398 <= exponent);
+    assert(        exponent <= 369);
     return Imp::makeDecimalRaw64(significand, exponent);
 }
 
@@ -1618,8 +1601,8 @@ inline
 DecimalImpUtil::ValueType128
 DecimalImpUtil::makeDecimalRaw128(unsigned long long significand, int exponent)
 {
-    BSLS_ASSERT(-6176 <= exponent);
-    BSLS_ASSERT(         exponent <= 6111);
+    assert(-6176 <= exponent);
+    assert(         exponent <= 6111);
 
     return Imp::makeDecimalRaw128(significand, exponent);
 }
@@ -1628,8 +1611,8 @@ inline
 DecimalImpUtil::ValueType128
 DecimalImpUtil::makeDecimalRaw128(long long significand, int exponent)
 {
-    BSLS_ASSERT(-6176 <= exponent);
-    BSLS_ASSERT(         exponent <= 6111);
+    assert(-6176 <= exponent);
+    assert(         exponent <= 6111);
 
     return Imp::makeDecimalRaw128(significand, exponent);
 }
@@ -1638,8 +1621,8 @@ inline
 DecimalImpUtil::ValueType128
 DecimalImpUtil::makeDecimalRaw128(unsigned int significand, int exponent)
 {
-    BSLS_ASSERT(-6176 <= exponent);
-    BSLS_ASSERT(         exponent <= 6111);
+    assert(-6176 <= exponent);
+    assert(         exponent <= 6111);
 
     return Imp::makeDecimalRaw128(significand, exponent);
 }
@@ -1648,8 +1631,8 @@ inline
 DecimalImpUtil::ValueType128
 DecimalImpUtil::makeDecimalRaw128(int significand, int exponent)
 {
-    BSLS_ASSERT(-6176 <= exponent);
-    BSLS_ASSERT(         exponent <= 6111);
+    assert(-6176 <= exponent);
+    assert(         exponent <= 6111);
 
     return Imp::makeDecimalRaw128(significand, exponent);
 }

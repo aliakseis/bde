@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A4991889-BA1B-3E92-95F3-AC21B1D585E7}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>Win32</Platform>
+    <ProjectName>bdldfp</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">bdldfp.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">bdldfp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">bdldfp.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">bdldfp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">bdldfp.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">bdldfp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">bdldfp.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">bdldfp</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="bslh_spookyhashalgorithmimp.cpp" />
+    <ClInclude Include=".\bdldfp_binaryintegraldecimalimputil.h" />
+    <ClInclude Include=".\bdldfp_decimal.h" />
+    <ClInclude Include=".\bdldfp_decimalconvertutil.h" />
+    <ClInclude Include=".\bdldfp_decimalconvertutil_decnumber.h" />
+    <ClInclude Include=".\bdldfp_decimalconvertutil_ibmxlc.h" />
+    <ClInclude Include=".\bdldfp_decimalconvertutil_inteldfp.h" />
+    <ClInclude Include=".\bdldfp_decimalimputil.h" />
+    <ClInclude Include=".\bdldfp_decimalimputil_decnumber.h" />
+    <ClInclude Include=".\bdldfp_decimalimputil_ibmxlc.h" />
+    <ClInclude Include=".\bdldfp_decimalimputil_inteldfp.h" />
+    <ClInclude Include=".\bdldfp_decimalplatform.h" />
+    <ClInclude Include=".\bdldfp_decimalutil.h" />
+    <ClInclude Include=".\bdldfp_denselypackeddecimalimputil.h" />
+    <ClInclude Include=".\bdldfp_intelimpwrapper.h" />
+    <ClInclude Include=".\bdldfp_uint128.h" />
+    <ClCompile Include=".\bdldfp_binaryintegraldecimalimputil.cpp" />
+    <ClCompile Include=".\bdldfp_uint128.cpp" />
+    <ClCompile Include=".\bdldfp_decimal.cpp" />
+    <ClCompile Include=".\bdldfp_intelimpwrapper.cpp" />
+    <ClCompile Include=".\bdldfp_decimalconvertutil.cpp" />
+    <ClCompile Include=".\bdldfp_denselypackeddecimalimputil.cpp" />
+    <ClCompile Include=".\bdldfp_decimalconvertutil_decnumber.cpp" />
+    <ClCompile Include=".\bdldfp_decimalutil.cpp" />
+    <ClCompile Include=".\bdldfp_decimalplatform.cpp" />
+    <ClCompile Include=".\bdldfp_decimalimputil_inteldfp.cpp" />
+    <ClCompile Include=".\bdldfp_decimalimputil.cpp" />
+    <ClCompile Include=".\bdldfp_decimalimputil_ibmxlc.cpp" />
+    <ClCompile Include=".\bdldfp_decimalimputil_decnumber.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\workspace\bde.copy\groups\bdl\bdlb\bdlb.vcxproj">
+      <Project>{EBB4C89E-7D49-3BC4-AC9C-2386D04B04E7}</Project>
+      <Name>bdlb</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\bde.copy\groups\bdl\bdls\bdls.vcxproj">
+      <Project>{222712C7-1B66-31D4-A756-8526443D0174}</Project>
+      <Name>bdls</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\workspace\bde.copy\groups\bdl\bdlscm\bdlscm.vcxproj">
+      <Project>{002391FC-8F67-31D3-9D1B-229FF95C4B60}</Project>
+      <Name>bdlscm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

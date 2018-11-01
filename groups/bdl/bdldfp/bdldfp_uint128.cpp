@@ -2,8 +2,6 @@
 
 #include <bdldfp_uint128.h>
 
-#include <bsls_ident.h>
-BSLS_IDENT_RCSID(bdldfp_uint128_cpp,"$Id$ $CSID$")
 
 // ----------------------------------------------------------------------------
 // Copyright 2014 Bloomberg Finance L.P.

@@ -20,6 +20,8 @@
 #include <bsl_cstring.h>
 #include <bsl_climits.h> // CHAR_BIT
 #include <bsl_limits.h>
+#include <bslstl_pair.h>
+
 
 #include <typeinfo>
 

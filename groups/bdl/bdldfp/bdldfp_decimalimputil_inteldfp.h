@@ -2,10 +2,6 @@
 #ifndef INCLUDED_BDLDFP_DECIMALIMPUTIL_INTELDFP
 #define INCLUDED_BDLDFP_DECIMALIMPUTIL_INTELDFP
 
-#ifndef INCLUDED_BSLS_IDENT
-#include <bsls_ident.h>
-#endif
-BSLS_IDENT("$Id$")
 
 //@PURPOSE: Provide utility to implement decimal 'float's on the Intel library.
 //
@@ -48,23 +44,19 @@ BSLS_IDENT("$Id$")
 #include <bdldfp_intelimpwrapper.h>
 #endif
 
-#ifndef INCLUDED_BSL_LOCALE
-#include <bsl_locale.h>
-#endif
+#include <cassert>
+#include <cstring>
 
-#ifndef INCLUDED_BSLS_ASSERT
-#include <bsls_assert.h>
-#endif
+//#ifndef INCLUDED_BSLS_ASSERT
+//#include <bsls_assert.h>
+//#endif
 
-#ifndef INCLUDED_BSL_CSTRING
-#include <bsl_cstring.h>
-#endif
 
-#ifndef INCLUDED_DECSINGLE
-extern "C" {
-#include <decSingle.h>
-}
-#endif
+//#ifndef INCLUDED_DECSINGLE
+//extern "C" {
+//#include <decSingle.h>
+//}
+//#endif
 
 
 namespace BloombergLP {
@@ -1449,7 +1441,7 @@ void
 DecimalImpUtil_IntelDfp::format(DecimalImpUtil_IntelDfp::ValueType32  value,
                                 char                                 *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
     DecimalImpUtil_IntelDfp::ValueType64 tmp;
     _IDEC_flags flags;
     tmp.d_raw = __bid32_to_bid64(value.d_raw, &flags);
@@ -1462,7 +1454,7 @@ void
 DecimalImpUtil_IntelDfp::format(DecimalImpUtil_IntelDfp::ValueType64  value,
                                 char                                 *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     buffer[0] = 0;
 
@@ -1475,7 +1467,7 @@ void
 DecimalImpUtil_IntelDfp::format(DecimalImpUtil_IntelDfp::ValueType128  value,
                                 char                                  *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     buffer[0] = 0;
 
@@ -1491,7 +1483,7 @@ DecimalImpUtil_IntelDfp::convertFromDPD(
                                 DenselyPackedDecimalImpUtil::StorageType32 dpd)
 {
     ValueType32 value;
-    bsl::memcpy(&value, &dpd, sizeof(value));
+    std::memcpy(&value, &dpd, sizeof(value));
 
     ValueType32 result;
     result.d_raw = __bid_dpd_to_bid32(value.d_raw);
@@ -1505,7 +1497,7 @@ DecimalImpUtil_IntelDfp::convertFromDPD(
                                 DenselyPackedDecimalImpUtil::StorageType64 dpd)
 {
     ValueType64 value;
-    bsl::memcpy(&value, &dpd, sizeof(value));
+    std::memcpy(&value, &dpd, sizeof(value));
 
     ValueType64 result;
     result.d_raw = __bid_dpd_to_bid64(value.d_raw);
@@ -1519,7 +1511,7 @@ DecimalImpUtil_IntelDfp::convertFromDPD(
                                DenselyPackedDecimalImpUtil::StorageType128 dpd)
 {
     ValueType128 value;
-    bsl::memcpy(&value, &dpd, sizeof(value));
+    std::memcpy(&value, &dpd, sizeof(value));
 
     ValueType128 result;
     result.d_raw = __bid_dpd_to_bid128(value.d_raw);
@@ -1536,7 +1528,7 @@ DecimalImpUtil_IntelDfp::convertToDPD(
     result.d_raw = __bid_to_dpd32(value.d_raw);
 
     DenselyPackedDecimalImpUtil::StorageType32 dpd;
-    bsl::memcpy(&dpd, &result, sizeof(dpd));
+    std::memcpy(&dpd, &result, sizeof(dpd));
 
     return dpd;
 }
@@ -1550,7 +1542,7 @@ DecimalImpUtil_IntelDfp::convertToDPD(
     result.d_raw = __bid_to_dpd64(value.d_raw);
 
     DenselyPackedDecimalImpUtil::StorageType64 dpd;
-    bsl::memcpy(&dpd, &result, sizeof(dpd));
+    std::memcpy(&dpd, &result, sizeof(dpd));
 
     return dpd;
 }
@@ -1564,7 +1556,7 @@ DecimalImpUtil_IntelDfp::convertToDPD(
     result.d_raw = __bid_to_dpd128(value.d_raw);
 
     DenselyPackedDecimalImpUtil::StorageType128 dpd;
-    bsl::memcpy(&dpd, &result, sizeof(dpd));
+    std::memcpy(&dpd, &result, sizeof(dpd));
 
     return dpd;
 }
@@ -1576,7 +1568,7 @@ DecimalImpUtil_IntelDfp::convertFromBID(
                                BinaryIntegralDecimalImpUtil::StorageType32 bid)
 {
     ValueType32 result;
-    bsl::memcpy(&result, &bid, sizeof(result));
+    std::memcpy(&result, &bid, sizeof(result));
 
     return result;
 }
@@ -1587,7 +1579,7 @@ DecimalImpUtil_IntelDfp::convertFromBID(
                                BinaryIntegralDecimalImpUtil::StorageType64 bid)
 {
     ValueType64 result;
-    bsl::memcpy(&result, &bid, sizeof(result));
+    std::memcpy(&result, &bid, sizeof(result));
 
     return result;
 }
@@ -1598,7 +1590,7 @@ DecimalImpUtil_IntelDfp::convertFromBID(
                               BinaryIntegralDecimalImpUtil::StorageType128 bid)
 {
     ValueType128 result;
-    bsl::memcpy(&result, &bid, sizeof(result));
+    std::memcpy(&result, &bid, sizeof(result));
 
     return result;
 }
@@ -1609,7 +1601,7 @@ DecimalImpUtil_IntelDfp::convertToBID(
                                     DecimalImpUtil_IntelDfp::ValueType32 value)
 {
     BinaryIntegralDecimalImpUtil::StorageType32 bid;
-    bsl::memcpy(&bid, &value, sizeof(bid));
+    std::memcpy(&bid, &value, sizeof(bid));
 
     return bid;
 }
@@ -1620,7 +1612,7 @@ DecimalImpUtil_IntelDfp::convertToBID(
                                     DecimalImpUtil_IntelDfp::ValueType64 value)
 {
     BinaryIntegralDecimalImpUtil::StorageType64 bid;
-    bsl::memcpy(&bid, &value, sizeof(bid));
+    std::memcpy(&bid, &value, sizeof(bid));
 
     return bid;
 }
@@ -1631,7 +1623,7 @@ DecimalImpUtil_IntelDfp::convertToBID(
                                    DecimalImpUtil_IntelDfp::ValueType128 value)
 {
     BinaryIntegralDecimalImpUtil::StorageType128 bid;
-    bsl::memcpy(&bid, &value, sizeof(bid));
+    std::memcpy(&bid, &value, sizeof(bid));
 
     return bid;
 }

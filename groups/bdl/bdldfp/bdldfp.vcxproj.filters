@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include=".\bdldfp_binaryintegraldecimalimputil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_uint128.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_intelimpwrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalconvertutil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_denselypackeddecimalimputil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalconvertutil_decnumber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalutil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalplatform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalimputil_inteldfp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalimputil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalimputil_ibmxlc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalimputil_decnumber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bslh_spookyhashalgorithmimp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\bdldfp_binaryintegraldecimalimputil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalconvertutil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalconvertutil_decnumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalconvertutil_ibmxlc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalconvertutil_inteldfp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalimputil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalimputil_decnumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalimputil_ibmxlc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalimputil_inteldfp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalutil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_denselypackeddecimalimputil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_intelimpwrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_uint128.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{05D0D34C-180F-3390-AF69-14FC6B7D2BD6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{B71E3231-9D0D-3A73-9D96-AA9C1BDE1BE6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

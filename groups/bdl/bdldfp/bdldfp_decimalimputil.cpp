@@ -1,14 +1,13 @@
 // bdldfp_decimalimputil.cpp                                          -*-C++-*-
 #include <bdldfp_decimalimputil.h>
 
-#include <bsls_ident.h>
-BSLS_IDENT_RCSID(bdldfp_decimalimputil_cpp,"$Id$ $CSID$")
 
 #include <bdldfp_uint128.h>
 
-#include <bsl_cstring.h>
 
 #include <bsls_performancehint.h>
+
+#include <cassert>
 
 namespace BloombergLP {
 namespace bdldfp {
@@ -51,7 +50,7 @@ static int canonicalizeDecimalValueClassification(int classification)
     case DEC_CLASS_NEG_SUBNORMAL:
     case DEC_CLASS_POS_SUBNORMAL: return FP_SUBNORMAL;                // RETURN
     }
-    BSLS_ASSERT(!"Unknown decClass");
+    assert(!"Unknown decClass");
     return -1;
 }
 #elif defined(BDLDFP_DECIMALPLATFORM_INTELDFP)
@@ -76,7 +75,7 @@ static int canonicalizeDecimalValueClassification(int classification)
     case negativeSubnormal:
     case positiveSubnormal: return FP_SUBNORMAL;                // RETURN
     }
-    BSLS_ASSERT(!"Unknown decClass");
+    assert(!"Unknown decClass");
     return -1;
 }
 #endif
@@ -309,7 +308,7 @@ DecimalImpUtil::ValueType32 DecimalImpUtil::normalize(ValueType32 value)
       } break;
 
       default:
-        BSLS_ASSERT(false);
+        assert(false);
     }
 
     return result;
@@ -359,7 +358,7 @@ DecimalImpUtil::ValueType64 DecimalImpUtil::normalize(ValueType64 value)
       } break;
 
       default:
-        BSLS_ASSERT(false);
+        assert(false);
     }
 
     return result;
@@ -435,7 +434,7 @@ DecimalImpUtil::ValueType128 DecimalImpUtil::normalize(ValueType128 value)
       } break;
 
       default:
-        BSLS_ASSERT(false);
+        assert(false);
     }
 
     return result;
@@ -446,9 +445,9 @@ int DecimalImpUtil::decompose(int          *sign,
                               int          *exponent,
                               ValueType32   value)
 {
-    BSLS_ASSERT(sign);
-    BSLS_ASSERT(significand);
-    BSLS_ASSERT(exponent);
+    assert(sign);
+    assert(significand);
+    assert(exponent);
 
     enum {
         k_SIGN_MASK             = 0x80000000ul,
@@ -505,9 +504,9 @@ int DecimalImpUtil::decompose(int                 *sign,
                               int                 *exponent,
                               ValueType64          value)
 {
-    BSLS_ASSERT(sign);
-    BSLS_ASSERT(significand);
-    BSLS_ASSERT(exponent);
+    assert(sign);
+    assert(significand);
+    assert(exponent);
 
     const bsls::Types::Uint64 k_SIGN_MASK             = 0x8000000000000000ull;
     const bsls::Types::Uint64 k_SPECIAL_ENCODING_MASK = 0x6000000000000000ull;
@@ -572,9 +571,9 @@ int DecimalImpUtil::decompose(int          *sign,
     const int k_EXPONENT_SHIFT_SMALL                  = 49;
     const int k_DECIMAL_EXPONENT_BIAS                 = 6176;
 
-    BSLS_ASSERT(sign);
-    BSLS_ASSERT(significand);
-    BSLS_ASSERT(exponent);
+    assert(sign);
+    assert(significand);
+    assert(exponent);
 
 #ifdef BDLDFP_DECIMALPLATFORM_INTELDFP
     #ifdef BSLS_PLATFORM_IS_BIG_ENDIAN
@@ -881,9 +880,9 @@ DecimalImpUtil::ValueType64 DecimalImpUtil::quietNaN64() BSLS_NOTHROW_SPEC
     decDoubleFromString(&rv,
                         "qNaN",
                         DecimalImpUtil_DecNumber::getDecNumberContext());
-    BSLS_ASSERT(reinterpret_cast<const unsigned long long &>(rv) != 0);
+    assert(reinterpret_cast<const unsigned long long &>(rv) != 0);
     decDouble rv2 = rv;
-    BSLS_ASSERT(reinterpret_cast<const unsigned long long &>(rv2) != 0);
+    assert(reinterpret_cast<const unsigned long long &>(rv2) != 0);
     return rv;
 #elif defined(BDLDFP_DECIMALPLATFORM_INTELDFP)
     return parse64("NaN");

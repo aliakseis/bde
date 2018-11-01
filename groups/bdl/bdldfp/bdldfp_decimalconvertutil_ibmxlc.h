@@ -2,10 +2,6 @@
 #ifndef INCLUDED_BDLDFP_DECIMALCONVERTUTIL_IBMXLC
 #define INCLUDED_BDLDFP_DECIMALCONVERTUTIL_IBMXLC
 
-#ifndef INCLUDED_BSLS_IDENT
-#include <bsls_ident.h>
-#endif
-BSLS_IDENT("$Id$")
 
 //@PURPOSE: Provide decimal floating-point conversion functions.
 //

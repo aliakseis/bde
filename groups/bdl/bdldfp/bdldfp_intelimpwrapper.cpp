@@ -1,8 +1,6 @@
 // bdldfp_intelimpwrapper.cpp                                         -*-C++-*-
 #include <bdldfp_intelimpwrapper.h>
 
-#include <bsls_ident.h>
-BSLS_IDENT_RCSID(bdldfp_intelimpwrapper_cpp,"$Id$ $CSID$")
 
 // ----------------------------------------------------------------------------
 // Copyright 2014 Bloomberg Finance L.P.

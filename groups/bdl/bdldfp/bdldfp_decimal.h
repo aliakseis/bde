@@ -2,10 +2,6 @@
 #ifndef INCLUDED_BDLDFP_DECIMAL
 #define INCLUDED_BDLDFP_DECIMAL
 
-#ifndef INCLUDED_BSLS_IDENT
-#include <bsls_ident.h>
-#endif
-BSLS_IDENT("$Id$")
 
 //@PURPOSE: Provide IEEE-754 decimal floating-point types.
 //
@@ -549,50 +545,51 @@ BSLS_IDENT("$Id$")
 #include <bslh_hash.h>
 #endif
 
-#ifndef INCLUDED_BSLMF_ISTRIVIALLYCOPYABLE
-#include <bslmf_istriviallycopyable.h>
-#endif
+//#ifndef INCLUDED_BSLMF_ISTRIVIALLYCOPYABLE
+//#include <bslmf_istriviallycopyable.h>
+//#endif
+//
+//#ifndef INCLUDED_BSLMF_NESTEDTRAITDECLARATION
+//#include <bslmf_nestedtraitdeclaration.h>
+//#endif
+//
+//#ifndef INCLUDED_BSLS_EXCEPTIONUTIL
+//#include <bsls_exceptionutil.h>
+//#endif
+//
+//#ifndef INCLUDED_BSL_IOS
+//#include <bsl_ios.h>
+//#endif
+//
+//#ifndef INCLUDED_BSL_IOSFWD
+//#include <bsl_iosfwd.h>
+//#endif
+//
+//#ifndef INCLUDED_BSL_ITERATOR
+//#include <bsl_iterator.h>
+//#endif
+//
+//#ifndef INCLUDED_BSL_LIMITS
+//#include <bsl_limits.h>
+//#endif
+//
+//#ifndef INCLUDED_BSL_LOCALE
+//#include <bsl_locale.h>
+//#endif
+//
+//#ifndef INCLUDED_BSL_CSTDDEF
+//#include <bsl_cstddef.h>
+//#endif
+//
+//#ifndef BDE_DONT_ALLOW_TRANSITIVE_INCLUDES
+//
+//#ifndef INCLUDED_BSLALG_TYPETRAITS
+//#include <bslalg_typetraits.h>
+//#endif
+//
+//#endif // BDE_DONT_ALLOW_TRANSITIVE_INCLUDES
 
-#ifndef INCLUDED_BSLMF_NESTEDTRAITDECLARATION
-#include <bslmf_nestedtraitdeclaration.h>
-#endif
-
-#ifndef INCLUDED_BSLS_EXCEPTIONUTIL
-#include <bsls_exceptionutil.h>
-#endif
-
-#ifndef INCLUDED_BSL_IOS
-#include <bsl_ios.h>
-#endif
-
-#ifndef INCLUDED_BSL_IOSFWD
-#include <bsl_iosfwd.h>
-#endif
-
-#ifndef INCLUDED_BSL_ITERATOR
-#include <bsl_iterator.h>
-#endif
-
-#ifndef INCLUDED_BSL_LIMITS
-#include <bsl_limits.h>
-#endif
-
-#ifndef INCLUDED_BSL_LOCALE
-#include <bsl_locale.h>
-#endif
-
-#ifndef INCLUDED_BSL_CSTDDEF
-#include <bsl_cstddef.h>
-#endif
-
-#ifndef BDE_DONT_ALLOW_TRANSITIVE_INCLUDES
-
-#ifndef INCLUDED_BSLALG_TYPETRAITS
-#include <bslalg_typetraits.h>
-#endif
-
-#endif // BDE_DONT_ALLOW_TRANSITIVE_INCLUDES
-
+#include <ostream>
 
                // Portable decimal floating-point literal support
 
@@ -641,7 +638,7 @@ class Decimal_Type32 {
 
   public:
     // TRAITS
-    BSLMF_NESTED_TRAIT_DECLARATION(Decimal_Type32, bsl::is_trivially_copyable);
+    //BSLMF_NESTED_TRAIT_DECLARATION(Decimal_Type32, bsl::is_trivially_copyable);
 
 
     // CREATORS
@@ -921,8 +918,8 @@ bool operator>=(Decimal32 lhs, Decimal32 rhs);
     // or both operands are NaN.
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_istream<CHARTYPE, TRAITS>&
-operator>>(bsl::basic_istream<CHARTYPE, TRAITS>& stream, Decimal32& object);
+std::basic_istream<CHARTYPE, TRAITS>&
+operator>>(std::basic_istream<CHARTYPE, TRAITS>& stream, Decimal32& object);
     // Read, into the specified 'object', from the specified input 'stream' an
     // IEEE 32 bit decimal floating-point value as described in the IEEE-754
     // 2008 standard (5.12 Details of conversions between floating point
@@ -956,7 +953,7 @@ operator>>(bsl::basic_istream<CHARTYPE, TRAITS>& stream, Decimal32& object);
     // decimal floating point exception context.
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_ostream<CHARTYPE, TRAITS>&
+std::basic_ostream<CHARTYPE, TRAITS>&
 operator<<(bsl::basic_ostream<CHARTYPE, TRAITS>& stream, Decimal32 object);
     // Write the value of the specified 'object' to the specified output
     // 'stream' in a single line format as described in the IEEE-754 2008
@@ -1013,7 +1010,7 @@ class Decimal_Type64 {
 
 
     // TRAITS
-    BSLMF_NESTED_TRAIT_DECLARATION(Decimal_Type64, bsl::is_trivially_copyable);
+    //BSLMF_NESTED_TRAIT_DECLARATION(Decimal_Type64, bsl::is_trivially_copyable);
 
 
     // CREATORS
@@ -1508,7 +1505,7 @@ class Decimal_Type64 {
         // information on BDEX streaming of value-semantic types and
         // containers.
 
-    bsl::ostream& print(bsl::ostream& stream,
+    std::ostream& print(std::ostream& stream,
                         int           level = 0,
                         int           spacesPerLevel = 4) const;
         // Write the value of this object to the specified output 'stream' in a
@@ -2142,8 +2139,8 @@ bool operator>=(Decimal64 lhs, Decimal32 rhs);
     // or both operands are NaN.
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_istream<CHARTYPE, TRAITS>&
-operator>> (bsl::basic_istream<CHARTYPE, TRAITS>& stream, Decimal64& object);
+std::basic_istream<CHARTYPE, TRAITS>&
+operator>> (std::basic_istream<CHARTYPE, TRAITS>& stream, Decimal64& object);
     // Read, into the specified 'object', from the specified input 'stream' an
     // IEEE 64 bit decimal floating-point value as described in the IEEE-754
     // 2008 standard (5.12 Details of conversions between floating point
@@ -2177,8 +2174,8 @@ operator>> (bsl::basic_istream<CHARTYPE, TRAITS>& stream, Decimal64& object);
     // decimal floating point exception context.
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_ostream<CHARTYPE, TRAITS>&
-operator<< (bsl::basic_ostream<CHARTYPE, TRAITS>& stream, Decimal64 object);
+std::basic_ostream<CHARTYPE, TRAITS>&
+operator<< (std::basic_ostream<CHARTYPE, TRAITS>& stream, Decimal64 object);
     // Write the value of the specified 'object' to the specified output
     // 'stream' in a single line format as described in the IEEE-754 2008
     // standard (5.12 Details of conversions between floating point numbers and
@@ -2205,8 +2202,8 @@ class Decimal_Type128 {
 
   public:
     // TRAITS
-    BSLMF_NESTED_TRAIT_DECLARATION(Decimal_Type128,
-                                   bsl::is_trivially_copyable);
+    //BSLMF_NESTED_TRAIT_DECLARATION(Decimal_Type128,
+    //                               bsl::is_trivially_copyable);
 
     // CREATORS
     Decimal_Type128();
@@ -3258,8 +3255,8 @@ bool operator>=(Decimal128 lhs, Decimal64  rhs);
     // or both operands are NaN.
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_istream<CHARTYPE, TRAITS>&
-operator>> (bsl::basic_istream<CHARTYPE, TRAITS>& stream, Decimal128& object);
+std::basic_istream<CHARTYPE, TRAITS>&
+operator>> (std::basic_istream<CHARTYPE, TRAITS>& stream, Decimal128& object);
     // Read, into the specified 'object', from the specified input 'stream' an
     // IEEE 128 bit decimal floating-point value as described in the IEEE-754
     // 2008 standard (5.12 Details of conversions between floating point
@@ -3293,7 +3290,7 @@ operator>> (bsl::basic_istream<CHARTYPE, TRAITS>& stream, Decimal128& object);
     // decimal floating point exception context.
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_ostream<CHARTYPE, TRAITS>&
+std::basic_ostream<CHARTYPE, TRAITS>&
 operator<< (bsl::basic_ostream<CHARTYPE, TRAITS>& stream, Decimal128 object);
     // Write the value of the specified 'object' to the specified output
     // 'stream' in a single line format as described in the IEEE-754 2008
@@ -3313,7 +3310,7 @@ operator<< (bsl::basic_ostream<CHARTYPE, TRAITS>& stream, Decimal128 object);
                           // ===================
 
 template <class CHARTYPE,
-          class INPUTITERATOR = bsl::istreambuf_iterator<CHARTYPE> >
+          class INPUTITERATOR = std::istreambuf_iterator<CHARTYPE> >
 class DecimalNumGet : public bsl::locale::facet {
     // A facet type (mechanism) used in reading decimal floating-point types.
     // Note that this type does not follow BDE conventions because its content
@@ -3422,8 +3419,8 @@ class DecimalNumGet : public bsl::locale::facet {
                           // ===================
 
 template <class CHARTYPE,
-          class OUTPUTITERATOR = bsl::ostreambuf_iterator<CHARTYPE> >
-class DecimalNumPut : public bsl::locale::facet {
+          class OUTPUTITERATOR = std::ostreambuf_iterator<CHARTYPE> >
+class DecimalNumPut : public std::locale::facet {
     // A facet type (mechanism) used in writing decimal floating-point types.
     // Note that this type does not follow BDE conventions because its content
     // is dictated by the C++ standard and native standard library

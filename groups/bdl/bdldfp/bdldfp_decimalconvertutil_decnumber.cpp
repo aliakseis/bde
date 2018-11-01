@@ -2,16 +2,12 @@
 
 #include <bdldfp_decimalconvertutil_decnumber.h>
 
-#include <bsls_ident.h>
-BSLS_IDENT_RCSID(bdldfp_decimalconvertutil_decnumber_cpp,"$Id$ $CSID$")
 
 #include <bdlscm_version.h>
 #include <bdldfp_decimal.h>
 #include <bdldfp_decimalplatform.h>
 #include <bdldfp_decimalimputil.h>
 
-#include <bsl_ostream.h>
-#include <bsl_istream.h>
 
 namespace BloombergLP {
 namespace bdldfp {
@@ -23,7 +19,7 @@ namespace {
                     // ===============
 
 template <int Size>
-class BufferBuf : public bsl::streambuf {
+class BufferBuf : public std::streambuf {
     // A static (capacity) stream buffer helper
 
     char d_buf[Size + 1];  // Text plus closing NUL character
@@ -72,7 +68,7 @@ const char *BufferBuf<Size>::str()
                     // class PtrInputBuf
                     // =================
 
-struct PtrInputBuf : bsl::streambuf {
+struct PtrInputBuf : std::streambuf {
     explicit PtrInputBuf(const char *s);
         // Create a 'PtrInputBuf' that reads from the specified 's'
         // NUL-terminated string.
@@ -83,7 +79,7 @@ struct PtrInputBuf : bsl::streambuf {
 
 PtrInputBuf::PtrInputBuf(const char *s) {
     char *x = const_cast<char *>(s);
-    this->setg(x, x, x + bsl::strlen(x));
+    this->setg(x, x, x + std::strlen(x));
 }
 
 template <class DECIMAL_TYPE, class BINARY_TYPE>

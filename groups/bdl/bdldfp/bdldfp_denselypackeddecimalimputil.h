@@ -2,10 +2,6 @@
 #ifndef INCLUDED_BDLDFP_DENSELYPACKEDDECIMALIMPUTIL
 #define INCLUDED_BDLDFP_DENSELYPACKEDDECIMALIMPUTIL
 
-#ifndef INCLUDED_BSLS_IDENT
-#include <bsls_ident.h>
-#endif
-BSLS_IDENT("$Id$")
 
 //@PURPOSE: Utilities for working with Densely Packed Decimal representation.
 //

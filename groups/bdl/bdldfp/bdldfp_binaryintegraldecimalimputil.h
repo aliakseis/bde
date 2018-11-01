@@ -2,10 +2,6 @@
 #ifndef INCLUDED_BDLDFP_BINARYINTEGRALDECIMALIMPUTIL
 #define INCLUDED_BDLDFP_BINARYINTEGRALDECIMALIMPUTIL
 
-#ifndef INCLUDED_BSLS_IDENT
-#include <bsls_ident.h>
-#endif
-BSLS_IDENT("$Id$")
 
 //@PURPOSE: Utilities for working with Binary Integral Decimal representation.
 //

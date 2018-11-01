@@ -1,8 +1,6 @@
 // bdldfp_decimalplatform.cpp                                         -*-C++-*-
 #include <bdldfp_decimalplatform.h>
 
-#include <bsls_ident.h>
-BSLS_IDENT("$Id$")
 
 // ----------------------------------------------------------------------------
 // Copyright 2014 Bloomberg Finance L.P.

@@ -2,10 +2,6 @@
 #ifndef INCLUDED_BDLDFP_DECIMALIMPUTIL_DECNUMBER
 #define INCLUDED_BDLDFP_DECIMALIMPUTIL_DECNUMBER
 
-#ifndef INCLUDED_BSLS_IDENT
-#include <bsls_ident.h>
-#endif
-BSLS_IDENT("$Id$")
 
 //@PURPOSE: Provide utility implementing decimal FP on the decNumber library.
 //
@@ -38,25 +34,16 @@ BSLS_IDENT("$Id$")
 #include <bdldfp_denselypackeddecimalimputil.h>
 #endif
 
-#ifndef INCLUDED_BSLS_ASSERT
-#include <bsls_assert.h>
-#endif
+//#ifndef INCLUDED_BSLS_ASSERT
+//#include <bsls_assert.h>
+//#endif
 
-#ifndef INCLUDED_BSL_LOCALE
-#include <bsl_locale.h>
-#endif
+#include <cassert>
+#include <cstring>
 
-#ifndef INCLUDED_BSL_CSTRING
-#include <bsl_cstring.h>
-#endif
-
-#ifndef INCLUDED_BSLS_ASSERT
-#include <bsls_assert.h>
-#endif
 
 #ifndef INCLUDED_DECSINGLE
 extern "C" {
-//#include <decnumber/decSingle.h>
 #include <decSingle.h>
 }
 #endif
@@ -770,7 +757,7 @@ DecimalImpUtil_DecNumber::int32ToDecimal32(int value)
         DecimalImpUtil_DecNumber::ValueType32      result;
         DenselyPackedDecimalImpUtil::StorageType32 raw;
         raw = DenselyPackedDecimalImpUtil::makeDecimalRaw32(value, 0);
-        bsl::memcpy(&result, &raw, sizeof(raw));
+        std::memcpy(&result, &raw, sizeof(raw));
         return result;                                                // RETURN
     }
     return roundToDecimal32(static_cast<long long>(value));
@@ -785,7 +772,7 @@ DecimalImpUtil_DecNumber::int32ToDecimal64(int value)
     DecimalImpUtil_DecNumber::ValueType64      result;
     DenselyPackedDecimalImpUtil::StorageType64 raw;
     raw = DenselyPackedDecimalImpUtil::makeDecimalRaw64(value, 0);
-    bsl::memcpy(&result, &raw, sizeof(raw));
+    std::memcpy(&result, &raw, sizeof(raw));
     return result;
 }
 
@@ -798,7 +785,7 @@ DecimalImpUtil_DecNumber::int32ToDecimal128(int value)
     DecimalImpUtil_DecNumber::ValueType128      result;
     DenselyPackedDecimalImpUtil::StorageType128 raw;
     raw = DenselyPackedDecimalImpUtil::makeDecimalRaw128(value, 0);
-    bsl::memcpy(&result, &raw, sizeof(raw));
+    std::memcpy(&result, &raw, sizeof(raw));
     return result;
 }
 
@@ -813,7 +800,7 @@ DecimalImpUtil_DecNumber::uint32ToDecimal32(unsigned int value)
         DecimalImpUtil_DecNumber::ValueType32      result;
         DenselyPackedDecimalImpUtil::StorageType32 raw;
         raw = DenselyPackedDecimalImpUtil::makeDecimalRaw32(value, 0);
-        bsl::memcpy(&result, &raw, sizeof(raw));
+        std::memcpy(&result, &raw, sizeof(raw));
         return result;                                                // RETURN
     }
     return roundToDecimal32(static_cast<unsigned long long>(value));
@@ -828,7 +815,7 @@ DecimalImpUtil_DecNumber::uint32ToDecimal64(unsigned int value)
     DecimalImpUtil_DecNumber::ValueType64      result;
     DenselyPackedDecimalImpUtil::StorageType64 raw;
     raw = DenselyPackedDecimalImpUtil::makeDecimalRaw64(value, 0);
-    bsl::memcpy(&result, &raw, sizeof(raw));
+    std::memcpy(&result, &raw, sizeof(raw));
     return result;
 }
 
@@ -841,7 +828,7 @@ DecimalImpUtil_DecNumber::uint32ToDecimal128(unsigned int value)
     DecimalImpUtil_DecNumber::ValueType128      result;
     DenselyPackedDecimalImpUtil::StorageType128 raw;
     raw = DenselyPackedDecimalImpUtil::makeDecimalRaw128(value, 0);
-    bsl::memcpy(&result, &raw, sizeof(raw));
+    std::memcpy(&result, &raw, sizeof(raw));
 
     return result;
 }
@@ -859,7 +846,7 @@ DecimalImpUtil_DecNumber::int64ToDecimal32(long long int value)
         DecimalImpUtil_DecNumber::ValueType32      result;
         DenselyPackedDecimalImpUtil::StorageType32 raw;
         raw = DenselyPackedDecimalImpUtil::makeDecimalRaw32(intValue, 0);
-        bsl::memcpy(&result, &raw, sizeof(raw));
+        std::memcpy(&result, &raw, sizeof(raw));
         return result;                                                // RETURN
     }
     return roundToDecimal32(value);
@@ -875,7 +862,7 @@ DecimalImpUtil_DecNumber::int64ToDecimal64(long long int value)
         DecimalImpUtil_DecNumber::ValueType64      result;
         DenselyPackedDecimalImpUtil::StorageType64 raw;
         raw = DenselyPackedDecimalImpUtil::makeDecimalRaw64(value, 0);
-        bsl::memcpy(&result, &raw, sizeof(raw));
+        std::memcpy(&result, &raw, sizeof(raw));
         return result;                                                // RETURN
     }
     return roundToDecimal64(value);
@@ -890,7 +877,7 @@ DecimalImpUtil_DecNumber::int64ToDecimal128(long long int value)
     DecimalImpUtil_DecNumber::ValueType128      result;
     DenselyPackedDecimalImpUtil::StorageType128 raw;
     raw = DenselyPackedDecimalImpUtil::makeDecimalRaw128(value, 0);
-    bsl::memcpy(&result, &raw, sizeof(raw));
+    std::memcpy(&result, &raw, sizeof(raw));
 
     return result;
 }
@@ -907,7 +894,7 @@ DecimalImpUtil_DecNumber::uint64ToDecimal32(unsigned long long int value)
         DecimalImpUtil_DecNumber::ValueType32      result;
         DenselyPackedDecimalImpUtil::StorageType32 raw;
         raw = DenselyPackedDecimalImpUtil::makeDecimalRaw32(intValue, 0);
-        bsl::memcpy(&result, &raw, sizeof(raw));
+        std::memcpy(&result, &raw, sizeof(raw));
         return result;                                                // RETURN
     }
     return roundToDecimal32(value);
@@ -923,7 +910,7 @@ DecimalImpUtil_DecNumber::uint64ToDecimal64(unsigned long long int value)
         DecimalImpUtil_DecNumber::ValueType64      result;
         DenselyPackedDecimalImpUtil::StorageType64 raw;
         raw = DenselyPackedDecimalImpUtil::makeDecimalRaw64(value, 0);
-        bsl::memcpy(&result, &raw, sizeof(raw));
+        std::memcpy(&result, &raw, sizeof(raw));
         return result;                                                // RETURN
     }
     return roundToDecimal64(value);
@@ -937,7 +924,7 @@ DecimalImpUtil_DecNumber::uint64ToDecimal128(unsigned long long int value)
     DecimalImpUtil_DecNumber::ValueType128      result;
     DenselyPackedDecimalImpUtil::StorageType128 raw;
     raw = DenselyPackedDecimalImpUtil::makeDecimalRaw128(value, 0);
-    bsl::memcpy(&result, &raw, sizeof(raw));
+    std::memcpy(&result, &raw, sizeof(raw));
 
     return result;
 }
@@ -1380,7 +1367,7 @@ DecimalImpUtil_DecNumber::makeDecimalRaw128(unsigned long long significand,
     DenselyPackedDecimalImpUtil::StorageType128 raw;
     raw = DenselyPackedDecimalImpUtil::makeDecimalRaw128(significand,
                                                          exponent);
-    bsl::memcpy(&result, &raw, sizeof(result));
+    std::memcpy(&result, &raw, sizeof(result));
 
     return result;
 }
@@ -1394,7 +1381,7 @@ DecimalImpUtil_DecNumber::makeDecimalRaw128(long long significand,
     DenselyPackedDecimalImpUtil::StorageType128 raw;
     raw = DenselyPackedDecimalImpUtil::makeDecimalRaw128(significand,
                                                          exponent);
-    bsl::memcpy(&result, &raw, sizeof(result));
+    std::memcpy(&result, &raw, sizeof(result));
 
     return result;
 }
@@ -1408,7 +1395,7 @@ DecimalImpUtil_DecNumber::makeDecimalRaw128(unsigned int significand,
     DenselyPackedDecimalImpUtil::StorageType128 raw;
     raw = DenselyPackedDecimalImpUtil::makeDecimalRaw128(significand,
                                                          exponent);
-    bsl::memcpy(&result, &raw, sizeof(result));
+    std::memcpy(&result, &raw, sizeof(result));
 
     return result;
 }
@@ -1422,7 +1409,7 @@ DecimalImpUtil_DecNumber::makeDecimalRaw128(int significand,
     DenselyPackedDecimalImpUtil::StorageType128 raw;
     raw = DenselyPackedDecimalImpUtil::makeDecimalRaw128(significand,
                                                          exponent);
-    bsl::memcpy(&result, &raw, sizeof(result));
+    std::memcpy(&result, &raw, sizeof(result));
 
     return result;
 }
@@ -1500,7 +1487,7 @@ void
 DecimalImpUtil_DecNumber::format(DecimalImpUtil_DecNumber::ValueType32  value,
                                  char                                  *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     decSingleToString(&value, buffer);
 }
@@ -1510,7 +1497,7 @@ void
 DecimalImpUtil_DecNumber::format(DecimalImpUtil_DecNumber::ValueType64  value,
                                  char                                  *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     decDoubleToString(&value, buffer);
 }
@@ -1521,7 +1508,7 @@ DecimalImpUtil_DecNumber::format(
                                 DecimalImpUtil_DecNumber::ValueType128  value,
                                 char                                   *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     decQuadToString(&value, buffer);
 }
@@ -1534,7 +1521,7 @@ DecimalImpUtil_DecNumber::convertFromDPD(
                                 DenselyPackedDecimalImpUtil::StorageType32 dpd)
 {
     DecimalImpUtil_DecNumber::ValueType32 value;
-    bsl::memcpy(&value, &dpd, sizeof(value));
+    std::memcpy(&value, &dpd, sizeof(value));
 
     return value;
 }
@@ -1545,7 +1532,7 @@ DecimalImpUtil_DecNumber::convertFromDPD(
                                 DenselyPackedDecimalImpUtil::StorageType64 dpd)
 {
     DecimalImpUtil_DecNumber::ValueType64 value;
-    bsl::memcpy(&value, &dpd, sizeof(value));
+    std::memcpy(&value, &dpd, sizeof(value));
 
     return value;
 }
@@ -1556,7 +1543,7 @@ DecimalImpUtil_DecNumber::convertFromDPD(
                                DenselyPackedDecimalImpUtil::StorageType128 dpd)
 {
     DecimalImpUtil_DecNumber::ValueType128 value;
-    bsl::memcpy(&value, &dpd, sizeof(value));
+    std::memcpy(&value, &dpd, sizeof(value));
 
     return value;
 }
@@ -1567,7 +1554,7 @@ DecimalImpUtil_DecNumber::convertToDPD(
                                    DecimalImpUtil_DecNumber::ValueType32 value)
 {
     DenselyPackedDecimalImpUtil::StorageType32 dpd;
-    bsl::memcpy(&dpd, &value, sizeof(dpd));
+    std::memcpy(&dpd, &value, sizeof(dpd));
 
     return dpd;
 }
@@ -1578,7 +1565,7 @@ DecimalImpUtil_DecNumber::convertToDPD(
                                    DecimalImpUtil_DecNumber::ValueType64 value)
 {
     DenselyPackedDecimalImpUtil::StorageType64 dpd;
-    bsl::memcpy(&dpd, &value, sizeof(dpd));
+    std::memcpy(&dpd, &value, sizeof(dpd));
 
     return dpd;
 }
@@ -1589,7 +1576,7 @@ DecimalImpUtil_DecNumber::convertToDPD(
                                   DecimalImpUtil_DecNumber::ValueType128 value)
 {
     DenselyPackedDecimalImpUtil::StorageType128 dpd;
-    bsl::memcpy(&dpd, &value, sizeof(dpd));
+    std::memcpy(&dpd, &value, sizeof(dpd));
 
     return dpd;
 }
