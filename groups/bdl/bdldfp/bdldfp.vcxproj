@@ -205,7 +205,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bdlb_float.cpp" />
     <ClCompile Include="bslh_spookyhashalgorithmimp.cpp" />
+    <ClCompile Include="bslim_printer.cpp" />
     <ClInclude Include=".\bdldfp_binaryintegraldecimalimputil.h" />
     <ClInclude Include=".\bdldfp_decimal.h" />
     <ClInclude Include=".\bdldfp_decimalconvertutil.h" />

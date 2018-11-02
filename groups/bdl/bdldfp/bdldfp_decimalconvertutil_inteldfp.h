@@ -46,6 +46,9 @@
 #include <bdldfp_intelimpwrapper.h>
 #endif
 
+#include <cassert>
+#include <cstring>
+
 namespace BloombergLP {
 namespace bdldfp {
                         // =================================
@@ -327,7 +330,7 @@ DecimalConvertUtil_IntelDfp::decimalToDPD(unsigned char *buffer,
                                                     Decimal32      decimal)
 {
     decimal.data()->d_raw = __bid_to_dpd32(decimal.data()->d_raw);
-    bsl::memcpy(buffer, &decimal, sizeof(decimal));
+    std::memcpy(buffer, &decimal, sizeof(decimal));
 }
 
 inline
@@ -336,7 +339,7 @@ DecimalConvertUtil_IntelDfp::decimalToDPD(unsigned char *buffer,
                                                     Decimal64      decimal)
 {
     decimal.data()->d_raw = __bid_to_dpd64(decimal.data()->d_raw);
-    bsl::memcpy(buffer, &decimal, sizeof(decimal));
+    std::memcpy(buffer, &decimal, sizeof(decimal));
 }
 
 inline
@@ -345,7 +348,7 @@ DecimalConvertUtil_IntelDfp::decimalToDPD(unsigned char *buffer,
                                                     Decimal128     decimal)
 {
     decimal.data()->d_raw = __bid_to_dpd128(decimal.data()->d_raw);
-    bsl::memcpy(buffer, &decimal, sizeof(decimal));
+    std::memcpy(buffer, &decimal, sizeof(decimal));
 }
 
                         // decimalFromDPD functions
@@ -355,10 +358,10 @@ Decimal32
 DecimalConvertUtil_IntelDfp::decimal32FromDPD(
                                                    const unsigned char *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     DecimalImpUtil::ValueType32 value;
-    bsl::memcpy(&value, buffer, sizeof(value));
+    std::memcpy(&value, buffer, sizeof(value));
     value.d_raw = __bid_dpd_to_bid32(value.d_raw);
 
     return Decimal32(value);
@@ -369,10 +372,10 @@ Decimal64
 DecimalConvertUtil_IntelDfp::decimal64FromDPD(
                                                    const unsigned char *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     DecimalImpUtil::ValueType64 value;
-    bsl::memcpy(&value, buffer, sizeof(value));
+    std::memcpy(&value, buffer, sizeof(value));
     value.d_raw = __bid_dpd_to_bid64(value.d_raw);
 
     return Decimal64(value);
@@ -383,10 +386,10 @@ Decimal128
 DecimalConvertUtil_IntelDfp::decimal128FromDPD(
                                                    const unsigned char *buffer)
 {
-    BSLS_ASSERT(buffer);
+    assert(buffer);
 
     DecimalImpUtil::ValueType128 value;
-    bsl::memcpy(&value, buffer, sizeof(value));
+    std::memcpy(&value, buffer, sizeof(value));
     value.d_raw = __bid_dpd_to_bid128(value.d_raw);
 
     return Decimal128(value);
@@ -398,8 +401,8 @@ DecimalConvertUtil_IntelDfp::decimalFromDPD(
                                                   Decimal32           *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal);
-    BSLS_ASSERT(buffer);
+    assert(decimal);
+    assert(buffer);
 
     *decimal = decimal32FromDPD(buffer);
 }
@@ -410,8 +413,8 @@ DecimalConvertUtil_IntelDfp::decimalFromDPD(
                                                   Decimal64           *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal);
-    BSLS_ASSERT(buffer);
+    assert(decimal);
+    assert(buffer);
 
     *decimal = decimal64FromDPD(buffer);
 }
@@ -422,8 +425,8 @@ DecimalConvertUtil_IntelDfp::decimalFromDPD(
                                                   Decimal128          *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal);
-    BSLS_ASSERT(buffer);
+    assert(decimal);
+    assert(buffer);
 
     *decimal = decimal128FromDPD(buffer);
 }

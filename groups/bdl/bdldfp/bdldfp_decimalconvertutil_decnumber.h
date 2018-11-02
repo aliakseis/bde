@@ -37,6 +37,7 @@
 #endif
 
 #include <cassert>
+#include <cstring>
 
 namespace BloombergLP {
 namespace bdldfp {
@@ -283,7 +284,7 @@ DecimalConvertUtil_DecNumber::decimalToDenselyPacked(unsigned char *buffer,
 {
     assert(buffer);
 
-    bsl::memcpy(buffer, &decimal, sizeof(decimal));
+    std::memcpy(buffer, &decimal, sizeof(decimal));
 }
 
 inline
@@ -293,7 +294,7 @@ DecimalConvertUtil_DecNumber::decimalToDenselyPacked(unsigned char *buffer,
 {
     assert(buffer);
 
-    bsl::memcpy(buffer, &decimal, sizeof(decimal));
+    std::memcpy(buffer, &decimal, sizeof(decimal));
 }
 
 inline
@@ -303,7 +304,7 @@ DecimalConvertUtil_DecNumber::decimalToDenselyPacked(unsigned char *buffer,
 {
     assert(buffer);
 
-    bsl::memcpy(buffer, &decimal, sizeof(decimal));
+    std::memcpy(buffer, &decimal, sizeof(decimal));
 }
 
                         // decimalFromDenselyPacked functions
@@ -316,7 +317,7 @@ DecimalConvertUtil_DecNumber::decimal32FromDenselyPacked(
     assert(buffer);
 
     Decimal32 result;
-    bsl::memcpy(&result, buffer, sizeof(result));
+    std::memcpy(&result, buffer, sizeof(result));
     return result;
 }
 
@@ -328,7 +329,7 @@ DecimalConvertUtil_DecNumber::decimal64FromDenselyPacked(
     assert(buffer);
 
     Decimal64 result;
-    bsl::memcpy(&result, buffer, sizeof(result));
+    std::memcpy(&result, buffer, sizeof(result));
     return result;
 }
 
@@ -340,7 +341,7 @@ DecimalConvertUtil_DecNumber::decimal128FromDenselyPacked(
     assert(buffer);
 
     Decimal128 result;
-    bsl::memcpy(&result, buffer, sizeof(result));
+    std::memcpy(&result, buffer, sizeof(result));
     return result;
 }
 

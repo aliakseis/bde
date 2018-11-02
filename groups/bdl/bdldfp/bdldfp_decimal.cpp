@@ -12,8 +12,8 @@
 //#include <bsl_limits.h>
 //#include <bsl_ostream.h>
 //#include <bsl_sstream.h>
-//
-//#include <bslim_printer.h>
+
+#include <bslim_printer.h>
 //#include <bslmf_assert.h>
 
 #include <istream>
@@ -80,7 +80,7 @@ template <class CHARTYPE>
 bool
 NotIsSpace<CHARTYPE>::operator()(CHARTYPE character) const
 {
-    return !this->d_ctype.is(bsl::ctype_base::space, character);
+    return !this->d_ctype.is(std::ctype_base::space, character);
 }
 
                          // Print helper function
@@ -90,26 +90,26 @@ std::basic_ostream<CHARTYPE, TRAITS>&
 printImpl(std::basic_ostream<CHARTYPE, TRAITS>& out,
           DECIMAL                               value)
 {
-    BSLS_TRY {
-        typename bsl::basic_ostream<CHARTYPE, TRAITS>::sentry kerberos(out);
+    try {
+        typename std::basic_ostream<CHARTYPE, TRAITS>::sentry kerberos(out);
         if (kerberos) {
             typedef BloombergLP::bdldfp::DecimalNumPut<CHARTYPE> Facet;
-            const Facet& facet(bsl::has_facet<Facet>(out.getloc())
-                               ? bsl::use_facet<Facet>(out.getloc())
+            const Facet& facet(std::has_facet<Facet>(out.getloc())
+                               ? std::use_facet<Facet>(out.getloc())
                                : Facet::object());
 
-            bsl::ostreambuf_iterator<CHARTYPE, TRAITS> itr =
-                facet.put(bsl::ostreambuf_iterator<CHARTYPE, TRAITS>(out),
+            std::ostreambuf_iterator<CHARTYPE, TRAITS> itr =
+                facet.put(std::ostreambuf_iterator<CHARTYPE, TRAITS>(out),
                           out,
                           out.fill(),
                           value);
             if (itr.failed()) {
-                out.setstate(bsl::ios::failbit | bsl::ios::badbit);
+                out.setstate(std::ios::failbit | std::ios::badbit);
             }
         }
     }
-    BSLS_CATCH(...) {
-        out.setstate(bsl::ios::badbit);
+    catch(...) {
+        out.setstate(std::ios::badbit);
     }
     return out;
 }
@@ -121,15 +121,15 @@ std::basic_istream<CHARTYPE, TRAITS>&
 read(std::basic_istream<CHARTYPE, TRAITS>& in,
      DECIMAL&                              value)
 {
-    typename bsl::basic_istream<CHARTYPE, TRAITS>::sentry kerberos(in);
+    typename std::basic_istream<CHARTYPE, TRAITS>::sentry kerberos(in);
     if (kerberos) {
         typedef BloombergLP::bdldfp::DecimalNumGet<CHARTYPE> Facet;
-        const Facet& facet(bsl::has_facet<Facet>(in.getloc())
-                           ? bsl::use_facet<Facet>(in.getloc())
+        const Facet& facet(std::has_facet<Facet>(in.getloc())
+                           ? std::use_facet<Facet>(in.getloc())
                            : Facet::object());
-        bsl::ios_base::iostate err = bsl::ios_base::iostate();
-        facet.get(bsl::istreambuf_iterator<CHARTYPE, TRAITS>(in),
-                  bsl::istreambuf_iterator<CHARTYPE, TRAITS>(),
+        std::ios_base::iostate err = std::ios_base::iostate();
+        facet.get(std::istreambuf_iterator<CHARTYPE, TRAITS>(in),
+                  std::istreambuf_iterator<CHARTYPE, TRAITS>(),
                   in,
                   err,
                   value);
@@ -171,24 +171,24 @@ doPutCommon(ITER_TYPE       out,
     // formatting flags of justification, width, uppercase, and showpos are
     // supported.
 {
-    const int size = static_cast<int>(bsl::strlen(buffer));
+    const int size = static_cast<int>(std::strlen(buffer));
     char *end = buffer + size;
 
     // Widen the buffer.
     CHAR_TYPE wbuffer[BDLDFP_DECIMALPLATFORM_SNPRINTF_BUFFER_SIZE];
 
-    bsl::use_facet<std::ctype<CHAR_TYPE> >(
+    std::use_facet<std::ctype<CHAR_TYPE> >(
                                   format.getloc()).widen(buffer, end, wbuffer);
 
     const int  width   = static_cast<int>(format.width());
-    const bool showPos = format.flags() & bsl::ios_base::showpos;
-    const bool hasSign = wbuffer[0] == bsl::use_facet<bsl::ctype<CHAR_TYPE> >(
+    const bool showPos = format.flags() & std::ios_base::showpos;
+    const bool hasSign = wbuffer[0] == std::use_facet<std::ctype<CHAR_TYPE> >(
                                                  format.getloc()).widen('-') ||
-                         wbuffer[0] == bsl::use_facet<bsl::ctype<CHAR_TYPE> >(
+                         wbuffer[0] == std::use_facet<std::ctype<CHAR_TYPE> >(
                                                  format.getloc()).widen('+');
     const bool addPlusSign = showPos & !hasSign;  // Do we need to add '+'?
 
-    int surplus = bsl::max(0, width - size);  // Emit this many fillers.
+    int surplus = std::max(0, width - size);  // Emit this many fillers.
     if (addPlusSign) {
         // Need to add a '+' character.
         --surplus;
@@ -201,17 +201,17 @@ doPutCommon(ITER_TYPE       out,
     // Make use of the 'uppercase' flag to fix the capitalization of the
     // alphabets in the number.
 
-    if (format.flags() & bsl::ios_base::uppercase) {
-        bsl::use_facet<bsl::ctype<CHAR_TYPE> >(
+    if (format.flags() & std::ios_base::uppercase) {
+        std::use_facet<std::ctype<CHAR_TYPE> >(
                                        format.getloc()).toupper(wbuffer, wend);
     }
     else {
-        bsl::use_facet<bsl::ctype<CHAR_TYPE> >(
+        std::use_facet<std::ctype<CHAR_TYPE> >(
                                        format.getloc()).tolower(wbuffer, wend);
     }
 
-    switch (format.flags() & bsl::ios_base::adjustfield) {
-      case bsl::ios_base::left: {
+    switch (format.flags() & std::ios_base::adjustfield) {
+      case std::ios_base::left: {
 
           // Left justify. Pad characters to the right.
 
@@ -219,12 +219,12 @@ doPutCommon(ITER_TYPE       out,
               *out++ = '+';
           }
 
-          out = bsl::copy(wbufferPos, wend, out);
+          out = std::copy(wbufferPos, wend, out);
           out = fillN(out, surplus, fillCharacter);
           break;
       }
 
-      case bsl::ios_base::internal: {
+      case std::ios_base::internal: {
 
           // Internal justify. Pad characters after sign.
 
@@ -236,11 +236,11 @@ doPutCommon(ITER_TYPE       out,
           }
 
           out = fillN(out, surplus, fillCharacter);
-          out = bsl::copy(wbufferPos, wend, out);
+          out = std::copy(wbufferPos, wend, out);
           break;
       }
 
-      case bsl::ios_base::right:
+      case std::ios_base::right:
       default: {
 
           // Right justify. Pad characters to the left.
@@ -251,7 +251,7 @@ doPutCommon(ITER_TYPE       out,
               *out++ = '+';
           }
 
-          out = bsl::copy(wbufferPos, wend, out);
+          out = std::copy(wbufferPos, wend, out);
           break;
       }
     }
@@ -288,10 +288,10 @@ doGetCommon(ITER_TYPE                    begin,
         }
     }
     // spaces between sign and value
-    begin = bsl::find_if(begin, end, NotIsSpace<CHAR_TYPE>(ctype));
+    begin = std::find_if(begin, end, NotIsSpace<CHAR_TYPE>(ctype));
     // non-fractional part
     while (begin != end && to != toEnd
-             && (ctype.is(bsl::ctype_base::digit, *begin)
+             && (ctype.is(std::ctype_base::digit, *begin)
                  || *begin == separator)) {
         if (*begin != separator) {
                 //-dk:TODO TBD store separators for later check
@@ -308,7 +308,7 @@ doGetCommon(ITER_TYPE                    begin,
         ++to, ++begin;
         char* start = to;
         while (begin != end && to != toEnd
-                 && ctype.is(bsl::ctype_base::digit, *begin)) {
+                 && ctype.is(std::ctype_base::digit, *begin)) {
             *hasDigit = true;
             *to = ctype.narrow(*begin, ' ');
             ++begin, ++to;
@@ -333,7 +333,7 @@ doGetCommon(ITER_TYPE                    begin,
         }
         char* start = to;
         while (begin != end && to != toEnd
-                && ctype.is(bsl::ctype_base::digit, *begin)) {
+                && ctype.is(std::ctype_base::digit, *begin)) {
             *to = ctype.narrow(*begin, ' ');
             ++to, ++begin;
         }
@@ -356,7 +356,7 @@ doGetCommon(ITER_TYPE                    begin,
                 ctype.narrow(ctype.tolower(*begin), ' ') == pats[infNanPos]);
         }
         if ((pats[infNanPos] == '\0' || infNanPos == 4) &&
-                (begin == end || !ctype.is(bsl::ctype_base::alpha, *begin))) {
+                (begin == end || !ctype.is(std::ctype_base::alpha, *begin))) {
             *hasDigit = true;
         }
     }
@@ -418,8 +418,8 @@ DecimalNumGet<CHARTYPE, INPUTITERATOR>::object()
 }
 
 template <class CHARTYPE, class INPUTITERATOR>
-DecimalNumGet<CHARTYPE, INPUTITERATOR>::DecimalNumGet(bsl::size_t refs)
-    : bsl::locale::facet(refs)
+DecimalNumGet<CHARTYPE, INPUTITERATOR>::DecimalNumGet(std::size_t refs)
+    : std::locale::facet(refs)
 {
 }
 
@@ -433,8 +433,8 @@ typename DecimalNumGet<CHARTYPE, INPUTITERATOR>::iter_type
 DecimalNumGet<CHARTYPE, INPUTITERATOR>::get(
                                            iter_type               begin,
                                            iter_type               end,
-                                           bsl::ios_base&          str,
-                                           bsl::ios_base::iostate& err,
+                                           std::ios_base&          str,
+                                           std::ios_base::iostate& err,
                                            Decimal32&              value) const
 {
     return this->do_get(begin, end, str, err, value);
@@ -444,8 +444,8 @@ typename DecimalNumGet<CHARTYPE, INPUTITERATOR>::iter_type
 DecimalNumGet<CHARTYPE, INPUTITERATOR>::get(
                                            iter_type               begin,
                                            iter_type               end,
-                                           bsl::ios_base&          str,
-                                           bsl::ios_base::iostate& err,
+                                           std::ios_base&          str,
+                                           std::ios_base::iostate& err,
                                            Decimal64&              value) const
 {
     return this->do_get(begin, end, str, err, value);
@@ -455,8 +455,8 @@ typename DecimalNumGet<CHARTYPE, INPUTITERATOR>::iter_type
 DecimalNumGet<CHARTYPE, INPUTITERATOR>::get(
                                            iter_type               begin,
                                            iter_type               end,
-                                           bsl::ios_base&          str,
-                                           bsl::ios_base::iostate& err,
+                                           std::ios_base&          str,
+                                           std::ios_base::iostate& err,
                                            Decimal128&             value) const
 {
     return this->do_get(begin, end, str, err, value);
@@ -469,17 +469,17 @@ typename DecimalNumGet<CHARTYPE, INPUTITERATOR>::iter_type
 DecimalNumGet<CHARTYPE, INPUTITERATOR>::do_get(
                                            iter_type               begin,
                                            iter_type               end,
-                                           bsl::ios_base&          str,
-                                           bsl::ios_base::iostate& err,
+                                           std::ios_base&          str,
+                                           std::ios_base::iostate& err,
                                            Decimal32&              value) const
 {
-    typedef bsl::ctype<CHARTYPE> Ctype;
-    Ctype const& ctype(bsl::use_facet<Ctype>(str.getloc()));
+    typedef std::ctype<CHARTYPE> Ctype;
+    Ctype const& ctype(std::use_facet<Ctype>(str.getloc()));
 
     char        buffer[512];
     char*       to(buffer);
     char* const toEnd(buffer + (sizeof(buffer) - 1));
-    CHARTYPE    separator(bsl::use_facet<bsl::numpunct<CHARTYPE> >(
+    CHARTYPE    separator(std::use_facet<std::numpunct<CHARTYPE> >(
                                                 str.getloc()).thousands_sep());
     bool        hasDigit(false);
 
@@ -487,7 +487,7 @@ DecimalNumGet<CHARTYPE, INPUTITERATOR>::do_get(
     if (hasDigit) {
         value = DecimalImpUtil::parse32(buffer);
     } else {
-        err = bsl::ios_base::failbit;
+        err = std::ios_base::failbit;
     }
     return begin;
 }
@@ -496,17 +496,17 @@ typename DecimalNumGet<CHARTYPE, INPUTITERATOR>::iter_type
 DecimalNumGet<CHARTYPE, INPUTITERATOR>::do_get(
                                            iter_type               begin,
                                            iter_type               end,
-                                           bsl::ios_base&          str,
-                                           bsl::ios_base::iostate& err,
+                                           std::ios_base&          str,
+                                           std::ios_base::iostate& err,
                                            Decimal64&              value) const
 {
-    typedef bsl::ctype<CHARTYPE> Ctype;
-    Ctype const& ctype(bsl::use_facet<Ctype>(str.getloc()));
+    typedef std::ctype<CHARTYPE> Ctype;
+    Ctype const& ctype(std::use_facet<Ctype>(str.getloc()));
 
     char        buffer[512];
     char*       to(buffer);
     char* const toEnd(buffer + (sizeof(buffer) - 1));
-    CHARTYPE    separator(bsl::use_facet<bsl::numpunct<CHARTYPE> >(
+    CHARTYPE    separator(std::use_facet<std::numpunct<CHARTYPE> >(
                                                 str.getloc()).thousands_sep());
     bool        hasDigit(false);
 
@@ -514,7 +514,7 @@ DecimalNumGet<CHARTYPE, INPUTITERATOR>::do_get(
     if (hasDigit) {
         value = DecimalImpUtil::parse64(buffer);
     } else {
-        err = bsl::ios_base::failbit;
+        err = std::ios_base::failbit;
     }
     return begin;
 }
@@ -523,17 +523,17 @@ typename DecimalNumGet<CHARTYPE, INPUTITERATOR>::iter_type
 DecimalNumGet<CHARTYPE, INPUTITERATOR>::do_get(
                                            iter_type               begin,
                                            iter_type               end,
-                                           bsl::ios_base&          str,
-                                           bsl::ios_base::iostate& err,
+                                           std::ios_base&          str,
+                                           std::ios_base::iostate& err,
                                            Decimal128&             value) const
 {
-    typedef bsl::ctype<CHARTYPE> Ctype;
-    Ctype const& ctype(bsl::use_facet<Ctype>(str.getloc()));
+    typedef std::ctype<CHARTYPE> Ctype;
+    Ctype const& ctype(std::use_facet<Ctype>(str.getloc()));
 
     char        buffer[512];
     char*       to(buffer);
     char* const toEnd(buffer + (sizeof(buffer) - 1));
-    CHARTYPE    separator(bsl::use_facet<bsl::numpunct<CHARTYPE> >(
+    CHARTYPE    separator(std::use_facet<std::numpunct<CHARTYPE> >(
                                                 str.getloc()).thousands_sep());
     bool        hasDigit(false);
 
@@ -541,7 +541,7 @@ DecimalNumGet<CHARTYPE, INPUTITERATOR>::do_get(
     if (hasDigit) {
         value = DecimalImpUtil::parse128(buffer);
     } else {
-        err = bsl::ios_base::failbit;
+        err = std::ios_base::failbit;
     }
     return begin;
 }
@@ -551,11 +551,11 @@ DecimalNumGet<CHARTYPE, INPUTITERATOR>::do_get(
                             // -------------------
 
 template <class CHARTYPE, class OUTPUTITERATOR>
-bsl::locale::id DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::id;
+std::locale::id DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::id;
 
 #ifdef BSLS_PLATFORM_CMP_SUN
 template <class CHARTYPE, class OUTPUTITERATOR>
-bsl::locale::id& DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::__get_id() const
+std::locale::id& DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::__get_id() const
 {
     return id;
 }
@@ -570,8 +570,8 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::object()
 }
 
 template <class CHARTYPE, class OUTPUTITERATOR>
-DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::DecimalNumPut(bsl::size_t refs)
-    : bsl::locale::facet(refs)
+DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::DecimalNumPut(std::size_t refs)
+    : std::locale::facet(refs)
 {
 }
 
@@ -583,7 +583,7 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::~DecimalNumPut()
 template <class CHARTYPE, class OUTPUTITERATOR>
 typename DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::iter_type
 DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::put(iter_type      out,
-                                             bsl::ios_base& str,
+                                             std::ios_base& str,
                                              char_type      fill,
                                              Decimal32      value) const
 {
@@ -592,7 +592,7 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::put(iter_type      out,
 template <class CHARTYPE, class OUTPUTITERATOR>
 typename DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::iter_type
 DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::put(iter_type      out,
-                                             bsl::ios_base& str,
+                                             std::ios_base& str,
                                              char_type      fill,
                                              Decimal64      value) const
 {
@@ -601,7 +601,7 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::put(iter_type      out,
 template <class CHARTYPE, class OUTPUTITERATOR>
 typename DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::iter_type
 DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::put(iter_type      out,
-                                             bsl::ios_base& str,
+                                             std::ios_base& str,
                                              char_type      fill,
                                              Decimal128     value) const
 {
@@ -611,7 +611,7 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::put(iter_type      out,
 template <class CHARTYPE, class OUTPUTITERATOR>
 typename DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::iter_type
 DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::do_put(iter_type      out,
-                                                bsl::ios_base& ios_format,
+                                                std::ios_base& ios_format,
                                                 char_type      fill,
                                                 Decimal32      value) const
 {
@@ -621,7 +621,7 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::do_put(iter_type      out,
     dpdStorage = DecimalImpUtil::convertToDPD(*value.data());
 
     DecimalImpUtil_DecNumber::ValueType32 dpdValue;
-    bsl::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
+    std::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
 
     DecimalImpUtil_DecNumber::format(dpdValue, buffer);
 
@@ -630,7 +630,7 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::do_put(iter_type      out,
 template <class CHARTYPE, class OUTPUTITERATOR>
 typename DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::iter_type
 DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::do_put(iter_type      out,
-                                                bsl::ios_base& ios_format,
+                                                std::ios_base& ios_format,
                                                 char_type      fill,
                                                 Decimal64      value) const
 {
@@ -640,7 +640,7 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::do_put(iter_type      out,
     dpdStorage = DecimalImpUtil::convertToDPD(*value.data());
 
     DecimalImpUtil_DecNumber::ValueType64 dpdValue;
-    bsl::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
+    std::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
 
     DecimalImpUtil_DecNumber::format(dpdValue, buffer);
 
@@ -649,7 +649,7 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::do_put(iter_type      out,
 template <class CHARTYPE, class OUTPUTITERATOR>
 typename DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::iter_type
 DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::do_put(iter_type      out,
-                                                bsl::ios_base& ios_format,
+                                                std::ios_base& ios_format,
                                                 char_type      fill,
                                                 Decimal128     value) const
 {
@@ -659,7 +659,7 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::do_put(iter_type      out,
     dpdStorage = DecimalImpUtil::convertToDPD(*value.data());
 
     DecimalImpUtil_DecNumber::ValueType128 dpdValue;
-    bsl::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
+    std::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
 
     DecimalImpUtil_DecNumber::format(dpdValue, buffer);
 
@@ -668,8 +668,8 @@ DecimalNumPut<CHARTYPE, OUTPUTITERATOR>::do_put(iter_type      out,
 
                        // Explicit instantiations
 
-template class DecimalNumPut<char, bsl::ostreambuf_iterator<char> >;
-template class DecimalNumPut<wchar_t, bsl::ostreambuf_iterator<wchar_t> >;
+template class DecimalNumPut<char, std::ostreambuf_iterator<char> >;
+template class DecimalNumPut<wchar_t, std::ostreambuf_iterator<wchar_t> >;
 
 }  // close package namespace
 
@@ -678,24 +678,24 @@ template class DecimalNumPut<wchar_t, bsl::ostreambuf_iterator<wchar_t> >;
                                   // Output
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_ostream<CHARTYPE, TRAITS>&
-bdldfp::operator<<(bsl::basic_ostream<CHARTYPE, TRAITS>& stream,
+std::basic_ostream<CHARTYPE, TRAITS>&
+bdldfp::operator<<(std::basic_ostream<CHARTYPE, TRAITS>& stream,
                    Decimal32                             object)
 {
     return printImpl(stream, object);
 }
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_ostream<CHARTYPE, TRAITS>&
-bdldfp::operator<<(bsl::basic_ostream<CHARTYPE, TRAITS>& stream,
+std::basic_ostream<CHARTYPE, TRAITS>&
+bdldfp::operator<<(std::basic_ostream<CHARTYPE, TRAITS>& stream,
                    Decimal64                             object)
 {
     return printImpl(stream, object);
 }
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_ostream<CHARTYPE, TRAITS>&
-bdldfp::operator<<(bsl::basic_ostream<CHARTYPE, TRAITS>& stream,
+std::basic_ostream<CHARTYPE, TRAITS>&
+bdldfp::operator<<(std::basic_ostream<CHARTYPE, TRAITS>& stream,
                    Decimal128                            object)
 {
     return printImpl(stream, object);
@@ -704,24 +704,24 @@ bdldfp::operator<<(bsl::basic_ostream<CHARTYPE, TRAITS>& stream,
                                   // Input
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_istream<CHARTYPE, TRAITS>&
-bdldfp::operator>>(bsl::basic_istream<CHARTYPE, TRAITS>& stream,
+std::basic_istream<CHARTYPE, TRAITS>&
+bdldfp::operator>>(std::basic_istream<CHARTYPE, TRAITS>& stream,
                    Decimal32&                            object)
 {
     return read(stream, object);
 }
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_istream<CHARTYPE, TRAITS>&
-bdldfp::operator>>(bsl::basic_istream<CHARTYPE, TRAITS>& stream,
+std::basic_istream<CHARTYPE, TRAITS>&
+bdldfp::operator>>(std::basic_istream<CHARTYPE, TRAITS>& stream,
                    Decimal64&                            object)
 {
     return read(stream, object);
 }
 
 template <class CHARTYPE, class TRAITS>
-bsl::basic_istream<CHARTYPE, TRAITS>&
-bdldfp::operator>>(bsl::basic_istream<CHARTYPE, TRAITS>& stream,
+std::basic_istream<CHARTYPE, TRAITS>&
+bdldfp::operator>>(std::basic_istream<CHARTYPE, TRAITS>& stream,
                    Decimal128&                           object)
 {
     return read(stream, object);
@@ -732,73 +732,73 @@ bdldfp::operator>>(bsl::basic_istream<CHARTYPE, TRAITS>& stream,
                                 // Decimal32
 
 template
-bsl::basic_istream<char>&
-bdldfp::operator>> <char, bsl::char_traits<char> >(
-                                        bsl::basic_istream<char>& in,
+std::basic_istream<char>&
+bdldfp::operator>> <char, std::char_traits<char> >(
+                                        std::basic_istream<char>& in,
                                         bdldfp::Decimal32&        value);
 template
-bsl::basic_istream<wchar_t>&
-bdldfp::operator>> <wchar_t, bsl::char_traits<wchar_t> >(
-                                        bsl::basic_istream<wchar_t>& in,
+std::basic_istream<wchar_t>&
+bdldfp::operator>> <wchar_t, std::char_traits<wchar_t> >(
+                                        std::basic_istream<wchar_t>& in,
                                         bdldfp::Decimal32&           value);
 
 template
-bsl::basic_ostream<char>&
-bdldfp::operator<< <char, bsl::char_traits<char> >(
-                                         bsl::basic_ostream<char>& out,
+std::basic_ostream<char>&
+bdldfp::operator<< <char, std::char_traits<char> >(
+                                         std::basic_ostream<char>& out,
                                          bdldfp::Decimal32         value);
 template
-bsl::basic_ostream<wchar_t>&
-bdldfp::operator<< <wchar_t, bsl::char_traits<wchar_t> >(
-                                         bsl::basic_ostream<wchar_t>& out,
+std::basic_ostream<wchar_t>&
+bdldfp::operator<< <wchar_t, std::char_traits<wchar_t> >(
+                                         std::basic_ostream<wchar_t>& out,
                                          bdldfp::Decimal32            value);
 
                                 // Decimal64
 
 template
-bsl::basic_istream<char>&
-bdldfp::operator>> <char, bsl::char_traits<char> >(
-                                        bsl::basic_istream<char>& in,
+std::basic_istream<char>&
+bdldfp::operator>> <char, std::char_traits<char> >(
+                                        std::basic_istream<char>& in,
                                         bdldfp::Decimal64&        value);
 template
-bsl::basic_istream<wchar_t>&
-bdldfp::operator>> <wchar_t, bsl::char_traits<wchar_t> >(
-                                        bsl::basic_istream<wchar_t>& in,
+std::basic_istream<wchar_t>&
+bdldfp::operator>> <wchar_t, std::char_traits<wchar_t> >(
+                                        std::basic_istream<wchar_t>& in,
                                         bdldfp::Decimal64&           value);
 
 template
-bsl::basic_ostream<char>&
-bdldfp::operator<< <char, bsl::char_traits<char> >(
-                                         bsl::basic_ostream<char>& out,
+std::basic_ostream<char>&
+bdldfp::operator<< <char, std::char_traits<char> >(
+                                         std::basic_ostream<char>& out,
                                          bdldfp::Decimal64         value);
 template
-bsl::basic_ostream<wchar_t>&
-bdldfp::operator<< <wchar_t, bsl::char_traits<wchar_t> >(
-                                         bsl::basic_ostream<wchar_t>& out,
+std::basic_ostream<wchar_t>&
+bdldfp::operator<< <wchar_t, std::char_traits<wchar_t> >(
+                                         std::basic_ostream<wchar_t>& out,
                                          bdldfp::Decimal64            value);
 
                                 // Decimal128
 
 template
-bsl::basic_istream<char>&
-bdldfp::operator>> <char, bsl::char_traits<char> >(
-                                       bsl::basic_istream<char>& in,
+std::basic_istream<char>&
+bdldfp::operator>> <char, std::char_traits<char> >(
+                                       std::basic_istream<char>& in,
                                        bdldfp::Decimal128&       value);
 template
-bsl::basic_istream<wchar_t>&
-bdldfp::operator>> <wchar_t, bsl::char_traits<wchar_t> >(
-                                       bsl::basic_istream<wchar_t>& in,
+std::basic_istream<wchar_t>&
+bdldfp::operator>> <wchar_t, std::char_traits<wchar_t> >(
+                                       std::basic_istream<wchar_t>& in,
                                        bdldfp::Decimal128&          value);
 
 template
-bsl::basic_ostream<char>&
-bdldfp::operator<< <char, bsl::char_traits<char> >(
-                                        bsl::basic_ostream<char>& out,
+std::basic_ostream<char>&
+bdldfp::operator<< <char, std::char_traits<char> >(
+                                        std::basic_ostream<char>& out,
                                         bdldfp::Decimal128        value);
 template
-bsl::basic_ostream<wchar_t>&
-bdldfp::operator<< <wchar_t, bsl::char_traits<wchar_t> >(
-                                        bsl::basic_ostream<wchar_t>& out,
+std::basic_ostream<wchar_t>&
+bdldfp::operator<< <wchar_t, std::char_traits<wchar_t> >(
+                                        std::basic_ostream<wchar_t>& out,
                                         bdldfp::Decimal128           value);
 
 }  // close enterprise namespace

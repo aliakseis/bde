@@ -1,12 +1,9 @@
 // bdldfp_decimalconvertutil.cpp                                      -*-C++-*-
 #include <bdldfp_decimalconvertutil.h>
 
-#include <bsls_ident.h>
-BSLS_IDENT_RCSID(bdldfp_decimalconvertutil_cpp,"$Id$ $CSID$")
 
 #include <bdldfp_decimalplatform.h>
 
-#include <bsls_assert.h>
 
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
 #  ifndef  __STDC_WANT_DEC_FP__
@@ -25,14 +22,10 @@ BSLS_IDENT_RCSID(bdldfp_decimalconvertutil_cpp,"$Id$ $CSID$")
     #endif
 #endif
 
-#include <bsl_algorithm.h>
-#include <bsl_cstdlib.h>
-#include <bsl_cstring.h>
-#include <ctype.h>
-#include <bsl_cmath.h>
-#include <bsl_cfloat.h>
 #include <bdlb_float.h>
 
+#include <algorithm>
+#include <cstring>
 #include <math.h>
 
 namespace BloombergLP {
@@ -47,7 +40,7 @@ void memrev(void *buffer, size_t count)
     // of the specified 'buffer'.  'count % 2' must be zero.
 {
     unsigned char *b = static_cast<unsigned char *>(buffer);
-    bsl::reverse(b, b + count);
+    std::reverse(b, b + count);
 }
 
                         // Memory copy with reversal functions
@@ -76,7 +69,7 @@ const unsigned char *decimalFromNetworkT(DECIMAL_TYPE        *decimal,
     // memory pointer, providing modifiable access, to one byte past the last
     // byte read from 'buffer'.
 {
-    bsl::memcpy(decimal, buffer, sizeof(DECIMAL_TYPE));
+    std::memcpy(decimal, buffer, sizeof(DECIMAL_TYPE));
     memReverseIfNeeded(decimal, sizeof(DECIMAL_TYPE));
 
     DecimalConvertUtil::decimalFromDPD(
@@ -212,9 +205,9 @@ inline
 bool isInRange<Decimal32, double>(double value)
 {
     static double max_decimal = 9.999999e96;
-    BSLS_ASSERT(DecimalConvertUtil::decimalToDouble(
-                    bsl::numeric_limits<Decimal32>::max()) == max_decimal);
-    return bsl::abs(value) <= max_decimal;
+    assert(DecimalConvertUtil::decimalToDouble(
+                    std::numeric_limits<Decimal32>::max()) == max_decimal);
+    return std::abs(value) <= max_decimal;
 }
 
 template <class DECIMAL_TYPE, class BINARY_TYPE>
@@ -238,14 +231,14 @@ bool restoreSingularDecimalFromBinary(DECIMAL_TYPE *decimal,
         }
         // FALL THROUGH
       case bdlb::Float::k_INFINITE:
-        *decimal = bsl::numeric_limits<DECIMAL_TYPE>::infinity();
+        *decimal = std::numeric_limits<DECIMAL_TYPE>::infinity();
         break;
 
       case bdlb::Float::k_SUBNORMAL:
         return false;                                                 // RETURN
 
       case bdlb::Float::k_NAN:
-        *decimal = bsl::numeric_limits<DECIMAL_TYPE>::quiet_NaN();
+        *decimal = std::numeric_limits<DECIMAL_TYPE>::quiet_NaN();
         break;
     }
 
@@ -307,10 +300,10 @@ DECIMAL_TYPE restoreDecimalDigits(BINARY_TYPE binary, int digits)
                         "%1.*g",
                         bound(digits,
                               LIMIT,
-                              bsl::numeric_limits<DECIMAL_TYPE>::digits10),
+                              std::numeric_limits<DECIMAL_TYPE>::digits10),
                         binary);
         (void)rc;
-        BSLS_ASSERT(0 <= rc && rc < static_cast<int>(sizeof(buffer)));
+        assert(0 <= rc && rc < static_cast<int>(sizeof(buffer)));
         parseDecimal(&result, buffer);
     }
     return result;
@@ -424,7 +417,7 @@ bool quickDecimalFromDouble(DECIMAL_TYPE *result,
     // integer results in a remainder whose ratio with the result is less than
     // the specified 'threshold'.
 {
-    BSLS_ASSERT(result);
+    assert(result);
 
     // Use the "Olkin-Farber-Rosen" method for speed.  Multiply the double by a
     // power of 10, round it to an integer, then use the faster scaled
@@ -460,7 +453,7 @@ bool quickDecimalFromDouble(DECIMAL_TYPE *result,
         // up or down, then we do not need to verify by back conversion.
 
         double dn, r;
-        r = bsl::modf(d, &dn);
+        r = std::modf(d, &dn);
         if ((dn != 0 && r / dn < threshold) || r == 0) {
             return true;                                              // RETURN
         }
@@ -577,42 +570,42 @@ bool quickDecimalFromFloat(DECIMAL_TYPE *result, float binary, float threshold)
 unsigned char *DecimalConvertUtil::decimal32ToNetwork(unsigned char *buffer,
                                                       Decimal32      decimal)
 {
-    BSLS_ASSERT(buffer != 0);
+    assert(buffer != 0);
     return decimalToNetworkT(buffer, decimal);
 }
 
 unsigned char *DecimalConvertUtil::decimal64ToNetwork(unsigned char *buffer,
                                                       Decimal64      decimal)
 {
-    BSLS_ASSERT(buffer != 0);
+    assert(buffer != 0);
     return decimalToNetworkT(buffer, decimal);
 }
 
 unsigned char *DecimalConvertUtil::decimal128ToNetwork(unsigned char *buffer,
                                                        Decimal128     decimal)
 {
-    BSLS_ASSERT(buffer != 0);
+    assert(buffer != 0);
     return decimalToNetworkT(buffer, decimal);
 }
 
 unsigned char *DecimalConvertUtil::decimalToNetwork(unsigned char *buffer,
                                                     Decimal32      decimal)
 {
-    BSLS_ASSERT(buffer != 0);
+    assert(buffer != 0);
     return decimalToNetworkT(buffer, decimal);
 }
 
 unsigned char *DecimalConvertUtil::decimalToNetwork(unsigned char *buffer,
                                                     Decimal64      decimal)
 {
-    BSLS_ASSERT(buffer != 0);
+    assert(buffer != 0);
     return decimalToNetworkT(buffer, decimal);
 }
 
 unsigned char *DecimalConvertUtil::decimalToNetwork(unsigned char *buffer,
                                                     Decimal128     decimal)
 {
-    BSLS_ASSERT(buffer != 0);
+    assert(buffer != 0);
     return decimalToNetworkT(buffer, decimal);
 }
 
@@ -622,7 +615,7 @@ const unsigned char *DecimalConvertUtil::decimal32FromNetwork(
                                                   Decimal32           *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal != 0);
+    assert(decimal != 0);
     return decimalFromNetworkT(decimal, buffer);
 }
 
@@ -630,7 +623,7 @@ const unsigned char *DecimalConvertUtil::decimal64FromNetwork(
                                                   Decimal64           *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal != 0);
+    assert(decimal != 0);
     return decimalFromNetworkT(decimal, buffer);
 }
 
@@ -638,7 +631,7 @@ const unsigned char *DecimalConvertUtil::decimal128FromNetwork(
                                                   Decimal128          *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal != 0);
+    assert(decimal != 0);
     return decimalFromNetworkT(decimal, buffer);
 }
 
@@ -646,7 +639,7 @@ const unsigned char *DecimalConvertUtil::decimalFromNetwork(
                                                   Decimal32           *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal != 0);
+    assert(decimal != 0);
     return decimalFromNetworkT(decimal, buffer);
 }
 
@@ -654,7 +647,7 @@ const unsigned char *DecimalConvertUtil::decimalFromNetwork(
                                                   Decimal64           *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal != 0);
+    assert(decimal != 0);
     return decimalFromNetworkT(decimal, buffer);
 }
 
@@ -662,7 +655,7 @@ const unsigned char *DecimalConvertUtil::decimalFromNetwork(
                                                   Decimal128          *decimal,
                                                   const unsigned char *buffer)
 {
-    BSLS_ASSERT(decimal != 0);
+    assert(decimal != 0);
     return decimalFromNetworkT(decimal, buffer);
 }
 

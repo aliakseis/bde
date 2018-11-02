@@ -8,6 +8,11 @@
 #include <bdldfp_decimalplatform.h>
 #include <bdldfp_decimalimputil.h>
 
+#include <cassert>
+#include <istream>
+#include <limits>
+#include <locale>
+#include <ostream>
 
 namespace BloombergLP {
 namespace bdldfp {
@@ -93,37 +98,37 @@ void makeBinaryFloatingPoint(BINARY_TYPE *bfp, DECIMAL_TYPE dfp)
     // ::decClass fclass(decFloatClass(dfp)); -- to be used for NaNs
 
     if (dfp != dfp) {
-        *bfp = bsl::numeric_limits<BINARY_TYPE>::quiet_NaN();
+        *bfp = std::numeric_limits<BINARY_TYPE>::quiet_NaN();
         if (dfp < DECIMAL_TYPE(0)) {
             *bfp = -*bfp;
         }
         return;                                                       // RETURN
     }
 
-    if (dfp == bsl::numeric_limits<DECIMAL_TYPE>::infinity()) {
-        *bfp = bsl::numeric_limits<BINARY_TYPE>::infinity();
+    if (dfp == std::numeric_limits<DECIMAL_TYPE>::infinity()) {
+        *bfp = std::numeric_limits<BINARY_TYPE>::infinity();
         return;                                                       // RETURN
     }
 
-    if (dfp == -bsl::numeric_limits<DECIMAL_TYPE>::infinity()) {
-        *bfp = -bsl::numeric_limits<BINARY_TYPE>::infinity();
+    if (dfp == -std::numeric_limits<DECIMAL_TYPE>::infinity()) {
+        *bfp = -std::numeric_limits<BINARY_TYPE>::infinity();
         return;                                                       // RETURN
     }
 
     // TODO: TBD we should not convert through strings - it should be possible
     // to convert directly
     BufferBuf<48> bb;
-    bsl::ostream out(&bb);
-    out.imbue(bsl::locale::classic());
+    std::ostream out(&bb);
+    out.imbue(std::locale::classic());
     out.precision(std::numeric_limits<DECIMAL_TYPE>::digits10);
     out << dfp;
-    BSLS_ASSERT(out);
+    assert(out);
 
     PtrInputBuf pb(bb.str());
-    bsl::istream in(&pb);
+    std::istream in(&pb);
     if (!(in >> *bfp)) {
         if (dfp > DECIMAL_TYPE(1) || dfp < DECIMAL_TYPE(-1)) { // overflow
-            *bfp = bsl::numeric_limits<BINARY_TYPE>::infinity();
+            *bfp = std::numeric_limits<BINARY_TYPE>::infinity();
         } else { // underflow
             *bfp = 0.0;
         }

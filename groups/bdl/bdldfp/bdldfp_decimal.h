@@ -589,6 +589,8 @@
 //
 //#endif // BDE_DONT_ALLOW_TRANSITIVE_INCLUDES
 
+#include <cstring>
+#include <locale>
 #include <ostream>
 
                // Portable decimal floating-point literal support
@@ -954,7 +956,7 @@ operator>>(std::basic_istream<CHARTYPE, TRAITS>& stream, Decimal32& object);
 
 template <class CHARTYPE, class TRAITS>
 std::basic_ostream<CHARTYPE, TRAITS>&
-operator<<(bsl::basic_ostream<CHARTYPE, TRAITS>& stream, Decimal32 object);
+operator<<(std::basic_ostream<CHARTYPE, TRAITS>& stream, Decimal32 object);
     // Write the value of the specified 'object' to the specified output
     // 'stream' in a single line format as described in the IEEE-754 2008
     // standard (5.12 Details of conversions between floating point numbers and
@@ -3291,7 +3293,7 @@ operator>> (std::basic_istream<CHARTYPE, TRAITS>& stream, Decimal128& object);
 
 template <class CHARTYPE, class TRAITS>
 std::basic_ostream<CHARTYPE, TRAITS>&
-operator<< (bsl::basic_ostream<CHARTYPE, TRAITS>& stream, Decimal128 object);
+operator<< (std::basic_ostream<CHARTYPE, TRAITS>& stream, Decimal128 object);
     // Write the value of the specified 'object' to the specified output
     // 'stream' in a single line format as described in the IEEE-754 2008
     // standard (5.12 Details of conversions between floating point numbers and
@@ -3311,7 +3313,7 @@ operator<< (bsl::basic_ostream<CHARTYPE, TRAITS>& stream, Decimal128 object);
 
 template <class CHARTYPE,
           class INPUTITERATOR = std::istreambuf_iterator<CHARTYPE> >
-class DecimalNumGet : public bsl::locale::facet {
+class DecimalNumGet : public std::locale::facet {
     // A facet type (mechanism) used in reading decimal floating-point types.
     // Note that this type does not follow BDE conventions because its content
     // is dictated by the C++ standard and native standard library
@@ -3335,13 +3337,13 @@ class DecimalNumGet : public bsl::locale::facet {
 
   public:
     // PUBLIC TYPES
-    static bsl::locale::id id; // The locale identifier
+    static std::locale::id id; // The locale identifier
 
     typedef CHARTYPE      char_type;
     typedef INPUTITERATOR iter_type;
 
     // CREATORS
-    explicit DecimalNumGet(bsl::size_t refs = 0);
+    explicit DecimalNumGet(std::size_t refs = 0);
         // Constructs a 'DecimalNumGet' object as if
         //..
         // explicit DecimalNumGet(bsl::size_t refs)
@@ -3349,7 +3351,7 @@ class DecimalNumGet : public bsl::locale::facet {
         //..
         // and optionally specify a 'refs', which will default to 0.
 
-    explicit DecimalNumGet(const bsl::locale& b, bsl::size_t refs = 0);
+    explicit DecimalNumGet(const std::locale& b, std::size_t refs = 0);
         // Constructs a 'DecimalNumPut' object, from the specified 'b', as if
         //..
         // explicit DecimalNumGet(bsl::size_t refs)
@@ -3360,18 +3362,18 @@ class DecimalNumGet : public bsl::locale::facet {
     // ACCESSORS
     iter_type get(iter_type               begin,
                   iter_type               end,
-                  bsl::ios_base&          str,
-                  bsl::ios_base::iostate& err,
+                  std::ios_base&          str,
+                  std::ios_base::iostate& err,
                   Decimal32&              value) const;
     iter_type get(iter_type               begin,
                   iter_type               end,
-                  bsl::ios_base&          str,
-                  bsl::ios_base::iostate& err,
+                  std::ios_base&          str,
+                  std::ios_base::iostate& err,
                   Decimal64&              value) const;
     iter_type get(iter_type               begin,
                   iter_type               end,
-                  bsl::ios_base&          str,
-                  bsl::ios_base::iostate& err,
+                  std::ios_base&          str,
+                  std::ios_base::iostate& err,
                   Decimal128&             value) const;
         // Forward to, and return using the specified 'begin', 'end', 'str',
         // 'err', and 'value', the results of
@@ -3385,18 +3387,18 @@ class DecimalNumGet : public bsl::locale::facet {
     // ACCESSORS
     virtual iter_type do_get(iter_type               begin,
                              iter_type               end,
-                             bsl::ios_base&          str,
-                             bsl::ios_base::iostate& err,
+                             std::ios_base&          str,
+                             std::ios_base::iostate& err,
                              Decimal32&              value) const;
     virtual iter_type do_get(iter_type               begin,
                              iter_type               end,
-                             bsl::ios_base&          str,
-                             bsl::ios_base::iostate& err,
+                             std::ios_base&          str,
+                             std::ios_base::iostate& err,
                              Decimal64&              value) const;
     virtual iter_type do_get(iter_type               begin,
                              iter_type               end,
-                             bsl::ios_base&          str,
-                             bsl::ios_base::iostate& err,
+                             std::ios_base&          str,
+                             std::ios_base::iostate& err,
                              Decimal128&             value) const;
         // Interpret characters from the half-open iterator range denoted by
         // the specified 'begin' and 'end', generate a decimal floating-point
@@ -3444,13 +3446,13 @@ class DecimalNumPut : public std::locale::facet {
 
   public:
     // PUBLIC TYPES
-    static bsl::locale::id id; // The locale identifier
+    static std::locale::id id; // The locale identifier
 
     typedef CHARTYPE       char_type;
     typedef OUTPUTITERATOR iter_type;
 
     // CREATORS
-    explicit DecimalNumPut(bsl::size_t refs = 0);
+    explicit DecimalNumPut(std::size_t refs = 0);
         // Constructs a 'DecimalNumPut' object as if
         //..
         // explicit DecimalNumPut(bsl::size_t refs)
@@ -3458,7 +3460,7 @@ class DecimalNumPut : public std::locale::facet {
         //..
         // and optionally specify 'refs', which will default to 0.
 
-    explicit DecimalNumPut(const bsl::locale & b, bsl::size_t refs = 0);
+    explicit DecimalNumPut(const std::locale & b, std::size_t refs = 0);
         // Constructs a 'DecimalNumPut' object, using the specified 'b', as if
         //..
         // explicit DecimalNumPut(bsl::size_t refs)
@@ -3468,15 +3470,15 @@ class DecimalNumPut : public std::locale::facet {
 
     // ACCESSORS
     iter_type put(iter_type      out,
-                  bsl::ios_base& str,
+                  std::ios_base& str,
                   char_type      fill,
                   Decimal32      value) const;
     iter_type put(iter_type      out,
-                  bsl::ios_base& str,
+                  std::ios_base& str,
                   char_type      fill,
                   Decimal64      value) const;
     iter_type put(iter_type      out,
-                  bsl::ios_base& str,
+                  std::ios_base& str,
                   char_type      fill,
                   Decimal128     value) const;
         // Forward to, and return using the specified 'out', 'str', 'fill', and
@@ -3489,15 +3491,15 @@ class DecimalNumPut : public std::locale::facet {
 
     // ACCESSORS
     virtual iter_type do_put(iter_type      out,
-                             bsl::ios_base& ios_format,
+                             std::ios_base& ios_format,
                              char_type      fill,
                              Decimal32      value) const;
     virtual iter_type do_put(iter_type      out,
-                             bsl::ios_base& ios_format,
+                             std::ios_base& ios_format,
                              char_type      fill,
                              Decimal64      value) const;
     virtual iter_type do_put(iter_type      out,
-                             bsl::ios_base& ios_format,
+                             std::ios_base& ios_format,
                              char_type      fill,
                              Decimal128     value) const;
         // Write characters (of 'char_type') that represent the specified
@@ -4312,7 +4314,7 @@ namespace bdldfp {
 inline
 Decimal_Type32::Decimal_Type32()
 {
-    bsl::memset(&d_value, 0, sizeof(d_value));
+    std::memset(&d_value, 0, sizeof(d_value));
 }
 
 inline
@@ -4418,7 +4420,7 @@ int Decimal_Type64::maxSupportedBdexVersion(int /* versionSelector */)
 inline
 Decimal_Type64::Decimal_Type64()
 {
-    bsl::memset(&d_value, 0, sizeof(d_value));
+    std::memset(&d_value, 0, sizeof(d_value));
 }
 
 inline
@@ -4772,7 +4774,7 @@ STREAM& Decimal_Type64::bdexStreamOut(STREAM& stream, int version) const
 inline
 Decimal_Type128::Decimal_Type128()
 {
-    bsl::memset(&d_value, 0, sizeof(d_value));
+    std::memset(&d_value, 0, sizeof(d_value));
 }
 
 inline

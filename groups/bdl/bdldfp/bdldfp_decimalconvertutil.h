@@ -351,9 +351,6 @@
 #include <bdldfp_decimalutil.h>
 #endif
 
-#ifndef INCLUDED_BSLMF_ASSERT
-#include <bslmf_assert.h>
-#endif
 
 #ifndef INCLUDED_BSLS_PERFORMANCEHINT
 #include <bsls_performancehint.h>
@@ -363,9 +360,11 @@
 #include <bsls_platform.h>
 #endif
 
-#ifndef INCLUDED_BSL_CSTRING
-#include <bsl_cstring.h>
-#endif
+#include <bsls_byteorder.h>
+
+#include <cassert>
+#include <cstring>
+
 
 namespace BloombergLP {
 namespace bdldfp {
@@ -922,7 +921,7 @@ bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncoding(
 
         encoded = BSLS_BYTEORDER_HTONLL(encoded);
 
-        bsl::memcpy(buffer,
+        std::memcpy(buffer,
                     reinterpret_cast<unsigned char*>(&encoded),
                     8);
         return 8;                                                     // RETURN
@@ -952,7 +951,7 @@ bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncodingRaw(
                         mantissa | (exponent - 395) << 14);
 
                     unsigned short squishedN = BSLS_BYTEORDER_HTONS(squished);
-                    bsl::memcpy(buffer, &squishedN, 2);
+                    std::memcpy(buffer, &squishedN, 2);
                     return 2;                                         // RETURN
                 }
             }
@@ -966,7 +965,7 @@ bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncodingRaw(
                         (mantissa << 8) | (exponent - 392) << 29);
                     unsigned int squishedN = BSLS_BYTEORDER_HTONL(squished);
 
-                    bsl::memcpy(buffer,
+                    std::memcpy(buffer,
                                 reinterpret_cast<unsigned char*>(&squishedN),
                                 3);
                     return 3;                                         // RETURN
@@ -982,7 +981,7 @@ bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncodingRaw(
                     squished |= 1u << 31;
                 }
                 unsigned int squishedN = BSLS_BYTEORDER_HTONL(squished);
-                bsl::memcpy(buffer, &squishedN, 4);
+                std::memcpy(buffer, &squishedN, 4);
                 return 4;                                             // RETURN
             }
             if (mantissa < (1ull << 34)) {
@@ -995,7 +994,7 @@ bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncodingRaw(
                 }
                 bsls::Types::Uint64 squishedN =
                                                BSLS_BYTEORDER_HTONLL(squished);
-                bsl::memcpy(buffer,
+                std::memcpy(buffer,
                             reinterpret_cast<unsigned char*>(&squishedN),
                             5);
                 return 5;                                             // RETURN
@@ -1017,8 +1016,8 @@ Decimal64 DecimalConvertUtil::decimal64FromMultiWidthEncoding(
                                                 const unsigned char    *buffer,
                                                 bsls::Types::size_type  size)
 {
-    BSLS_ASSERT(1 <= size);
-    BSLS_ASSERT(size <= 5 || size == 8);
+    assert(1 <= size);
+    assert(size <= 5 || size == 8);
 
     if (BSLS_PERFORMANCEHINT_PREDICT_LIKELY(size < 6)) {
         return decimal64FromMultiWidthEncodingRaw(buffer, size);      // RETURN
@@ -1027,7 +1026,7 @@ Decimal64 DecimalConvertUtil::decimal64FromMultiWidthEncoding(
         BSLS_PERFORMANCEHINT_UNLIKELY_HINT;
 
         bsls::Types::Uint64 encoded;
-        bsl::memcpy(&encoded, buffer, 8);
+        std::memcpy(&encoded, buffer, 8);
         encoded = BSLS_BYTEORDER_NTOHLL(encoded);
 
         return decimal64FromBID(reinterpret_cast<unsigned char *>(&encoded));
@@ -1057,8 +1056,8 @@ Decimal64 DecimalConvertUtil::decimal64FromMultiWidthEncodingRaw(
                                                 const unsigned char    *buffer,
                                                 bsls::Types::size_type  size)
 {
-    BSLS_ASSERT(1 <= size);
-    BSLS_ASSERT(size <= 5);
+    assert(1 <= size);
+    assert(size <= 5);
 
     switch(size) {
       case 2: {
@@ -1145,7 +1144,7 @@ unsigned char *DecimalConvertUtil::decimal64ToVariableWidthEncoding(
                         mantissa | (exponent - 396) << 13);
 
                     unsigned short squishedN = BSLS_BYTEORDER_HTONS(squished);
-                    bsl::memcpy(buffer, &squishedN, 2);
+                    std::memcpy(buffer, &squishedN, 2);
                     return buffer + 2;                                // RETURN
                 }
             }
@@ -1165,7 +1164,7 @@ unsigned char *DecimalConvertUtil::decimal64ToVariableWidthEncoding(
 
                     unsigned int squishedN = BSLS_BYTEORDER_HTONL(squished);
 
-                    bsl::memcpy(buffer,
+                    std::memcpy(buffer,
                                 reinterpret_cast<unsigned char*>(&squishedN),
                                 3);
                     return buffer + 3;                                // RETURN
@@ -1189,7 +1188,7 @@ unsigned char *DecimalConvertUtil::decimal64ToVariableWidthEncoding(
 
                 squished |= 3u << 30;
                 unsigned int squishedN = BSLS_BYTEORDER_HTONL(squished);
-                bsl::memcpy(buffer, &squishedN, 4);
+                std::memcpy(buffer, &squishedN, 4);
                 return buffer + 4;                                    // RETURN
             }
         }
@@ -1202,7 +1201,7 @@ unsigned char *DecimalConvertUtil::decimal64ToVariableWidthEncoding(
 
     encoded = BSLS_BYTEORDER_HTONLL(encoded);
 
-    bsl::memcpy(buffer, reinterpret_cast<unsigned char*>(&encoded), 8);
+    std::memcpy(buffer, reinterpret_cast<unsigned char*>(&encoded), 8);
 
     return buffer + 8;
 }
@@ -1242,7 +1241,7 @@ const unsigned char *DecimalConvertUtil::decimal64FromVariableWidthEncoding(
         ++buffer;
 
         bsls::Types::Uint64 encoded;
-        bsl::memcpy(&encoded, buffer, 8);
+        std::memcpy(&encoded, buffer, 8);
         encoded = BSLS_BYTEORDER_NTOHLL(encoded);
 
         decimal64FromBID(decimal, reinterpret_cast<unsigned char *>(&encoded));
@@ -1354,7 +1353,7 @@ void DecimalConvertUtil::decimal32ToBID(unsigned char *buffer,
 
     result = DecimalImpUtil::convertToBID(*decimal.data());
 
-    bsl::memcpy(buffer, &result, sizeof(result));
+    std::memcpy(buffer, &result, sizeof(result));
 }
 
 inline
@@ -1365,7 +1364,7 @@ void DecimalConvertUtil::decimal64ToBID(unsigned char *buffer,
 
     result = DecimalImpUtil::convertToBID(*decimal.data());
 
-    bsl::memcpy(buffer, &result, sizeof(result));
+    std::memcpy(buffer, &result, sizeof(result));
 }
 
 inline
@@ -1376,7 +1375,7 @@ void DecimalConvertUtil::decimal128ToBID(unsigned char *buffer,
 
     result = DecimalImpUtil::convertToBID(*decimal.data());
 
-    bsl::memcpy(buffer, &result, sizeof(result));
+    std::memcpy(buffer, &result, sizeof(result));
 }
 
 inline
@@ -1387,7 +1386,7 @@ void DecimalConvertUtil::decimalToBID(unsigned char *buffer,
 
     result = DecimalImpUtil::convertToBID(*decimal.data());
 
-    bsl::memcpy(buffer, &result, sizeof(result));
+    std::memcpy(buffer, &result, sizeof(result));
 }
 
 inline
@@ -1398,7 +1397,7 @@ void DecimalConvertUtil::decimalToBID(unsigned char *buffer,
 
     result = DecimalImpUtil::convertToBID(*decimal.data());
 
-    bsl::memcpy(buffer, &result, sizeof(result));
+    std::memcpy(buffer, &result, sizeof(result));
 }
 
 inline
@@ -1409,7 +1408,7 @@ void DecimalConvertUtil::decimalToBID(unsigned char *buffer,
 
     result = DecimalImpUtil::convertToBID(*decimal.data());
 
-    bsl::memcpy(buffer, &result, sizeof(result));
+    std::memcpy(buffer, &result, sizeof(result));
 }
 
                         // decimalFromBID functions
@@ -1420,7 +1419,7 @@ DecimalConvertUtil::decimal32FromBID(const unsigned char *buffer)
 {
     BinaryIntegralDecimalImpUtil::StorageType32 bid;
 
-    bsl::memcpy(&bid, buffer, sizeof(bid));
+    std::memcpy(&bid, buffer, sizeof(bid));
 
     return Decimal32(DecimalImpUtil::convertFromBID(bid));
 }
@@ -1432,7 +1431,7 @@ DecimalConvertUtil::decimal32FromBID(Decimal32           *decimal,
 {
     BinaryIntegralDecimalImpUtil::StorageType32 bid;
 
-    bsl::memcpy(&bid, buffer, sizeof(bid));
+    std::memcpy(&bid, buffer, sizeof(bid));
 
     *decimal = Decimal32(DecimalImpUtil::convertFromBID(bid));
 }
@@ -1443,7 +1442,7 @@ DecimalConvertUtil::decimal64FromBID(const unsigned char *buffer)
 {
     BinaryIntegralDecimalImpUtil::StorageType64 bid;
 
-    bsl::memcpy(&bid, buffer, sizeof(bid));
+    std::memcpy(&bid, buffer, sizeof(bid));
 
     return Decimal64(DecimalImpUtil::convertFromBID(bid));
 }
@@ -1455,7 +1454,7 @@ DecimalConvertUtil::decimal64FromBID(Decimal64           *decimal,
 {
     BinaryIntegralDecimalImpUtil::StorageType64 bid;
 
-    bsl::memcpy(&bid, buffer, sizeof(bid));
+    std::memcpy(&bid, buffer, sizeof(bid));
 
     *decimal = Decimal64(DecimalImpUtil::convertFromBID(bid));
 }
@@ -1466,7 +1465,7 @@ DecimalConvertUtil::decimal128FromBID(const unsigned char *buffer)
 {
     BinaryIntegralDecimalImpUtil::StorageType128 bid;
 
-    bsl::memcpy(&bid, buffer, sizeof(bid));
+    std::memcpy(&bid, buffer, sizeof(bid));
 
     return Decimal128(DecimalImpUtil::convertFromBID(bid));
 }
@@ -1478,7 +1477,7 @@ DecimalConvertUtil::decimal128FromBID(Decimal128          *decimal,
 {
     BinaryIntegralDecimalImpUtil::StorageType128 bid;
 
-    bsl::memcpy(&bid, buffer, sizeof(bid));
+    std::memcpy(&bid, buffer, sizeof(bid));
 
     *decimal = Decimal128(DecimalImpUtil::convertFromBID(bid));
 }
@@ -1490,7 +1489,7 @@ DecimalConvertUtil::decimalFromBID(Decimal32           *decimal,
 {
     BinaryIntegralDecimalImpUtil::StorageType32 bid;
 
-    bsl::memcpy(&bid, buffer, sizeof(bid));
+    std::memcpy(&bid, buffer, sizeof(bid));
 
     *decimal = Decimal32(DecimalImpUtil::convertFromBID(bid));
 }
@@ -1502,7 +1501,7 @@ DecimalConvertUtil::decimalFromBID(Decimal64           *decimal,
 {
     BinaryIntegralDecimalImpUtil::StorageType64 bid;
 
-    bsl::memcpy(&bid, buffer, sizeof(bid));
+    std::memcpy(&bid, buffer, sizeof(bid));
 
     *decimal = Decimal64(DecimalImpUtil::convertFromBID(bid));
 }
@@ -1514,7 +1513,7 @@ DecimalConvertUtil::decimalFromBID(Decimal128          *decimal,
 {
     BinaryIntegralDecimalImpUtil::StorageType128 bid;
 
-    bsl::memcpy(&bid, buffer, sizeof(bid));
+    std::memcpy(&bid, buffer, sizeof(bid));
 
     *decimal = Decimal128(DecimalImpUtil::convertFromBID(bid));
 }

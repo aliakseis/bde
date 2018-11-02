@@ -1,17 +1,12 @@
 // bdldfp_decimalutil.cpp                                             -*-C++-*-
 #include <bdldfp_decimalutil.h>
 
-#include <bsls_ident.h>
-BSLS_IDENT_RCSID(bdldfp_decimalutil_cpp,"$Id$ $CSID$")
 
 #include <bdldfp_decimalplatform.h>
 #include <bdldfp_decimalimputil.h>
 
-#include <bsls_assert.h>
-#include <bslmf_assert.h>
 
-#include <bsl_cmath.h>
-#include <bsl_cstring.h>
+#include <cassert>
 #include <errno.h>
 #include <math.h>  // For the  FP_* macros
 
@@ -53,7 +48,7 @@ bool isNanString(const char *str) {
     // character [a-zA-Z] in ASCII encoding can be bit-wise 'or'ed with '_'
     // (0x20) to get the corresponding lower case character.
 
-    bsl::size_t len = bsl::strlen(str);
+    std::size_t len = std::strlen(str);
     if (len < 3) {
         return false;
     }
@@ -81,8 +76,8 @@ bool isNanString(const char *str) {
 
 int DecimalUtil::parseDecimal32(Decimal32 *out, const char *str)
 {
-    BSLS_ASSERT(out != 0);
-    BSLS_ASSERT(str != 0);
+    assert(out != 0);
+    assert(str != 0);
 
     Decimal32 d = DecimalImpUtil::parse32(str);
     if (isNan(d) && !isNanString(str)) {
@@ -95,8 +90,8 @@ int DecimalUtil::parseDecimal32(Decimal32 *out, const char *str)
 int DecimalUtil::parseDecimal64(Decimal64 *out, const char *str)
 {
 
-    BSLS_ASSERT(out != 0);
-    BSLS_ASSERT(str != 0);
+    assert(out != 0);
+    assert(str != 0);
 
     Decimal64 d = DecimalImpUtil::parse64(str);
     if (isNan(d) && !isNanString(str)) {
@@ -108,8 +103,8 @@ int DecimalUtil::parseDecimal64(Decimal64 *out, const char *str)
 
 int DecimalUtil::parseDecimal128(Decimal128 *out, const char *str)
 {
-    BSLS_ASSERT(out != 0);
-    BSLS_ASSERT(str != 0);
+    assert(out != 0);
+    assert(str != 0);
 
     Decimal128 d = DecimalImpUtil::parse128(str);
 
@@ -121,28 +116,28 @@ int DecimalUtil::parseDecimal128(Decimal128 *out, const char *str)
 }
 
 
-int DecimalUtil::parseDecimal32(Decimal32 *out, const bsl::string& str)
+int DecimalUtil::parseDecimal32(Decimal32 *out, const std::string& str)
 {
-    BSLS_ASSERT(out != 0);
+    assert(out != 0);
 
     return parseDecimal32(out, str.c_str());
 }
-int DecimalUtil::parseDecimal64(Decimal64 *out, const bsl::string& str)
+int DecimalUtil::parseDecimal64(Decimal64 *out, const std::string& str)
 {
-    BSLS_ASSERT(out != 0);
+    assert(out != 0);
 
     return parseDecimal64(out, str.c_str());
 }
-int DecimalUtil::parseDecimal128(Decimal128 *out, const bsl::string& str)
+int DecimalUtil::parseDecimal128(Decimal128 *out, const std::string& str)
 {
-    BSLS_ASSERT(out != 0);
+    assert(out != 0);
 
     return parseDecimal128(out, str.c_str());
 }
 
                                 // Formatting functions
 
-void DecimalUtil::format(Decimal32 value, bsl::string *out)
+void DecimalUtil::format(Decimal32 value, std::string *out)
 {
     char buffer[BDLDFP_DECIMALPLATFORM_SNPRINTF_BUFFER_SIZE];
 
@@ -150,13 +145,13 @@ void DecimalUtil::format(Decimal32 value, bsl::string *out)
     dpdStorage = DecimalImpUtil::convertToDPD(*value.data());
 
     DecimalImpUtil_DecNumber::ValueType32 dpdValue;
-    bsl::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
+    std::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
 
     DecimalImpUtil_DecNumber::format(dpdValue, buffer);
     out->assign(buffer);
 }
 
-void DecimalUtil::format(Decimal64 value, bsl::string *out)
+void DecimalUtil::format(Decimal64 value, std::string *out)
 {
     char buffer[BDLDFP_DECIMALPLATFORM_SNPRINTF_BUFFER_SIZE];
 
@@ -164,20 +159,20 @@ void DecimalUtil::format(Decimal64 value, bsl::string *out)
     dpdStorage = DecimalImpUtil::convertToDPD(*value.data());
 
     DecimalImpUtil_DecNumber::ValueType64 dpdValue;
-    bsl::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
+    std::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
 
     DecimalImpUtil_DecNumber::format(dpdValue, buffer);
     out->assign(buffer);
 }
 
-void DecimalUtil::format(Decimal128 value, bsl::string *out)
+void DecimalUtil::format(Decimal128 value, std::string *out)
 {
     char buffer[BDLDFP_DECIMALPLATFORM_SNPRINTF_BUFFER_SIZE];
     DenselyPackedDecimalImpUtil::StorageType128 dpdStorage;
     dpdStorage = DecimalImpUtil::convertToDPD(*value.data());
 
     DecimalImpUtil_DecNumber::ValueType128 dpdValue;
-    bsl::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
+    std::memcpy(&dpdValue, &dpdStorage, sizeof(dpdValue));
 
     DecimalImpUtil_DecNumber::format(dpdValue, buffer);
     out->assign(buffer);
@@ -627,9 +622,8 @@ BDLDFP_DISABLE_COMPILE; // Unsupported platform
 
 Decimal64 DecimalUtil::multiplyByPowerOf10(Decimal64 value, Decimal64 exponent)
 {
-    BSLS_ASSERT_SAFE(
-      makeDecimal64(-1999999997, 0) <= exponent);
-    BSLS_ASSERT_SAFE(                  exponent <= makeDecimal64(99999999, 0));
+    assert(makeDecimal64(-1999999997, 0) <= exponent);
+    assert(exponent <= makeDecimal64(99999999, 0));
 
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     const int intExponent = __d64_to_long_long(*exponent.data());
@@ -724,8 +718,8 @@ BDLDFP_DISABLE_COMPILE; // Unsupported platform
 
 int DecimalUtil::quantum(Decimal64 value)
 {
-    BSLS_ASSERT(!isInf(value));
-    BSLS_ASSERT(!isNan(value));
+    assert(!isInf(value));
+    assert(!isNan(value));
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     const int d64_bias = 398;
     return __d64_biased_exponent(*value.data()) - d64_bias;
@@ -744,8 +738,8 @@ BDLDFP_DISABLE_COMPILE; // Unsupported platform
 
 int DecimalUtil::quantum(Decimal128 value)
 {
-    BSLS_ASSERT(!isInf(value));
-    BSLS_ASSERT(!isNan(value));
+    assert(!isInf(value));
+    assert(!isNan(value));
 
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     const int d128_bias = 6176;

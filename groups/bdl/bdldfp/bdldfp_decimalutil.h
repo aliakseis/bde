@@ -87,9 +87,8 @@
 #include <bsls_platform.h>
 #endif
 
-#ifndef INCLUDED_BSL_STRING
-#include <bsl_string.h>
-#endif
+#include <cassert>
+#include <string>
 
 namespace BloombergLP {
 namespace bdldfp {
@@ -160,9 +159,9 @@ struct DecimalUtil {
     static int parseDecimal32( Decimal32  *out, const char *str);
     static int parseDecimal64( Decimal64  *out, const char *str);
     static int parseDecimal128(Decimal128 *out, const char *str);
-    static int parseDecimal32( Decimal32  *out, const bsl::string& str);
-    static int parseDecimal64( Decimal64  *out, const bsl::string& str);
-    static int parseDecimal128(Decimal128 *out, const bsl::string& str);
+    static int parseDecimal32( Decimal32  *out, const std::string& str);
+    static int parseDecimal64( Decimal64  *out, const std::string& str);
+    static int parseDecimal128(Decimal128 *out, const std::string& str);
         // Load into the specified 'out' the decimal floating point number
         // described by the specified 'str'; return zero if the conversion was
         // successful and non-zero otherwise.  The value of 'out' is
@@ -171,9 +170,9 @@ struct DecimalUtil {
 
                             // Formatting functions
 
-    static void format(Decimal32  value, bsl::string *out);
-    static void format(Decimal64  value, bsl::string *out);
-    static void format(Decimal128 value, bsl::string *out);
+    static void format(Decimal32  value, std::string *out);
+    static void format(Decimal64  value, std::string *out);
+    static void format(Decimal128 value, std::string *out);
         // Produce a string representation of the specified decimal 'value', in
         // the specified 'out' string. The string will be suitable for use with
         // the 'strtod128' function in section 9.6 of the ISO/EIC TR 24732 C
@@ -530,8 +529,8 @@ Decimal64 DecimalUtil::makeDecimal64(unsigned long long significand,
 inline
 Decimal64 DecimalUtil::multiplyByPowerOf10(Decimal64 value, int exponent)
 {
-    BSLS_ASSERT(-1999999997 <= exponent);
-    BSLS_ASSERT(               exponent <= 99999999);
+    assert(-1999999997 <= exponent);
+    assert(               exponent <= 99999999);
 
     return bdldfp::DecimalImpUtil::scaleB(*value.data(), exponent);
 }
@@ -539,8 +538,8 @@ Decimal64 DecimalUtil::multiplyByPowerOf10(Decimal64 value, int exponent)
 inline
 Decimal128 DecimalUtil::multiplyByPowerOf10(Decimal128 value, int exponent)
 {
-    BSLS_ASSERT(-1999999997 <= exponent);
-    BSLS_ASSERT(               exponent <= 99999999);
+    assert(-1999999997 <= exponent);
+    assert(               exponent <= 99999999);
 
     return bdldfp::DecimalImpUtil::scaleB(*value.data(), exponent);
 }

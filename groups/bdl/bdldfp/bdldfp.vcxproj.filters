@@ -43,6 +43,12 @@
     <ClCompile Include="bslh_spookyhashalgorithmimp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bslim_printer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bdlb_float.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\bdldfp_binaryintegraldecimalimputil.h">
