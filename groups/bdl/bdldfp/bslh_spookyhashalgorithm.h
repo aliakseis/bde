@@ -282,17 +282,6 @@
 #include <bslh_spookyhashalgorithmimp.h>
 #endif
 
-//#ifndef INCLUDED_BSLMF_ISBITWISEMOVEABLE
-//#include <bslmf_isbitwisemoveable.h>
-//#endif
-//
-//#ifndef INCLUDED_BSLS_ASSERT
-//#include <bsls_assert.h>
-//#endif
-//
-//#ifndef INCLUDED_BSLS_BYTEORDER
-//#include <bsls_byteorder.h>
-//#endif
 
 #ifndef INCLUDED_BSLS_PLATFORM
 #include <bsls_platform.h>
@@ -304,10 +293,6 @@
 
 #include <cassert>
 
-//#ifndef INCLUDED_STDDEF_H
-//#include <stddef.h>  // for 'size_t'
-//#define INCLUDED_STDDEF_H
-//#endif
 
 namespace BloombergLP {
 
@@ -444,15 +429,6 @@ SpookyHashAlgorithm::result_type SpookyHashAlgorithm::computeHash()
 
 }  // close package namespace
 
-// ============================================================================
-//                                TYPE TRAITS
-// ============================================================================
-
-//namespace bslmf {
-//template <>
-//struct IsBitwiseMoveable<bslh::SpookyHashAlgorithm>
-//    : bsl::true_type {};
-//}  // close namespace bslmf
 
 }  // close enterprise namespace
 

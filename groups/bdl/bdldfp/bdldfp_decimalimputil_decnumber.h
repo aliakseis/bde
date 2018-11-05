@@ -34,10 +34,6 @@
 #include <bdldfp_denselypackeddecimalimputil.h>
 #endif
 
-//#ifndef INCLUDED_BSLS_ASSERT
-//#include <bsls_assert.h>
-//#endif
-
 #include <cassert>
 #include <cstring>
 

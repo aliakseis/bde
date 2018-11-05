@@ -521,9 +521,6 @@
 
 #include <bdlscm_version.h>
 
-//#ifndef INCLUDED_BSLALG_TYPETRAITHASSTLITERATORS
-//#include <bslalg_typetraithasstliterators.h>
-//#endif
 
 #include <bslalg_hasstliterators.h>
 
@@ -532,41 +529,11 @@
 #include <bslmf_functionpointertraits.h>
 #endif
 
-//#ifndef INCLUDED_BSLMF_ISARRAY
-//#include <bslmf_isarray.h>
-//#endif
-//
-//#ifndef INCLUDED_BSLMF_ISFUNDAMENTAL
-//#include <bslmf_isfundamental.h>
-//#endif
-//
-//#ifndef INCLUDED_BSLMF_ISPOINTER
-//#include <bslmf_ispointer.h>
-//#endif
 
 #ifndef INCLUDED_BSLMF_SELECTTRAIT
 #include <bslmf_selecttrait.h>
 #endif
 
-//#ifndef INCLUDED_BSLS_ASSERT
-//#include <bsls_assert.h>
-//#endif
-//
-//#ifndef INCLUDED_BSLS_TYPES
-//#include <bsls_types.h>
-//#endif
-//
-//#ifndef INCLUDED_BSL_OSTREAM
-//#include <bsl_ostream.h>
-//#endif
-//
-//#ifndef INCLUDED_BSL_STRING
-//#include <bsl_string.h>
-//#endif
-//
-//#ifndef INCLUDED_BSL_UTILITY
-//#include <bsl_utility.h>
-//#endif
 
 #include <ostream>
 #include <string>

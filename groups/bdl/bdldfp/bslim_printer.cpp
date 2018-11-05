@@ -2,8 +2,6 @@
 #include <bslim_printer.h>
 
 
-//#include <bslim_testutil.h>  // for testing only
-
 #include <cassert>
 #include <cctype>
 

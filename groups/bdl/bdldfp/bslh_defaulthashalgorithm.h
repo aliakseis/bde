@@ -275,9 +275,6 @@
 
 #include <bdlscm_version.h>
 
-//#ifndef INCLUDED_BSLS_ASSERT
-//#include <bsls_assert.h>
-//#endif
 
 #ifndef INCLUDED_BSLH_SPOOKYHASHALGORITHM
 #include <bslh_spookyhashalgorithm.h>

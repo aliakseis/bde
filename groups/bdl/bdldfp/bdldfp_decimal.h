@@ -545,49 +545,6 @@
 #include <bslh_hash.h>
 #endif
 
-//#ifndef INCLUDED_BSLMF_ISTRIVIALLYCOPYABLE
-//#include <bslmf_istriviallycopyable.h>
-//#endif
-//
-//#ifndef INCLUDED_BSLMF_NESTEDTRAITDECLARATION
-//#include <bslmf_nestedtraitdeclaration.h>
-//#endif
-//
-//#ifndef INCLUDED_BSLS_EXCEPTIONUTIL
-//#include <bsls_exceptionutil.h>
-//#endif
-//
-//#ifndef INCLUDED_BSL_IOS
-//#include <bsl_ios.h>
-//#endif
-//
-//#ifndef INCLUDED_BSL_IOSFWD
-//#include <bsl_iosfwd.h>
-//#endif
-//
-//#ifndef INCLUDED_BSL_ITERATOR
-//#include <bsl_iterator.h>
-//#endif
-//
-//#ifndef INCLUDED_BSL_LIMITS
-//#include <bsl_limits.h>
-//#endif
-//
-//#ifndef INCLUDED_BSL_LOCALE
-//#include <bsl_locale.h>
-//#endif
-//
-//#ifndef INCLUDED_BSL_CSTDDEF
-//#include <bsl_cstddef.h>
-//#endif
-//
-//#ifndef BDE_DONT_ALLOW_TRANSITIVE_INCLUDES
-//
-//#ifndef INCLUDED_BSLALG_TYPETRAITS
-//#include <bslalg_typetraits.h>
-//#endif
-//
-//#endif // BDE_DONT_ALLOW_TRANSITIVE_INCLUDES
 
 #include <cstring>
 #include <locale>

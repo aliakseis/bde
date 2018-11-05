@@ -99,10 +99,6 @@
 #include <bsls_platform.h>
 #endif
 
-//#ifndef INCLUDED_BSLMF_ASSERT
-//#include <bslmf_assert.h>
-//#endif
-
 // C99 decimal support on xlC/Aix issues should be resolved (see
 // DRQS 39471014).
 

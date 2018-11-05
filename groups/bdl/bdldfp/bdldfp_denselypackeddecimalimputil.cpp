@@ -6,15 +6,6 @@
 #include <bdldfp_decimalplatform.h>
 #include <bdldfp_uint128.h>
 
-//#include <bsls_assert.h>
-
-//#include <bsl_algorithm.h>
-//#include <bsl_bitset.h>
-//#include <bsl_cstring.h>
-//#include <bsl_string.h>
-//#include <bsl_cstdlib.h>
-
-//#include <bslmf_assert.h>
 
 #include <algorithm>
 #include <cassert>

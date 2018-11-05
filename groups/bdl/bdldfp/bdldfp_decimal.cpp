@@ -2,19 +2,10 @@
 #include <bdldfp_decimal.h>
 
 
-//#include <bsls_exceptionutil.h>
 #include <bsls_performancehint.h>
 
-//#include <bsl_algorithm.h>
-//#include <bsl_cstring.h>
-//#include <bsl_functional.h>
-//#include <bsl_istream.h>
-//#include <bsl_limits.h>
-//#include <bsl_ostream.h>
-//#include <bsl_sstream.h>
 
 #include <bslim_printer.h>
-//#include <bslmf_assert.h>
 
 #include <istream>
 

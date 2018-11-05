@@ -335,10 +335,6 @@
 #include <bdldfp_decimalconvertutil_decnumber.h>
 #endif
 
-#ifndef INCLUDED_BDLDFP_DECIMALCONVERTUTIL_IBMXLC
-#include <bdldfp_decimalconvertutil_ibmxlc.h>
-#endif
-
 #ifndef INCLUDED_BDLDFP_DECIMALCONVERTUTIL_INTELDFP
 #include <bdldfp_decimalconvertutil_inteldfp.h>
 #endif

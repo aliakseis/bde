@@ -227,20 +227,12 @@
 
 #include <bdlscm_version.h>
 
-//#ifndef INCLUDED_BSLS_ASSERT
-//#include <bsls_assert.h>
-//#endif
-
 #ifndef INCLUDED_BSLS_TYPES
 #include <bsls_types.h>
 #endif
 
 #include <cassert>
 
-//#ifndef INCLUDED_STDDEF_H
-//#include <stddef.h>    // 'size_t'
-//#define INCLUDED_STDDEF_H
-//#endif
 
 namespace BloombergLP {
 

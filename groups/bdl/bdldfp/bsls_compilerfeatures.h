@@ -399,9 +399,6 @@
 #include <bsls_platform.h>
 #endif
 
-//#ifndef INCLUDED_BSLS_MACROREPEAT
-//#include <bsls_macrorepeat.h>
-//#endif
 
 // gcc
 // https://wiki.apache.org/stdcxx/C%2B%2B0xCompilerSupport

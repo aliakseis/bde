@@ -1,0 +1,5 @@
+LIBRARY DECNUMBER
+EXPORTS
+	decQuadToString
+	decDoubleToString
+	decSingleToString
