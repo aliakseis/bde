@@ -1,68 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="D:\workspace\bde.copy\thirdparty\decnumber\decContext.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\workspace\bde.copy\thirdparty\decnumber\decDouble.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\workspace\bde.copy\thirdparty\decnumber\decimal128.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\workspace\bde.copy\thirdparty\decnumber\decimal32.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\workspace\bde.copy\thirdparty\decnumber\decimal64.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\workspace\bde.copy\thirdparty\decnumber\decNumber.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\workspace\bde.copy\thirdparty\decnumber\decPacked.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\workspace\bde.copy\thirdparty\decnumber\decQuad.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="D:\workspace\bde.copy\thirdparty\decnumber\decSingle.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClCompile Include=".\decContext.c" />
+    <ClCompile Include=".\decDouble.c" />
+    <ClCompile Include=".\decimal128.c" />
+    <ClCompile Include=".\decimal32.c" />
+    <ClCompile Include=".\decimal64.c" />
+    <ClCompile Include=".\decNumber.c" />
+    <ClCompile Include=".\decPacked.c" />
+    <ClCompile Include=".\decQuad.c" />
+    <ClCompile Include=".\decSingle.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decContext.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decDouble.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decDPD.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decimal128.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decimal32.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decimal64.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decNumber.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decNumberLocal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decPacked.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decQuad.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="D:\workspace\bde.copy\thirdparty\decnumber\decSingle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include=".\decContext.h" />
+    <ClInclude Include=".\decDouble.h" />
+    <ClInclude Include=".\decDPD.h" />
+    <ClInclude Include=".\decimal128.h" />
+    <ClInclude Include=".\decimal32.h" />
+    <ClInclude Include=".\decimal64.h" />
+    <ClInclude Include=".\decNumber.h" />
+    <ClInclude Include=".\decNumberLocal.h" />
+    <ClInclude Include=".\decPacked.h" />
+    <ClInclude Include=".\decQuad.h" />
+    <ClInclude Include=".\decSingle.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

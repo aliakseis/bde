@@ -237,20 +237,6 @@
     <ClCompile Include=".\bdldfp_decimalimputil_ibmxlc.cpp" />
     <ClCompile Include=".\bdldfp_decimalimputil_decnumber.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="D:\workspace\bde.copy\groups\bdl\bdlb\bdlb.vcxproj">
-      <Project>{EBB4C89E-7D49-3BC4-AC9C-2386D04B04E7}</Project>
-      <Name>bdlb</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\workspace\bde.copy\groups\bdl\bdls\bdls.vcxproj">
-      <Project>{222712C7-1B66-31D4-A756-8526443D0174}</Project>
-      <Name>bdls</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\workspace\bde.copy\groups\bdl\bdlscm\bdlscm.vcxproj">
-      <Project>{002391FC-8F67-31D3-9D1B-229FF95C4B60}</Project>
-      <Name>bdlscm</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

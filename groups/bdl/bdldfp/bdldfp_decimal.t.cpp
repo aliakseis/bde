@@ -4,12 +4,12 @@
 //#include <bdlb_randomdevice.h>
 //
 //#include <bdlsb_fixedmemoutstreambuf.h>
-
-#include <bslim_testutil.h>
-
-//#include <bslma_testallocator.h>
-//#include <bslma_defaultallocatorguard.h>
 //
+//#include <bslim_testutil.h>
+
+#include <bslma_testallocator.h>
+#include <bslma_defaultallocatorguard.h>
+
 //#include <bslx_testinstream.h>
 //#include <bslx_testoutstream.h>
 //#include <bslx_versionfunctions.h>
@@ -24,7 +24,6 @@
 
 
 #include <iostream>
-#include <sstream>
 #include <typeinfo>
 
 using namespace BloombergLP;
@@ -112,8 +111,8 @@ using std::atoi;
 //: o 'operator>'
 //: o 'operator<='
 //: o 'operator>='
-//: o 'operator>> (std::basic_istream<CHARTYPE, TRAITS>& stream...'
-//: o 'operator>> (std::basic_ostream<CHARTYPE, TRAITS>& stream...'
+//: o 'operator>> (bsl::basic_istream<CHARTYPE, TRAITS>& stream...'
+//: o 'operator>> (bsl::basic_ostream<CHARTYPE, TRAITS>& stream...'
 //
 // FREE FUNCTIONS
 //: o void hashAppend(HASHALG& hashAlg, const Decimal32& object);
@@ -149,7 +148,7 @@ static int             verbose;
 static int         veryVerbose;
 static int     veryVeryVerbose;
 static int veryVeryVeryVerbose;
-//static bslma::TestAllocator *pa;
+static bslma::TestAllocator *pa;
 
 // ============================================================================
 //                      STANDARD BDE TEST DRIVER MACROS
@@ -192,29 +191,29 @@ namespace UsageExample {
 
                  // stringstream helpers - not thread safe!
 
-void getStringFromStream(std::ostringstream &o, std::string  *out)
+void getStringFromStream(bsl::ostringstream &o, bsl::string  *out)
 {
-    //bslma::TestAllocator osa("osstream");
-    //bslma::DefaultAllocatorGuard g(&osa);
+    bslma::TestAllocator osa("osstream");
+    bslma::DefaultAllocatorGuard g(&osa);
     *out = o.str();
 }
 
-void getStringFromStream(std::wostringstream &o, std::wstring *out)
+void getStringFromStream(bsl::wostringstream &o, bsl::wstring *out)
 {
-    //bslma::TestAllocator osa("osstream");
-    //bslma::DefaultAllocatorGuard g(&osa);
+    bslma::TestAllocator osa("osstream");
+    bslma::DefaultAllocatorGuard g(&osa);
     *out = o.str();
 }
 
  // String compare for decimal floating point numbers needs 'e'/'E' conversion
 
-std::string& decLower(std::string& s)
+bsl::string& decLower(bsl::string& s)
 {
     for (size_t i = 0; i < s.length(); ++i) if ('E' == s[i]) s[i] = 'e';
     return s;
 }
 
-std::wstring& decLower(std::wstring& s)
+bsl::wstring& decLower(bsl::wstring& s)
 {
     for (size_t i = 0; i < s.length(); ++i) if (L'E' == s[i]) s[i] = L'e';
     return s;
@@ -232,21 +231,21 @@ void checkType(const RECEIVED&)
                           // Stream buffer helpers
 
 template <int SIZE>
-struct BufferBuf : std::streambuf {
+struct BufferBuf : bsl::streambuf {
     BufferBuf() { reset(); }
     const char *str() { *this->pptr() =0; return this->pbase(); }
     void reset() { this->setp(this->d_buf, this->d_buf + SIZE); }
     char d_buf[SIZE + 1];
 };
 
-struct PtrInputBuf : std::streambuf {
+struct PtrInputBuf : bsl::streambuf {
     PtrInputBuf(const char *s) {
         char *x = const_cast<char *>(s);
         this->setg(x, x, x + strlen(x));
     }
 };
 
-struct NulBuf : std::streambuf {
+struct NulBuf : bsl::streambuf {
     char d_dummy[64];
     virtual int overflow(int c) {
         setp( d_dummy, d_dummy + sizeof(d_dummy));
@@ -378,14 +377,14 @@ void TestDriver::testCase8()
     //   USAGE EXAMPLE
     // ------------------------------------------------------------------------
 
-    if (verbose) std::cout << std::endl
-                           << "Testing Usage Example" << std::endl
-                           << "=====================" << std::endl;
+    if (verbose) bsl::cout << bsl::endl
+                           << "Testing Usage Example" << bsl::endl
+                           << "=====================" << bsl::endl;
 
-    if (veryVerbose) std::cout << std::endl
+    if (veryVerbose) bsl::cout << bsl::endl
                                << "Portable initialization of "
                                << "non-integer, constant values"
-                               << std::endl;
+                               << bsl::endl;
     {
         // If your compiler does not support the C Decimal TR, it does not
         // support decimal floating point literals, only binary floating
@@ -410,9 +409,9 @@ void TestDriver::testCase8()
         ASSERT(d128 * 10 == bdldfp::Decimal128(3));
     }
 
-    if (veryVerbose) std::cout << std::endl
+    if (veryVerbose) bsl::cout << bsl::endl
                                << "Precise calculations with decimal "
-                               << "values" << std::endl;
+                               << "values" << bsl::endl;
     {
         //..
         // Suppose we need to add two (decimal) numbers and then tell if
@@ -453,9 +452,9 @@ void TestDriver::testCase7()
     //   void hashAppend(HASHALG& hashAlg, const Decimal128& object);
     // ------------------------------------------------------------------------
 
-    if (verbose) std::cout << std::endl
-                           << "Testing 'hashAppend'" << std::endl
-                           << "====================" << std::endl;
+    if (verbose) bsl::cout << bsl::endl
+                           << "Testing 'hashAppend'" << bsl::endl
+                           << "====================" << bsl::endl;
 
     typedef ::BloombergLP::bslh::Hash<> Hasher;
     typedef Hasher::result_type         HashType;
@@ -464,12 +463,12 @@ void TestDriver::testCase7()
 
     bslma::TestAllocator va("vector", veryVeryVeryVerbose);
 
-    if (verbose) std::cout << "\tTesting Decimal32" << std::endl;
+    if (verbose) bsl::cout << "\tTesting Decimal32" << bsl::endl;
     {
         typedef BDEC::Decimal32                      Obj;
-        typedef std::numeric_limits<BDEC::Decimal32> d32_limits;
-        typedef std::pair<Obj, HashType>             TestDataPair;
-        typedef std::vector<TestDataPair>            TestDataVector;
+        typedef bsl::numeric_limits<BDEC::Decimal32> d32_limits;
+        typedef bsl::pair<Obj, HashType>             TestDataPair;
+        typedef bsl::vector<TestDataPair>            TestDataVector;
 
         TestDataVector testData(&va);
 
@@ -588,12 +587,12 @@ void TestDriver::testCase7()
         }
     }
 
-    if (verbose) std::cout << "\tTesting Decimal64" << std::endl;
+    if (verbose) bsl::cout << "\tTesting Decimal64" << bsl::endl;
     {
         typedef BDEC::Decimal64                      Obj;
-        typedef std::numeric_limits<BDEC::Decimal32> d64_limits;
-        typedef std::pair<Obj, HashType>             TestDataPair;
-        typedef std::vector<TestDataPair>            TestDataVector;
+        typedef bsl::numeric_limits<BDEC::Decimal32> d64_limits;
+        typedef bsl::pair<Obj, HashType>             TestDataPair;
+        typedef bsl::vector<TestDataPair>            TestDataVector;
 
         TestDataVector       testData(&va);
 
@@ -714,12 +713,12 @@ void TestDriver::testCase7()
         }
     }
 
-    if (verbose) std::cout << "\tTesting Decimal128" << std::endl;
+    if (verbose) bsl::cout << "\tTesting Decimal128" << bsl::endl;
     {
         typedef BDEC::Decimal128                     Obj;
-        typedef std::numeric_limits<BDEC::Decimal32> d128_limits;
-        typedef std::pair<Obj, HashType>             TestDataPair;
-        typedef std::vector<TestDataPair>            TestDataVector;
+        typedef bsl::numeric_limits<BDEC::Decimal32> d128_limits;
+        typedef bsl::pair<Obj, HashType>             TestDataPair;
+        typedef bsl::vector<TestDataPair>            TestDataVector;
 
         TestDataVector       testData(&va);
 
@@ -1096,7 +1095,7 @@ void TestDriver::testCase6()
             bsls::Types::Uint64 expectedValue = BSLS_BYTEORDER_HTONLL(
                 bidVal.d_raw);
 
-            std::cout << LOD << std::endl;
+            bsl::cout << LOD << bsl::endl;
             ASSERTV(i, X, LOD == 8);
             ASSERT(memcmp(OD, &expectedValue, 8) == 0);
         }
@@ -1127,13 +1126,13 @@ void TestDriver::testCase5()
     //   ostream& print(ostream& s, int level = 0, int sPL = 4) const;
     // ------------------------------------------------------------------------
 
-    if (verbose) std::cout << "\nTESTING PRINT METHOD"
+    if (verbose) bsl::cout << "\nTESTING PRINT METHOD"
                            << "\n===================="
-                           << std::endl;
+                           << bsl::endl;
 
     // Verify that the signatures and return types are standard.
     {
-        typedef std::ostream& (BDEC::Decimal64::*funcPtr)(std::ostream&,
+        typedef bsl::ostream& (BDEC::Decimal64::*funcPtr)(bsl::ostream&,
                                                           int, int) const;
 
         funcPtr     printMember = &BDEC::Decimal64::print;
@@ -1182,7 +1181,7 @@ void TestDriver::testCase5()
         const int             SPL      = DATA[ti].d_spacesPerLevel;
         const char*           EXPECTED = DATA[ti].d_expected_p;
 
-        std::stringstream outdec;
+        bsl::stringstream outdec;
         if (-8 != SPL) {
             VALUE.print(outdec, LEVEL, SPL);
         }
@@ -1192,7 +1191,7 @@ void TestDriver::testCase5()
         else {
             VALUE.print(outdec);
         }
-        std::string ACTUAL = outdec.str();
+        bsl::string ACTUAL = outdec.str();
 
         ASSERTV(LINE, ACTUAL, EXPECTED, ACTUAL == EXPECTED);
     }
@@ -1219,7 +1218,7 @@ void TestDriver::testCase4()
     //: 6 That 'operator<<' correctly handles a set width with either a left,
     //:   internal, or right justification.
     //:
-    //: 7 That 'operator<<' correctly handles 'std::uppercase'.
+    //: 7 That 'operator<<' correctly handles 'bsl::uppercase'.
     //:
     //: 8 That the 'print' method writes the value to the specified 'ostream'.
     //:
@@ -1245,14 +1244,14 @@ void TestDriver::testCase4()
     //    set in the output stream.
     //
     // Testing:
-    //   std::basic_ostream& operator<<(std::basic_ostream& , Decimal32 );
-    //   std::basic_ostream& operator<<(std::basic_ostream& , Decimal64 );
-    //   std::basic_ostream& operator<<(std::basic_ostream& , Decimal64 );
+    //   bsl::basic_ostream& operator<<(bsl::basic_ostream& , Decimal32 );
+    //   bsl::basic_ostream& operator<<(bsl::basic_ostream& , Decimal64 );
+    //   bsl::basic_ostream& operator<<(bsl::basic_ostream& , Decimal64 );
     // ------------------------------------------------------------------------
 
-    if (verbose) std::cout << "\nTESTING IOSTREAM OPERATORS"
+    if (verbose) bsl::cout << "\nTESTING IOSTREAM OPERATORS"
                            << "\n=========================="
-                           << std::endl;
+                           << bsl::endl;
 
     // Note that this test is not yet complete.  Possible improvements:
     //
@@ -1265,11 +1264,11 @@ void TestDriver::testCase4()
 #define DFP(X) BDLDFP_DECIMAL_DF(X)
 
     BDEC::Decimal32 INF_P = BDEC::Decimal32(
-                                  std::numeric_limits<double>::infinity());
+                                  bsl::numeric_limits<double>::infinity());
     BDEC::Decimal32 INF_N = BDEC::Decimal32(
-                                 -std::numeric_limits<double>::infinity());
+                                 -bsl::numeric_limits<double>::infinity());
     BDEC::Decimal32 NAN_Q = BDEC::Decimal32(
-                                 std::numeric_limits<double>::quiet_NaN());
+                                 bsl::numeric_limits<double>::quiet_NaN());
     static const struct {
         int              d_line;
         BDEC::Decimal32  d_decimalValue;
@@ -1437,17 +1436,17 @@ void TestDriver::testCase4()
         {
             const BDEC::Decimal32 VALUE(DECIMAL32);
 
-            std::stringstream outdec;
+            bsl::stringstream outdec;
 
             outdec.width(WIDTH);
-            if (LEFT)     { outdec << std::left;        }
-            if (INTERNAL) { outdec << std::internal;    }
-            if (RIGHT)    { outdec << std::right;       }
-            if (CAPITAL)  { outdec << std::uppercase;   }
-            else          { outdec << std::nouppercase; }
+            if (LEFT)     { outdec << bsl::left;        }
+            if (INTERNAL) { outdec << bsl::internal;    }
+            if (RIGHT)    { outdec << bsl::right;       }
+            if (CAPITAL)  { outdec << bsl::uppercase;   }
+            else          { outdec << bsl::nouppercase; }
             outdec << VALUE;
 
-            std::string ACTUAL = outdec.str();
+            bsl::string ACTUAL = outdec.str();
 
             ASSERTV(LINE, ACTUAL, EXPECTED, ACTUAL == EXPECTED);
             ASSERTV(outdec.good());
@@ -1457,17 +1456,17 @@ void TestDriver::testCase4()
         {
             const BDEC::Decimal64 VALUE(DECIMAL32);
 
-            std::stringstream outdec;
+            bsl::stringstream outdec;
 
             outdec.width(WIDTH);
-            if (LEFT)     { outdec << std::left;        }
-            if (INTERNAL) { outdec << std::internal;    }
-            if (RIGHT)    { outdec << std::right;       }
-            if (CAPITAL)  { outdec << std::uppercase;   }
-            else          { outdec << std::nouppercase; }
+            if (LEFT)     { outdec << bsl::left;        }
+            if (INTERNAL) { outdec << bsl::internal;    }
+            if (RIGHT)    { outdec << bsl::right;       }
+            if (CAPITAL)  { outdec << bsl::uppercase;   }
+            else          { outdec << bsl::nouppercase; }
             outdec << VALUE;
 
-            std::string ACTUAL = outdec.str();
+            bsl::string ACTUAL = outdec.str();
 
             ASSERTV(LINE, ACTUAL, EXPECTED, ACTUAL == EXPECTED);
             ASSERTV(outdec.good());
@@ -1477,17 +1476,17 @@ void TestDriver::testCase4()
         {
             const BDEC::Decimal64 VALUE(DECIMAL32);
 
-            std::stringstream outdec;
+            bsl::stringstream outdec;
 
             outdec.width(WIDTH);
-            if (LEFT)     { outdec << std::left;        }
-            if (INTERNAL) { outdec << std::internal;    }
-            if (RIGHT)    { outdec << std::right;       }
-            if (CAPITAL)  { outdec << std::uppercase;   }
-            else          { outdec << std::nouppercase; }
+            if (LEFT)     { outdec << bsl::left;        }
+            if (INTERNAL) { outdec << bsl::internal;    }
+            if (RIGHT)    { outdec << bsl::right;       }
+            if (CAPITAL)  { outdec << bsl::uppercase;   }
+            else          { outdec << bsl::nouppercase; }
             VALUE.print(outdec, 0, -1);
 
-            std::string ACTUAL = outdec.str();
+            bsl::string ACTUAL = outdec.str();
 
             ASSERTV(LINE, ACTUAL, EXPECTED, ACTUAL == EXPECTED);
         }
@@ -1496,17 +1495,17 @@ void TestDriver::testCase4()
         {
             const BDEC::Decimal128 VALUE(DECIMAL32);
 
-            std::stringstream outdec;
+            bsl::stringstream outdec;
 
             outdec.width(WIDTH);
-            if (LEFT)     { outdec << std::left;        }
-            if (INTERNAL) { outdec << std::internal;    }
-            if (RIGHT)    { outdec << std::right;       }
-            if (CAPITAL)  { outdec << std::uppercase;   }
-            else          { outdec << std::nouppercase; }
+            if (LEFT)     { outdec << bsl::left;        }
+            if (INTERNAL) { outdec << bsl::internal;    }
+            if (RIGHT)    { outdec << bsl::right;       }
+            if (CAPITAL)  { outdec << bsl::uppercase;   }
+            else          { outdec << bsl::nouppercase; }
             outdec << VALUE;
 
-            std::string ACTUAL = outdec.str();
+            bsl::string ACTUAL = outdec.str();
 
             ASSERTV(LINE, ACTUAL, EXPECTED, ACTUAL == EXPECTED);
             ASSERTV(outdec.good());
@@ -1529,7 +1528,7 @@ void TestDriver::testCase4()
         {
             char buffer[4];
             bdlsb::FixedMemOutStreamBuf obuf(buffer, 4);
-            std::ostream out(&obuf);
+            bsl::ostream out(&obuf);
             BDEC::Decimal64 value = DFP(-1.0);
             out << value;
             ASSERTV(out.fail(), !out.fail());
@@ -1538,7 +1537,7 @@ void TestDriver::testCase4()
         {
             char buffer[4];
             bdlsb::FixedMemOutStreamBuf obuf(buffer, 3);
-            std::ostream out(&obuf);
+            bsl::ostream out(&obuf);
             BDEC::Decimal32 value = DFP(-1.0);
             out << value;
             ASSERTV(out.fail(), out.fail());
@@ -1547,7 +1546,7 @@ void TestDriver::testCase4()
         {
             char buffer[4];
             bdlsb::FixedMemOutStreamBuf obuf(buffer, 3);
-            std::ostream out(&obuf);
+            bsl::ostream out(&obuf);
             BDEC::Decimal64 value = DFP(-1.0);
             out << value;
             ASSERTV(out.fail(), out.fail());
@@ -1556,7 +1555,7 @@ void TestDriver::testCase4()
         {
             char buffer[4];
             bdlsb::FixedMemOutStreamBuf obuf(buffer, 3);
-            std::ostream out(&obuf);
+            bsl::ostream out(&obuf);
             BDEC::Decimal128 value = DFP(-1.0);
             out << value;
             ASSERTV(out.fail(), out.fail());
@@ -1590,12 +1589,12 @@ void TestDriver::testCase3()
     //   'class Decimal128'
     // ------------------------------------------------------------------------
 
-    if (verbose) std::cout << "\nTesting class Decimal128"
-                            << "\n========================" << std::endl;
+    if (verbose) bsl::cout << "\nTesting class Decimal128"
+                            << "\n========================" << bsl::endl;
 
-    if (veryVerbose) std::cout << "Constructors" << std::endl;
+    if (veryVerbose) bsl::cout << "Constructors" << bsl::endl;
 
-    if (veryVeryVerbose) std::cout << "Copy/convert" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Copy/convert" << bsl::endl;
     {
         const BDEC::Decimal32  c32  = BDEC::Decimal32(32);
         const BDEC::Decimal64  c64  = BDEC::Decimal64(64);
@@ -1606,7 +1605,7 @@ void TestDriver::testCase3()
         ASSERT(BDLDFP_DECIMAL_DL(128.0) == BDEC::Decimal128(c128));
     }
 
-    if (veryVeryVerbose) std::cout << "Integral" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Integral" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DL(  0.0) == BDEC::Decimal128());  // default
     ASSERT(BDLDFP_DECIMAL_DL(-42.0) == BDEC::Decimal128(-42)); // int
@@ -1628,7 +1627,7 @@ void TestDriver::testCase3()
 
     ASSERTV(cDefault, cZero, 0 != memcmp(&cDefault, &cZero, sizeof(cDefault)));
 
-    if (veryVeryVerbose) std::cout << "Binary FP" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Binary FP" << bsl::endl;
 
     // Note that to test binary-float taking constructors I use numbers
     // that can be represented exactly in both binary and decimal FP.
@@ -1636,7 +1635,7 @@ void TestDriver::testCase3()
     ASSERT(BDLDFP_DECIMAL_DL(4.25) == BDEC::Decimal128(4.25f)); // float
     ASSERT(BDLDFP_DECIMAL_DL(4.25) == BDEC::Decimal128(4.25)); // double
 
-    if (veryVeryVerbose) std::cout << "Decimal FP" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Decimal FP" << bsl::endl;
 
     LOOP2_ASSERT(BDLDFP_DECIMAL_DL(-42.0), BDLDFP_DECIMAL_DF(-42.0),
                  BDLDFP_DECIMAL_DL(-42.0) == BDLDFP_DECIMAL_DF(-42.0));
@@ -1650,7 +1649,7 @@ void TestDriver::testCase3()
     ASSERT(BDLDFP_DECIMAL_DL(4.2) == BDLDFP_DECIMAL_DD(4.2));
     ASSERT(BDLDFP_DECIMAL_DL(4.2e9) == BDLDFP_DECIMAL_DD(4.2e9));
 
-    if (veryVerbose) std::cout << "Propriatery accessors" << std::endl;
+    if (veryVerbose) bsl::cout << "Propriatery accessors" << bsl::endl;
     {
 
         BDEC::Decimal128 d128(42);
@@ -1663,7 +1662,7 @@ void TestDriver::testCase3()
 #endif
     }
 
-    if (veryVerbose) std::cout << "Operator==" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator==" << bsl::endl;
 
     ASSERT(! (BDLDFP_DECIMAL_DL(4.0) == BDLDFP_DECIMAL_DL(5.0)));
     ASSERT(BDLDFP_DECIMAL_DL(4.0) == BDLDFP_DECIMAL_DL(4.0));
@@ -1679,7 +1678,7 @@ void TestDriver::testCase3()
     ASSERT(! (BDLDFP_DECIMAL_DF(4.0) == BDLDFP_DECIMAL_DL(5.0)));
     ASSERT(BDLDFP_DECIMAL_DF(-9.345e27) == BDLDFP_DECIMAL_DL(-9.345e27));
 
-    if (veryVerbose) std::cout << "Operator!=" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator!=" << bsl::endl;
 
     LOOP2_ASSERT(BDLDFP_DECIMAL_DL(4.0), BDLDFP_DECIMAL_DL(5.0),
                  BDLDFP_DECIMAL_DL(4.0) != BDLDFP_DECIMAL_DL(5.0));
@@ -1698,7 +1697,7 @@ void TestDriver::testCase3()
     ASSERT(! (BDLDFP_DECIMAL_DF(4.0) == BDLDFP_DECIMAL_DL(5.0)));
     ASSERT(BDLDFP_DECIMAL_DF(-9.345e27) == BDLDFP_DECIMAL_DL(-9.345e27));
 
-    if (veryVerbose) std::cout << "Operator<" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator<" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DL(4.0) < BDLDFP_DECIMAL_DL(5.0));
     ASSERT(! (BDLDFP_DECIMAL_DL(-9.345e27) <
@@ -1723,7 +1722,7 @@ void TestDriver::testCase3()
               BDLDFP_DECIMAL_DL(-9.345e27)));
     ASSERT(! (BDLDFP_DECIMAL_DF(5.0) < BDLDFP_DECIMAL_DL(4.0)));
 
-    if (veryVerbose) std::cout << "Operator>" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator>" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DL(5.0) > BDLDFP_DECIMAL_DL(4.0));
     ASSERT(! (BDLDFP_DECIMAL_DL(-9.345e27) >
@@ -1748,7 +1747,7 @@ void TestDriver::testCase3()
               BDLDFP_DECIMAL_DL(-9.345e27)));
     ASSERT(! (BDLDFP_DECIMAL_DF(4.0) > BDLDFP_DECIMAL_DL(5.0)));
 
-    if (veryVerbose) std::cout << "Operator<=" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator<=" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DL(4.0) <= BDLDFP_DECIMAL_DL(5.0));
     ASSERT(BDLDFP_DECIMAL_DL(-9.345e27) <= BDLDFP_DECIMAL_DL(-9.345e27));
@@ -1768,7 +1767,7 @@ void TestDriver::testCase3()
     ASSERT(BDLDFP_DECIMAL_DF(-9.345e27) <= BDLDFP_DECIMAL_DL(-9.345e27));
     ASSERT(! (BDLDFP_DECIMAL_DF(5.0) <= BDLDFP_DECIMAL_DL(4.0)));
 
-    if (veryVerbose) std::cout << "Operator>=" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator>=" << bsl::endl;
 
     LOOP2_ASSERT(BDLDFP_DECIMAL_DL(5.0),   BDLDFP_DECIMAL_DL(4.0),
                  BDLDFP_DECIMAL_DL(5.0) >= BDLDFP_DECIMAL_DL(4.0));
@@ -1801,14 +1800,14 @@ void TestDriver::testCase3()
     // precision as it would for binary floating point *or* with the
     // implied precision of the cohort if that is larger.  AFAIU
 
-    if (veryVerbose) std::cout << "Test stream out" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream out" << bsl::endl;
     {
-        std::ostringstream  out(pa);
+        bsl::ostringstream  out(pa);
 
         BDEC::Decimal128 d1(BDLDFP_DECIMAL_DL(
                                 -1.234567890123456789012345678901234e-24));
         out << d1;
-        std::string s(pa);
+        bsl::string s(pa);
         getStringFromStream(out, &s);
         LOOP2_ASSERT(
                 decLower(s),
@@ -1816,10 +1815,10 @@ void TestDriver::testCase3()
                 decLower(s) == "-1.234567890123456789012345678901234e-24");
     }
 
-    if (veryVerbose) std::cout << "Test stream in" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("-1.234567890123456789012345678901234e-24", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("-1.234567890123456789012345678901234e-24", pa);
         in.str(ins);
 
         BDEC::Decimal128 d1;
@@ -1829,10 +1828,10 @@ void TestDriver::testCase3()
     }
 
     // bdldfp does not know how to parse128("NaN") etc.
-    if (veryVerbose) std::cout << "Test stream in NaN" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in NaN" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("NaN", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("NaN", pa);
         in.str(ins);
 
         BDEC::Decimal128 d1;
@@ -1840,8 +1839,8 @@ void TestDriver::testCase3()
         ASSERT(d1 != d1);
     }
     {
-        std::istringstream  in(pa);
-        std::string ins("nan", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("nan", pa);
         in.str(ins);
 
         BDEC::Decimal128 d1;
@@ -1849,83 +1848,50 @@ void TestDriver::testCase3()
         ASSERT(d1 != d1);
     }
 
-    if (veryVerbose) std::cout << "Test stream in Inf" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in Inf" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("Inf", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("Inf", pa);
         in.str(ins);
 
         BDEC::Decimal128 d1;
         in >> d1;
-        ASSERT(d1 > std::numeric_limits<BDEC::Decimal128>::max());
+        ASSERT(d1 > bsl::numeric_limits<BDEC::Decimal128>::max());
     }
     {
-        std::istringstream  in(pa);
-        std::string ins("inf", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("inf", pa);
         in.str(ins);
 
         BDEC::Decimal128 d1;
         in >> d1;
-        ASSERT(d1 > std::numeric_limits<BDEC::Decimal128>::max());
+        ASSERT(d1 > bsl::numeric_limits<BDEC::Decimal128>::max());
     }
 
-    if (veryVerbose) std::cout << "Test stream in -Inf" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in -Inf" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("-Inf", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("-Inf", pa);
         in.str(ins);
 
         BDEC::Decimal128 d1;
         in >> d1;
-        ASSERT(d1 < -std::numeric_limits<BDEC::Decimal128>::max());
+        ASSERT(d1 < -bsl::numeric_limits<BDEC::Decimal128>::max());
     }
     {
-        std::istringstream  in(pa);
-        std::string ins("-inf", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("-inf", pa);
         in.str(ins);
 
         BDEC::Decimal128 d1;
         in >> d1;
-        ASSERT(d1 < -std::numeric_limits<BDEC::Decimal128>::max());
+        ASSERT(d1 < -bsl::numeric_limits<BDEC::Decimal128>::max());
     }
 
-    if (veryVerbose) std::cout << "Test stream in NaNa (bad)" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in NaNa (bad)" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("NaNa", pa);
-        in.str(ins);
-
-        BDEC::Decimal128 d1;
-        in >> d1;
-        ASSERT(in.fail() == true);
-    }
-
-    if (veryVerbose) std::cout << "Test stream in Infinity" << std::endl;
-    {
-        std::istringstream  in(pa);
-        std::string ins("Infinity", pa);
-        in.str(ins);
-
-        BDEC::Decimal128 d1;
-        in >> d1;
-        ASSERT(d1 > std::numeric_limits<BDEC::Decimal128>::max());
-    }
-
-    if (veryVerbose) std::cout << "Test stream in -Infinity" << std::endl;
-    {
-        std::istringstream  in(pa);
-        std::string ins("-Infinity", pa);
-        in.str(ins);
-
-        BDEC::Decimal128 d1;
-        in >> d1;
-        ASSERT(d1 < -std::numeric_limits<BDEC::Decimal128>::max());
-    }
-
-    if (veryVerbose) std::cout << "Test stream in Infin (bad)" << std::endl;
-    {
-        std::istringstream  in(pa);
-        std::string ins("-Infin", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("NaNa", pa);
         in.str(ins);
 
         BDEC::Decimal128 d1;
@@ -1933,21 +1899,54 @@ void TestDriver::testCase3()
         ASSERT(in.fail() == true);
     }
 
-    if (veryVerbose) std::cout << "Test wide stream out" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in Infinity" << bsl::endl;
     {
-        std::wostringstream  out(pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("Infinity", pa);
+        in.str(ins);
+
+        BDEC::Decimal128 d1;
+        in >> d1;
+        ASSERT(d1 > bsl::numeric_limits<BDEC::Decimal128>::max());
+    }
+
+    if (veryVerbose) bsl::cout << "Test stream in -Infinity" << bsl::endl;
+    {
+        bsl::istringstream  in(pa);
+        bsl::string ins("-Infinity", pa);
+        in.str(ins);
+
+        BDEC::Decimal128 d1;
+        in >> d1;
+        ASSERT(d1 < -bsl::numeric_limits<BDEC::Decimal128>::max());
+    }
+
+    if (veryVerbose) bsl::cout << "Test stream in Infin (bad)" << bsl::endl;
+    {
+        bsl::istringstream  in(pa);
+        bsl::string ins("-Infin", pa);
+        in.str(ins);
+
+        BDEC::Decimal128 d1;
+        in >> d1;
+        ASSERT(in.fail() == true);
+    }
+
+    if (veryVerbose) bsl::cout << "Test wide stream out" << bsl::endl;
+    {
+        bsl::wostringstream  out(pa);
         BDEC::Decimal128 d1(BDLDFP_DECIMAL_DL(
                                 -1.234567890123456789012345678901234e-24));
         out << d1;
-        std::wstring s(pa);
+        bsl::wstring s(pa);
         getStringFromStream(out, &s);
         ASSERT(decLower(s) == L"-1.234567890123456789012345678901234e-24");
     }
 
-    if (veryVerbose) std::cout << "Test wide stream in" << std::endl;
+    if (veryVerbose) bsl::cout << "Test wide stream in" << bsl::endl;
     {
-        std::wistringstream  in(pa);
-        std::wstring ins(L"-1.234567890123456789012345678901234e-24", pa);
+        bsl::wistringstream  in(pa);
+        bsl::wstring ins(L"-1.234567890123456789012345678901234e-24", pa);
         in.str(ins);
 
         BDEC::Decimal128 d1;
@@ -1956,7 +1955,7 @@ void TestDriver::testCase3()
               BDLDFP_DECIMAL_DL(-1.234567890123456789012345678901234e-24));
     }
 
-    if (veryVerbose) std::cout << "Operator++" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator++" << bsl::endl;
     {
         BDEC::Decimal128 d1(BDLDFP_DECIMAL_DL(-5.0));
         BDEC::Decimal128 d2 = d1++;
@@ -1967,7 +1966,7 @@ void TestDriver::testCase3()
         LOOP_ASSERT(d3, BDLDFP_DECIMAL_DL(-4.0) == d3);
     }
 
-    if (veryVerbose) std::cout << "Operator--" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator--" << bsl::endl;
     {
         BDEC::Decimal128 d1(BDLDFP_DECIMAL_DL(-5.0));
         BDEC::Decimal128 d2 = d1--;
@@ -1978,7 +1977,7 @@ void TestDriver::testCase3()
         LOOP_ASSERT(d3, BDLDFP_DECIMAL_DL(-6.0) == d3);
     }
 
-    if (veryVerbose) std::cout << "Unary-" << std::endl;
+    if (veryVerbose) bsl::cout << "Unary-" << bsl::endl;
     {
         BDEC::Decimal128 d1(BDLDFP_DECIMAL_DL(-5.0));
         BDEC::Decimal128 d2(BDLDFP_DECIMAL_DL( 5.0));
@@ -1987,15 +1986,15 @@ void TestDriver::testCase3()
 
         // Unary - must make +0 into -0
 
-        std::ostringstream out(pa);
+        bsl::ostringstream out(pa);
         out << -BDLDFP_DECIMAL_DL(0.0);
-        std::string s(pa);
+        bsl::string s(pa);
         getStringFromStream(out, &s);
         LOOP_ASSERT(s, s[0] == '-'); // it is negative
         ASSERT(-BDLDFP_DECIMAL_DL(0.0) == BDEC::Decimal128(0)); // and 0
     }
 
-    if (veryVerbose) std::cout << "Unary+" << std::endl;
+    if (veryVerbose) bsl::cout << "Unary+" << bsl::endl;
     {
         BDEC::Decimal128 d1(BDLDFP_DECIMAL_DL(-5.0));
         BDEC::Decimal128 d2(BDLDFP_DECIMAL_DL( 5.0));
@@ -2005,225 +2004,225 @@ void TestDriver::testCase3()
         // Unary + must make -0 into +0
 
         BDEC::Decimal128 negzero(-BDLDFP_DECIMAL_DL(0.0));
-        std::ostringstream out(pa);
+        bsl::ostringstream out(pa);
         out << +negzero;
-        std::string s(pa);
+        bsl::string s(pa);
         getStringFromStream(out, &s);
         LOOP_ASSERT(s, s[0] != '+'); // it is positive
         ASSERT(-BDLDFP_DECIMAL_DL(0.0) == BDEC::Decimal128(0)); // and 0
     }
 
-    if (veryVerbose) std::cout << "+=" << std::endl;
+    if (veryVerbose) bsl::cout << "+=" << bsl::endl;
     {
         BDEC::Decimal128 d(BDLDFP_DECIMAL_DL(-5.0));
 
-        if (veryVeryVerbose) std::cout << "+=(int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(int)" << bsl::endl;
         d += 1;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-4.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(unsigned int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(unsigned int)" << bsl::endl;
         d += 2u;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-2.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(long int)" << bsl::endl;
         d += -1l;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-3.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(unsigned long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(unsigned long int)"
+                                       << bsl::endl;
         d += 5ul;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(2.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(long long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(long long int)" << bsl::endl;
         d += -2ll;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(0.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(unsigned long long int)"
-                                << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(unsigned long long int)"
+                                << bsl::endl;
         d += 42ull;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(42.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(Decimal32)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(Decimal32)" << bsl::endl;
         d += BDLDFP_DECIMAL_DF(-22.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(20.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(Decimal64)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(Decimal64)" << bsl::endl;
         d += BDLDFP_DECIMAL_DD(3.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(23.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(Decimal128)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(Decimal128)" << bsl::endl;
         d += BDLDFP_DECIMAL_DL(9.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(32.0) == d);
     }
 
-    if (veryVerbose) std::cout << "-=" << std::endl;
+    if (veryVerbose) bsl::cout << "-=" << bsl::endl;
     {
         BDEC::Decimal128 d(BDLDFP_DECIMAL_DL(-5.0));
 
-        if (veryVeryVerbose) std::cout << "-=(int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(int)" << bsl::endl;
         d -= 1;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-6.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(unsigned int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(unsigned int)" << bsl::endl;
         d -= 2u;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-8.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(long int)" << bsl::endl;
         d -= -10l;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(2.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(unsigned long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(unsigned long int)"
+                                       << bsl::endl;
         d -= 10ul;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-8.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(long long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(long long int)" << bsl::endl;
         d -= -8ll;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(0.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(unsigned long long int)"
-                                << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(unsigned long long int)"
+                                << bsl::endl;
         d -= 42ull;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-42.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(Decimal32)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(Decimal32)" << bsl::endl;
         d -= BDLDFP_DECIMAL_DF(-22.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-20.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(Decimal64)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(Decimal64)" << bsl::endl;
         d -= BDLDFP_DECIMAL_DD(3.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-23.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(Decimal128)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(Decimal128)" << bsl::endl;
         d -= BDLDFP_DECIMAL_DL(9.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-32.0) == d);
     }
 
-    if (veryVerbose) std::cout << "*=" << std::endl;
+    if (veryVerbose) bsl::cout << "*=" << bsl::endl;
     {
         BDEC::Decimal128 d(BDLDFP_DECIMAL_DL(-5.0));
 
-        if (veryVeryVerbose) std::cout << "*=(int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(int)" << bsl::endl;
         d *= -2;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(10.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(unsigned int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(unsigned int)" << bsl::endl;
         d *= 2000u;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(20000.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(long int)" << bsl::endl;
         d *= -10l;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-200000.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(unsigned long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(unsigned long int)"
+                                       << bsl::endl;
         d *= 3ul;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-600000.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(long long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(long long int)" << bsl::endl;
         d *= -1ll;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(600000.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(unsigned long long int)"
-                                << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(unsigned long long int)"
+                                << bsl::endl;
         d *= 5ull;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(3000000.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(Decimal32)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(Decimal32)" << bsl::endl;
         d *= BDLDFP_DECIMAL_DF(1e-5);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(30.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(Decimal64)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(Decimal64)" << bsl::endl;
         d *= BDLDFP_DECIMAL_DD(-3.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-90.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(Decimal128)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(Decimal128)" << bsl::endl;
         d *= BDLDFP_DECIMAL_DL(2.4e-134);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-2.16e-132) == d);
     }
 
-    if (veryVerbose) std::cout << "/=" << std::endl;
+    if (veryVerbose) bsl::cout << "/=" << bsl::endl;
     {
         BDEC::Decimal128 d(BDLDFP_DECIMAL_DL(-5.0));
 
-        if (veryVeryVerbose) std::cout << "/=(int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(int)" << bsl::endl;
         d /= -2;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(2.5) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(unsigned int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(unsigned int)" << bsl::endl;
         d /= 2000u;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(0.00125) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(long int)" << bsl::endl;
         d /= -10l;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-0.000125) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(unsigned long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(unsigned long int)"
+                                       << bsl::endl;
         d /= 5ul;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-0.000025) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(long long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(long long int)" << bsl::endl;
         d /= -5ll;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(0.000005) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(unsigned long long int)"
-                                << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(unsigned long long int)"
+                                << bsl::endl;
         d /= 5ull;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(0.000001) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(Decimal32)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(Decimal32)" << bsl::endl;
         d /= BDLDFP_DECIMAL_DF(1e-5);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(0.1) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(Decimal64)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(Decimal64)" << bsl::endl;
         d /= BDLDFP_DECIMAL_DD(-5.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(-0.02) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(Decimal128)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(Decimal128)" << bsl::endl;
         d /= BDLDFP_DECIMAL_DL(-2.5e-134);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DL(8.e131) == d);
     }
 
-    if (veryVerbose) std::cout << "operator+" << std::endl;
+    if (veryVerbose) bsl::cout << "operator+" << bsl::endl;
     {
         BDEC::Decimal128 d(BDLDFP_DECIMAL_DL(-5.0));
 
-        if (veryVeryVerbose) std::cout << "dec + int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + int" << bsl::endl;
         LOOP_ASSERT(d + 1, d + 1 == BDLDFP_DECIMAL_DL(-4.0));
         LOOP_ASSERT(1 + d, 1 + d == BDLDFP_DECIMAL_DL(-4.0));
 
-        if (veryVeryVerbose) std::cout << "dec + unsigned int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + unsigned int"
+                                       << bsl::endl;
         LOOP_ASSERT(d + 10u, d + 10u == BDLDFP_DECIMAL_DL(5.0));
         LOOP_ASSERT(10u + d, 10u + d == BDLDFP_DECIMAL_DL(5.0));
 
-        if (veryVeryVerbose) std::cout << "dec + long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d + 1l, d + 1l == BDLDFP_DECIMAL_DL(-4.0));
         LOOP_ASSERT(1l + d, 1l + d == BDLDFP_DECIMAL_DL(-4.0));
 
-        if (veryVeryVerbose) std::cout << "dec + unsigned long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + unsigned long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d + 10ul, d + 10ul == BDLDFP_DECIMAL_DL(5.0));
         LOOP_ASSERT(10ul + d, 10ul + d == BDLDFP_DECIMAL_DL(5.0));
 
-        if (veryVeryVerbose) std::cout << "dec + long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d + 1ll, d + 1ll == BDLDFP_DECIMAL_DL(-4.0));
         LOOP_ASSERT(1ll + d, 1ll + d == BDLDFP_DECIMAL_DL(-4.0));
 
-        if (veryVeryVerbose) std::cout << "dec + unsigned long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + unsigned long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d + 10ull, d + 10ull == BDLDFP_DECIMAL_DL(5.0));
         LOOP_ASSERT(10ull + d, 10ull + d == BDLDFP_DECIMAL_DL(5.0));
 
-        if (veryVeryVerbose) std::cout << "dec + dec128" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + dec128" << bsl::endl;
         LOOP_ASSERT(d + BDLDFP_DECIMAL_DL(-3.0),
                     d + BDLDFP_DECIMAL_DL(-3.0) ==
                     BDLDFP_DECIMAL_DL(-8.0));
 
-        if (veryVeryVerbose) std::cout << "dec + dec32" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + dec32" << bsl::endl;
         LOOP_ASSERT(d + BDLDFP_DECIMAL_DF(-3.0),
                     d + BDLDFP_DECIMAL_DF(-3.0) ==
                     BDLDFP_DECIMAL_DL(-8.0));
@@ -2231,7 +2230,7 @@ void TestDriver::testCase3()
                     BDLDFP_DECIMAL_DF(-3.0) + d ==
                     BDLDFP_DECIMAL_DL(-8.0));
 
-        if (veryVeryVerbose) std::cout << "dec + dec64" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + dec64" << bsl::endl;
         LOOP_ASSERT(d + BDLDFP_DECIMAL_DD(-3.0),
                     d + BDLDFP_DECIMAL_DD(-3.0) ==
                     BDLDFP_DECIMAL_DL(-8.0));
@@ -2240,45 +2239,45 @@ void TestDriver::testCase3()
                     BDLDFP_DECIMAL_DL(-8.0));
     }
 
-    if (veryVerbose) std::cout << "operator-" << std::endl;
+    if (veryVerbose) bsl::cout << "operator-" << bsl::endl;
     {
         BDEC::Decimal128 d(BDLDFP_DECIMAL_DL(-5.0));
 
-        if (veryVeryVerbose) std::cout << "dec - int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - int" << bsl::endl;
         LOOP_ASSERT(d - 1, d - 1 == BDLDFP_DECIMAL_DL(-6.0));
         LOOP_ASSERT(1 - d, 1 - d == BDLDFP_DECIMAL_DL( 6.0));
 
-        if (veryVeryVerbose) std::cout << "dec - unsigned int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - unsigned int"
+                                       << bsl::endl;
         LOOP_ASSERT(d - 10u, d - 10u == BDLDFP_DECIMAL_DL(-15.0));
         LOOP_ASSERT(10u - d, 10u - d == BDLDFP_DECIMAL_DL( 15.0));
 
-        if (veryVeryVerbose) std::cout << "dec - long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d - 1l, d - 1l == BDLDFP_DECIMAL_DL(-6.0));
         LOOP_ASSERT(1l - d, 1l - d == BDLDFP_DECIMAL_DL( 6.0));
 
-        if (veryVeryVerbose) std::cout << "dec - unsigned long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - unsigned long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d - 10ul, d - 10ul == BDLDFP_DECIMAL_DL(-15.0));
         LOOP_ASSERT(10ul - d, 10ul - d == BDLDFP_DECIMAL_DL( 15.0));
 
-        if (veryVeryVerbose) std::cout << "dec - long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d - 1ll, d - 1ll == BDLDFP_DECIMAL_DL(-6.0));
         LOOP_ASSERT(1ll - d, 1ll - d == BDLDFP_DECIMAL_DL( 6.0));
 
-        if (veryVeryVerbose) std::cout << "dec - unsigned long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - unsigned long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d - 10ull, d - 10ull == BDLDFP_DECIMAL_DL(-15.0));
         LOOP_ASSERT(10ull - d, 10ull - d == BDLDFP_DECIMAL_DL( 15.0));
 
-        if (veryVeryVerbose) std::cout << "dec - dec128" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - dec128" << bsl::endl;
         LOOP_ASSERT(d - BDLDFP_DECIMAL_DL(-3.0),
                     d - BDLDFP_DECIMAL_DL(-3.0) ==
                     BDLDFP_DECIMAL_DL(-2.0));
 
-        if (veryVeryVerbose) std::cout << "dec - dec32" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - dec32" << bsl::endl;
         LOOP_ASSERT(d - BDLDFP_DECIMAL_DF(-3.0),
                     d - BDLDFP_DECIMAL_DF(-3.0) ==
                     BDLDFP_DECIMAL_DL(-2.0));
@@ -2286,7 +2285,7 @@ void TestDriver::testCase3()
                     BDLDFP_DECIMAL_DF(-3.0) - d ==
                     BDLDFP_DECIMAL_DL( 2.0));
 
-        if (veryVeryVerbose) std::cout << "dec - dec64" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - dec64" << bsl::endl;
         LOOP_ASSERT(d - BDLDFP_DECIMAL_DD(-3.0),
                     d - BDLDFP_DECIMAL_DD(-3.0) ==
                     BDLDFP_DECIMAL_DL(-2.0));
@@ -2295,44 +2294,44 @@ void TestDriver::testCase3()
                     BDLDFP_DECIMAL_DL( 2.0));
     }
 
-    if (veryVerbose) std::cout << "operator*" << std::endl;
+    if (veryVerbose) bsl::cout << "operator*" << bsl::endl;
     {
         BDEC::Decimal64 d(BDLDFP_DECIMAL_DD(-5.0));
 
-        if (veryVeryVerbose) std::cout << "dec * int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * int" << bsl::endl;
         LOOP_ASSERT(d * -2, d * -2 == BDLDFP_DECIMAL_DD(10.0));
         LOOP_ASSERT(-2 * d, -2 * d == BDLDFP_DECIMAL_DD(10.0));
 
-        if (veryVeryVerbose) std::cout << "dec * unsigned int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * unsigned int"
+                                       << bsl::endl;
         LOOP_ASSERT(d * 10u, d * 10u == BDLDFP_DECIMAL_DD(-50.0));
         LOOP_ASSERT(10u * d, 10u * d == BDLDFP_DECIMAL_DD(-50.0));
 
-        if (veryVeryVerbose) std::cout << "dec * long int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * long int" << bsl::endl;
         LOOP_ASSERT(d * -2l, d * -2l == BDLDFP_DECIMAL_DD(10.0));
         LOOP_ASSERT(-2l * d, -2l * d == BDLDFP_DECIMAL_DD(10.0));
 
-        if (veryVeryVerbose) std::cout << "dec * unsigned long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * unsigned long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d * 10ul, d * 10ul == BDLDFP_DECIMAL_DD(-50.0));
         LOOP_ASSERT(10ul * d, 10ul * d == BDLDFP_DECIMAL_DD(-50.0));
 
-        if (veryVeryVerbose) std::cout << "dec * long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d * -2ll, d * -2ll == BDLDFP_DECIMAL_DD(10.0));
         LOOP_ASSERT(-2ll * d, -2ll * d == BDLDFP_DECIMAL_DD(10.0));
 
-        if (veryVeryVerbose) std::cout << "dec * unsigned long long int"
-                                << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * unsigned long long int"
+                                << bsl::endl;
         LOOP_ASSERT(d * 10ull, d * 10ull == BDLDFP_DECIMAL_DD(-50.0));
         LOOP_ASSERT(10ull * d, 10ull * d == BDLDFP_DECIMAL_DD(-50.0));
 
-        if (veryVeryVerbose) std::cout << "dec * dec64" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * dec64" << bsl::endl;
         LOOP_ASSERT(d * BDLDFP_DECIMAL_DD(-3.0),
                     d * BDLDFP_DECIMAL_DD(-3.0) ==
                     BDLDFP_DECIMAL_DD(15.0));
 
-        if (veryVeryVerbose) std::cout << "dec * dec32" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * dec32" << bsl::endl;
         LOOP_ASSERT(d * BDLDFP_DECIMAL_DF(-3.0),
                     d * BDLDFP_DECIMAL_DF(-3.0) ==
                     BDLDFP_DECIMAL_DD(15.0));
@@ -2341,44 +2340,44 @@ void TestDriver::testCase3()
                     BDLDFP_DECIMAL_DD(15.0));
     }
 
-    if (veryVerbose) std::cout << "operator/" << std::endl;
+    if (veryVerbose) bsl::cout << "operator/" << bsl::endl;
     {
         BDEC::Decimal128 d(BDLDFP_DECIMAL_DL(-5.0));
 
-        if (veryVeryVerbose) std::cout << "dec / int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / int" << bsl::endl;
         LOOP_ASSERT(d / -2, d / -2 == BDLDFP_DECIMAL_DL(2.5));
         LOOP_ASSERT(-2 / d, -2 / d == BDLDFP_DECIMAL_DL(0.4));
 
-        if (veryVeryVerbose) std::cout << "dec / unsigned int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / unsigned int"
+                                       << bsl::endl;
         LOOP_ASSERT(d / 100u, d / 100u == BDLDFP_DECIMAL_DL( -0.05));
         LOOP_ASSERT(100u / d, 100u / d == BDLDFP_DECIMAL_DL(-20.0));
 
-        if (veryVeryVerbose) std::cout << "dec / long int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / long int" << bsl::endl;
         LOOP_ASSERT(d / -2l, d / -2l == BDLDFP_DECIMAL_DL(2.5));
         LOOP_ASSERT(-2l / d, -2l / d == BDLDFP_DECIMAL_DL(0.4));
 
-        if (veryVeryVerbose) std::cout << "dec / unsigned long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / unsigned long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d / 100ul, d / 100ul == BDLDFP_DECIMAL_DL( -0.05));
         LOOP_ASSERT(100ul / d, 100ul / d == BDLDFP_DECIMAL_DL(-20.0));
 
-        if (veryVeryVerbose) std::cout << "dec / long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d / -2ll, d / -2ll == BDLDFP_DECIMAL_DL(2.5));
         LOOP_ASSERT(-2ll / d, -2ll / d == BDLDFP_DECIMAL_DL(0.4));
 
-        if (veryVeryVerbose) std::cout << "dec / unsigned long long int"
-                                << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / unsigned long long int"
+                                << bsl::endl;
         LOOP_ASSERT(d / 100ull, d / 100ull == BDLDFP_DECIMAL_DL( -0.05));
         LOOP_ASSERT(100ull / d, 100ull / d == BDLDFP_DECIMAL_DL(-20.0));
 
-        if (veryVeryVerbose) std::cout << "dec / dec128" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / dec128" << bsl::endl;
         LOOP_ASSERT(d / BDLDFP_DECIMAL_DL(-50.0),
                     d / BDLDFP_DECIMAL_DL(-50.0) ==
                     BDLDFP_DECIMAL_DL(0.1));
 
-        if (veryVeryVerbose) std::cout << "dec / dec32" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / dec32" << bsl::endl;
         LOOP_ASSERT(d / BDLDFP_DECIMAL_DF(-50.0),
                     d / BDLDFP_DECIMAL_DF(-50.0) ==
                     BDLDFP_DECIMAL_DL(0.1));
@@ -2386,7 +2385,7 @@ void TestDriver::testCase3()
                     BDLDFP_DECIMAL_DF(-50.0) / d ==
                     BDLDFP_DECIMAL_DL(10.0));
 
-        if (veryVeryVerbose) std::cout << "dec / dec64" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / dec64" << bsl::endl;
         LOOP_ASSERT(d / BDLDFP_DECIMAL_DD(-50.0),
                     d / BDLDFP_DECIMAL_DD(-50.0) ==
                     BDLDFP_DECIMAL_DL(0.1));
@@ -2395,13 +2394,13 @@ void TestDriver::testCase3()
                     BDLDFP_DECIMAL_DL(10.0));
     }
 
-    if (veryVerbose) std::cout << "Create test objects" << std::endl;
+    if (veryVerbose) bsl::cout << "Create test objects" << bsl::endl;
 
     BDEC::Decimal32        d32  = BDEC::Decimal32();
     BDEC::Decimal128       d128 = BDEC::Decimal128();
     const BDEC::Decimal128 c128 = BDEC::Decimal128();
 
-    if (veryVerbose) std::cout << "Check return types" << std::endl;
+    if (veryVerbose) bsl::cout << "Check return types" << bsl::endl;
 
     checkType<BDEC::Decimal128&>(++d128);
     checkType<BDEC::Decimal128>(d128++);
@@ -2495,19 +2494,19 @@ void TestDriver::testCase3()
     checkType<bool>(d128 >= d32);
 
     {
-        std::istringstream  in(pa);
-        std::wistringstream win(pa);
-        std::ostringstream  out(pa);
-        std::wostringstream wout(pa);
+        bsl::istringstream  in(pa);
+        bsl::wistringstream win(pa);
+        bsl::ostringstream  out(pa);
+        bsl::wostringstream wout(pa);
 
-        checkType<std::istream&>(in >> d128);
-        checkType<std::wistream&>(win >> d128);
-        checkType<std::ostream&>(out << c128);
-        checkType<std::wostream&>(wout << c128);
+        checkType<bsl::istream&>(in >> d128);
+        checkType<bsl::wistream&>(win >> d128);
+        checkType<bsl::ostream&>(out << c128);
+        checkType<bsl::wostream&>(wout << c128);
     }
 
 
-    typedef std::numeric_limits<BDEC::Decimal128> d128_limits;
+    typedef bsl::numeric_limits<BDEC::Decimal128> d128_limits;
     checkType<bool>(d128_limits::is_specialized);
     checkType<BDEC::Decimal128>(d128_limits::min());
     checkType<BDEC::Decimal128>(d128_limits::max());
@@ -2527,7 +2526,7 @@ void TestDriver::testCase3()
     checkType<bool>(d128_limits::has_infinity);
     checkType<bool>(d128_limits::has_quiet_NaN);
     checkType<bool>(d128_limits::has_signaling_NaN);
-    checkType<std::float_denorm_style>(d128_limits::has_denorm);
+    checkType<bsl::float_denorm_style>(d128_limits::has_denorm);
     checkType<bool>(d128_limits::has_denorm_loss);
     checkType<BDEC::Decimal128>(d128_limits::infinity());
     checkType<BDEC::Decimal128>(d128_limits::quiet_NaN());
@@ -2538,7 +2537,7 @@ void TestDriver::testCase3()
     checkType<bool>(d128_limits::is_modulo);
     checkType<bool>(d128_limits::traps);
     checkType<bool>(d128_limits::tinyness_before);
-    checkType<std::float_round_style>(d128_limits::round_style);
+    checkType<bsl::float_round_style>(d128_limits::round_style);
 }
 
 void TestDriver::testCase2()
@@ -2563,12 +2562,12 @@ void TestDriver::testCase2()
     //   'class Decimal64'
     // ------------------------------------------------------------------------
 
-    if (verbose) std::cout << "\nTesting class Decimal64"
-                           << "\n=======================" << std::endl;
+    if (verbose) bsl::cout << "\nTesting class Decimal64"
+                           << "\n=======================" << bsl::endl;
 
-    if (veryVerbose) std::cout << "Constructors" << std::endl;
+    if (veryVerbose) bsl::cout << "Constructors" << bsl::endl;
 
-    if (veryVeryVerbose) std::cout << "Copy/convert" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Copy/convert" << bsl::endl;
     {
         const BDEC::Decimal32  c32  = BDEC::Decimal32(32);
         const BDEC::Decimal64  c64  = BDEC::Decimal64(64);
@@ -2582,7 +2581,7 @@ void TestDriver::testCase2()
                      BDLDFP_DECIMAL_DD(128.0) == BDEC::Decimal64(c128));
     }
 
-    if (veryVeryVerbose) std::cout << "Integral" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Integral" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DD(  0.0) == BDEC::Decimal64());  // default
     ASSERT(BDLDFP_DECIMAL_DD(-42.0) == BDEC::Decimal64(-42)); // int
@@ -2604,7 +2603,7 @@ void TestDriver::testCase2()
 
     ASSERTV(cDefault, cZero, 0 != memcmp(&cDefault, &cZero, sizeof(cDefault)));
 
-    if (veryVeryVerbose) std::cout << "Binary FP" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Binary FP" << bsl::endl;
 
     // Note that to test binary-float taking constructors I use numbers
     // that can be represented exactly in both binary and decimal FP.
@@ -2612,7 +2611,7 @@ void TestDriver::testCase2()
     ASSERT(BDLDFP_DECIMAL_DD(4.25) == BDEC::Decimal64(4.25f)); // float
     ASSERT(BDLDFP_DECIMAL_DD(4.25) == BDEC::Decimal64(4.25)); // double
 
-    if (veryVeryVerbose) std::cout << "Decimal FP" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Decimal FP" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DD(-42.0) ==
            BDLDFP_DECIMAL_DF(-42.0));// Decimal342
@@ -2625,7 +2624,7 @@ void TestDriver::testCase2()
     ASSERT(BDLDFP_DECIMAL_DD(4.2) == BDLDFP_DECIMAL_DL(4.2));
     ASSERT(BDLDFP_DECIMAL_DD(4.2e9) == BDLDFP_DECIMAL_DL(4.2e9));
 
-    if (veryVerbose) std::cout << "Propriatery accessors" << std::endl;
+    if (veryVerbose) bsl::cout << "Propriatery accessors" << bsl::endl;
     {
         BDEC::Decimal64 d64(42);
         ASSERT((void*)d64.data() == (void*)&d64);
@@ -2636,7 +2635,7 @@ void TestDriver::testCase2()
         ASSERT(BDEC::Decimal64(cd64.value()) == BDEC::Decimal64(42));
     }
 
-    if (veryVerbose) std::cout << "Operator==" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator==" << bsl::endl;
 
     ASSERT(! (BDLDFP_DECIMAL_DD(4.0) == BDLDFP_DECIMAL_DD(5.0)));
     ASSERT(BDLDFP_DECIMAL_DD(-9.345e27) == BDLDFP_DECIMAL_DD(-9.345e27));
@@ -2646,7 +2645,7 @@ void TestDriver::testCase2()
     ASSERT(! (BDLDFP_DECIMAL_DF(4.0) == BDLDFP_DECIMAL_DD(5.0)));
     ASSERT(BDLDFP_DECIMAL_DF(-9.345e27) == BDLDFP_DECIMAL_DD(-9.345e27));
 
-    if (veryVerbose) std::cout << "Operator!=" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator!=" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DD(4.0) != BDLDFP_DECIMAL_DD(5.0));
     ASSERT(! (BDLDFP_DECIMAL_DD(-9.345e27) !=
@@ -2659,7 +2658,7 @@ void TestDriver::testCase2()
     ASSERT(! (BDLDFP_DECIMAL_DF(-9.345e27) !=
               BDLDFP_DECIMAL_DD(-9.345e27)));
 
-    if (veryVerbose) std::cout << "Operator<" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator<" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DD(4.0) < BDLDFP_DECIMAL_DD(5.0));
     ASSERT(! (BDLDFP_DECIMAL_DD(-9.345e27) <
@@ -2675,7 +2674,7 @@ void TestDriver::testCase2()
               BDLDFP_DECIMAL_DD(-9.345e27)));
     ASSERT(! (BDLDFP_DECIMAL_DF(5.0) < BDLDFP_DECIMAL_DD(4.0)));
 
-    if (veryVerbose) std::cout << "Operator>" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator>" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DD(5.0) > BDLDFP_DECIMAL_DD(4.0));
     ASSERT(! (BDLDFP_DECIMAL_DD(-9.345e27) >
@@ -2691,7 +2690,7 @@ void TestDriver::testCase2()
               BDLDFP_DECIMAL_DD(-9.345e27)));
     ASSERT(! (BDLDFP_DECIMAL_DF(4.0) > BDLDFP_DECIMAL_DD(5.0)));
 
-    if (veryVerbose) std::cout << "Operator<=" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator<=" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DD(4.0) <= BDLDFP_DECIMAL_DD(5.0));
     ASSERT(BDLDFP_DECIMAL_DD(-9.345e27) <= BDLDFP_DECIMAL_DD(-9.345e27));
@@ -2704,7 +2703,7 @@ void TestDriver::testCase2()
     ASSERT(BDLDFP_DECIMAL_DF(-9.345e27) <= BDLDFP_DECIMAL_DD(-9.345e27));
     ASSERT(! (BDLDFP_DECIMAL_DF(5.0) <= BDLDFP_DECIMAL_DD(4.0)));
 
-    if (veryVerbose) std::cout << "Operator>=" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator>=" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DD(5.0) >= BDLDFP_DECIMAL_DD(4.0));
     ASSERT(BDLDFP_DECIMAL_DD(-9.345e27) >= BDLDFP_DECIMAL_DD(-9.345e27));
@@ -2729,21 +2728,21 @@ void TestDriver::testCase2()
     // precision as it would for binary floating point *or* with the
     // implied precision of the cohort if that is larger.  AFAIU
 
-    if (veryVerbose) std::cout << "Test stream out" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream out" << bsl::endl;
     {
-        std::ostringstream  out(pa);
+        bsl::ostringstream  out(pa);
 
         BDEC::Decimal64 d1(BDLDFP_DECIMAL_DD(-1.234567890123456e-24));
         out << d1;
-        std::string s(pa);
+        bsl::string s(pa);
         getStringFromStream(out, &s);
         LOOP_ASSERT(s, decLower(s) == "-1.234567890123456e-24");
     }
 
-    if (veryVerbose) std::cout << "Test stream in" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("-1.234567890123456e-24", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("-1.234567890123456e-24", pa);
         in.str(ins);
 
         BDEC::Decimal64 d1;
@@ -2751,10 +2750,10 @@ void TestDriver::testCase2()
         ASSERT(d1 == BDLDFP_DECIMAL_DD(-1.234567890123456e-24));
     }
 
-    if (veryVerbose) std::cout << "Test stream in NaN" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in NaN" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("NaN", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("NaN", pa);
         in.str(ins);
 
         BDEC::Decimal64 d1;
@@ -2762,42 +2761,42 @@ void TestDriver::testCase2()
         ASSERT(d1 != d1);
     }
 
-    if (veryVerbose) std::cout << "Test stream in Infinity" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in Infinity" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("Inf", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("Inf", pa);
         in.str(ins);
 
         BDEC::Decimal64 d1;
         in >> d1;
-        ASSERT(d1 > std::numeric_limits<BDEC::Decimal64>::max());
+        ASSERT(d1 > bsl::numeric_limits<BDEC::Decimal64>::max());
     }
 
-    if (veryVerbose) std::cout << "Test stream in -Infinity" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in -Infinity" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("-Inf", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("-Inf", pa);
         in.str(ins);
 
         BDEC::Decimal64 d1;
         in >> d1;
-        ASSERT(d1 < -std::numeric_limits<BDEC::Decimal64>::max());
+        ASSERT(d1 < -bsl::numeric_limits<BDEC::Decimal64>::max());
     }
 
-    if (veryVerbose) std::cout << "Test wide stream out" << std::endl;
+    if (veryVerbose) bsl::cout << "Test wide stream out" << bsl::endl;
     {
-        std::wostringstream  out(pa);
+        bsl::wostringstream  out(pa);
         BDEC::Decimal64 d1(BDLDFP_DECIMAL_DD(-1.234567890123456e-24));
         out << d1;
-        std::wstring s(pa);
+        bsl::wstring s(pa);
         getStringFromStream(out, &s);
         ASSERT(decLower(s) == L"-1.234567890123456e-24");
     }
 
-    if (veryVerbose) std::cout << "Test wide stream in" << std::endl;
+    if (veryVerbose) bsl::cout << "Test wide stream in" << bsl::endl;
     {
-        std::wistringstream  in(pa);
-        std::wstring ins(L"-1.234567890123456e-24", pa);
+        bsl::wistringstream  in(pa);
+        bsl::wstring ins(L"-1.234567890123456e-24", pa);
         in.str(ins);
 
         BDEC::Decimal64 d1;
@@ -2805,7 +2804,7 @@ void TestDriver::testCase2()
         ASSERT(d1 == BDLDFP_DECIMAL_DD(-1.234567890123456e-24));
     }
 
-    if (veryVerbose) std::cout << "Operator++" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator++" << bsl::endl;
     {
         BDEC::Decimal64 d1(BDLDFP_DECIMAL_DD(-5.0));
         BDEC::Decimal64 d2 = d1++;
@@ -2816,7 +2815,7 @@ void TestDriver::testCase2()
         LOOP_ASSERT(d3, BDLDFP_DECIMAL_DD(-4.0) == d3);
     }
 
-    if (veryVerbose) std::cout << "Operator--" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator--" << bsl::endl;
     {
         BDEC::Decimal64 d1(BDLDFP_DECIMAL_DD(-5.0));
         BDEC::Decimal64 d2 = d1--;
@@ -2827,7 +2826,7 @@ void TestDriver::testCase2()
         LOOP_ASSERT(d3, BDLDFP_DECIMAL_DD(-6.0) == d3);
     }
 
-    if (veryVerbose) std::cout << "Unary-" << std::endl;
+    if (veryVerbose) bsl::cout << "Unary-" << bsl::endl;
     {
         BDEC::Decimal64 d1(BDLDFP_DECIMAL_DD(-5.0));
         BDEC::Decimal64 d2(BDLDFP_DECIMAL_DD( 5.0));
@@ -2836,21 +2835,21 @@ void TestDriver::testCase2()
 
         // Unary - must make +0 into -0
 
-        std::ostringstream out(pa);
+        bsl::ostringstream out(pa);
         out << -BDLDFP_DECIMAL_DD(0.0);
-        std::string s(pa);
+        bsl::string s(pa);
         getStringFromStream(out, &s);
         LOOP_ASSERT(s, s[0] == '-'); // it is negative
         ASSERT(-BDLDFP_DECIMAL_DD(0.0) == BDEC::Decimal64(0)) // and 0
 
         BDEC::Decimal64  dd =  BDLDFP_DECIMAL_DD(0.0);
         BDEC::Decimal64 ndd = -BDLDFP_DECIMAL_DD(0.0);
-        LOOP2_ASSERT( dd, ndd,  std::memcmp(&ndd, &dd, sizeof(dd)));
+        LOOP2_ASSERT( dd, ndd,  bsl::memcmp(&ndd, &dd, sizeof(dd)));
         dd= -dd;
-        LOOP2_ASSERT(dd, ndd, !std::memcmp(&ndd, &dd, sizeof(dd)));
+        LOOP2_ASSERT(dd, ndd, !bsl::memcmp(&ndd, &dd, sizeof(dd)));
     }
 
-    if (veryVerbose) std::cout << "Unary+" << std::endl;
+    if (veryVerbose) bsl::cout << "Unary+" << bsl::endl;
     {
         BDEC::Decimal64 d1(BDLDFP_DECIMAL_DD(-5.0));
         BDEC::Decimal64 d2(BDLDFP_DECIMAL_DD( 5.0));
@@ -2860,224 +2859,224 @@ void TestDriver::testCase2()
         // Unary + must make -0 into +0
 
         BDEC::Decimal128 negzero(-BDLDFP_DECIMAL_DD(0.0));
-        std::ostringstream out(pa);
+        bsl::ostringstream out(pa);
         out << +negzero;
-        std::string s(pa);
+        bsl::string s(pa);
         getStringFromStream(out, &s);
         LOOP_ASSERT(s, s[0] != '+'); // it is positive
         ASSERT(-BDLDFP_DECIMAL_DD(0.0) == BDEC::Decimal64(0)) // and 0
     }
 
-    if (veryVerbose) std::cout << "+=" << std::endl;
+    if (veryVerbose) bsl::cout << "+=" << bsl::endl;
     {
         BDEC::Decimal64 d(BDLDFP_DECIMAL_DD(-5.0));
 
-        if (veryVeryVerbose) std::cout << "+=(int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(int)" << bsl::endl;
         d += 1;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-4.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(unsigned int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(unsigned int)" << bsl::endl;
         d += 2u;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-2.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(long int)" << bsl::endl;
         d += -1l;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-3.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(unsigned long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(unsigned long int)"
+                                       << bsl::endl;
         d += 5ul;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(2.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(long long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(long long int)" << bsl::endl;
         d += -2ll;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(0.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(unsigned long long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(unsigned long long int)"
+                                       << bsl::endl;
         d += 42ull;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(42.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(Decimal32)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(Decimal32)" << bsl::endl;
         d += BDLDFP_DECIMAL_DF(-22.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(20.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(Decimal64)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(Decimal64)" << bsl::endl;
         d += BDLDFP_DECIMAL_DD(3.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(23.0) == d);
 
-        if (veryVeryVerbose) std::cout << "+=(Decimal128)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "+=(Decimal128)" << bsl::endl;
         d += BDLDFP_DECIMAL_DL(9.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(32.0) == d);
     }
 
-    if (veryVerbose) std::cout << "-=" << std::endl;
+    if (veryVerbose) bsl::cout << "-=" << bsl::endl;
     {
         BDEC::Decimal64 d(BDLDFP_DECIMAL_DD(-5.0));
 
-        if (veryVeryVerbose) std::cout << "-=(int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(int)" << bsl::endl;
         d -= 1;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-6.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(unsigned int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(unsigned int)" << bsl::endl;
         d -= 2u;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-8.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(long int)" << bsl::endl;
         d -= -10l;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(2.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(unsigned long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(unsigned long int)"
+                                       << bsl::endl;
         d -= 10ul;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-8.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(long long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(long long int)" << bsl::endl;
         d -= -8ll;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(0.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(unsigned long long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(unsigned long long int)"
+                                       << bsl::endl;
         d -= 42ull;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-42.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(Decimal32)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(Decimal32)" << bsl::endl;
         d -= BDLDFP_DECIMAL_DF(-22.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-20.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(Decimal64)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(Decimal64)" << bsl::endl;
         d -= BDLDFP_DECIMAL_DD(3.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-23.0) == d);
 
-        if (veryVeryVerbose) std::cout << "-=(Decimal128)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "-=(Decimal128)" << bsl::endl;
         d -= BDLDFP_DECIMAL_DL(9.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-32.0) == d);
     }
 
-    if (veryVerbose) std::cout << "*=" << std::endl;
+    if (veryVerbose) bsl::cout << "*=" << bsl::endl;
     {
         BDEC::Decimal64 d(BDLDFP_DECIMAL_DD(-5.0));
 
-        if (veryVeryVerbose) std::cout << "*=(int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(int)" << bsl::endl;
         d *= -2;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(10.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(unsigned int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(unsigned int)" << bsl::endl;
         d *= 2000u;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(20000.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(long int)" << bsl::endl;
         d *= -10l;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-200000.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(unsigned long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(unsigned long int)"
+                                       << bsl::endl;
         d *= 3ul;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-600000.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(long long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(long long int)" << bsl::endl;
         d *= -1ll;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(600000.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(unsigned long long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(unsigned long long int)"
+                                       << bsl::endl;
         d *= 5ull;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(3000000.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(Decimal32)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(Decimal32)" << bsl::endl;
         d *= BDLDFP_DECIMAL_DF(1e-5);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(30.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(Decimal64)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(Decimal64)" << bsl::endl;
         d *= BDLDFP_DECIMAL_DD(-3.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-90.0) == d);
 
-        if (veryVeryVerbose) std::cout << "*=(Decimal128)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "*=(Decimal128)" << bsl::endl;
         d *= BDLDFP_DECIMAL_DL(2.4e-134);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-2.16e-132) == d);
     }
 
-    if (veryVerbose) std::cout << "/=" << std::endl;
+    if (veryVerbose) bsl::cout << "/=" << bsl::endl;
     {
         BDEC::Decimal64 d(BDLDFP_DECIMAL_DD(-5.0));
 
-        if (veryVeryVerbose) std::cout << "/=(int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(int)" << bsl::endl;
         d /= -2;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(2.5) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(unsigned int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(unsigned int)" << bsl::endl;
         d /= 2000u;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(0.00125) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(long int)" << bsl::endl;
         d /= -10l;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-0.000125) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(unsigned long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(unsigned long int)"
+                                       << bsl::endl;
         d /= 5ul;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-0.000025) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(long long int)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(long long int)" << bsl::endl;
         d /= -5ll;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(0.000005) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(unsigned long long int)"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(unsigned long long int)"
+                                       << bsl::endl;
         d /= 5ull;
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(0.000001) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(Decimal32)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(Decimal32)" << bsl::endl;
         d /= BDLDFP_DECIMAL_DF(1e-5);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(0.1) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(Decimal64)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(Decimal64)" << bsl::endl;
         d /= BDLDFP_DECIMAL_DD(-5.0);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(-0.02) == d);
 
-        if (veryVeryVerbose) std::cout << "/=(Decimal128)" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "/=(Decimal128)" << bsl::endl;
         d /= BDLDFP_DECIMAL_DL(-2.5e-134);
         LOOP_ASSERT(d, BDLDFP_DECIMAL_DD(8.e131) == d);
     }
 
-    if (veryVerbose) std::cout << "operator+" << std::endl;
+    if (veryVerbose) bsl::cout << "operator+" << bsl::endl;
     {
         BDEC::Decimal64 d(BDLDFP_DECIMAL_DD(-5.0));
 
-        if (veryVeryVerbose) std::cout << "dec + int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + int" << bsl::endl;
         LOOP_ASSERT(d + 1, d + 1 == BDLDFP_DECIMAL_DD(-4.0));
         LOOP_ASSERT(1 + d, 1 + d == BDLDFP_DECIMAL_DD(-4.0));
 
-        if (veryVeryVerbose) std::cout << "dec + unsigned int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + unsigned int"
+                                       << bsl::endl;
         LOOP_ASSERT(d + 10u, d + 10u == BDLDFP_DECIMAL_DD(5.0));
         LOOP_ASSERT(10u + d, 10u + d == BDLDFP_DECIMAL_DD(5.0));
 
-        if (veryVeryVerbose) std::cout << "dec + long int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + long int" << bsl::endl;
         LOOP_ASSERT(d + 1l, d + 1l == BDLDFP_DECIMAL_DD(-4.0));
         LOOP_ASSERT(1l + d, 1l + d == BDLDFP_DECIMAL_DD(-4.0));
 
-        if (veryVeryVerbose) std::cout << "dec + unsigned long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + unsigned long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d + 10ul, d + 10ul == BDLDFP_DECIMAL_DD(5.0));
         LOOP_ASSERT(10ul + d, 10ul + d == BDLDFP_DECIMAL_DD(5.0));
 
-        if (veryVeryVerbose) std::cout << "dec + long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d + 1ll, d + 1ll == BDLDFP_DECIMAL_DD(-4.0));
         LOOP_ASSERT(1ll + d, 1ll + d == BDLDFP_DECIMAL_DD(-4.0));
 
-        if (veryVeryVerbose) std::cout << "dec + unsigned long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + unsigned long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d + 10ull, d + 10ull == BDLDFP_DECIMAL_DD(5.0));
         LOOP_ASSERT(10ull + d, 10ull + d == BDLDFP_DECIMAL_DD(5.0));
 
-        if (veryVeryVerbose) std::cout << "dec + dec64" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + dec64" << bsl::endl;
         LOOP_ASSERT(d + BDLDFP_DECIMAL_DD(-3.0),
                     d + BDLDFP_DECIMAL_DD(-3.0) ==
                     BDLDFP_DECIMAL_DD(-8.0));
 
-        if (veryVeryVerbose) std::cout << "dec + dec32" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec + dec32" << bsl::endl;
         LOOP_ASSERT(d + BDLDFP_DECIMAL_DF(-3.0),
                     d + BDLDFP_DECIMAL_DF(-3.0) ==
                     BDLDFP_DECIMAL_DD(-8.0));
@@ -3086,44 +3085,44 @@ void TestDriver::testCase2()
                     BDLDFP_DECIMAL_DD(-8.0));
     }
 
-    if (veryVerbose) std::cout << "operator-" << std::endl;
+    if (veryVerbose) bsl::cout << "operator-" << bsl::endl;
     {
         BDEC::Decimal64 d(BDLDFP_DECIMAL_DD(-5.0));
 
-        if (veryVeryVerbose) std::cout << "dec - int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - int" << bsl::endl;
         LOOP_ASSERT(d - 1, d - 1 == BDLDFP_DECIMAL_DD(-6.0));
         LOOP_ASSERT(1 - d, 1 - d == BDLDFP_DECIMAL_DD( 6.0));
 
-        if (veryVeryVerbose) std::cout << "dec - unsigned int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - unsigned int"
+                                       << bsl::endl;
         LOOP_ASSERT(d - 10u, d - 10u == BDLDFP_DECIMAL_DD(-15.0));
         LOOP_ASSERT(10u - d, 10u - d == BDLDFP_DECIMAL_DD( 15.0));
 
-        if (veryVeryVerbose) std::cout << "dec - long int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - long int" << bsl::endl;
         LOOP_ASSERT(d - 1l, d - 1l == BDLDFP_DECIMAL_DD(-6.0));
         LOOP_ASSERT(1l - d, 1l - d == BDLDFP_DECIMAL_DD( 6.0));
 
-        if (veryVeryVerbose) std::cout << "dec - unsigned long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - unsigned long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d - 10ul, d - 10ul == BDLDFP_DECIMAL_DD(-15.0));
         LOOP_ASSERT(10ul - d, 10ul - d == BDLDFP_DECIMAL_DD( 15.0));
 
-        if (veryVeryVerbose) std::cout << "dec - long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d - 1ll, d - 1ll == BDLDFP_DECIMAL_DD(-6.0));
         LOOP_ASSERT(1ll - d, 1ll - d == BDLDFP_DECIMAL_DD( 6.0));
 
-        if (veryVeryVerbose) std::cout << "dec - unsigned long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - unsigned long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d - 10ull, d - 10ull == BDLDFP_DECIMAL_DD(-15.0));
         LOOP_ASSERT(10ull - d, 10ull - d == BDLDFP_DECIMAL_DD( 15.0));
 
-        if (veryVeryVerbose) std::cout << "dec - dec64" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - dec64" << bsl::endl;
         LOOP_ASSERT(d - BDLDFP_DECIMAL_DD(-3.0),
                     d - BDLDFP_DECIMAL_DD(-3.0) ==
                     BDLDFP_DECIMAL_DD(-2.0));
 
-        if (veryVeryVerbose) std::cout << "dec - dec32" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec - dec32" << bsl::endl;
         LOOP_ASSERT(d - BDLDFP_DECIMAL_DF(-3.0),
                     d - BDLDFP_DECIMAL_DF(-3.0) ==
                     BDLDFP_DECIMAL_DD(-2.0));
@@ -3132,44 +3131,44 @@ void TestDriver::testCase2()
                     BDLDFP_DECIMAL_DD( 2.0));
     }
 
-    if (veryVerbose) std::cout << "operator*" << std::endl;
+    if (veryVerbose) bsl::cout << "operator*" << bsl::endl;
     {
         BDEC::Decimal64 d(BDLDFP_DECIMAL_DD(-5.0));
 
-        if (veryVeryVerbose) std::cout << "dec * int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * int" << bsl::endl;
         LOOP_ASSERT(d * -2, d * -2 == BDLDFP_DECIMAL_DD(10.0));
         LOOP_ASSERT(-2 * d, -2 * d == BDLDFP_DECIMAL_DD(10.0));
 
-        if (veryVeryVerbose) std::cout << "dec * unsigned int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * unsigned int"
+                                       << bsl::endl;
         LOOP_ASSERT(d * 10u, d * 10u == BDLDFP_DECIMAL_DD(-50.0));
         LOOP_ASSERT(10u * d, 10u * d == BDLDFP_DECIMAL_DD(-50.0));
 
-        if (veryVeryVerbose) std::cout << "dec * long int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * long int" << bsl::endl;
         LOOP_ASSERT(d * -2l, d * -2l == BDLDFP_DECIMAL_DD(10.0));
         LOOP_ASSERT(-2l * d, -2l * d == BDLDFP_DECIMAL_DD(10.0));
 
-        if (veryVeryVerbose) std::cout << "dec * unsigned long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * unsigned long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d * 10ul, d * 10ul == BDLDFP_DECIMAL_DD(-50.0));
         LOOP_ASSERT(10ul * d, 10ul * d == BDLDFP_DECIMAL_DD(-50.0));
 
-        if (veryVeryVerbose) std::cout << "dec * long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d * -2ll, d * -2ll == BDLDFP_DECIMAL_DD(10.0));
         LOOP_ASSERT(-2ll * d, -2ll * d == BDLDFP_DECIMAL_DD(10.0));
 
-        if (veryVeryVerbose) std::cout << "dec * unsigned long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * unsigned long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d * 10ull, d * 10ull == BDLDFP_DECIMAL_DD(-50.0));
         LOOP_ASSERT(10ull * d, 10ull * d == BDLDFP_DECIMAL_DD(-50.0));
 
-        if (veryVeryVerbose) std::cout << "dec * dec64" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * dec64" << bsl::endl;
         LOOP_ASSERT(d * BDLDFP_DECIMAL_DD(-3.0),
                     d * BDLDFP_DECIMAL_DD(-3.0) ==
                     BDLDFP_DECIMAL_DD(15.0));
 
-        if (veryVeryVerbose) std::cout << "dec * dec32" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec * dec32" << bsl::endl;
         LOOP_ASSERT(d * BDLDFP_DECIMAL_DF(-3.0),
                     d * BDLDFP_DECIMAL_DF(-3.0) ==
                     BDLDFP_DECIMAL_DD(15.0));
@@ -3178,44 +3177,44 @@ void TestDriver::testCase2()
                     BDLDFP_DECIMAL_DD(15.0));
     }
 
-    if (veryVerbose) std::cout << "operator/" << std::endl;
+    if (veryVerbose) bsl::cout << "operator/" << bsl::endl;
     {
         BDEC::Decimal64 d(BDLDFP_DECIMAL_DD(-5.0));
 
-        if (veryVeryVerbose) std::cout << "dec / int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / int" << bsl::endl;
         LOOP_ASSERT(d / -2, d / -2 == BDLDFP_DECIMAL_DD(2.5));
         LOOP_ASSERT(-2 / d, -2 / d == BDLDFP_DECIMAL_DD(0.4));
 
-        if (veryVeryVerbose) std::cout << "dec / unsigned int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / unsigned int"
+                                       << bsl::endl;
         LOOP_ASSERT(d / 100u, d / 100u == BDLDFP_DECIMAL_DD( -0.05));
         LOOP_ASSERT(100u / d, 100u / d == BDLDFP_DECIMAL_DD(-20.0));
 
-        if (veryVeryVerbose) std::cout << "dec / long int" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / long int" << bsl::endl;
         LOOP_ASSERT(d / -2l, d / -2l == BDLDFP_DECIMAL_DD(2.5));
         LOOP_ASSERT(-2l / d, -2l / d == BDLDFP_DECIMAL_DD(0.4));
 
-        if (veryVeryVerbose) std::cout << "dec / unsigned long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / unsigned long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d / 100ul, d / 100ul == BDLDFP_DECIMAL_DD( -0.05));
         LOOP_ASSERT(100ul / d, 100ul / d == BDLDFP_DECIMAL_DD(-20.0));
 
-        if (veryVeryVerbose) std::cout << "dec / long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d / -2ll, d / -2ll == BDLDFP_DECIMAL_DD(2.5));
         LOOP_ASSERT(-2ll / d, -2ll / d == BDLDFP_DECIMAL_DD(0.4));
 
-        if (veryVeryVerbose) std::cout << "dec / unsigned long long int"
-                                       << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / unsigned long long int"
+                                       << bsl::endl;
         LOOP_ASSERT(d / 100ull, d / 100ull == BDLDFP_DECIMAL_DD( -0.05));
         LOOP_ASSERT(100ull / d, 100ull / d == BDLDFP_DECIMAL_DD(-20.0));
 
-        if (veryVeryVerbose) std::cout << "dec / dec64" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / dec64" << bsl::endl;
         LOOP_ASSERT(d / BDLDFP_DECIMAL_DD(-50.0),
                     d / BDLDFP_DECIMAL_DD(-50.0) ==
                     BDLDFP_DECIMAL_DD(0.1));
 
-        if (veryVeryVerbose) std::cout << "dec / dec32" << std::endl;
+        if (veryVeryVerbose) bsl::cout << "dec / dec32" << bsl::endl;
         LOOP_ASSERT(d / BDLDFP_DECIMAL_DF(-50.0),
                     d / BDLDFP_DECIMAL_DF(-50.0) ==
                     BDLDFP_DECIMAL_DD(0.1));
@@ -3224,13 +3223,13 @@ void TestDriver::testCase2()
                     BDLDFP_DECIMAL_DD(10.0));
     }
 
-    if (veryVerbose) std::cout << "Create test objects" << std::endl;
+    if (veryVerbose) bsl::cout << "Create test objects" << bsl::endl;
 
     BDEC::Decimal32        d32  = BDEC::Decimal32();
     BDEC::Decimal64        d64  = BDEC::Decimal64();
     const BDEC::Decimal64  c64  = BDEC::Decimal64();
 
-    if (veryVerbose) std::cout << "Check return types" << std::endl;
+    if (veryVerbose) bsl::cout << "Check return types" << bsl::endl;
 
     checkType<BDEC::Decimal64&>(++d64);
     checkType<BDEC::Decimal64>(d64++);
@@ -3320,18 +3319,18 @@ void TestDriver::testCase2()
     checkType<bool>(d64 >= d32);
 
     {
-        std::istringstream  in(pa);
-        std::wistringstream win(pa);
-        std::ostringstream  out(pa);
-        std::wostringstream wout(pa);
+        bsl::istringstream  in(pa);
+        bsl::wistringstream win(pa);
+        bsl::ostringstream  out(pa);
+        bsl::wostringstream wout(pa);
 
-        checkType<std::istream&>(in >> d64);
-        checkType<std::wistream&>(win >> d64);
-        checkType<std::ostream&>(out << c64);
-        checkType<std::wostream&>(wout << c64);
+        checkType<bsl::istream&>(in >> d64);
+        checkType<bsl::wistream&>(win >> d64);
+        checkType<bsl::ostream&>(out << c64);
+        checkType<bsl::wostream&>(wout << c64);
     }
 
-    typedef std::numeric_limits<BDEC::Decimal64> d64_limits;
+    typedef bsl::numeric_limits<BDEC::Decimal64> d64_limits;
     checkType<bool>(d64_limits::is_specialized);
     checkType<BDEC::Decimal64>(d64_limits::min());
     checkType<BDEC::Decimal64>(d64_limits::max());
@@ -3351,7 +3350,7 @@ void TestDriver::testCase2()
     checkType<bool>(d64_limits::has_infinity);
     checkType<bool>(d64_limits::has_quiet_NaN);
     checkType<bool>(d64_limits::has_signaling_NaN);
-    checkType<std::float_denorm_style>(d64_limits::has_denorm);
+    checkType<bsl::float_denorm_style>(d64_limits::has_denorm);
     checkType<bool>(d64_limits::has_denorm_loss);
     checkType<BDEC::Decimal64>(d64_limits::infinity());
     checkType<BDEC::Decimal64>(d64_limits::quiet_NaN());
@@ -3362,7 +3361,7 @@ void TestDriver::testCase2()
     checkType<bool>(d64_limits::is_modulo);
     checkType<bool>(d64_limits::traps);
     checkType<bool>(d64_limits::tinyness_before);
-    checkType<std::float_round_style>(d64_limits::round_style);
+    checkType<bsl::float_round_style>(d64_limits::round_style);
 }
 
 void TestDriver::testCase1()
@@ -3387,13 +3386,13 @@ void TestDriver::testCase1()
     // Testing:
     //   'class Decimal32'
     // ------------------------------------------------------------------------
-    if (verbose) std::cout << std::endl
-                           << "Testing class Decimal32" << std::endl
-                           << "=======================" << std::endl;
+    if (verbose) bsl::cout << bsl::endl
+                           << "Testing class Decimal32" << bsl::endl
+                           << "=======================" << bsl::endl;
 
-    if (veryVerbose) std::cout << "Constructors" << std::endl;
+    if (veryVerbose) bsl::cout << "Constructors" << bsl::endl;
 
-    if (veryVeryVerbose) std::cout << "Copy/convert" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Copy/convert" << bsl::endl;
     {
         const BDEC::Decimal32  c32  = BDEC::Decimal32(32);
         const BDEC::Decimal64  c64  = BDEC::Decimal64(64);
@@ -3406,7 +3405,7 @@ void TestDriver::testCase1()
         // ASSERT(BDLDFP_DECIMAL_DF(128.0) == BDEC::Decimal32(c128));
     }
 
-    if (veryVeryVerbose) std::cout << "Integral" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Integral" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DF(  0.0) == BDEC::Decimal32());  // default
     ASSERT(BDLDFP_DECIMAL_DF(-42.0) == BDEC::Decimal32(-42)); // int
@@ -3428,7 +3427,7 @@ void TestDriver::testCase1()
 
     ASSERTV(cDefault, cZero, 0 != memcmp(&cDefault, &cZero, sizeof(cDefault)));
 
-    if (veryVeryVerbose) std::cout << "Binary FP" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Binary FP" << bsl::endl;
 
     // Note that to test binary-float taking constructors I use numbers
     // that can be represented exactly in both binary and decimal FP.
@@ -3436,7 +3435,7 @@ void TestDriver::testCase1()
     ASSERT(BDLDFP_DECIMAL_DF(4.25) == BDEC::Decimal32(4.25f)); // float
     ASSERT(BDLDFP_DECIMAL_DF(4.25) == BDEC::Decimal32(4.25)); // double
 
-    if (veryVeryVerbose) std::cout << "Decimal FP" << std::endl;
+    if (veryVeryVerbose) bsl::cout << "Decimal FP" << bsl::endl;
 
     // Decimal64
     ASSERT(BDLDFP_DECIMAL_DF(-42.0) == BDLDFP_DECIMAL_DD(-42.0));
@@ -3450,7 +3449,7 @@ void TestDriver::testCase1()
     ASSERT(BDLDFP_DECIMAL_DF(4.2) == BDLDFP_DECIMAL_DL(4.2));
     ASSERT(BDLDFP_DECIMAL_DF(4.2e9) == BDLDFP_DECIMAL_DL(4.2e9));
 
-    if (veryVerbose) std::cout << "Propriatery accessors" << std::endl;
+    if (veryVerbose) bsl::cout << "Propriatery accessors" << bsl::endl;
     {
         BDEC::Decimal32 d32(42);
         ASSERT((void*)d32.data() == (void*)&d32);
@@ -3461,18 +3460,18 @@ void TestDriver::testCase1()
         ASSERT(BDEC::Decimal32(cd32.value()) == BDEC::Decimal32(42));
     }
 
-    if (veryVerbose) std::cout << "Operator==" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator==" << bsl::endl;
 
     ASSERT(! (BDLDFP_DECIMAL_DF(4.0) == BDLDFP_DECIMAL_DF(5.0)));
     ASSERT(BDLDFP_DECIMAL_DF(-9.345e27) == BDLDFP_DECIMAL_DF(-9.345e27));
 
-    if (veryVerbose) std::cout << "Operator!=" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator!=" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DF(4.0) != BDLDFP_DECIMAL_DF(5.0));
     ASSERT(! (BDLDFP_DECIMAL_DF(-9.345e27) !=
               BDLDFP_DECIMAL_DF(-9.345e27)));
 
-    if (veryVerbose) std::cout << "Operator<" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator<" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DF(4.0) <
            BDLDFP_DECIMAL_DF(5.0));
@@ -3480,20 +3479,20 @@ void TestDriver::testCase1()
               BDLDFP_DECIMAL_DF(-9.345e27)));
     ASSERT(! (BDLDFP_DECIMAL_DF(5.0) < BDLDFP_DECIMAL_DF(4.0)));
 
-    if (veryVerbose) std::cout << "Operator>" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator>" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DF(5.0) > BDLDFP_DECIMAL_DF(4.0));
     ASSERT(! (BDLDFP_DECIMAL_DF(-9.345e27) >
               BDLDFP_DECIMAL_DF(-9.345e27)));
     ASSERT(! (BDLDFP_DECIMAL_DF(4.0) > BDLDFP_DECIMAL_DF(5.0)));
 
-    if (veryVerbose) std::cout << "Operator<=" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator<=" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DF(4.0) <= BDLDFP_DECIMAL_DF(5.0));
     ASSERT(BDLDFP_DECIMAL_DF(-9.345e27) <= BDLDFP_DECIMAL_DF(-9.345e27));
     ASSERT(! (BDLDFP_DECIMAL_DF(5.0) <= BDLDFP_DECIMAL_DF(4.0)));
 
-    if (veryVerbose) std::cout << "Operator>=" << std::endl;
+    if (veryVerbose) bsl::cout << "Operator>=" << bsl::endl;
 
     ASSERT(BDLDFP_DECIMAL_DF(5.0) >= BDLDFP_DECIMAL_DF(4.0));
     ASSERT(BDLDFP_DECIMAL_DF(-9.345e27) >= BDLDFP_DECIMAL_DF(-9.345e27));
@@ -3510,21 +3509,21 @@ void TestDriver::testCase1()
     // binary floating point *or* with the implied precision of the cohort
     // if that is larger.  AFAIU
 
-    if (veryVerbose) std::cout << "Test stream out" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream out" << bsl::endl;
     {
-        std::ostringstream out(pa);
+        bsl::ostringstream out(pa);
 
         BDEC::Decimal32 d1(BDLDFP_DECIMAL_DF(-8.327457e-24));
         out << d1;
-        std::string s(pa);
+        bsl::string s(pa);
         getStringFromStream(out, &s);
         LOOP2_ASSERT(s, decLower(s), decLower(s) == "-8.327457e-24");
     }
 
-    if (veryVerbose) std::cout << "Test stream in" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in" << bsl::endl;
     {
-        std::istringstream in(pa);
-        std::string ins("-8.327457e-24", pa);
+        bsl::istringstream in(pa);
+        bsl::string ins("-8.327457e-24", pa);
         in.str(ins);
 
         BDEC::Decimal32 d1;
@@ -3532,10 +3531,10 @@ void TestDriver::testCase1()
         ASSERT(d1 == BDLDFP_DECIMAL_DF(-8.327457e-24));
     }
 
-    if (veryVerbose) std::cout << "Test stream in NaN" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in NaN" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("NaN", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("NaN", pa);
         in.str(ins);
 
         BDEC::Decimal32 d1;
@@ -3543,42 +3542,42 @@ void TestDriver::testCase1()
         ASSERT(d1 != d1);
     }
 
-    if (veryVerbose) std::cout << "Test stream in Infinity" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in Infinity" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("Inf", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("Inf", pa);
         in.str(ins);
 
         BDEC::Decimal32 d1;
         in >> d1;
-        ASSERT(d1 > std::numeric_limits<BDEC::Decimal32>::max());
+        ASSERT(d1 > bsl::numeric_limits<BDEC::Decimal32>::max());
     }
 
-    if (veryVerbose) std::cout << "Test stream in -Infinity" << std::endl;
+    if (veryVerbose) bsl::cout << "Test stream in -Infinity" << bsl::endl;
     {
-        std::istringstream  in(pa);
-        std::string ins("-Inf", pa);
+        bsl::istringstream  in(pa);
+        bsl::string ins("-Inf", pa);
         in.str(ins);
 
         BDEC::Decimal32 d1;
         in >> d1;
-        ASSERT(d1 < -std::numeric_limits<BDEC::Decimal32>::max());
+        ASSERT(d1 < -bsl::numeric_limits<BDEC::Decimal32>::max());
     }
 
-    if (veryVerbose) std::cout << "Test wide stream out" << std::endl;
+    if (veryVerbose) bsl::cout << "Test wide stream out" << bsl::endl;
     {
-        std::wostringstream  out(pa);
+        bsl::wostringstream  out(pa);
         BDEC::Decimal32 d1(BDLDFP_DECIMAL_DF(-8.327457e-24));
         out << d1;
-        std::wstring s(pa);
+        bsl::wstring s(pa);
         getStringFromStream(out, &s);
         ASSERT(decLower(s) == L"-8.327457e-24");
     }
 
-    if (veryVerbose) std::cout << "Test wide stream in" << std::endl;
+    if (veryVerbose) bsl::cout << "Test wide stream in" << bsl::endl;
     {
-        std::wistringstream  in(pa);
-        std::wstring ins(L"-8.327457e-24", pa);
+        bsl::wistringstream  in(pa);
+        bsl::wstring ins(L"-8.327457e-24", pa);
         in.str(ins);
 
         BDEC::Decimal32 d1;
@@ -3586,7 +3585,7 @@ void TestDriver::testCase1()
         ASSERT(d1 == BDLDFP_DECIMAL_DF(-8.327457e-24));
     }
 
-    if (veryVerbose) std::cout << "Unary-" << std::endl;
+    if (veryVerbose) bsl::cout << "Unary-" << bsl::endl;
     {
         BDEC::Decimal32 d1(BDLDFP_DECIMAL_DF(-5.0));
         BDEC::Decimal32 d2(BDLDFP_DECIMAL_DF( 5.0));
@@ -3595,15 +3594,15 @@ void TestDriver::testCase1()
 
         // Unary - must make +0 into -0
 
-        std::ostringstream out(pa);
+        bsl::ostringstream out(pa);
         out << -BDLDFP_DECIMAL_DF(0.0);
-        std::string s(pa);
+        bsl::string s(pa);
         getStringFromStream(out, &s);
         LOOP_ASSERT(s, s[0] == '-'); // it is negative
         ASSERT(-BDLDFP_DECIMAL_DF(0.0) == BDEC::Decimal32(0)) // and 0
     }
 
-    if (veryVerbose) std::cout << "Unary+" << std::endl;
+    if (veryVerbose) bsl::cout << "Unary+" << bsl::endl;
     {
         BDEC::Decimal32 d1(BDLDFP_DECIMAL_DF(-5.0));
         BDEC::Decimal32 d2(BDLDFP_DECIMAL_DF( 5.0));
@@ -3613,21 +3612,21 @@ void TestDriver::testCase1()
         // Unary + must make -0 into +0
 
         BDEC::Decimal128 negzero(-BDLDFP_DECIMAL_DF(0.0));
-        std::ostringstream out(pa);
+        bsl::ostringstream out(pa);
         out << +negzero;
-        std::string s(pa);
+        bsl::string s(pa);
         getStringFromStream(out, &s);
         LOOP_ASSERT(s, s[0] != '+'); // it is positive
         ASSERT(-BDLDFP_DECIMAL_DF(0.0) == BDEC::Decimal32(0)) // and 0
     }
 
 
-    if (veryVerbose) std::cout << "Create test objects" << std::endl;
+    if (veryVerbose) bsl::cout << "Create test objects" << bsl::endl;
 
     BDEC::Decimal32        d32  = BDEC::Decimal32();
     const BDEC::Decimal32  c32  = BDEC::Decimal32();
 
-    if (veryVerbose) std::cout << "Check return types" << std::endl;
+    if (veryVerbose) bsl::cout << "Check return types" << bsl::endl;
 
     checkType<bool>(d32 == d32);
     checkType<bool>(d32 != d32);
@@ -3640,18 +3639,18 @@ void TestDriver::testCase1()
     checkType<BDEC::Decimal32>(-d32);
 
     {
-        std::istringstream  in(pa);
-        std::ostringstream  out(pa);
-        std::wistringstream win(pa);
-        std::wostringstream wout(pa);
+        bsl::istringstream  in(pa);
+        bsl::ostringstream  out(pa);
+        bsl::wistringstream win(pa);
+        bsl::wostringstream wout(pa);
 
-        checkType<std::istream&>(in >> d32);
-        checkType<std::wistream&>(win >> d32);
-        checkType<std::ostream&>(out << c32);
-        checkType<std::wostream&>(wout << c32);
+        checkType<bsl::istream&>(in >> d32);
+        checkType<bsl::wistream&>(win >> d32);
+        checkType<bsl::ostream&>(out << c32);
+        checkType<bsl::wostream&>(wout << c32);
     }
 
-    typedef std::numeric_limits<BDEC::Decimal32> d32_limits;
+    typedef bsl::numeric_limits<BDEC::Decimal32> d32_limits;
     checkType<bool>(d32_limits::is_specialized);
     checkType<BDEC::Decimal32>(d32_limits::min());
     checkType<BDEC::Decimal32>(d32_limits::max());
@@ -3671,7 +3670,7 @@ void TestDriver::testCase1()
     checkType<bool>(d32_limits::has_infinity);
     checkType<bool>(d32_limits::has_quiet_NaN);
     checkType<bool>(d32_limits::has_signaling_NaN);
-    checkType<std::float_denorm_style>(d32_limits::has_denorm);
+    checkType<bsl::float_denorm_style>(d32_limits::has_denorm);
     checkType<bool>(d32_limits::has_denorm_loss);
     checkType<BDEC::Decimal32>(d32_limits::infinity());
     checkType<BDEC::Decimal32>(d32_limits::quiet_NaN());
@@ -3682,7 +3681,7 @@ void TestDriver::testCase1()
     checkType<bool>(d32_limits::is_modulo);
     checkType<bool>(d32_limits::traps);
     checkType<bool>(d32_limits::tinyness_before);
-    checkType<std::float_round_style>(d32_limits::round_style);
+    checkType<bsl::float_round_style>(d32_limits::round_style);
 }
 
 //=============================================================================
