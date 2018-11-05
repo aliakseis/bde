@@ -318,10 +318,10 @@ DecimalImpUtil::ValueType64 DecimalImpUtil::normalize(ValueType64 value)
 {
     ValueType64 result;
 
-    int                 sign;
-    bsls::Types::Uint64 significand;
-    int                 exponent;
-    int                 objClass;
+    int         sign;
+    uint64_t    significand;
+    int         exponent;
+    int         objClass;
 
     objClass = decompose(&sign, &significand, &exponent, value);
 
@@ -398,15 +398,15 @@ DecimalImpUtil::ValueType128 DecimalImpUtil::normalize(ValueType128 value)
 
       case FP_NORMAL:
       case FP_SUBNORMAL: {
-        bsls::Types::Uint64 r = 0;  // reminder
+          uint64_t r = 0;  // reminder
         while (exponent < 6144) {
-            bsls::Types::Uint64 high = significand.high();
-            bsls::Types::Uint64 low  = significand.low();
+            uint64_t high = significand.high();
+            uint64_t low  = significand.low();
 
-            bsls::Types::Uint64 qh = high / 10;
-            bsls::Types::Uint64 rh = high % 10;
-            bsls::Types::Uint64 ql = low / 10;
-            bsls::Types::Uint64 rl = low % 10;
+            uint64_t qh = high / 10;
+            uint64_t rh = high % 10;
+            uint64_t ql = low / 10;
+            uint64_t rl = low % 10;
 
             r = (6 * rh + rl) % 10;
             if (r != 0) {
@@ -499,33 +499,33 @@ int DecimalImpUtil::decompose(int          *sign,
     return cl;
 }
 
-int DecimalImpUtil::decompose(int                 *sign,
-                              bsls::Types::Uint64 *significand,
-                              int                 *exponent,
-                              ValueType64          value)
+int DecimalImpUtil::decompose(int           *sign,
+                              uint64_t      *significand,
+                              int           *exponent,
+                              ValueType64   value)
 {
     assert(sign);
     assert(significand);
     assert(exponent);
 
-    const bsls::Types::Uint64 k_SIGN_MASK             = 0x8000000000000000ull;
-    const bsls::Types::Uint64 k_SPECIAL_ENCODING_MASK = 0x6000000000000000ull;
-    const bsls::Types::Uint64 k_INFINITY_MASK         = 0x7800000000000000ull;
-    const bsls::Types::Uint64 k_SMALL_COEFF_MASK      = 0x0007ffffffffffffull;
-    const bsls::Types::Uint64 k_LARGE_COEFF_MASK      = 0x001fffffffffffffull;
-    const bsls::Types::Uint64 k_LARGE_COEFF_HIGH_BIT  = 0x0020000000000000ull;
-    const bsls::Types::Uint64 k_EXPONENT_MASK         = 0x3ff;
+    const uint64_t k_SIGN_MASK             = 0x8000000000000000ull;
+    const uint64_t k_SPECIAL_ENCODING_MASK = 0x6000000000000000ull;
+    const uint64_t k_INFINITY_MASK         = 0x7800000000000000ull;
+    const uint64_t k_SMALL_COEFF_MASK      = 0x0007ffffffffffffull;
+    const uint64_t k_LARGE_COEFF_MASK      = 0x001fffffffffffffull;
+    const uint64_t k_LARGE_COEFF_HIGH_BIT  = 0x0020000000000000ull;
+    const uint64_t k_EXPONENT_MASK         = 0x3ff;
     const int k_EXPONENT_SHIFT_LARGE                  = 51;
     const int k_EXPONENT_SHIFT_SMALL                  = 53;
     const int k_DECIMAL_EXPONENT_BIAS                 = 398;
 
 #ifdef BDLDFP_DECIMALPLATFORM_INTELDFP
-    bsls::Types::Uint64 x = value.d_raw;
+    uint64_t x = value.d_raw;
 #else
-    bsls::Types::Uint64 x = *value.longs;
+    uint64_t x = *value.longs;
 #endif
 
-    bsls::Types::Uint64 tmp;
+    uint64_t tmp;
     int cl = classify(value);
 
     *sign = (x & k_SIGN_MASK) ? -1 : 1;
@@ -561,12 +561,12 @@ int DecimalImpUtil::decompose(int          *sign,
                               int          *exponent,
                               ValueType128  value)
 {
-    const bsls::Types::Uint64 k_SIGN_MASK             = 0x8000000000000000ull;
-    const bsls::Types::Uint64 k_SPECIAL_ENCODING_MASK = 0x6000000000000000ull;
-    const bsls::Types::Uint64 k_SMALL_COEFF_MASK      = 0x00007fffffffffffull;
-    const bsls::Types::Uint64 k_LARGE_COEFF_MASK      = 0x0001ffffffffffffull;
-    const bsls::Types::Uint64 k_LARGE_COEFF_HIGH_BIT  = 0x0020000000000000ull;
-    const bsls::Types::Uint64 k_EXPONENT_MASK         = 0x3fff;
+    const uint64_t k_SIGN_MASK             = 0x8000000000000000ull;
+    const uint64_t k_SPECIAL_ENCODING_MASK = 0x6000000000000000ull;
+    const uint64_t k_SMALL_COEFF_MASK      = 0x00007fffffffffffull;
+    const uint64_t k_LARGE_COEFF_MASK      = 0x0001ffffffffffffull;
+    const uint64_t k_LARGE_COEFF_HIGH_BIT  = 0x0020000000000000ull;
+    const uint64_t k_EXPONENT_MASK         = 0x3fff;
     const int k_EXPONENT_SHIFT_LARGE                  = 47;
     const int k_EXPONENT_SHIFT_SMALL                  = 49;
     const int k_DECIMAL_EXPONENT_BIAS                 = 6176;
@@ -577,23 +577,23 @@ int DecimalImpUtil::decompose(int          *sign,
 
 #ifdef BDLDFP_DECIMALPLATFORM_INTELDFP
     #ifdef BSLS_PLATFORM_IS_BIG_ENDIAN
-    bsls::Types::Uint64 xH = value.d_raw.w[0];
-    bsls::Types::Uint64 xL = value.d_raw.w[1];
+    uint64_t xH = value.d_raw.w[0];
+    uint64_t xL = value.d_raw.w[1];
     #elif defined(BSLS_PLATFORM_IS_LITTLE_ENDIAN)
-    bsls::Types::Uint64 xL = value.d_raw.w[0];
-    bsls::Types::Uint64 xH = value.d_raw.w[1];
+    uint64_t xL = value.d_raw.w[0];
+    uint64_t xH = value.d_raw.w[1];
     #endif
 #else
     #ifdef BSLS_PLATFORM_IS_BIG_ENDIAN
-    bsls::Types::Uint64 xH = *value.longs[0];
-    bsls::Types::Uint64 xL = *value.longs[1];
+    uint64_t xH = *value.longs[0];
+    uint64_t xL = *value.longs[1];
     #elif defined(BSLS_PLATFORM_IS_LITTLE_ENDIAN)
-    bsls::Types::Uint64 xL = *value.longs[0];
-    bsls::Types::Uint64 xH = *value.longs[1];
+    uint64_t xL = *value.longs[0];
+    uint64_t xH = *value.longs[1];
     #endif
 #endif
 
-    bsls::Types::Uint64 tmp;
+    uint64_t tmp;
     int cl = classify(value);
 
    *sign = (xH & k_SIGN_MASK) ? -1 : 1;

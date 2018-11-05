@@ -129,9 +129,6 @@
     <ClInclude Include="bsls_platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="bsls_types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

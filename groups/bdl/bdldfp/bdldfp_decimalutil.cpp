@@ -797,7 +797,7 @@ int DecimalUtil::decompose(int          *sign,
 }
 
 int DecimalUtil::decompose(int                 *sign,
-                           bsls::Types::Uint64 *significand,
+                           uint64_t            *significand,
                            int                 *exponent,
                            Decimal64            value)
 {

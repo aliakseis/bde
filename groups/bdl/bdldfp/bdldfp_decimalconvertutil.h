@@ -360,6 +360,7 @@
 
 #include <cassert>
 #include <cstring>
+#include <stdint.h>
 
 
 namespace BloombergLP {
@@ -399,7 +400,7 @@ struct DecimalConvertUtil {
     // PRIVATE CLASS METHODS
     static int decimal64ToUnpackedSpecial(bool                *isNegative,
                                           int                 *biasedExponent,
-                                          bsls::Types::Uint64 *mantissa,
+                                          uint64_t            *mantissa,
                                           bdldfp::Decimal64    value);
         // If the specified 'value' is NaN, +infinity, -infinity, or its
         // unbiased exponent is 384, return a non-zero value and leave all
@@ -413,7 +414,7 @@ struct DecimalConvertUtil {
 
     static bdldfp::Decimal64 decimal64FromUnpackedSpecial(
                                                 bool                isNegative,
-                                                bsls::Types::Uint64 mantissa,
+                                                uint64_t            mantissa,
                                                 int                 exponent);
         // Return a 'Decimal64' object that has the specified 'mantissa',
         // 'exponent', and a sign based on the specified 'isNegative'.  The
@@ -738,7 +739,7 @@ struct DecimalConvertUtil {
         // functions always return 'buffer + sizeof(decimal)' on the supported
         // 8-bits-byte architectures.
 
-    static bsls::Types::size_type decimal64ToMultiWidthEncoding(
+    static std::size_t decimal64ToMultiWidthEncoding(
                                                    unsigned char     *buffer,
                                                    bdldfp::Decimal64  decimal);
         // Store the specified 'decimal', in the *multi-width encoding* format,
@@ -747,7 +748,7 @@ struct DecimalConvertUtil {
         // memory area with enough room to hold the encode value (which has a
         // maximum size of 8 bytes).
 
-    static bsls::Types::size_type decimal64ToMultiWidthEncodingRaw(
+    static std::size_t decimal64ToMultiWidthEncodingRaw(
                                                    unsigned char     *buffer,
                                                    bdldfp::Decimal64  decimal);
         // If the specified 'decimal' can be encoded in 5 or fewer bytes of the
@@ -761,7 +762,7 @@ struct DecimalConvertUtil {
 
     static Decimal64 decimal64FromMultiWidthEncodingRaw(
                                                 const unsigned char    *buffer,
-                                                bsls::Types::size_type  size);
+                                                std::size_t  size);
         // Decode a decimal value in the *multi-width encoding* format from the
         // specified 'buffer' having the specified 'size'.  Return the decoded
         // value.  The behavior is undefined unless 'buffer' has at least
@@ -771,14 +772,14 @@ struct DecimalConvertUtil {
         // network encoding, which is supported by the
         // 'decimal64FromMultiWidthEncoding' function.
 
-    static bool isValidMultiWidthSize(bsls::Types::size_type  size);
+    static bool isValidMultiWidthSize(std::size_t  size);
         // Return 'true' if the specified 'size' is a valid encoding size in
         // the *multi-width encoding* format, and 'false' otherwise.  Note that
         // valid encoding sizes are 1, 2, 3, 4, 5 and 8 bytes.
 
     static Decimal64 decimal64FromMultiWidthEncoding(
                                                 const unsigned char    *buffer,
-                                                bsls::Types::size_type  size);
+                                                std::size_t  size);
         // Decode a decimal value in the *multi-width encoding* format from the
         // specified 'buffer' having the specified 'size'.  Return the decoded
         // value.  The behavior is undefined unless 'buffer' has at least
@@ -788,7 +789,7 @@ struct DecimalConvertUtil {
     static int decimal64FromMultiWidthEncodingIfValid(
                                                Decimal64              *decimal,
                                                const unsigned char    *buffer,
-                                               bsls::Types::size_type  size);
+                                               std::size_t  size);
         // Decode a decimal value in the *multi-width encoding* format from the
         // specified 'buffer' having the specified 'size' and store the result
         // into the specified 'decimal' parameter.  Return 0 on success, and
@@ -828,14 +829,13 @@ inline
 int DecimalConvertUtil::decimal64ToUnpackedSpecial(
                                            bool                *isNegative,
                                            int                 *biasedExponent,
-                                           bsls::Types::Uint64 *mantissa,
+                                           uint64_t            *mantissa,
                                            bdldfp::Decimal64    value)
 {
 #ifdef BDLDFP_DECIMALPLATFORM_INTELDFP
-    bsls::Types::Uint64 bidValue = value.data()->d_raw;
+    uint64_t bidValue = value.data()->d_raw;
 #else
-    bsls::Types::Uint64 bidValue = bid_dpd_to_bid64(
-                            static_cast<bsls::Types::Uint64>(*(value.data())));
+    uint64_t bidValue = bid_dpd_to_bid64(static_cast<uint64_t>(*(value.data())));
 #endif
     // This class method is based on inteldfp 'unpack_BID64' (bid_internal.h),
     // with a non-zero return if 'SPECIAL_ENCODING_MASK64' indicates a special
@@ -861,7 +861,7 @@ int DecimalConvertUtil::decimal64ToUnpackedSpecial(
 inline
 Decimal64 DecimalConvertUtil::decimal64FromUnpackedSpecial(
                                                 bool                isNegative,
-                                                bsls::Types::Uint64 mantissa,
+                                                uint64_t            mantissa,
                                                 int                 exponent)
 {
 #ifdef BDLDFP_DECIMALPLATFORM_INTELDFP
@@ -899,12 +899,12 @@ Decimal64 DecimalConvertUtil::decimal64FromUnpackedSpecial(int mantissa,
 
 // CLASS METHODS
 inline
-bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncoding(
+std::size_t DecimalConvertUtil::decimal64ToMultiWidthEncoding(
                                                     unsigned char     *buffer,
                                                     bdldfp::Decimal64  decimal)
 {
 
-    bsls::Types::size_type size = decimal64ToMultiWidthEncodingRaw(buffer,
+    std::size_t size = decimal64ToMultiWidthEncodingRaw(buffer,
                                                                    decimal);
 
     if (BSLS_PERFORMANCEHINT_PREDICT_LIKELY(size != 0)) {
@@ -912,7 +912,7 @@ bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncoding(
     }
     else {
         BSLS_PERFORMANCEHINT_UNLIKELY_HINT;
-        bsls::Types::Uint64 encoded;
+        uint64_t encoded;
         decimal64ToBID(reinterpret_cast<unsigned char *>(&encoded), decimal);
 
         encoded = BSLS_BYTEORDER_HTONLL(encoded);
@@ -925,13 +925,13 @@ bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncoding(
 }
 
 inline
-bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncodingRaw(
+std::size_t DecimalConvertUtil::decimal64ToMultiWidthEncodingRaw(
                                                     unsigned char     *buffer,
                                                     bdldfp::Decimal64  decimal)
 {
     bool                isNegative;
     int                 exponent;
-    bsls::Types::Uint64 mantissa;
+    uint64_t            mantissa;
 
     // 'exponent' is biased --> biased exponent = exponent + 398
 
@@ -981,15 +981,14 @@ bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncodingRaw(
                 return 4;                                             // RETURN
             }
             if (mantissa < (1ull << 34)) {
-                bsls::Types::Uint64 squished =
-                    static_cast<bsls::Types::Uint64>(
+                uint64_t squished =
+                    static_cast<uint64_t>(
                      (mantissa << 24) |
-                     (static_cast<bsls::Types::Uint64>(exponent - 382) << 58));
+                     (static_cast<uint64_t>(exponent - 382) << 58));
                 if (isNegative) {
                     squished |= 1ull << 63;
                 }
-                bsls::Types::Uint64 squishedN =
-                                               BSLS_BYTEORDER_HTONLL(squished);
+                uint64_t squishedN = BSLS_BYTEORDER_HTONLL(squished);
                 std::memcpy(buffer,
                             reinterpret_cast<unsigned char*>(&squishedN),
                             5);
@@ -1002,7 +1001,7 @@ bsls::Types::size_type DecimalConvertUtil::decimal64ToMultiWidthEncodingRaw(
 }
 
 inline
-bool DecimalConvertUtil::isValidMultiWidthSize(bsls::Types::size_type  size)
+bool DecimalConvertUtil::isValidMultiWidthSize(std::size_t  size)
 {
     return (size > 0 && size <= 5) || size == 8;
 }
@@ -1010,7 +1009,7 @@ bool DecimalConvertUtil::isValidMultiWidthSize(bsls::Types::size_type  size)
 inline
 Decimal64 DecimalConvertUtil::decimal64FromMultiWidthEncoding(
                                                 const unsigned char    *buffer,
-                                                bsls::Types::size_type  size)
+                                                std::size_t  size)
 {
     assert(1 <= size);
     assert(size <= 5 || size == 8);
@@ -1021,7 +1020,7 @@ Decimal64 DecimalConvertUtil::decimal64FromMultiWidthEncoding(
     else {
         BSLS_PERFORMANCEHINT_UNLIKELY_HINT;
 
-        bsls::Types::Uint64 encoded;
+        uint64_t encoded;
         std::memcpy(&encoded, buffer, 8);
         encoded = BSLS_BYTEORDER_NTOHLL(encoded);
 
@@ -1034,7 +1033,7 @@ inline
 int DecimalConvertUtil::decimal64FromMultiWidthEncodingIfValid(
                                                Decimal64              *decimal,
                                                const unsigned char    *buffer,
-                                               bsls::Types::size_type  size)
+                                               std::size_t  size)
 {
     int ret(0);
 
@@ -1050,7 +1049,7 @@ int DecimalConvertUtil::decimal64FromMultiWidthEncodingIfValid(
 inline
 Decimal64 DecimalConvertUtil::decimal64FromMultiWidthEncodingRaw(
                                                 const unsigned char    *buffer,
-                                                bsls::Types::size_type  size)
+                                                std::size_t  size)
 {
     assert(1 <= size);
     assert(size <= 5);
@@ -1096,12 +1095,12 @@ Decimal64 DecimalConvertUtil::decimal64FromMultiWidthEncodingRaw(
 
         bool                isNegative = buffer[0] >> 7;
         int                 exponent   = ((buffer[0] & 0x7F) >> 2) - 16;
-        bsls::Types::Uint64 mantissa   = static_cast<bsls::Types::Uint64>(
-                     static_cast<bsls::Types::Uint64>(buffer[0] & 0x03) << 32 |
-                     static_cast<bsls::Types::Uint64>(buffer[1]) << 24 |
-                     static_cast<bsls::Types::Uint64>(buffer[2]) << 16 |
-                     static_cast<bsls::Types::Uint64>(buffer[3]) << 8 |
-                     static_cast<bsls::Types::Uint64>(buffer[4]));
+        uint64_t mantissa   = static_cast<uint64_t>(
+                     static_cast<uint64_t>(buffer[0] & 0x03) << 32 |
+                     static_cast<uint64_t>(buffer[1]) << 24 |
+                     static_cast<uint64_t>(buffer[2]) << 16 |
+                     static_cast<uint64_t>(buffer[3]) << 8 |
+                     static_cast<uint64_t>(buffer[4]));
         return decimal64FromUnpackedSpecial(isNegative, mantissa, exponent);
                                                                       // RETURN
       } break;
@@ -1121,7 +1120,7 @@ unsigned char *DecimalConvertUtil::decimal64ToVariableWidthEncoding(
 {
     bool                isNegative;
     int                 exponent;
-    bsls::Types::Uint64 mantissa;
+    uint64_t mantissa;
 
     // 'exponent' is biased --> biased exponent = exponent + 398
 
@@ -1192,7 +1191,7 @@ unsigned char *DecimalConvertUtil::decimal64ToVariableWidthEncoding(
 
     *buffer++ = 0xFF;
 
-    bsls::Types::Uint64 encoded;
+    uint64_t encoded;
     decimal64ToBID(reinterpret_cast<unsigned char *>(&encoded), decimal);
 
     encoded = BSLS_BYTEORDER_HTONLL(encoded);
@@ -1236,7 +1235,7 @@ const unsigned char *DecimalConvertUtil::decimal64FromVariableWidthEncoding(
         // Full 9-byte encoding is used.
         ++buffer;
 
-        bsls::Types::Uint64 encoded;
+        uint64_t encoded;
         std::memcpy(&encoded, buffer, 8);
         encoded = BSLS_BYTEORDER_NTOHLL(encoded);
 

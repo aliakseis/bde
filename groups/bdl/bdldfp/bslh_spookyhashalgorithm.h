@@ -287,11 +287,9 @@
 #include <bsls_platform.h>
 #endif
 
-#ifndef INCLUDED_BSLS_TYPES
-#include <bsls_types.h>
-#endif
 
 #include <cassert>
+#include <stdint.h>
 
 
 namespace BloombergLP {
@@ -309,7 +307,7 @@ class SpookyHashAlgorithm {
 
   private:
     // PRIVATE TYPES
-    typedef bsls::Types::Uint64 Uint64;
+    typedef uint64_t Uint64;
         // Typedef for a 64-bit integer type used in the hashing algorithm.
 
     // DATA
@@ -326,7 +324,7 @@ class SpookyHashAlgorithm {
 
   public:
     // TYPES
-    typedef bsls::Types::Uint64 result_type;
+    typedef uint64_t result_type;
         // Typedef indicating the value type returned by this algorithm.
 
 
@@ -422,7 +420,7 @@ void SpookyHashAlgorithm::operator()(const void *data, size_t numBytes)
 inline
 SpookyHashAlgorithm::result_type SpookyHashAlgorithm::computeHash()
 {
-    bsls::Types::Uint64 h1, h2;
+    uint64_t h1, h2;
     d_state.finalize(&h1, &h2);
     return h1;
 }

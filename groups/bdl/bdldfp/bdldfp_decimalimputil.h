@@ -146,6 +146,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <stdint.h>
 
 #ifndef BSLS_NOTHROW_SPEC
 #define BSLS_NOTHROW_SPEC noexcept
@@ -311,7 +312,7 @@ class DecimalImpUtil {
                          int                 *exponent,
                          ValueType32          value);
     static int decompose(int                 *sign,
-                         bsls::Types::Uint64 *significand,
+                         uint64_t            *significand,
                          int                 *exponent,
                          ValueType64          value);
     static int decompose(int                 *sign,

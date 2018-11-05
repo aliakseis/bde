@@ -116,13 +116,12 @@
 
 #include <bsls_compilerfeatures.h>
 
-#ifndef INCLUDED_BSLS_TYPES
-#include <bsls_types.h>
-#endif
 
 #ifndef INCLUDED_BSLS_PLATFORM
 #include <bsls_platform.h>
 #endif
+
+#include <stdint.h>
 
 namespace BloombergLP {
 namespace bdldfp {
@@ -143,11 +142,11 @@ class Uint128 {
     // have standard layout.
 
     #ifdef BSLS_PLATFORM_IS_BIG_ENDIAN
-    bsls::Types::Uint64 d_high;
-    bsls::Types::Uint64 d_low;
+    uint64_t d_high;
+    uint64_t d_low;
     #elif defined(BSLS_PLATFORM_IS_LITTLE_ENDIAN)
-    bsls::Types::Uint64 d_low;
-    bsls::Types::Uint64 d_high;
+    uint64_t d_low;
+    uint64_t d_high;
     #else
     #error Only big or little endian is supported.
     #endif
@@ -157,11 +156,11 @@ class Uint128 {
     Uint128();
         // Create an Uint128 object having the value '0'
 
-    Uint128(bsls::Types::Uint64 initialValue);                      // IMPLICIT
+    Uint128(uint64_t initialValue);                      // IMPLICIT
         // Create an 'Uint128' object having the 128-bit integer bit pattern of
         // the value of the specified 'initialValue'.
 
-    Uint128(bsls::Types::Uint64 initialHigh, bsls::Types::Uint64 initialLow);
+    Uint128(uint64_t initialHigh, uint64_t initialLow);
         // Create an 'Uint128' object having the 128-bit pattern specified by
         // 'initialHigh..initialLow'
 
@@ -200,17 +199,17 @@ class Uint128 {
         // return a reference providing mofifiable access to this object.  The
         // behavior is undefined unless '0 <= rhs < 128'.
 
-    void setHigh(bsls::Types::Uint64 value);
+    void setHigh(uint64_t value);
         // Set the high order bits of this integer to the specified 'value'.
 
-    void setLow(bsls::Types::Uint64 value);
+    void setLow(uint64_t value);
         // Set the low order bits of this integer to the specified 'value'.
 
     // ACCESSORS
-    bsls::Types::Uint64 high() const;
+    uint64_t high() const;
         // Return the high order bits of this integer.
 
-    bsls::Types::Uint64 low() const;
+    uint64_t low() const;
         // Return the low order bits of this integer.
 };
 
@@ -270,15 +269,15 @@ Uint128::Uint128()
 }
 
 inline
-Uint128::Uint128(bsls::Types::Uint64 initialValue)
+Uint128::Uint128(uint64_t initialValue)
 {
     d_high = 0;
     d_low  = initialValue;
 }
 
 inline
-Uint128::Uint128(bsls::Types::Uint64 initialHigh,
-                 bsls::Types::Uint64 initialLow)
+Uint128::Uint128(uint64_t initialHigh,
+    uint64_t initialLow)
 {
     d_high = initialHigh;
     d_low  = initialLow;
@@ -353,26 +352,26 @@ Uint128& Uint128::operator<<=(int rhs)
 }
 
 inline
-void Uint128::setHigh(bsls::Types::Uint64 value)
+void Uint128::setHigh(uint64_t value)
 {
     d_high = value;
 }
 
 inline
-void Uint128::setLow(bsls::Types::Uint64 value)
+void Uint128::setLow(uint64_t value)
 {
     d_low = value;
 }
 
 // ACCESSORS
 inline
-bsls::Types::Uint64 Uint128::high() const
+uint64_t Uint128::high() const
 {
     return d_high;
 }
 
 inline
-bsls::Types::Uint64 Uint128::low() const
+uint64_t Uint128::low() const
 {
     return d_low;
 }

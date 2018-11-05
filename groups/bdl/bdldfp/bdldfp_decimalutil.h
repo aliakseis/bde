@@ -89,6 +89,7 @@
 
 #include <cassert>
 #include <string>
+#include <stdint.h>
 
 namespace BloombergLP {
 namespace bdldfp {
@@ -418,7 +419,7 @@ struct DecimalUtil {
                          int                 *exponent,
                          Decimal32            value);
     static int decompose(int                 *sign,
-                         bsls::Types::Uint64 *significand,
+                         uint64_t            *significand,
                          int                 *exponent,
                          Decimal64            value);
     static int decompose(int                 *sign,

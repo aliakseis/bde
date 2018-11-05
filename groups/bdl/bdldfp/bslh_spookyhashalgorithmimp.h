@@ -227,11 +227,9 @@
 
 #include <bdlscm_version.h>
 
-#ifndef INCLUDED_BSLS_TYPES
-#include <bsls_types.h>
-#endif
 
 #include <cassert>
+#include <stdint.h>
 
 
 namespace BloombergLP {
@@ -245,10 +243,10 @@ class SpookyHashAlgorithmImp {
     // http://burtleburtle.net/bob/hash/spooky.html .
 
   public:
-    typedef  bsls::Types::Uint64  Uint64;
-    typedef  unsigned int         Uint32;
-    typedef  unsigned short       Uint16;
-    typedef  unsigned char        Uint8;
+    typedef  uint64_t       Uint64;
+    typedef  unsigned int   Uint32;
+    typedef  unsigned short Uint16;
+    typedef  unsigned char  Uint8;
 
   private:
     // DATA

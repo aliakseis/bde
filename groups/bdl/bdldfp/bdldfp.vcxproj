@@ -247,7 +247,6 @@
     <ClInclude Include="bsls_compilerfeatures.h" />
     <ClInclude Include="bsls_performancehint.h" />
     <ClInclude Include="bsls_platform.h" />
-    <ClInclude Include="bsls_types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
