@@ -238,7 +238,6 @@
     <ClInclude Include="bslim_printer.h" />
     <ClInclude Include="bslmf_functionpointertraits.h" />
     <ClInclude Include="bslmf_metaint.h" />
-    <ClInclude Include="bslmf_nil.h" />
     <ClInclude Include="bslmf_selecttrait.h" />
     <ClInclude Include="bslmf_switch.h" />
     <ClInclude Include="bslmf_tag.h" />

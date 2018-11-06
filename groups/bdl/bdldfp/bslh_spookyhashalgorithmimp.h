@@ -335,11 +335,10 @@ class SpookyHashAlgorithmImp {
         // cannonical implementation.
 
     // NOT IMPLEMENTED
-    SpookyHashAlgorithmImp(const SpookyHashAlgorithmImp& original);// = delete;
+    SpookyHashAlgorithmImp(const SpookyHashAlgorithmImp& original) = delete;
         // Do not allow copy construction
 
-    SpookyHashAlgorithmImp& operator=(const SpookyHashAlgorithmImp& rhs);
-                                                                   // = delete;
+    SpookyHashAlgorithmImp& operator=(const SpookyHashAlgorithmImp& rhs) = delete;
         // Do not allow assignment
 
   public:

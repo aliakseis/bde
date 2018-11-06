@@ -567,7 +567,7 @@ class Printer {
 
   private:
     // NOT IMPLEMENTED
-    Printer& operator=(const Printer&);
+    Printer& operator=(const Printer&) = delete;
 
   public:
     // CREATORS

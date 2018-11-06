@@ -316,10 +316,10 @@ class SpookyHashAlgorithm {
         // algorithm.
 
     // NOT IMPLEMENTED
-    SpookyHashAlgorithm(const SpookyHashAlgorithm& original); // = delete;
+    SpookyHashAlgorithm(const SpookyHashAlgorithm& original) = delete;
         // Do not allow copy construction.
 
-    SpookyHashAlgorithm& operator=(const SpookyHashAlgorithm& rhs);// = delete;
+    SpookyHashAlgorithm& operator=(const SpookyHashAlgorithm& rhs) = delete;
         // Do not allow assignment.
 
   public:

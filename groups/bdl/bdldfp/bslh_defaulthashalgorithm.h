@@ -301,11 +301,10 @@ class DefaultHashAlgorithm {
         // Object storing the state of the chosen 'InternalHashAlgorithm'.
 
     // NOT IMPLEMENTED
-    DefaultHashAlgorithm(const DefaultHashAlgorithm& original); // = delete;
+    DefaultHashAlgorithm(const DefaultHashAlgorithm& original) = delete;
         // Do not allow copy construction.
 
-    DefaultHashAlgorithm& operator=(const DefaultHashAlgorithm& rhs);
-                                                                   // = delete;
+    DefaultHashAlgorithm& operator=(const DefaultHashAlgorithm& rhs) = delete;
         // Do not allow assignment.
 
   public:

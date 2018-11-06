@@ -102,9 +102,6 @@
     <ClInclude Include="bslmf_metaint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="bslmf_nil.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="bslmf_selecttrait.h">
       <Filter>Header Files</Filter>
     </ClInclude>
