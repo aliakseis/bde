@@ -618,7 +618,7 @@ int DecimalImpUtil::decompose(int          *sign,
     return cl;
 }
 
-DecimalImpUtil::ValueType32 DecimalImpUtil::min32() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType32 DecimalImpUtil::min32() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 1e-95df;
@@ -636,7 +636,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType32 DecimalImpUtil::max32() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType32 DecimalImpUtil::max32() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 9.999999e96df;
@@ -654,7 +654,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType32 DecimalImpUtil::epsilon32() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType32 DecimalImpUtil::epsilon32() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 1e-6df;
@@ -672,7 +672,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType32 DecimalImpUtil::roundError32() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType32 DecimalImpUtil::roundError32() noexcept
 { // TBD TODO - determine the real value from the round mode!
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 1.0df;
@@ -690,7 +690,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType32 DecimalImpUtil::denormMin32() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType32 DecimalImpUtil::denormMin32() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 0.000001E-95df;
@@ -708,7 +708,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType32 DecimalImpUtil::infinity32() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType32 DecimalImpUtil::infinity32() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return HUGE_VAL_D32;
@@ -726,7 +726,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType32 DecimalImpUtil::quietNaN32() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType32 DecimalImpUtil::quietNaN32() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return BDLDFP_DECIMALPLATFORM_C99_QNAN32;
@@ -744,7 +744,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType32 DecimalImpUtil::signalingNaN32() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType32 DecimalImpUtil::signalingNaN32() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return BDLDFP_DECIMALPLATFORM_C99_SNAN32;
@@ -762,7 +762,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType64 DecimalImpUtil::min64() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType64 DecimalImpUtil::min64() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 1e-383dd;
@@ -780,7 +780,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType64 DecimalImpUtil::max64() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType64 DecimalImpUtil::max64() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 9.999999999999999e384dd;
@@ -798,7 +798,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType64 DecimalImpUtil::epsilon64() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType64 DecimalImpUtil::epsilon64() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 1e-15dd;
@@ -816,7 +816,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType64 DecimalImpUtil::roundError64() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType64 DecimalImpUtil::roundError64() noexcept
 {  // TBD TODO - determine the real value from the round mode!
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 1.0dd;
@@ -834,7 +834,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType64 DecimalImpUtil::denormMin64() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType64 DecimalImpUtil::denormMin64() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 0.000000000000001e-383dd;
@@ -852,7 +852,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType64 DecimalImpUtil::infinity64() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType64 DecimalImpUtil::infinity64() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return HUGE_VAL_D64;
@@ -870,7 +870,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType64 DecimalImpUtil::quietNaN64() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType64 DecimalImpUtil::quietNaN64() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return BDLDFP_DECIMALPLATFORM_C99_QNAN64;
@@ -891,7 +891,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType64 DecimalImpUtil::signalingNaN64() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType64 DecimalImpUtil::signalingNaN64() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return BDLDFP_DECIMALPLATFORM_C99_SNAN64;
@@ -909,7 +909,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType128 DecimalImpUtil::min128() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType128 DecimalImpUtil::min128() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 1e-6143dl;
@@ -927,7 +927,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType128 DecimalImpUtil::max128() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType128 DecimalImpUtil::max128() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 9.999999999999999999999999999999999e6144dl;
@@ -945,7 +945,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType128 DecimalImpUtil::epsilon128() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType128 DecimalImpUtil::epsilon128() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 1e-33dl;
@@ -963,7 +963,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType128 DecimalImpUtil::roundError128() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType128 DecimalImpUtil::roundError128() noexcept
 {  // TBD TODO - determine the real value from the round mode setting!
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 1.0dl;
@@ -981,7 +981,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType128 DecimalImpUtil::denormMin128() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType128 DecimalImpUtil::denormMin128() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return 0.000000000000000000000000000000001e-6143dl;
@@ -999,7 +999,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType128 DecimalImpUtil::infinity128() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType128 DecimalImpUtil::infinity128() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return HUGE_VAL_D128;
@@ -1017,7 +1017,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType128 DecimalImpUtil::quietNaN128() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType128 DecimalImpUtil::quietNaN128() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return BDLDFP_DECIMALPLATFORM_C99_QNAN128;
@@ -1035,7 +1035,7 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
-DecimalImpUtil::ValueType128 DecimalImpUtil::signalingNaN128() BSLS_NOTHROW_SPEC
+DecimalImpUtil::ValueType128 DecimalImpUtil::signalingNaN128() noexcept
 {
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
     return BDLDFP_DECIMALPLATFORM_C99_QNAN128;

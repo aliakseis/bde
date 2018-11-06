@@ -87,11 +87,11 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -118,13 +118,13 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -151,13 +151,13 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
@@ -185,11 +185,11 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_NOTHROW_SPEC=noexcept;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.\..\..\..\thirdparty\decnumber;.\..\..\..\thirdparty\inteldfp\LIBRARY\float128;.\..\..\..\thirdparty\inteldfp\LIBRARY\src\inteldfp;.\..\..\..\thirdparty\pcre2;.\..\..\..\thirdparty\pcre2\sljit;.\..\..\bdl;.\..\..\bdl\bdlat;.\..\..\bdl\bdlb;.\..\..\bdl\bdlc;.\..\..\bdl\bdlcc;.\..\..\bdl\bdld;.\..\..\bdl\bdlde;.\..\..\bdl\bdldfp;.\..\..\bdl\bdlf;.\..\..\bdl\bdlma;.\..\..\bdl\bdlmt;.\..\..\bdl\bdlpcre;.\..\..\bdl\bdls;.\..\..\bdl\bdlsb;.\..\..\bdl\bdlscm;.\..\..\bdl\bdlsta;.\..\..\bdl\bdlt;.\..\..\bsl;.\..\..\bsl\bsl+bslhdrs;.\..\..\bsl\bsl+stdhdrs;.\..\..\bsl\bslalg;.\..\..\bsl\bsldoc;.\..\..\bsl\bslh;.\..\..\bsl\bslim;.\..\..\bsl\bslma;.\..\..\bsl\bslmf;.\..\..\bsl\bslmt;.\..\..\bsl\bsls;.\..\..\bsl\bslscm;.\..\..\bsl\bslstl;.\..\..\bsl\bsltf;.\..\..\bsl\bslx;.\..\bdlb;.\..\bdlc;.\..\bdlde;.\..\bdlf;.\..\bdlma;.\..\bdls;.\..\bdlsb;.\..\bdlscm;.\..\bdlt;.\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>

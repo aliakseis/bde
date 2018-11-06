@@ -4114,36 +4114,36 @@ class numeric_limits<BloombergLP::bdldfp::Decimal32>
 
   public:
     // CLASS METHODS
-    static BloombergLP::bdldfp::Decimal32 min() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal32 min() noexcept;
         // Return the smallest positive (also non-zero) number
         // 'BloombergLP::bdldfp::Decimal32' can represent (IEEE-754: +1e-95).
 
-    static BloombergLP::bdldfp::Decimal32 max() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal32 max() noexcept;
         // Return the largest number 'BloombergLP::bdldfp::Decimal32' can
         // represent (IEEE-754: +9.999999e+96).
 
-    static BloombergLP::bdldfp::Decimal32 epsilon() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal32 epsilon() noexcept;
         // Return the difference between 1 and the smallest value representable
         // by the 'BloombergLP::bdldfp::Decimal32' type.  (IEEE-754: +1e-6)
 
-    static BloombergLP::bdldfp::Decimal32 round_error() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal32 round_error() noexcept;
         // Return the maximum rounding error for the
         // 'BloombergLP::bdldfp::Decimal32' type.  The actual value returned
         // depends on the current decimal floating point rounding setting.
 
-    static BloombergLP::bdldfp::Decimal32 denorm_min() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal32 denorm_min() noexcept;
         // Return the smallest non-zero denormalized value for the
         // 'BloombergLP::bdldfp::Decimal32' type.  (IEEE-754: +0.000001E-95)
 
-    static BloombergLP::bdldfp::Decimal32 infinity() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal32 infinity() noexcept;
         // Return the value that represents positive infinity for the
         // 'BloombergLP::bdldfp::Decimal32' type.
 
-    static BloombergLP::bdldfp::Decimal32 quiet_NaN() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal32 quiet_NaN() noexcept;
         // Return a value that represents non-signaling NaN for the
         // 'BloombergLP::bdldfp::Decimal32' type.
 
-    static BloombergLP::bdldfp::Decimal32 signaling_NaN() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal32 signaling_NaN() noexcept;
         // Return a value that represents signaling NaN for the
         // 'BloombergLP::bdldfp::Decimal32' type.
 };
@@ -4161,37 +4161,37 @@ class numeric_limits<BloombergLP::bdldfp::Decimal64>
 
   public:
     // CLASS METHODS
-    static BloombergLP::bdldfp::Decimal64 min() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal64 min() noexcept;
         // Return the smallest positive (also non-zero) number
         // 'BloombergLP::bdldfp::Decimal64' can represent (IEEE-754: +1e-383).
 
-    static BloombergLP::bdldfp::Decimal64 max() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal64 max() noexcept;
         // Return the largest number 'BloombergLP::bdldfp::Decimal64' can
         // represent (IEEE-754: +9.999999999999999e+384).
 
-    static BloombergLP::bdldfp::Decimal64 epsilon() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal64 epsilon() noexcept;
         // Return the difference between 1 and the smallest value representable
         // by the 'BloombergLP::bdldfp::Decimal64' type.  (IEEE-754: +1e-15)
 
-    static BloombergLP::bdldfp::Decimal64 round_error() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal64 round_error() noexcept;
         // Return the maximum rounding error for the
         // 'BloombergLP::bdldfp::Decimal64' type.  The actual value returned
         // depends on the current decimal floating point rounding setting.
 
-    static BloombergLP::bdldfp::Decimal64 denorm_min() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal64 denorm_min() noexcept;
         // Return the smallest non-zero denormalized value for the
         // 'BloombergLP::bdldfp::Decimal64' type.  (IEEE-754:
         // +0.000000000000001e-383)
 
-    static BloombergLP::bdldfp::Decimal64 infinity() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal64 infinity() noexcept;
         // Return the value that represents positive infinity for the
         // 'BloombergLP::bdldfp::Decimal64' type.
 
-    static BloombergLP::bdldfp::Decimal64 quiet_NaN() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal64 quiet_NaN() noexcept;
         // Return a value that represents non-signaling NaN for the
         // 'BloombergLP::bdldfp::Decimal64' type.
 
-    static BloombergLP::bdldfp::Decimal64 signaling_NaN() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal64 signaling_NaN() noexcept;
         // Return a value that represents signaling NaN for the
         // 'BloombergLP::bdldfp::Decimal64' type.
 
@@ -4211,38 +4211,38 @@ class numeric_limits<BloombergLP::bdldfp::Decimal128>
 
   public:
     // CLASS METHODS
-    static BloombergLP::bdldfp::Decimal128 min() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal128 min() noexcept;
         // Return the smallest positive (also non-zero) number
         // 'BloombergLP::bdldfp::Decimal128' can represent (IEEE-754:
         // +1e-6143).
 
-    static BloombergLP::bdldfp::Decimal128 max() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal128 max() noexcept;
         // Return the largest number 'BloombergLP::bdldfp::Decimal128' can
         // represent (IEEE-754: +9.999999999999999999999999999999999e+6144).
 
-    static BloombergLP::bdldfp::Decimal128 epsilon() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal128 epsilon() noexcept;
         // Return the difference between 1 and the smallest value representable
         // by the 'BloombergLP::bdldfp::Decimal128' type.  (IEEE-754: +1e-33)
 
-    static BloombergLP::bdldfp::Decimal128 round_error() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal128 round_error() noexcept;
         // Return the maximum rounding error for the
         // 'BloombergLP::bdldfp::Decimal128' type.  The actual value returned
         // depends on the current decimal floating point rounding setting.
 
-    static BloombergLP::bdldfp::Decimal128 denorm_min() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal128 denorm_min() noexcept;
         // Return the smallest non-zero denormalized value for the
         // 'BloombergLP::bdldfp::Decimal128' type.  (IEEE-754:
         // +0.000000000000000000000000000000001e-6143)
 
-    static BloombergLP::bdldfp::Decimal128 infinity() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal128 infinity() noexcept;
         // Return the value that represents positive infinity for the
         // 'BloombergLP::bdldfp::Decimal128' type.
 
-    static BloombergLP::bdldfp::Decimal128 quiet_NaN() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal128 quiet_NaN() noexcept;
         // Return a value that represents non-signaling NaN for the
         // 'BloombergLP::bdldfp::Decimal128' type.
 
-    static BloombergLP::bdldfp::Decimal128 signaling_NaN() BSLS_NOTHROW_SPEC;
+    static BloombergLP::bdldfp::Decimal128 signaling_NaN() noexcept;
         // Return a value that represents signaling NaN for the
         // 'BloombergLP::bdldfp::Decimal128' type.
 
