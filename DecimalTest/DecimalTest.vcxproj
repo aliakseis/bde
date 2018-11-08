@@ -125,7 +125,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\groups\bsl\bslh;..\groups\bsl\bslstl;..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;..\groups\bsl\bsl+bslhdrs;..\groups\bsl\bslmf;..\groups\bsl\bslscm;../groups\bdl\bdlscm;..\groups\bsl\bsls;../groups/bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;../bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -144,7 +144,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\groups\bsl\bslh;..\groups\bsl\bslstl;..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;..\groups\bsl\bsl+bslhdrs;..\groups\bsl\bslmf;..\groups\bsl\bslscm;../groups\bdl\bdlscm;..\groups\bsl\bsls;../groups/bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;../bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -165,7 +165,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\groups\bsl\bslh;..\groups\bsl\bslstl;..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;..\groups\bsl\bsl+bslhdrs;..\groups\bsl\bslmf;..\groups\bsl\bslscm;../groups\bdl\bdlscm;..\groups\bsl\bsls;../groups/bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;../bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -188,7 +188,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\groups\bsl\bslh;..\groups\bsl\bslstl;..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;..\groups\bsl\bsl+bslhdrs;..\groups\bsl\bslmf;..\groups\bsl\bslscm;../groups\bdl\bdlscm;..\groups\bsl\bsls;../groups/bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;../bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -211,7 +211,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\groups\bsl\bslh;..\groups\bsl\bslstl;..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;..\groups\bsl\bsl+bslhdrs;..\groups\bsl\bslmf;..\groups\bsl\bslscm;../groups\bdl\bdlscm;..\groups\bsl\bsls;../groups/bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;../bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -234,7 +234,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>..\groups\bsl\bslh;..\groups\bsl\bslstl;..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;..\groups\bsl\bsl+bslhdrs;..\groups\bsl\bslmf;..\groups\bsl\bslscm;../groups\bdl\bdlscm;..\groups\bsl\bsls;../groups/bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\thirdparty\inteldfp\LIBRARY\src\inteldfp;..\thirdparty\decnumber;../bdl/bdldfp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
