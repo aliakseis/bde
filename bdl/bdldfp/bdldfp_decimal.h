@@ -953,25 +953,6 @@ class Decimal_Type64 {
   public:
     // CLASS METHODS
 
-                                  // Aspects
-
-    static int maxSupportedBdexVersion();
-    static int maxSupportedBdexVersion(int versionSelector);
-        // Return the maximum valid BDEX format version, as indicated by the
-        // specified 'versionSelector', to be passed to the 'bdexStreamOut'
-        // method.  Note that it is highly recommended that 'versionSelector'
-        // be formatted as "YYYYMMDD", a date representation.  Also note that
-        // 'versionSelector' should be a *compile*-time-chosen value that
-        // selects a format version supported by both externalizer and
-        // unexternalizer.  See the 'bslx' package-level documentation for more
-        // information on BDEX streaming of value-semantic types and
-        // containers.
-
-
-    // TRAITS
-    //BSLMF_NESTED_TRAIT_DECLARATION(Decimal_Type64, bsl::is_trivially_copyable);
-
-
     // CREATORS
     Decimal_Type64();
         // Create a 'Decimal64_Type' object having the value positive zero and
@@ -1429,20 +1410,6 @@ class Decimal_Type64 {
     DecimalImpUtil::ValueType64 *data();
         // Return a modifiable pointer to the underlying implementation.
 
-                                  // Aspects
-
-    template <class STREAM>
-    STREAM& bdexStreamIn(STREAM& stream, int version);
-        // Assign to this object the value read from the specified input
-        // 'stream' using the specified 'version' format, and return a
-        // reference to 'stream'.  If 'stream' is initially invalid, this
-        // operation has no effect.  If 'version' is not supported, this object
-        // is unaltered and 'stream' is invalidated, but otherwise unmodified.
-        // If 'version' is supported but 'stream' becomes invalid during this
-        // operation, this object has an undefined, but valid, state.  Note
-        // that no version is read from 'stream'.  See the 'bslx' package-level
-        // documentation for more information on BDEX streaming of
-        // value-semantic types and containers.
 
     // ACCESSORS
     const DecimalImpUtil::ValueType64 *data() const;
@@ -1451,18 +1418,6 @@ class Decimal_Type64 {
     DecimalImpUtil::ValueType64 value() const;
         // Return the value of the underlying implementation.
 
-                                  // Aspects
-
-    template <class STREAM>
-    STREAM& bdexStreamOut(STREAM& stream, int version) const;
-        // Write the value of this object, using the specified 'version'
-        // format, to the specified output 'stream', and return a reference to
-        // 'stream'.  If 'stream' is initially invalid, this operation has no
-        // effect.  If 'version' is not supported, 'stream' is invalidated, but
-        // otherwise unmodified.  Note that 'version' is not written to
-        // 'stream'.  See the 'bslx' package-level documentation for more
-        // information on BDEX streaming of value-semantic types and
-        // containers.
 
     std::ostream& print(std::ostream& stream,
                         int           level = 0,
@@ -4358,21 +4313,6 @@ DecimalImpUtil::ValueType32 Decimal_Type32::value() const
                             // class Decimal_Type64
                             // --------------------
 
-// CLASS METHODS
-
-                                  // Aspects
-inline
-int Decimal_Type64::maxSupportedBdexVersion()
-{
-    return 1;
-}
-
-inline
-int Decimal_Type64::maxSupportedBdexVersion(int /* versionSelector */)
-{
-    return 1;
-}
-
 // CREATORS
 inline
 Decimal_Type64::Decimal_Type64()
@@ -4657,34 +4597,6 @@ inline Decimal_Type64& Decimal_Type64::operator/=(unsigned long long rhs)
     return *this /= Decimal64(rhs);
 }
 
-
-                                  // Aspects
-
-template <class STREAM>
-STREAM& Decimal_Type64::bdexStreamIn(STREAM& stream, int version)
-{
-    if (stream) {
-        switch (version) { // switch on the schema version
-          case 1: {
-            BinaryIntegralDecimalImpUtil::StorageType64 bidVal;
-            stream.getUint64(bidVal.d_raw);
-
-            if (stream) {
-                d_value = DecimalImpUtil::convertFromBID(bidVal);
-            }
-            else {
-                stream.invalidate();
-            }
-          } break;
-          default: {
-            stream.invalidate();  // unrecognized version number
-          }
-        }
-    }
-
-    return stream;
-}
-
 //ACCESSORS
 
                             // Internals Accessors
@@ -4702,26 +4614,6 @@ inline const DecimalImpUtil::ValueType64 *Decimal_Type64::data() const
 inline DecimalImpUtil::ValueType64 Decimal_Type64::value() const
 {
     return d_value;
-}
-
-                                  // Aspects
-
-template <class STREAM>
-STREAM& Decimal_Type64::bdexStreamOut(STREAM& stream, int version) const
-{
-    if (stream) {
-        switch (version) { // switch on the schema version
-          case 1: {
-            BinaryIntegralDecimalImpUtil::StorageType64 bidVal =
-                DecimalImpUtil::convertToBID(d_value);
-            stream.putUint64(bidVal.d_raw);
-          } break;
-          default: {
-            stream.invalidate();  // unrecognized version number
-          }
-        }
-    }
-    return stream;
 }
 
                            // ---------------------

@@ -86,7 +86,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
@@ -117,7 +117,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
@@ -150,7 +150,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
@@ -184,7 +184,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;BDE_BUILD_TARGET_EXC;BSLS_PLATFORM_CMP_MSVC;BSLS_PLATFORM_CMP_VERSION=1900;PCRE2_CODE_UNIT_WIDTH=8;HAVE_CONFIG_H;SUPPORT_UNICODE;WNT;DECIMAL_CALL_BY_REFERENCE=0;DECIMAL_GLOBAL_ROUNDING=1;DECIMAL_GLOBAL_EXCEPTION_FLAGS=0;BID_BIG_ENDIAN=0;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
