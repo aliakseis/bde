@@ -2,6 +2,7 @@
 #include <bdldfp_decimal.h>
 
 
+#include <bdldfp_decimalimputil.h>
 #include <bdldfp_decimalimputil_decnumber.h>
 #include <bsls_performancehint.h>
 #include <bslim_printer.h>
@@ -979,10 +980,2043 @@ BloombergLP::bdldfp::Decimal128
     return BloombergLP::bdldfp::DecimalImpUtil::denormMin128();
 }
 
-#if defined(BDLDFP_DECIMAL_RESTORE_STD)
-#   define std bsl
-#   undef BDLDFP_DECIMAL_RESTORE_STD
-#endif
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+// ============================================================================
+//                            FORMERLY INLINE DEFINITIONS
+// ============================================================================
+
+
+namespace BloombergLP {
+namespace bdldfp {
+
+                      // THE DECIMAL FLOATING-POINT TYPES
+
+                            // --------------------
+                            // class Decimal_Type32
+                            // --------------------
+
+
+Decimal_Type32::Decimal_Type32()
+{
+    std::memset(&d_value, 0, sizeof(d_value));
+}
+
+
+Decimal_Type32::Decimal_Type32(DecimalImpUtil::ValueType32 value)
+: d_value(value)
+{
+}
+
+
+Decimal_Type32::Decimal_Type32(Decimal_Type64 other)
+: d_value(DecimalImpUtil::convertToDecimal32(*other.data()))
+{
+}
+
+
+Decimal_Type32::Decimal_Type32(float other)
+: d_value(DecimalImpUtil::binaryToDecimal32(other))
+{
+}
+
+
+Decimal_Type32::Decimal_Type32(double other)
+: d_value(DecimalImpUtil::binaryToDecimal32(other))
+{
+}
+
+
+Decimal_Type32::Decimal_Type32(int other)
+: d_value(DecimalImpUtil::int32ToDecimal32(other))
+{
+}
+
+
+Decimal_Type32::Decimal_Type32(unsigned int other)
+: d_value(DecimalImpUtil::uint32ToDecimal32(other))
+{
+}
+
+
+Decimal_Type32::Decimal_Type32(long int other)
+: d_value(DecimalImpUtil::int64ToDecimal32(other))
+{
+}
+
+
+Decimal_Type32::Decimal_Type32(unsigned long int other)
+: d_value(DecimalImpUtil::uint64ToDecimal32(other))
+{
+}
+
+
+Decimal_Type32::Decimal_Type32(long long other)
+: d_value(DecimalImpUtil::int64ToDecimal32(other))
+{
+}
+
+
+Decimal_Type32::Decimal_Type32(unsigned long long other)
+: d_value(DecimalImpUtil::uint64ToDecimal32(other))
+{
+}
+
+
+
+
+DecimalImpUtil::ValueType32 *Decimal_Type32::data()
+{
+    return &d_value;
+}
+
+
+const DecimalImpUtil::ValueType32 *Decimal_Type32::data() const
+{
+    return &d_value;
+}
+
+
+DecimalImpUtil::ValueType32 Decimal_Type32::value() const
+{
+    return d_value;
+}
+
+                            // --------------------
+                            // class Decimal_Type64
+                            // --------------------
+
+// CREATORS
+
+Decimal_Type64::Decimal_Type64()
+{
+    std::memset(&d_value, 0, sizeof(d_value));
+}
+
+
+Decimal_Type64::Decimal_Type64(DecimalImpUtil::ValueType64 value)
+: d_value(value)
+{
+}
+
+
+Decimal_Type64::Decimal_Type64(Decimal32 other)
+: d_value(DecimalImpUtil::convertToDecimal64(*other.data()))
+{
+}
+
+
+Decimal_Type64::Decimal_Type64(Decimal128 other)
+: d_value(DecimalImpUtil::convertToDecimal64(*other.data()))
+{
+}
+
+                     // Numerical Conversion Constructors
+
+
+Decimal_Type64::Decimal_Type64(float other)
+: d_value(DecimalImpUtil::binaryToDecimal64(other))
+{
+}
+
+
+Decimal_Type64::Decimal_Type64(double other)
+: d_value(DecimalImpUtil::binaryToDecimal64(other))
+{
+}
+
+                      // Integral Conversion Constructors
+
+
+Decimal_Type64::Decimal_Type64(int other)
+: d_value(DecimalImpUtil::int32ToDecimal64(other))
+{
+}
+
+
+Decimal_Type64::Decimal_Type64(unsigned int other)
+: d_value(DecimalImpUtil::uint32ToDecimal64(other))
+{
+}
+
+
+Decimal_Type64::Decimal_Type64(long other)
+: d_value(DecimalImpUtil::int64ToDecimal64(other))
+{
+}
+
+
+Decimal_Type64::Decimal_Type64(unsigned long other)
+: d_value(DecimalImpUtil::uint64ToDecimal64(other))
+{
+}
+
+
+Decimal_Type64::Decimal_Type64(long long other)
+: d_value(DecimalImpUtil::int64ToDecimal64(other))
+{
+}
+
+
+Decimal_Type64::Decimal_Type64(unsigned long long other)
+: d_value(DecimalImpUtil::uint64ToDecimal64(other))
+{
+}
+
+
+// MANIPULATORS
+
+                     // Incrementation and Decrementation
+
+ Decimal_Type64& Decimal_Type64::operator++()
+{
+    return *this += Decimal64(1);
+}
+
+ Decimal_Type64& Decimal_Type64::operator--()
+{
+    return *this -= Decimal64(1);
+}
+
+                                  // Addition
+
+ Decimal_Type64& Decimal_Type64::operator+=(Decimal32 rhs)
+{
+    return *this += Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator+=(Decimal64 rhs)
+{
+    this->d_value = DecimalImpUtil::add(this->d_value, rhs.d_value);
+    return *this;
+}
+
+ Decimal_Type64& Decimal_Type64::operator+=(Decimal128 rhs)
+{
+    return *this += Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator+=(int rhs)
+{
+    return *this += Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator+=(unsigned int rhs)
+{
+    return *this += Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator+=(long rhs)
+{
+    return *this += Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator+=(unsigned long rhs)
+{
+    return *this += Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator+=(long long rhs)
+{
+    return *this += Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator+=(unsigned long long rhs)
+{
+    return *this += Decimal64(rhs);
+}
+
+                                // Subtraction
+
+ Decimal_Type64& Decimal_Type64::operator-=(Decimal32 rhs)
+{
+    return *this -= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator-=(Decimal64 rhs)
+{
+    this->d_value = DecimalImpUtil::subtract(this->d_value, rhs.d_value);
+    return *this;
+}
+
+ Decimal_Type64& Decimal_Type64::operator-=(Decimal128 rhs)
+{
+    return *this -= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator-=(int rhs)
+{
+    return *this -= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator-=(unsigned int rhs)
+{
+    return *this -= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator-=(long rhs)
+{
+    return *this -= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator-=(unsigned long rhs)
+{
+    return *this -= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator-=(long long rhs)
+{
+    return *this -= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator-=(unsigned long long rhs)
+{
+    return *this -= Decimal64(rhs);
+}
+
+                               // Multiplication
+
+ Decimal_Type64& Decimal_Type64::operator*=(Decimal32 rhs)
+{
+    return *this *= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator*=(Decimal64 rhs)
+{
+    this->d_value = DecimalImpUtil::multiply(this->d_value, rhs.d_value);
+    return *this;
+}
+
+ Decimal_Type64& Decimal_Type64::operator*=(Decimal128 rhs)
+{
+    return *this *= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator*=(int rhs)
+{
+    return *this *= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator*=(unsigned int rhs)
+{
+    return *this *= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator*=(long rhs)
+{
+    return *this *= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator*=(unsigned long rhs)
+{
+    return *this *= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator*=(long long rhs)
+{
+    return *this *= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator*=(unsigned long long rhs)
+{
+    return *this *= Decimal64(rhs);
+}
+
+                                  // Division
+
+ Decimal_Type64& Decimal_Type64::operator/=(Decimal32 rhs)
+{
+    return *this /= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator/=(Decimal64 rhs)
+{
+    this->d_value = DecimalImpUtil::divide(this->d_value, rhs.d_value);
+    return *this;
+}
+
+ Decimal_Type64& Decimal_Type64::operator/=(Decimal128 rhs)
+{
+    return *this /= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator/=(int rhs)
+{
+    return *this /= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator/=(unsigned int rhs)
+{
+    return *this /= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator/=(long rhs)
+{
+    return *this /= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator/=(unsigned long rhs)
+{
+    return *this /= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator/=(long long rhs)
+{
+    return *this /= Decimal64(rhs);
+}
+
+ Decimal_Type64& Decimal_Type64::operator/=(unsigned long long rhs)
+{
+    return *this /= Decimal64(rhs);
+}
+
+//ACCESSORS
+
+                            // Internals Accessors
+
+ DecimalImpUtil::ValueType64 *Decimal_Type64::data()
+{
+    return &d_value;
+}
+
+ const DecimalImpUtil::ValueType64 *Decimal_Type64::data() const
+{
+    return &d_value;
+}
+
+ DecimalImpUtil::ValueType64 Decimal_Type64::value() const
+{
+    return d_value;
+}
+
+                           // ---------------------
+                           // class Decimal_Type128
+                           // ---------------------
+
+
+Decimal_Type128::Decimal_Type128()
+{
+    std::memset(&d_value, 0, sizeof(d_value));
+}
+
+
+Decimal_Type128::Decimal_Type128(DecimalImpUtil::ValueType128 value)
+: d_value(value)
+{
+}
+
+
+Decimal_Type128::Decimal_Type128(Decimal32 value)
+: d_value(DecimalImpUtil::convertToDecimal128(*value.data()))
+{
+}
+
+
+Decimal_Type128::Decimal_Type128(Decimal64 value)
+: d_value(DecimalImpUtil::convertToDecimal128(*value.data()))
+{
+}
+
+
+Decimal_Type128::Decimal_Type128(float other)
+: d_value(DecimalImpUtil::binaryToDecimal128(other))
+{
+}
+
+
+Decimal_Type128::Decimal_Type128(double other)
+: d_value(DecimalImpUtil::binaryToDecimal128(other))
+{
+}
+
+
+Decimal_Type128::Decimal_Type128(int value)
+: d_value(DecimalImpUtil::int32ToDecimal128(value))
+{
+}
+
+ Decimal_Type128::Decimal_Type128(unsigned int value)
+: d_value(DecimalImpUtil::uint32ToDecimal128(value))
+{
+}
+
+ Decimal_Type128::Decimal_Type128(long value)
+: d_value(DecimalImpUtil::int64ToDecimal128(value))
+{
+}
+
+ Decimal_Type128::Decimal_Type128(unsigned long value)
+: d_value(DecimalImpUtil::uint64ToDecimal128(value))
+{
+}
+
+ Decimal_Type128::Decimal_Type128(long long value)
+: d_value(DecimalImpUtil::int64ToDecimal128(value))
+{
+}
+
+ Decimal_Type128::Decimal_Type128(unsigned long long value)
+: d_value(DecimalImpUtil::uint64ToDecimal128(value))
+{
+}
+
+
+
+Decimal_Type128& Decimal_Type128::operator++()
+{
+    return *this += Decimal128(1);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator--()
+{
+    return *this -= Decimal128(1);
+}
+
+                                  // Addition
+
+
+Decimal_Type128& Decimal_Type128::operator+=(Decimal32 rhs)
+{
+    return *this += Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator+=(Decimal64 rhs)
+{
+    return *this += Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator+=(Decimal128 rhs)
+{
+    this->d_value = DecimalImpUtil::add(this->d_value, rhs.d_value);
+    return *this;
+}
+
+
+Decimal_Type128& Decimal_Type128::operator+=(int rhs)
+{
+    return *this += Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator+=(unsigned int rhs)
+{
+    return *this += Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator+=(long rhs)
+{
+    return *this += Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator+=(unsigned long rhs)
+{
+    return *this += Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator+=(long long rhs)
+{
+    return *this += Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator+=(unsigned long long rhs)
+{
+    return *this += Decimal128(rhs);
+}
+
+                                // Subtraction
+
+
+Decimal_Type128& Decimal_Type128::operator-=(Decimal32 rhs)
+{
+    return *this -= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator-=(Decimal64 rhs)
+{
+    return *this -= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator-=(Decimal128 rhs)
+{
+    this->d_value = DecimalImpUtil::subtract(this->d_value, rhs.d_value);
+    return *this;
+}
+
+
+
+Decimal_Type128& Decimal_Type128::operator-=(int rhs)
+{
+    return *this -= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator-=(unsigned int rhs)
+{
+    return *this -= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator-=(long rhs)
+{
+    return *this -= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator-=(unsigned long rhs)
+{
+    return *this -= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator-=(long long rhs)
+{
+    return *this -= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator-=(unsigned long long rhs)
+{
+    return *this -= Decimal128(rhs);
+}
+
+                               // Multiplication
+
+
+Decimal_Type128& Decimal_Type128::operator*=(Decimal32 rhs)
+{
+    return *this *= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator*=(Decimal64 rhs)
+{
+    return *this *= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator*=(Decimal128 rhs)
+{
+    this->d_value = DecimalImpUtil::multiply(this->d_value, rhs.d_value);
+    return *this;
+}
+
+
+
+Decimal_Type128& Decimal_Type128::operator*=(int rhs)
+{
+    return *this *= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator*=(unsigned int rhs)
+{
+    return *this *= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator*=(long rhs)
+{
+    return *this *= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator*=(unsigned long rhs)
+{
+    return *this *= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator*=(long long rhs)
+{
+    return *this *= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator*=(unsigned long long rhs)
+{
+    return *this *= Decimal128(rhs);
+}
+
+                                  // Division
+
+
+Decimal_Type128& Decimal_Type128::operator/=(Decimal32 rhs)
+{
+    return *this /= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator/=(Decimal64 rhs)
+{
+    return *this /= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator/=(Decimal128 rhs)
+{
+    this->d_value = DecimalImpUtil::divide(this->d_value, rhs.d_value);
+    return *this;
+}
+
+
+
+Decimal_Type128& Decimal_Type128::operator/=(int rhs)
+{
+    return *this /= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator/=(unsigned int rhs)
+{
+    return *this /= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator/=(long rhs)
+{
+    return *this /= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator/=(unsigned long rhs)
+{
+    return *this /= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator/=(long long rhs)
+{
+    return *this /= Decimal128(rhs);
+}
+
+
+Decimal_Type128& Decimal_Type128::operator/=(unsigned long long rhs)
+{
+    return *this /= Decimal128(rhs);
+}
+
+                            // Internals Accessors
+
+
+DecimalImpUtil::ValueType128 *Decimal_Type128::data()
+{
+    return &d_value;
+}
+
+
+const DecimalImpUtil::ValueType128 *Decimal_Type128::data() const
+{
+    return &d_value;
+}
+
+
+DecimalImpUtil::ValueType128 Decimal_Type128::value() const
+{
+    return d_value;
+}
+
+}  // close package namespace
+
+// FREE OPERATORS
+
+
+bdldfp::Decimal32 bdldfp::operator+(bdldfp::Decimal32 value)
+{
+    return value;
+}
+
+
+bdldfp::Decimal32 bdldfp::operator-(bdldfp::Decimal32 value)
+{
+    return Decimal32(DecimalImpUtil::negate(value.value()));
+}
+
+
+bool bdldfp::operator==(bdldfp::Decimal32 lhs, bdldfp::Decimal32 rhs)
+{
+    return DecimalImpUtil::equal(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator!=(bdldfp::Decimal32 lhs, bdldfp::Decimal32 rhs)
+{
+    return DecimalImpUtil::notEqual(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator<(bdldfp::Decimal32 lhs, bdldfp::Decimal32 rhs)
+{
+    return DecimalImpUtil::less(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator<=(bdldfp::Decimal32 lhs, bdldfp::Decimal32 rhs)
+{
+    return DecimalImpUtil::lessEqual(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator>(bdldfp::Decimal32 lhs, bdldfp::Decimal32 rhs)
+{
+    return DecimalImpUtil::greater(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator>=(bdldfp::Decimal32 lhs, bdldfp::Decimal32 rhs)
+{
+    return DecimalImpUtil::greaterEqual(*lhs.data(), *rhs.data());
+}
+
+// FREE OPERATORS
+
+bdldfp::Decimal64 bdldfp::operator+(bdldfp::Decimal64 value)
+{
+    return value;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(bdldfp::Decimal64 value)
+{
+    return DecimalImpUtil::negate(*value.data());
+}
+
+
+bdldfp::Decimal64 bdldfp::operator++(bdldfp::Decimal64& value, int)
+{
+    bdldfp::Decimal64 result(value);
+    ++value;
+    return result;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator--(bdldfp::Decimal64& value, int)
+{
+    bdldfp::Decimal64 result(value);
+    --value;
+    return result;
+}
+
+                                  // Addition
+
+
+bdldfp::Decimal64 bdldfp::operator+(bdldfp::Decimal64 lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(DecimalImpUtil::add(*lhs.data(), *rhs.data()));
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(bdldfp::Decimal32 lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) + rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(bdldfp::Decimal64 lhs,
+                                    bdldfp::Decimal32 rhs)
+{
+    return lhs + Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(bdldfp::Decimal64 lhs,
+                                    int               rhs)
+{
+    return lhs + Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(bdldfp::Decimal64 lhs,
+                                    unsigned int      rhs)
+{
+    return lhs + Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(bdldfp::Decimal64 lhs,
+                                    long              rhs)
+{
+    return lhs + Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(bdldfp::Decimal64 lhs,
+                                    unsigned long     rhs)
+{
+    return lhs + Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(bdldfp::Decimal64 lhs,
+                                    long long         rhs)
+{
+    return lhs + Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(bdldfp::Decimal64  lhs,
+                                    unsigned long long rhs)
+{
+    return lhs + Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(int               lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) + rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(unsigned int      lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) + rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(long              lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) + rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(unsigned long     lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) + rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(long long         lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) + rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator+(unsigned long long lhs,
+                                    bdldfp::Decimal64  rhs)
+{
+    return Decimal64(lhs) + rhs;
+}
+
+                                // Subtraction
+
+
+bdldfp::Decimal64 bdldfp::operator-(bdldfp::Decimal64 lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(DecimalImpUtil::subtract(*lhs.data(), *rhs.data()));
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(bdldfp::Decimal32 lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) - rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(bdldfp::Decimal64 lhs,
+                                    bdldfp::Decimal32 rhs)
+{
+    return lhs - Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(bdldfp::Decimal64 lhs,
+                                    int               rhs)
+{
+    return lhs - Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(bdldfp::Decimal64 lhs,
+                                    unsigned int      rhs)
+{
+    return lhs - Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(bdldfp::Decimal64 lhs,
+                                    long              rhs)
+{
+    return lhs - Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(bdldfp::Decimal64 lhs,
+                                    unsigned long     rhs)
+{
+    return lhs - Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(bdldfp::Decimal64 lhs,
+                                    long long         rhs)
+{
+    return lhs - Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(bdldfp::Decimal64  lhs,
+                                    unsigned long long rhs)
+{
+    return lhs - Decimal64(rhs);
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(int               lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) - rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(unsigned int      lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) - rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(long              lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) - rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(unsigned long     lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) - rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(long long         lhs,
+                                    bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) - rhs;
+}
+
+
+bdldfp::Decimal64 bdldfp::operator-(unsigned long long lhs,
+                                    bdldfp::Decimal64  rhs)
+{
+    return Decimal64(lhs) - rhs;
+}
+
+                               // Multiplication
+
+ bdldfp::Decimal64 bdldfp::operator*(bdldfp::Decimal64 lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(DecimalImpUtil::multiply(*lhs.data(), *rhs.data()));
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(bdldfp::Decimal32 lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) * rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(bdldfp::Decimal64 lhs,
+                                           bdldfp::Decimal32 rhs)
+{
+    return lhs * Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(bdldfp::Decimal64 lhs,
+                                           int               rhs)
+{
+    return lhs * Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(bdldfp::Decimal64 lhs,
+                                           unsigned int      rhs)
+{
+    return lhs * Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(bdldfp::Decimal64 lhs,
+                                           long              rhs)
+{
+    return lhs * Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(bdldfp::Decimal64 lhs,
+                                           unsigned long     rhs)
+{
+    return lhs * Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(bdldfp::Decimal64 lhs,
+                                           long long         rhs)
+{
+    return lhs * Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(bdldfp::Decimal64  lhs,
+                                           unsigned long long rhs)
+{
+    return lhs * Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(int               lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) * rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(unsigned int      lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) * rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(long              lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) * rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(unsigned long     lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) * rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(long long         lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) * rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator*(unsigned long long lhs,
+                                           bdldfp::Decimal64  rhs)
+{
+    return Decimal64(lhs) * rhs;
+}
+
+                                  // Division
+
+ bdldfp::Decimal64 bdldfp::operator/(bdldfp::Decimal64 lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(DecimalImpUtil::divide(*lhs.data(), *rhs.data()));
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(bdldfp::Decimal32 lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) / rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(bdldfp::Decimal64 lhs,
+                                           bdldfp::Decimal32 rhs)
+{
+    return lhs / Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(bdldfp::Decimal64 lhs,
+                                           int               rhs)
+{
+    return lhs / Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(bdldfp::Decimal64 lhs,
+                                           unsigned int      rhs)
+{
+    return lhs / Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(bdldfp::Decimal64 lhs,
+                                           long              rhs)
+{
+    return lhs / Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(bdldfp::Decimal64 lhs,
+                                           unsigned long     rhs)
+{
+    return lhs / Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(bdldfp::Decimal64 lhs,
+                                           long long         rhs)
+{
+    return lhs / Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(bdldfp::Decimal64  lhs,
+                                           unsigned long long rhs)
+{
+    return lhs / Decimal64(rhs);
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(int               lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) / rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(unsigned int      lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) / rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(long              lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) / rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(unsigned long     lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) / rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(long long         lhs,
+                                           bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) / rhs;
+}
+
+ bdldfp::Decimal64 bdldfp::operator/(unsigned long long lhs,
+                                           bdldfp::Decimal64  rhs)
+{
+    return Decimal64(lhs) / rhs;
+}
+
+                                  // Equality
+
+ bool bdldfp::operator==(bdldfp::Decimal64 lhs, bdldfp::Decimal64 rhs)
+{
+    return DecimalImpUtil::equal(*lhs.data(), *rhs.data());
+}
+
+ bool bdldfp::operator==(bdldfp::Decimal32 lhs, bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) == rhs;
+}
+
+ bool bdldfp::operator==(bdldfp::Decimal64 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs == Decimal64(rhs);
+}
+
+                                 // Inequality
+
+ bool bdldfp::operator!=(bdldfp::Decimal64 lhs, bdldfp::Decimal64 rhs)
+{
+    return DecimalImpUtil::notEqual(*lhs.data(), *rhs.data());
+}
+
+ bool bdldfp::operator!=(bdldfp::Decimal32 lhs, bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) != rhs;
+}
+
+ bool bdldfp::operator!=(bdldfp::Decimal64 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs != Decimal64(rhs);
+}
+
+                                 // Less Than
+
+ bool bdldfp::operator<(bdldfp::Decimal64 lhs, bdldfp::Decimal64 rhs)
+{
+    return DecimalImpUtil::less(*lhs.data(), *rhs.data());
+}
+
+ bool bdldfp::operator<(bdldfp::Decimal32 lhs, bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) < rhs;
+}
+
+ bool bdldfp::operator<(bdldfp::Decimal64 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs < Decimal64(rhs);
+}
+
+                                 // Less Equal
+
+ bool bdldfp::operator<=(bdldfp::Decimal64 lhs, bdldfp::Decimal64 rhs)
+{
+    return DecimalImpUtil::lessEqual(*lhs.data(), *rhs.data());
+}
+
+ bool bdldfp::operator<=(bdldfp::Decimal32 lhs, bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) <= rhs;
+}
+
+ bool bdldfp::operator<=(bdldfp::Decimal64 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs <= Decimal64(rhs);
+}
+
+                                // Greater Than
+
+ bool bdldfp::operator>(bdldfp::Decimal64 lhs, bdldfp::Decimal64 rhs)
+{
+    return DecimalImpUtil::greater(*lhs.data(), *rhs.data());
+}
+
+ bool bdldfp::operator>(bdldfp::Decimal32 lhs, bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) > rhs;
+}
+
+ bool bdldfp::operator>(bdldfp::Decimal64 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs > Decimal64(rhs);
+}
+
+                               // Greater Equal
+
+ bool bdldfp::operator>=(bdldfp::Decimal64 lhs, bdldfp::Decimal64 rhs)
+{
+    return DecimalImpUtil::greaterEqual(*lhs.data(), *rhs.data());
+}
+
+ bool bdldfp::operator>=(bdldfp::Decimal32 lhs, bdldfp::Decimal64 rhs)
+{
+    return Decimal64(lhs) >= rhs;
+}
+
+ bool bdldfp::operator>=(bdldfp::Decimal64 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs >= Decimal64(rhs);
+}
+
+// FREE OPERATORS
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal128 value)
+{
+    return value;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal128 value)
+{
+    return Decimal128(DecimalImpUtil::negate(*value.data()));
+}
+
+
+bdldfp::Decimal128 bdldfp::operator++(bdldfp::Decimal128& value, int)
+{
+    Decimal128 result = value;
+    ++value;
+    return result;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator--(bdldfp::Decimal128& value, int)
+{
+    Decimal128 result = value;
+    --value;
+    return result;
+}
+
+                                  // Addition
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(DecimalImpUtil::add(*lhs.data(), *rhs.data()));
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal32  lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) + rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal32  rhs)
+{
+    return lhs + Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal64  lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) + rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal64  rhs)
+{
+    return lhs + Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal128 lhs,
+                                     int                rhs)
+{
+    return lhs + Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal128 lhs,
+                                     unsigned int       rhs)
+{
+    return lhs + Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal128 lhs,
+                                     long               rhs)
+{
+    return lhs + Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal128 lhs,
+                                     unsigned long      rhs)
+{
+    return lhs + Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal128 lhs,
+                                     long long          rhs)
+{
+    return lhs + Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(bdldfp::Decimal128 lhs,
+                                     unsigned long long rhs)
+{
+    return lhs + Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(int                lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) + rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(unsigned int       lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) + rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(long               lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) + rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(unsigned long      lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) + rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(long long          lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) + rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator+(unsigned long long lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) + rhs;
+}
+
+                                // Subtraction
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(DecimalImpUtil::subtract(*lhs.data(), *rhs.data()));
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal32  lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) - rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal32  rhs)
+{
+    return lhs - Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal64  lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) - rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal64  rhs)
+{
+    return lhs - Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal128 lhs,
+                                     int                rhs)
+{
+    return lhs - Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal128 lhs,
+                                     unsigned int       rhs)
+{
+    return lhs - Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal128 lhs,
+                                     long               rhs)
+{
+    return lhs - Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal128 lhs,
+                                     unsigned long      rhs)
+{
+    return lhs - Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal128 lhs,
+                                     long long          rhs)
+{
+    return lhs - Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(bdldfp::Decimal128 lhs,
+                                     unsigned long long rhs)
+{
+    return lhs - Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(int                lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) - rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(unsigned int       lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) - rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(long               lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) - rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(unsigned long      lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) - rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(long long          lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) - rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator-(unsigned long long lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) - rhs;
+}
+
+                               // Multiplication
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(DecimalImpUtil::multiply(*lhs.data(), *rhs.data()));
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal32  lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) * rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal32  rhs)
+{
+    return lhs * Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal64  lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) * rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal64  rhs)
+{
+    return lhs * Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal128 lhs,
+                                     int                rhs)
+{
+    return lhs * Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal128 lhs,
+                                     unsigned int       rhs)
+{
+    return lhs * Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal128 lhs,
+                                     long               rhs)
+{
+    return lhs * Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal128 lhs,
+                                     unsigned long      rhs)
+{
+    return lhs * Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal128 lhs,
+                                     long long          rhs)
+{
+    return lhs * Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(bdldfp::Decimal128 lhs,
+                                     unsigned long long rhs)
+{
+    return lhs * Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(int                lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) * rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(unsigned int       lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) * rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(long               lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) * rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(unsigned long      lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) * rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(long long          lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) * rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator*(unsigned long long lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) * rhs;
+}
+
+                                  // Division
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(DecimalImpUtil::divide(*lhs.data(), *rhs.data()));
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal32  lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) / rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal32  rhs)
+{
+    return lhs / Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal64  lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) / rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal128 lhs,
+                                     bdldfp::Decimal64  rhs)
+{
+    return lhs / Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal128 lhs,
+                                     int                rhs)
+{
+    return lhs / Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal128 lhs,
+                                     unsigned int       rhs)
+{
+    return lhs / Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal128 lhs,
+                                     long               rhs)
+{
+    return lhs / Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal128 lhs,
+                                     unsigned long      rhs)
+{
+    return lhs / Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal128 lhs,
+                                     long long          rhs)
+{
+    return lhs / Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(bdldfp::Decimal128 lhs,
+                                     unsigned long long rhs)
+{
+    return lhs / Decimal128(rhs);
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(int                lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) / rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(unsigned int       lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) / rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(long               lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) / rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(unsigned long      lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) / rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(long long          lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) / rhs;
+}
+
+
+bdldfp::Decimal128 bdldfp::operator/(unsigned long long lhs,
+                                     bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) / rhs;
+}
+
+                                  // Equality
+
+
+bool bdldfp::operator==(bdldfp::Decimal128 lhs, bdldfp::Decimal128 rhs)
+{
+    return DecimalImpUtil::equal(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator==(bdldfp::Decimal32 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) == rhs;
+}
+
+
+bool bdldfp::operator==(bdldfp::Decimal128 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs == Decimal128(rhs);
+}
+
+
+bool bdldfp::operator==(bdldfp::Decimal64 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) == rhs;
+}
+
+
+bool bdldfp::operator==(bdldfp::Decimal128 lhs, bdldfp::Decimal64 rhs)
+{
+    return lhs == Decimal128(rhs);
+}
+
+                                 // Inequality
+
+
+bool bdldfp::operator!=(bdldfp::Decimal128 lhs, bdldfp::Decimal128 rhs)
+{
+    return DecimalImpUtil::notEqual(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator!=(bdldfp::Decimal32 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) != rhs;
+}
+
+
+bool bdldfp::operator!=(bdldfp::Decimal128 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs != Decimal128(rhs);
+}
+
+
+bool bdldfp::operator!=(bdldfp::Decimal64 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) != rhs;
+}
+
+
+bool bdldfp::operator!=(bdldfp::Decimal128 lhs, bdldfp::Decimal64 rhs)
+{
+    return lhs != Decimal128(rhs);
+}
+
+                                 // Less Than
+
+
+bool bdldfp::operator<(bdldfp::Decimal128 lhs, bdldfp::Decimal128 rhs)
+{
+    return DecimalImpUtil::less(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator<(bdldfp::Decimal32 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) < rhs;
+}
+
+
+bool bdldfp::operator<(bdldfp::Decimal128 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs < Decimal128(rhs);
+}
+
+
+bool bdldfp::operator<(bdldfp::Decimal64 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) < rhs;
+}
+
+
+bool bdldfp::operator<(bdldfp::Decimal128 lhs, bdldfp::Decimal64 rhs)
+{
+    return lhs < Decimal128(rhs);
+}
+
+                                 // Less Equal
+
+
+bool bdldfp::operator<=(bdldfp::Decimal128 lhs, bdldfp::Decimal128 rhs)
+{
+    return DecimalImpUtil::lessEqual(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator<=(bdldfp::Decimal32 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) <= rhs;
+}
+
+
+bool bdldfp::operator<=(bdldfp::Decimal128 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs <= Decimal128(rhs);
+}
+
+
+bool bdldfp::operator<=(bdldfp::Decimal64 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) <= rhs;
+}
+
+
+bool bdldfp::operator<=(bdldfp::Decimal128 lhs, bdldfp::Decimal64 rhs)
+{
+    return lhs <= Decimal128(rhs);
+}
+
+                                  // Greater
+
+
+bool bdldfp::operator>(bdldfp::Decimal128 lhs, bdldfp::Decimal128 rhs)
+{
+    return DecimalImpUtil::greater(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator>(bdldfp::Decimal32 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) > rhs;
+}
+
+
+bool bdldfp::operator>(bdldfp::Decimal128 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs > Decimal128(rhs);
+}
+
+
+bool bdldfp::operator>(bdldfp::Decimal64 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) > rhs;
+}
+
+
+bool bdldfp::operator>(bdldfp::Decimal128 lhs, bdldfp::Decimal64 rhs)
+{
+    return lhs > Decimal128(rhs);
+}
+
+                               // Greater Equal
+
+
+bool bdldfp::operator>=(bdldfp::Decimal128 lhs, bdldfp::Decimal128 rhs)
+{
+    return DecimalImpUtil::greaterEqual(*lhs.data(), *rhs.data());
+}
+
+
+bool bdldfp::operator>=(bdldfp::Decimal32 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) >= rhs;
+}
+
+
+bool bdldfp::operator>=(bdldfp::Decimal128 lhs, bdldfp::Decimal32 rhs)
+{
+    return lhs >= Decimal128(rhs);
+}
+
+
+bool bdldfp::operator>=(bdldfp::Decimal64 lhs, bdldfp::Decimal128 rhs)
+{
+    return Decimal128(lhs) >= rhs;
+}
+
+
+bool bdldfp::operator>=(bdldfp::Decimal128 lhs, bdldfp::Decimal64 rhs)
+{
+    return lhs >= Decimal128(rhs);
+}
+
+}  // close enterprise namespace
+
+
+///////////////////////////////////////////////////////////////////////////////
 
 // ----------------------------------------------------------------------------
 // Copyright 2014 Bloomberg Finance L.P.

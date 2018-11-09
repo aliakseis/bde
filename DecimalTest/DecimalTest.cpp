@@ -14,7 +14,7 @@
 
 #include <time.h>
 
-#include <bdldfp_decimal.h>
+#include "../bdl/bdldfp/bdldfp_decimal.h"
 
 //#include <bid_conf.h>
 //#include <bid_functions.h>

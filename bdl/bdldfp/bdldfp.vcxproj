@@ -229,6 +229,7 @@
     <ClCompile Include=".\bdldfp_decimalimputil.cpp" />
     <ClCompile Include=".\bdldfp_decimalimputil_decnumber.cpp" />
     <ClInclude Include="bdlb_float.h" />
+    <ClInclude Include="bdldfp_decimalimputil_public.h" />
     <ClInclude Include="bdlscm_version.h" />
     <ClInclude Include="bslalg_hasstliterators.h" />
     <ClInclude Include="bslh_defaulthashalgorithm.h" />

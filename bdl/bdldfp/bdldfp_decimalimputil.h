@@ -140,70 +140,36 @@
 #include <bdldfp_denselypackeddecimalimputil.h>
 #endif
 
+#include <bdldfp_decimalimputil_public.h>
+
 #include <algorithm>
 #include <cassert>
 #include <stdint.h>
 
-
-#ifdef BDLDFP_DECIMALPLATFORM_SOFTWARE
-
-                // DECIMAL FLOATING-POINT LITERAL EMULATION
-
-
-#define BDLDFP_DECIMALIMPUTIL_DF(lit)                                        \
-    BloombergLP::bdldfp::DecimalImpUtil::parse32(                            \
-        (BloombergLP::bdldfp::DecimalImpUtil::checkLiteral(lit), #lit))
-
-#define BDLDFP_DECIMALIMPUTIL_DD(lit)                                        \
-    BloombergLP::bdldfp::DecimalImpUtil::parse64(                            \
-        (BloombergLP::bdldfp::DecimalImpUtil::checkLiteral(lit), #lit))
-
-#define BDLDFP_DECIMALIMPUTIL_DL(lit)                                        \
-    BloombergLP::bdldfp::DecimalImpUtil::parse128(                           \
-        (BloombergLP::bdldfp::DecimalImpUtil::checkLiteral(lit), #lit))
-
-#elif defined(BDLDFP_DECIMALPLATFORM_C99_TR) || defined( __IBM_DFP__ )
-
-#define BDLDFP_DECIMALIMPUTIL_JOIN_(a,b) a##b
-
-               // Portable decimal floating-point literal support
-
-#define BDLDFP_DECIMALIMPUTIL_DF(lit) BDLDFP_DECIMALIMPUTIL_JOIN_(lit,df)
-
-#define BDLDFP_DECIMALIMPUTIL_DD(lit) BDLDFP_DECIMALIMPUTIL_JOIN_(lit,dd)
-
-#define BDLDFP_DECIMALIMPUTIL_DL(lit) BDLDFP_DECIMALIMPUTIL_JOIN_(lit,dl)
-
-#endif
 
 
 namespace BloombergLP {
 namespace bdldfp {
 
                         // ====================
-                        // class DecimalImpUtil
+                        // namespace DecimalImpUtil
                         // ====================
 
 namespace DecimalImpUtil {
-    // This 'struct' provides a namespace for utility functions that implement
+    // provides a namespace for utility functions that implement
     // core decimal floating-poing operations.
 
 //  private:
 #ifdef BDLDFP_DECIMALPLATFORM_DECNUMBER
     typedef DecimalImpUtil_DecNumber Imp;
 #elif defined(BDLDFP_DECIMALPLATFORM_INTELDFP)
-    typedef DecimalImpUtil_IntelDfp  Imp;
+    namespace Imp = DecimalImpUtil_IntelDfp;
 #elif defined(BDLDFP_DECIMALPLATFORM_C99_TR)
     typedef DecimalImpUtil_IbmXlc    Imp;
 #else
     BSLMF_ASSERT(false);
 #endif
 
-//  public:
-    // TYPES
-    typedef Imp::ValueType32  ValueType32;
-    typedef Imp::ValueType64  ValueType64;
-    typedef Imp::ValueType128 ValueType128;
 
     // CLASS METHODS
      ValueType64 makeDecimal64(                   int significand,
@@ -226,31 +192,6 @@ namespace DecimalImpUtil {
         // is not supplied, the returned value will be infinity, and negative
         // infinity otherwise.
 
-#ifdef BDLDFP_DECIMALPLATFORM_SOFTWARE
-
-                        // Literal Checking Functions
-
-    struct This_is_not_a_floating_point_literal {};
-        // This 'struct' is a helper type used to generate error messages for
-        // bad literals.
-
-    template <class TYPE>
-     void checkLiteral(const TYPE& t);
-        // Generate an error if the specified 't' is bad decimal
-        // floating-point.  Note that this function is intended for use with
-        // literals
-
-     void checkLiteral(double);
-        // Overload to avoid an error when the decimal floating-point literal
-        // (without the suffix) can be interpreted as a 'double' literal.
-
-#elif defined(BDLDFP_DECIMALPLATFORM_HARDWARE)
-
-#else
-
-#error Improperly configured decimal floating point platform settings
-
-#endif
                             // classify
 
      int classify(ValueType32  x);
@@ -272,23 +213,6 @@ namespace DecimalImpUtil {
         // component as public macros.
 
 
-                          // normalize
-
-     ValueType32 normalize(ValueType32 original);
-     ValueType64 normalize(ValueType64 original);
-     ValueType128 normalize(ValueType128 original);
-        // Return a 'ValueTypeXX' number having the value as the specified
-        // 'original, but with the significand, that can not be divided by ten,
-        // and appropriate exponent.
-        //
-        //: o Any representations of zero value (either positive or negative)
-        //:   are normalized to positive zero having null significand and
-        //:   exponent.
-        //:
-        //: o Any NaN values (either signaling or quiet) are normalized to
-        //:   quiet NaN.
-        //:
-        //: o Normalized non-zero value has the same sign as the original one.
 
                         // compose and decompose
 
@@ -810,40 +734,6 @@ namespace DecimalImpUtil {
         //:
         //: o Otherwise return a 'Decimal128' object representing 'value'.
 
-                        // makeDecimalRaw functions
-
-     ValueType32 makeDecimalRaw32(int significand, int exponent);
-        // Create a 'ValueType32' object representing a decimal floating point
-        // number consisting of the specified 'significand' and 'exponent',
-        // with the sign given by 'significand'.  The behavior is undefined
-        // unless 'abs(significand) <= 9,999,999' and '-101 <= exponent <= 90'.
-
-     ValueType64 makeDecimalRaw64(unsigned long long int significand,
-                                                           int exponent);
-     ValueType64 makeDecimalRaw64(         long long int significand,
-                                                           int exponent);
-     ValueType64 makeDecimalRaw64(unsigned           int significand,
-                                                           int exponent);
-     ValueType64 makeDecimalRaw64(                   int significand,
-                                                           int exponent);
-        // Create a 'ValueType64' object representing a decimal floating point
-        // number consisting of the specified 'significand' and 'exponent',
-        // with the sign given by 'significand'.  The behavior is undefined
-        // unless 'abs(significand) <= 9,999,999,999,999,999' and
-        // '-398 <= exponent <= 369'.
-
-     ValueType128 makeDecimalRaw128(unsigned long long int significand,
-                                                             int exponent);
-     ValueType128 makeDecimalRaw128(         long long int significand,
-                                                             int exponent);
-     ValueType128 makeDecimalRaw128(unsigned           int significand,
-                                                             int exponent);
-     ValueType128 makeDecimalRaw128(                   int significand,
-                                                             int exponent);
-        // Create a 'ValueType128' object representing a decimal floating point
-        // number consisting of the specified 'significand' and 'exponent',
-        // with the sign given by 'significand'.  The behavior is undefined
-        // unless '-6176 <= exponent <= 6111'.
 
                         // ScaleB functions
 
@@ -856,40 +746,6 @@ namespace DecimalImpUtil {
         // unspecified if 'value' is NaN or infinity.  The behavior is
         // undefined unless '-1999999997 <= y <= 99999999'.
 
-                        // Parsing functions
-
-     ValueType32 parse32(const char *input);
-        // Parse the specified 'input' string as a 32 bit decimal floating-
-        // point value and return the result.  The parsing is as specified for
-        // the 'strtod32' function in section 9.6 of the ISO/EIC TR 24732 C
-        // Decimal Floating-Point Technical Report, except that it is
-        // unspecified whether the NaNs returned are quiet or signaling.  If
-        // 'input' does not represent a valid 32 bit decimal floating-point
-        // number, then return NaN.  Note that this method does not guarantee
-        // the behavior of ISO/EIC TR 24732 C when parsing NaN because the AIX
-        // compiler intrinsics return a signaling NaN.
-
-     ValueType64 parse64(const char *input);
-        // Parse the specified 'input' string as a 64 bit decimal floating-
-        // point value and return the result.  The parsing is as specified for
-        // the 'strtod64' function in section 9.6 of the ISO/EIC TR 24732 C
-        // Decimal Floating-Point Technical Report, except that it is
-        // unspecified whether the NaNs returned are quiet or signaling.  If
-        // 'input' does not represent a valid 64 bit decimal floating-point
-        // number, then return NaN.  Note that this method does not guarantee
-        // the behavior of ISO/EIC TR 24732 C when parsing NaN because the AIX
-        // compiler intrinsics return a signaling NaN.
-
-     ValueType128 parse128(const char *input);
-        // Parse the specified 'input' string as a 128 bit decimal floating-
-        // point value and return the result.  The parsing is as specified for
-        // the 'strtod128' function in section 9.6 of the ISO/EIC TR 24732 C
-        // Decimal Floating-Point Technical Report, except that it is
-        // unspecified whether the NaNs returned are quiet or signaling.  If
-        // 'input' does not represent a valid 128 bit decimal floating-point
-        // number, then return NaN.  Note that this method does not guarantee
-        // the behavior of ISO/EIC TR 24732 C when parsing NaN because the AIX
-        // compiler intrinsics return a signaling NaN.
 
                         // Formatting functions
 
@@ -1089,22 +945,6 @@ namespace DecimalImpUtil {
                           // --------------------
                           // class DecimalImpUtil
                           // --------------------
-
-#ifdef BDLDFP_DECIMALPLATFORM_SOFTWARE
-
-template <class TYPE>
-inline
-void DecimalImpUtil::checkLiteral(const TYPE& t)
-{
-    (void)static_cast<This_is_not_a_floating_point_literal>(t);
-}
-
-inline
-void DecimalImpUtil::checkLiteral(double)
-{
-}
-#endif
-
 
 // CLASS METHODS
 
@@ -1532,100 +1372,6 @@ DecimalImpUtil::binaryToDecimal128(double value)
     return Imp::binaryToDecimal128(value);
 }
 
-                        // makeDecimalRaw Functions
-
-inline
-DecimalImpUtil::ValueType32
-DecimalImpUtil::makeDecimalRaw32(int significand, int exponent)
-{
-    assert(-101 <= exponent);
-    assert(        exponent <= 90);
-    assert(std::max(significand, -significand) <= 9999999);
-    return Imp::makeDecimalRaw32(significand, exponent);
-}
-
-
-inline
-DecimalImpUtil::ValueType64
-DecimalImpUtil::makeDecimalRaw64(unsigned long long significand, int exponent)
-{
-    assert(-398 <= exponent);
-    assert(        exponent <= 369);
-    assert(significand <= 9999999999999999LL);
-
-    return Imp::makeDecimalRaw64(significand, exponent);
-}
-
-inline
-DecimalImpUtil::ValueType64
-DecimalImpUtil::makeDecimalRaw64(long long significand, int exponent)
-{
-    assert(-398 <= exponent);
-    assert(        exponent <= 369);
-    assert(std::max(significand, -significand) <= 9999999999999999LL);
-
-    return Imp::makeDecimalRaw64(significand, exponent);
-}
-
-inline
-DecimalImpUtil::ValueType64
-DecimalImpUtil::makeDecimalRaw64(unsigned int significand, int exponent)
-{
-    assert(-398 <= exponent);
-    assert(        exponent <= 369);
-
-    return Imp::makeDecimalRaw64(significand, exponent);
-}
-
-inline
-DecimalImpUtil::ValueType64
-DecimalImpUtil::makeDecimalRaw64(int significand, int exponent)
-{
-    assert(-398 <= exponent);
-    assert(        exponent <= 369);
-    return Imp::makeDecimalRaw64(significand, exponent);
-}
-
-
-inline
-DecimalImpUtil::ValueType128
-DecimalImpUtil::makeDecimalRaw128(unsigned long long significand, int exponent)
-{
-    assert(-6176 <= exponent);
-    assert(         exponent <= 6111);
-
-    return Imp::makeDecimalRaw128(significand, exponent);
-}
-
-inline
-DecimalImpUtil::ValueType128
-DecimalImpUtil::makeDecimalRaw128(long long significand, int exponent)
-{
-    assert(-6176 <= exponent);
-    assert(         exponent <= 6111);
-
-    return Imp::makeDecimalRaw128(significand, exponent);
-}
-
-inline
-DecimalImpUtil::ValueType128
-DecimalImpUtil::makeDecimalRaw128(unsigned int significand, int exponent)
-{
-    assert(-6176 <= exponent);
-    assert(         exponent <= 6111);
-
-    return Imp::makeDecimalRaw128(significand, exponent);
-}
-
-inline
-DecimalImpUtil::ValueType128
-DecimalImpUtil::makeDecimalRaw128(int significand, int exponent)
-{
-    assert(-6176 <= exponent);
-    assert(         exponent <= 6111);
-
-    return Imp::makeDecimalRaw128(significand, exponent);
-}
 
                         // IEEE Scale B Functions
 
@@ -1650,28 +1396,6 @@ DecimalImpUtil::scaleB(DecimalImpUtil::ValueType128 value, int exponent)
     return Imp::scaleB(value, exponent);
 }
 
-                        // Parsing functions
-
-inline
-DecimalImpUtil::ValueType32
-DecimalImpUtil::parse32(const char *input)
-{
-    return Imp::parse32(input);
-}
-
-inline
-DecimalImpUtil::ValueType64
-DecimalImpUtil::parse64(const char *input)
-{
-    return Imp::parse64(input);
-}
-
-inline
-DecimalImpUtil::ValueType128
-DecimalImpUtil::parse128(const char *input)
-{
-    return Imp::parse128(input);
-}
 
                         // Format functions
 

@@ -814,6 +814,107 @@ int DecimalUtil::decompose(int                 *sign,
 
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+
+// ============================================================================
+//                      INLINE FUNCTION DEFINITIONS
+// ============================================================================
+
+
+Decimal32 DecimalUtil::makeDecimalRaw32(int significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimalRaw32(significand, exponent);
+}
+
+Decimal64 DecimalUtil::makeDecimalRaw64(int significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimalRaw64(significand, exponent);
+}
+
+Decimal64 DecimalUtil::makeDecimalRaw64(unsigned int significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimalRaw64(significand, exponent);
+}
+
+Decimal64 DecimalUtil::makeDecimalRaw64(long long significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimalRaw64(significand, exponent);
+}
+
+Decimal64
+DecimalUtil::makeDecimalRaw64(unsigned long long significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimalRaw64(significand, exponent);
+}
+
+Decimal128 DecimalUtil::makeDecimalRaw128(int significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimalRaw128(significand, exponent);
+}
+
+Decimal128 DecimalUtil::makeDecimalRaw128(unsigned int significand,
+    int          exponent)
+{
+    return DecimalImpUtil::makeDecimalRaw128(significand, exponent);
+}
+
+Decimal128 DecimalUtil::makeDecimalRaw128(long long significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimalRaw128(significand, exponent);
+}
+
+Decimal128
+DecimalUtil::makeDecimalRaw128(unsigned long long significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimalRaw128(significand, exponent);
+}
+
+
+Decimal64 DecimalUtil::makeDecimal64(int significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimal64(significand, exponent);
+}
+
+Decimal64 DecimalUtil::makeDecimal64(unsigned int significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimal64(significand, exponent);
+}
+
+Decimal64 DecimalUtil::makeDecimal64(long long significand, int exponent)
+{
+    return DecimalImpUtil::makeDecimal64(significand, exponent);
+}
+
+Decimal64 DecimalUtil::makeDecimal64(unsigned long long significand,
+    int                exponent)
+{
+    return DecimalImpUtil::makeDecimal64(significand, exponent);
+}
+
+// Quantum functions
+
+
+Decimal64 DecimalUtil::multiplyByPowerOf10(Decimal64 value, int exponent)
+{
+    assert(-1999999997 <= exponent);
+    assert(exponent <= 99999999);
+
+    return bdldfp::DecimalImpUtil::scaleB(*value.data(), exponent);
+}
+
+
+Decimal128 DecimalUtil::multiplyByPowerOf10(Decimal128 value, int exponent)
+{
+    assert(-1999999997 <= exponent);
+    assert(exponent <= 99999999);
+
+    return bdldfp::DecimalImpUtil::scaleB(*value.data(), exponent);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
 }  // close package namespace
 }  // close enterprise namespace
 

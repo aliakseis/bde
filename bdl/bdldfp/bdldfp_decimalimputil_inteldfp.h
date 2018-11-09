@@ -52,10 +52,10 @@ namespace BloombergLP {
 namespace bdldfp {
 
                           // ==============================
-                          // class DecimalImplUtil_IntelDfp
+                          // namespace DecimalImplUtil_IntelDfp
                           // ==============================
 
-struct DecimalImpUtil_IntelDfp {
+namespace DecimalImpUtil_IntelDfp {
     // This 'struct' provides a namespace for implementation functions that
     // work in terms of the underlying C-style decimal floating point
     // implementation, Intel's DFP library.
@@ -69,10 +69,10 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Integer construction (32-bit)
 
-    static ValueType32   int32ToDecimal32 (                   int value);
-    static ValueType32  uint32ToDecimal32 (unsigned           int value);
-    static ValueType32   int64ToDecimal32 (         long long int value);
-    static ValueType32  uint64ToDecimal32 (unsigned long long int value);
+     ValueType32   int32ToDecimal32 (                   int value);
+     ValueType32  uint32ToDecimal32 (unsigned           int value);
+     ValueType32   int64ToDecimal32 (         long long int value);
+     ValueType32  uint64ToDecimal32 (unsigned long long int value);
         // Return a 'Decimal32' object having the value closest to the
         // specified 'value' following the conversion rules as defined by
         // IEEE-754:
@@ -98,10 +98,10 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Integer construction (64-bit)
 
-    static ValueType64   int32ToDecimal64 (                   int value);
-    static ValueType64  uint32ToDecimal64 (unsigned           int value);
-    static ValueType64   int64ToDecimal64 (         long long int value);
-    static ValueType64  uint64ToDecimal64 (unsigned long long int value);
+     ValueType64   int32ToDecimal64 (                   int value);
+     ValueType64  uint32ToDecimal64 (unsigned           int value);
+     ValueType64   int64ToDecimal64 (         long long int value);
+     ValueType64  uint64ToDecimal64 (unsigned long long int value);
         // Return a 'Decimal64' object having the value closest to the
         // specified 'value' following the conversion rules as defined by
         // IEEE-754:
@@ -127,10 +127,10 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Integer construction (128-bit)
 
-    static ValueType128  int32ToDecimal128(                   int value);
-    static ValueType128 uint32ToDecimal128(unsigned           int value);
-    static ValueType128  int64ToDecimal128(         long long int value);
-    static ValueType128 uint64ToDecimal128(unsigned long long int value);
+     ValueType128  int32ToDecimal128(                   int value);
+     ValueType128 uint32ToDecimal128(unsigned           int value);
+     ValueType128  int64ToDecimal128(         long long int value);
+     ValueType128 uint64ToDecimal128(unsigned long long int value);
         // Return a 'Decimal128' object having the value closest to the
         // specified 'value' subject to the conversion rules as defined by
         // IEEE-754:
@@ -158,8 +158,8 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Addition functions
 
-    static ValueType64  add(ValueType64  lhs,  ValueType64  rhs);
-    static ValueType128 add(ValueType128 lhs,  ValueType128 rhs);
+     ValueType64  add(ValueType64  lhs,  ValueType64  rhs);
+     ValueType128 add(ValueType128 lhs,  ValueType128 rhs);
         // Add the value of the specified 'rhs' to the value of the specified
         // 'lhs' as described by IEEE-754 and return the result.
         //
@@ -184,8 +184,8 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Subtraction functions
 
-    static ValueType64  subtract(ValueType64  lhs,  ValueType64  rhs);
-    static ValueType128 subtract(ValueType128 lhs,  ValueType128 rhs);
+     ValueType64  subtract(ValueType64  lhs,  ValueType64  rhs);
+     ValueType128 subtract(ValueType128 lhs,  ValueType128 rhs);
         // Subtract the value of the specified 'rhs' from the value of the
         // specified 'lhs' as described by IEEE-754 and return the result.
         //
@@ -213,8 +213,8 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Multiplication functions
 
-    static ValueType64  multiply(ValueType64  lhs,  ValueType64  rhs);
-    static ValueType128 multiply(ValueType128 lhs,  ValueType128 rhs);
+     ValueType64  multiply(ValueType64  lhs,  ValueType64  rhs);
+     ValueType128 multiply(ValueType128 lhs,  ValueType128 rhs);
         // Multiply the value of the specified 'lhs' object by the value of the
         // specified 'rhs' as described by IEEE-754 and return the result.
         //
@@ -249,8 +249,8 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Division functions
 
-    static ValueType64  divide(ValueType64  lhs,  ValueType64  rhs);
-    static ValueType128 divide(ValueType128 lhs,  ValueType128 rhs);
+     ValueType64  divide(ValueType64  lhs,  ValueType64  rhs);
+     ValueType128 divide(ValueType128 lhs,  ValueType128 rhs);
         // Divide the value of the specified 'lhs' by the value of the
         // specified 'rhs' as described by IEEE-754, and return the result.
         //
@@ -286,9 +286,9 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Negation functions
 
-    static ValueType32  negate(ValueType32  value);
-    static ValueType64  negate(ValueType64  value);
-    static ValueType128 negate(ValueType128 value);
+     ValueType32  negate(ValueType32  value);
+     ValueType64  negate(ValueType64  value);
+     ValueType128 negate(ValueType128 value);
         // Return the result of applying the unary - operator to the specified
         // 'value' as described by IEEE-754.  Note that floating-point numbers
         // have signed zero, therefore this operation is not the same as
@@ -298,9 +298,9 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Less Than functions
 
-    static bool less(ValueType32  lhs, ValueType32  rhs);
-    static bool less(ValueType64  lhs, ValueType64  rhs);
-    static bool less(ValueType128 lhs, ValueType128 rhs);
+     bool less(ValueType32  lhs, ValueType32  rhs);
+     bool less(ValueType64  lhs, ValueType64  rhs);
+     bool less(ValueType128 lhs, ValueType128 rhs);
         // Return 'true' if the specified 'lhs' has a value less than the
         // specified 'rhs' and 'false' otherwise.  The value of a 'Decimal64'
         // object 'lhs' is less than that of an object 'rhs' if the
@@ -322,9 +322,9 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Greater Than functions
 
-    static bool greater(ValueType32  lhs, ValueType32  rhs);
-    static bool greater(ValueType64  lhs, ValueType64  rhs);
-    static bool greater(ValueType128 lhs, ValueType128 rhs);
+     bool greater(ValueType32  lhs, ValueType32  rhs);
+     bool greater(ValueType64  lhs, ValueType64  rhs);
+     bool greater(ValueType128 lhs, ValueType128 rhs);
         // Return 'true' if the specified 'lhs' has a greater value than the
         // specified 'rhs' and 'false' otherwise.  The value of a 'Decimal64'
         // object 'lhs' is greater than that of an object 'rhs' if the
@@ -346,9 +346,9 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Less Or Equal functions
 
-    static bool lessEqual(ValueType32  lhs, ValueType32  rhs);
-    static bool lessEqual(ValueType64  lhs, ValueType64  rhs);
-    static bool lessEqual(ValueType128 lhs, ValueType128 rhs);
+     bool lessEqual(ValueType32  lhs, ValueType32  rhs);
+     bool lessEqual(ValueType64  lhs, ValueType64  rhs);
+     bool lessEqual(ValueType128 lhs, ValueType128 rhs);
         // Return 'true' if the specified 'lhs' has a value less than or equal
         // the value of the specified 'rhs' and 'false' otherwise.  The value
         // of a 'Decimal64' object 'lhs' is less than or equal to the value of
@@ -369,9 +369,9 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Greater Or Equal functions
 
-    static bool greaterEqual(ValueType32  lhs, ValueType32  rhs);
-    static bool greaterEqual(ValueType64  lhs, ValueType64  rhs);
-    static bool greaterEqual(ValueType128 lhs, ValueType128 rhs);
+     bool greaterEqual(ValueType32  lhs, ValueType32  rhs);
+     bool greaterEqual(ValueType64  lhs, ValueType64  rhs);
+     bool greaterEqual(ValueType128 lhs, ValueType128 rhs);
         // Return 'true' if the specified 'lhs' has a value greater than or
         // equal to the value of the specified 'rhs' and 'false' otherwise.
         // The value of a 'Decimal64' object 'lhs' is greater or equal to a
@@ -393,9 +393,9 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Equality functions
 
-    static bool equal(ValueType32  lhs, ValueType32  rhs);
-    static bool equal(ValueType64  lhs, ValueType64  rhs);
-    static bool equal(ValueType128 lhs, ValueType128 rhs);
+     bool equal(ValueType32  lhs, ValueType32  rhs);
+     bool equal(ValueType64  lhs, ValueType64  rhs);
+     bool equal(ValueType128 lhs, ValueType128 rhs);
         // Return 'true' if the specified 'lhs' and 'rhs' have the same value,
         // and 'false' otherwise.  Two decimal objects have the same value if
         // the 'compareQuietEqual' operation (IEEE-754 defined, non-total
@@ -414,9 +414,9 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Inequality functions
 
-    static bool notEqual(ValueType32  lhs, ValueType32  rhs);
-    static bool notEqual(ValueType64  lhs, ValueType64  rhs);
-    static bool notEqual(ValueType128 lhs, ValueType128 rhs);
+     bool notEqual(ValueType32  lhs, ValueType32  rhs);
+     bool notEqual(ValueType64  lhs, ValueType64  rhs);
+     bool notEqual(ValueType128 lhs, ValueType128 rhs);
         // Return 'false' if the specified 'lhs' and 'rhs' have the same value,
         // and 'true' otherwise.  Two decimal objects have the same value if
         // the 'compareQuietEqual' operation (IEEE-754 defined, non-total
@@ -435,11 +435,11 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Inter-type Conversion functions
 
-    static ValueType32  convertToDecimal32 (const ValueType64&  input);
-    static ValueType64  convertToDecimal64 (const ValueType32&  input);
-    static ValueType64  convertToDecimal64 (const ValueType128& input);
-    static ValueType128 convertToDecimal128(const ValueType32&  input);
-    static ValueType128 convertToDecimal128(const ValueType64&  input);
+     ValueType32  convertToDecimal32 (const ValueType64&  input);
+     ValueType64  convertToDecimal64 (const ValueType32&  input);
+     ValueType64  convertToDecimal64 (const ValueType128& input);
+     ValueType128 convertToDecimal128(const ValueType32&  input);
+     ValueType128 convertToDecimal128(const ValueType64&  input);
         // Convert the specified 'input' to the indicated result type.  Note
         // that a conversion from 'ValueType128' to 'ValueType32' is not
         // provided (because such a conversion is not provided by the
@@ -450,8 +450,8 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Binary floating point conversion functions
 
-    static ValueType32 binaryToDecimal32(      float value);
-    static ValueType32 binaryToDecimal32(     double value);
+     ValueType32 binaryToDecimal32(      float value);
+     ValueType32 binaryToDecimal32(     double value);
         // Create a 'Decimal32' object having the value closest to the
         // specified 'value' following the conversion rules as defined by
         // IEEE-754:
@@ -482,8 +482,8 @@ struct DecimalImpUtil_IntelDfp {
         //:
         //: o Otherwise return a 'Decimal32' object representing 'value'.
 
-    static ValueType64 binaryToDecimal64(      float value);
-    static ValueType64 binaryToDecimal64(     double value);
+     ValueType64 binaryToDecimal64(      float value);
+     ValueType64 binaryToDecimal64(     double value);
         // Create a 'Decimal64' object having the value closest to the
         // specified 'value' following the conversion rules as defined by
         // IEEE-754:
@@ -514,8 +514,8 @@ struct DecimalImpUtil_IntelDfp {
         //:
         //: o Otherwise return a 'Decimal64' object representing 'value'.
 
-    static ValueType128 binaryToDecimal128(      float value);
-    static ValueType128 binaryToDecimal128(     double value);
+     ValueType128 binaryToDecimal128(      float value);
+     ValueType128 binaryToDecimal128(     double value);
         // Create a 'Decimal128' object having the value closest to the
         // specified 'value' following the conversion rules as defined by
         // IEEE-754:
@@ -548,19 +548,19 @@ struct DecimalImpUtil_IntelDfp {
 
                         // makeDecimalRaw functions
 
-    static ValueType32  makeDecimalRaw32(int significand, int exponent);
+     ValueType32  makeDecimalRaw32(int significand, int exponent);
         // Create a 'ValueType32' object representing a decimal floating point
         // number consisting of the specified 'significand' and 'exponent',
         // with the sign given by 'significand'.  The behavior is undefined
         // unless 'abs(significand) <= 9,999,999' and '-101 <= exponent <= 90'.
 
-    static ValueType64 makeDecimalRaw64(unsigned long long int significand,
+     ValueType64 makeDecimalRaw64(unsigned long long int significand,
                                                            int exponent);
-    static ValueType64 makeDecimalRaw64(         long long int significand,
+     ValueType64 makeDecimalRaw64(         long long int significand,
                                                            int exponent);
-    static ValueType64 makeDecimalRaw64(unsigned           int significand,
+     ValueType64 makeDecimalRaw64(unsigned           int significand,
                                                            int exponent);
-    static ValueType64 makeDecimalRaw64(                   int significand,
+     ValueType64 makeDecimalRaw64(                   int significand,
                                                            int exponent);
         // Create a 'ValueType64' object representing a decimal floating point
         // number consisting of the specified 'significand' and 'exponent',
@@ -568,13 +568,13 @@ struct DecimalImpUtil_IntelDfp {
         // unless 'abs(significand) <= 9,999,999,999,999,999' and
         // '-398 <= exponent <= 369'.
 
-    static ValueType128 makeDecimalRaw128(unsigned long long int significand,
+     ValueType128 makeDecimalRaw128(unsigned long long int significand,
                                                              int exponent);
-    static ValueType128 makeDecimalRaw128(         long long int significand,
+     ValueType128 makeDecimalRaw128(         long long int significand,
                                                              int exponent);
-    static ValueType128 makeDecimalRaw128(unsigned           int significand,
+     ValueType128 makeDecimalRaw128(unsigned           int significand,
                                                              int exponent);
-    static ValueType128 makeDecimalRaw128(                   int significand,
+     ValueType128 makeDecimalRaw128(                   int significand,
                                                              int exponent);
         // Create a 'ValueType128' object representing a decimal floating point
         // number consisting of the specified 'significand' and 'exponent',
@@ -583,9 +583,9 @@ struct DecimalImpUtil_IntelDfp {
 
                         // IEEE Scale B functions
 
-    static ValueType32  scaleB(ValueType32  value, int exponent);
-    static ValueType64  scaleB(ValueType64  value, int exponent);
-    static ValueType128 scaleB(ValueType128 value, int exponent);
+     ValueType32  scaleB(ValueType32  value, int exponent);
+     ValueType64  scaleB(ValueType64  value, int exponent);
+     ValueType128 scaleB(ValueType128 value, int exponent);
         // Return the result of multiplying the specified 'value' by ten raised
         // to the specified 'exponent'.  The quantum of 'value' is scaled
         // according to IEEE 754's 'scaleB' operations.  The result is
@@ -594,7 +594,7 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Parsing functions
 
-    static ValueType32 parse32 (const char *string);
+     ValueType32 parse32 (const char *string);
         // Parse the specified 'string' as a 32 bit decimal floating- point
         // value and return the result.  The parsing is as specified for the
         // 'strtod32' function in section 9.6 of the ISO/EIC TR 24732 C Decimal
@@ -608,7 +608,7 @@ struct DecimalImpUtil_IntelDfp {
         // ISO/EIC TR 24732 C when parsing NaN because the AIX compiler
         // intrinsics return a signaling NaN.
 
-    static ValueType64 parse64(const char *string);
+     ValueType64 parse64(const char *string);
         // Parse the specified 'string' string as a 64 bit decimal floating-
         // point value and return the result.  The parsing is as specified for
         // the 'strtod64' function in section 9.6 of the ISO/EIC TR 24732 C
@@ -622,7 +622,7 @@ struct DecimalImpUtil_IntelDfp {
         // ISO/EIC TR 24732 C when parsing NaN because the AIX compiler
         // intrinsics return a signaling NaN.
 
-    static ValueType128 parse128(const char *string);
+     ValueType128 parse128(const char *string);
         // Parse the specified 'string' string as a 128 bit decimal floating-
         // point value and return the result.  The parsing is as specified for
         // the 'strtod128' function in section 9.6 of the ISO/EIC TR 24732 C
@@ -638,9 +638,9 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Formatting Functions
 
-    static void format(ValueType32  value, char *buffer);
-    static void format(ValueType64  value, char *buffer);
-    static void format(ValueType128 value, char *buffer);
+     void format(ValueType32  value, char *buffer);
+     void format(ValueType64  value, char *buffer);
+     void format(ValueType128 value, char *buffer);
         // Produce a string representation of the specified decimal 'value', in
         // the specified 'buffer', which is at least
         // 'BDLDFP_DECIMALPLATFORM_SNPRINTF_BUFFER_SIZE' bytes in length.  The
@@ -652,22 +652,22 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Densely Packed Conversion Functions
 
-    static ValueType32  convertFromDPD(
+     ValueType32  convertFromDPD(
                               DenselyPackedDecimalImpUtil::StorageType32  dpd);
-    static ValueType64  convertFromDPD(
+     ValueType64  convertFromDPD(
                               DenselyPackedDecimalImpUtil::StorageType64  dpd);
-    static ValueType128 convertFromDPD(
+     ValueType128 convertFromDPD(
                               DenselyPackedDecimalImpUtil::StorageType128 dpd);
         // Return a 'ValueTypeXX' representing the specified 'dpd', which is
         // currently in Densely Packed Decimal (DPD) format.  This format is
         // compatible with the IBM compiler's native type, and the decNumber
         // library.
 
-    static DenselyPackedDecimalImpUtil::StorageType32  convertToDPD(
+     DenselyPackedDecimalImpUtil::StorageType32  convertToDPD(
                                                            ValueType32  value);
-    static DenselyPackedDecimalImpUtil::StorageType64  convertToDPD(
+     DenselyPackedDecimalImpUtil::StorageType64  convertToDPD(
                                                            ValueType64  value);
-    static DenselyPackedDecimalImpUtil::StorageType128 convertToDPD(
+     DenselyPackedDecimalImpUtil::StorageType128 convertToDPD(
                                                            ValueType128 value);
         // Return a 'DenselyPackedDecimalImpUtil::StorageTypeXX' representing
         // the specified 'value' in Densely Packed Decimal (DPD) format.  This
@@ -676,23 +676,23 @@ struct DecimalImpUtil_IntelDfp {
 
                         // Binary Integral Conversion Functions
 
-    static ValueType32  convertFromBID(
+     ValueType32  convertFromBID(
                              BinaryIntegralDecimalImpUtil::StorageType32  bid);
-    static ValueType64  convertFromBID(
+     ValueType64  convertFromBID(
                              BinaryIntegralDecimalImpUtil::StorageType64  bid);
-    static ValueType128 convertFromBID(
+     ValueType128 convertFromBID(
                              BinaryIntegralDecimalImpUtil::StorageType128 bid);
         // Return a 'ValueTypeXX' representing the specified 'bid', which is
         // currently in Binary Integral Decimal (BID) format.  This format is
         // compatible with the Intel DFP implementation type.
 
-    static
+    
     BinaryIntegralDecimalImpUtil::StorageType32  convertToBID(
                                                            ValueType32  value);
-    static
+    
     BinaryIntegralDecimalImpUtil::StorageType64  convertToBID(
                                                            ValueType64  value);
-    static
+    
     BinaryIntegralDecimalImpUtil::StorageType128 convertToBID(
                                                            ValueType128 value);
         // Return a 'BinaryIntegralDecimalImpUtil::StorageTypeXX' representing

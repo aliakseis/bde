@@ -1053,6 +1053,148 @@ BSLMF_ASSERT(false);; // Unsupported platform
 #endif
 }
 
+
+
+
+// Parsing functions
+
+DecimalImpUtil::ValueType32
+DecimalImpUtil::parse32(const char *input)
+{
+    return Imp::parse32(input);
+}
+
+DecimalImpUtil::ValueType64
+DecimalImpUtil::parse64(const char *input)
+{
+    return Imp::parse64(input);
+}
+
+DecimalImpUtil::ValueType128
+DecimalImpUtil::parse128(const char *input)
+{
+    return Imp::parse128(input);
+}
+
+
+// makeDecimalRaw Functions
+
+DecimalImpUtil::ValueType32
+DecimalImpUtil::makeDecimalRaw32(int significand, int exponent)
+{
+    assert(-101 <= exponent);
+    assert(exponent <= 90);
+    assert(std::max(significand, -significand) <= 9999999);
+    return Imp::makeDecimalRaw32(significand, exponent);
+}
+
+
+DecimalImpUtil::ValueType64
+DecimalImpUtil::makeDecimalRaw64(unsigned long long significand, int exponent)
+{
+    assert(-398 <= exponent);
+    assert(exponent <= 369);
+    assert(significand <= 9999999999999999LL);
+
+    return Imp::makeDecimalRaw64(significand, exponent);
+}
+
+DecimalImpUtil::ValueType64
+DecimalImpUtil::makeDecimalRaw64(long long significand, int exponent)
+{
+    assert(-398 <= exponent);
+    assert(exponent <= 369);
+    assert(std::max(significand, -significand) <= 9999999999999999LL);
+
+    return Imp::makeDecimalRaw64(significand, exponent);
+}
+
+DecimalImpUtil::ValueType64
+DecimalImpUtil::makeDecimalRaw64(unsigned int significand, int exponent)
+{
+    assert(-398 <= exponent);
+    assert(exponent <= 369);
+
+    return Imp::makeDecimalRaw64(significand, exponent);
+}
+
+DecimalImpUtil::ValueType64
+DecimalImpUtil::makeDecimalRaw64(int significand, int exponent)
+{
+    assert(-398 <= exponent);
+    assert(exponent <= 369);
+    return Imp::makeDecimalRaw64(significand, exponent);
+}
+
+
+DecimalImpUtil::ValueType128
+DecimalImpUtil::makeDecimalRaw128(unsigned long long significand, int exponent)
+{
+    assert(-6176 <= exponent);
+    assert(exponent <= 6111);
+
+    return Imp::makeDecimalRaw128(significand, exponent);
+}
+
+DecimalImpUtil::ValueType128
+DecimalImpUtil::makeDecimalRaw128(long long significand, int exponent)
+{
+    assert(-6176 <= exponent);
+    assert(exponent <= 6111);
+
+    return Imp::makeDecimalRaw128(significand, exponent);
+}
+
+DecimalImpUtil::ValueType128
+DecimalImpUtil::makeDecimalRaw128(unsigned int significand, int exponent)
+{
+    assert(-6176 <= exponent);
+    assert(exponent <= 6111);
+
+    return Imp::makeDecimalRaw128(significand, exponent);
+}
+
+DecimalImpUtil::ValueType128
+DecimalImpUtil::makeDecimalRaw128(int significand, int exponent)
+{
+    assert(-6176 <= exponent);
+    assert(exponent <= 6111);
+
+    return Imp::makeDecimalRaw128(significand, exponent);
+}
+
+
+namespace DecimalImpUtil {
+
+ValueType32::ValueType32(const DecimalImpUtil_IntelDfp::ValueType32& other)
+    : d_raw(other.d_raw)
+{}
+
+ValueType32::operator DecimalImpUtil_IntelDfp::ValueType32() const
+{
+    return { d_raw };
+}
+
+ValueType64::ValueType64(const DecimalImpUtil_IntelDfp::ValueType64& other)
+    : d_raw(other.d_raw)
+{}
+
+ValueType64::operator DecimalImpUtil_IntelDfp::ValueType64() const
+{
+    return { d_raw };
+}
+
+ValueType128::ValueType128(const DecimalImpUtil_IntelDfp::ValueType128& other)
+    : d_raw(other.d_raw)
+{}
+
+ValueType128::operator DecimalImpUtil_IntelDfp::ValueType128() const
+{
+    return { d_raw };
+}
+
+}
+
 }  // close package namespace
 }  // close enterprise namespace
 
