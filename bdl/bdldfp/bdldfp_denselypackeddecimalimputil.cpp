@@ -12,10 +12,6 @@
 
 // Even in hardware and intel modes, we need decNumber functions.
 
-extern "C" {
-#include <decSingle.h>
-}
-
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
 #  ifndef  __STDC_WANT_DEC_FP__
 #    error __STDC_WANT_DEC_FP__ must be defined on the command line!

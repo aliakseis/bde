@@ -2,6 +2,7 @@
 #include <bdldfp_decimalutil.h>
 
 
+#include <bdldfp_decimalimputil_decnumber.h>
 #include <bdldfp_decimalplatform.h>
 #include <bdldfp_decimalimputil.h>
 
@@ -9,12 +10,6 @@
 #include <cassert>
 #include <errno.h>
 #include <math.h>  // For the  FP_* macros
-
-#ifdef BDLDFP_DECIMALPLATFORM_DECNUMBER
-extern "C" {
-#include <decnumber/decSingle.h>
-}
-#endif
 
 #ifdef BDLDFP_DECIMALPLATFORM_C99_TR
 #  ifndef  __STDC_WANT_DEC_FP__

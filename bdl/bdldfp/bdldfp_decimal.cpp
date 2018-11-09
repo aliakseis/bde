@@ -2,9 +2,8 @@
 #include <bdldfp_decimal.h>
 
 
+#include <bdldfp_decimalimputil_decnumber.h>
 #include <bsls_performancehint.h>
-
-
 #include <bslim_printer.h>
 
 #include <istream>
