@@ -999,10 +999,10 @@ namespace bdldfp {
                             // --------------------
 
 
-Decimal_Type32::Decimal_Type32()
-{
-    std::memset(&d_value, 0, sizeof(d_value));
-}
+//Decimal_Type32::Decimal_Type32()
+//{
+//    std::memset(&d_value, 0, sizeof(d_value));
+//}
 
 
 Decimal_Type32::Decimal_Type32(DecimalImpUtil::ValueType32 value)
@@ -1090,10 +1090,10 @@ DecimalImpUtil::ValueType32 Decimal_Type32::value() const
 
 // CREATORS
 
-Decimal_Type64::Decimal_Type64()
-{
-    std::memset(&d_value, 0, sizeof(d_value));
-}
+//Decimal_Type64::Decimal_Type64()
+//{
+//    std::memset(&d_value, 0, sizeof(d_value));
+//}
 
 
 Decimal_Type64::Decimal_Type64(DecimalImpUtil::ValueType64 value)
@@ -1396,10 +1396,10 @@ Decimal_Type64::Decimal_Type64(unsigned long long other)
                            // ---------------------
 
 
-Decimal_Type128::Decimal_Type128()
-{
-    std::memset(&d_value, 0, sizeof(d_value));
-}
+//Decimal_Type128::Decimal_Type128()
+//{
+//    std::memset(&d_value, 0, sizeof(d_value));
+//}
 
 
 Decimal_Type128::Decimal_Type128(DecimalImpUtil::ValueType128 value)

@@ -248,6 +248,9 @@
     <ClInclude Include="bsls_performancehint.h" />
     <ClInclude Include="bsls_platform.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="bdldfp.natvis" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

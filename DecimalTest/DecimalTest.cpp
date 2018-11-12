@@ -52,8 +52,13 @@ int main()
 {
     {
         BDEC::Decimal128 dec1;
-
         std::istringstream("123.45") >> dec1;
+
+        BDEC::Decimal32 dec11;
+        std::istringstream("23.45") >> dec11;
+
+        BDEC::Decimal64 dec12;
+        std::istringstream("34.45") >> dec12;
 
         BDEC::Decimal128 dec2 = GetDecimal128("67.89");
 

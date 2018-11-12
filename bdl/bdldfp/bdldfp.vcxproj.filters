@@ -138,4 +138,7 @@
       <UniqueIdentifier>{B71E3231-9D0D-3A73-9D96-AA9C1BDE1BE6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="bdldfp.natvis" />
+  </ItemGroup>
 </Project>
