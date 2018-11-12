@@ -225,7 +225,7 @@
 // slower than MD5.
 //..
 
-#include <bdlscm_version.h>
+#include "bdlscm_version.h"
 
 
 #include <cassert>

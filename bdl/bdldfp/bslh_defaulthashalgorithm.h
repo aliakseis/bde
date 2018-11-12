@@ -273,11 +273,11 @@
 //      ASSERT(!hashTable.contains(Future("US Dollar", 'F', 2014)));
 //..
 
-#include <bdlscm_version.h>
+#include "bdlscm_version.h"
 
 
 #ifndef INCLUDED_BSLH_SPOOKYHASHALGORITHM
-#include <bslh_spookyhashalgorithm.h>
+#include "bslh_spookyhashalgorithm.h"
 #endif
 
 namespace BloombergLP {

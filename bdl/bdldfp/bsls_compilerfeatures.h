@@ -396,7 +396,7 @@
 //:   o Oracle CC 12.4
 
 #ifndef INCLUDED_BSLS_PLATFORM
-#include <bsls_platform.h>
+#include "bsls_platform.h"
 #endif
 
 

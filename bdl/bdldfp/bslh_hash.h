@@ -403,10 +403,10 @@
 // ASSERT(!hashTable.contains(Box(Point(3, 3), 3, 3)));
 //..
 
-#include <bdlscm_version.h>
+#include "bdlscm_version.h"
 
 #ifndef INCLUDED_BSLH_DEFAULTHASHALGORITHM
-#include <bslh_defaulthashalgorithm.h>
+#include "bslh_defaulthashalgorithm.h"
 #endif
 
 

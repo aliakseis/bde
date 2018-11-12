@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bdldfp", "bdl\bdldfp\bdldfp.vcxproj", "{A4991889-BA1B-3E92-95F3-AC21B1D585E7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6C8CE401-DEDF-3D70-8BDD-29E7A509F9F3} = {6C8CE401-DEDF-3D70-8BDD-29E7A509F9F3}
+		{752F5CC0-57A3-35D7-82E4-BE2B71CD6EFF} = {752F5CC0-57A3-35D7-82E4-BE2B71CD6EFF}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "decnumber", "thirdparty\decnumber\decnumber.vcxproj", "{752F5CC0-57A3-35D7-82E4-BE2B71CD6EFF}"
 EndProject

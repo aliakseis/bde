@@ -1,7 +1,7 @@
 #pragma once
 
 #ifndef INCLUDED_BDLDFP_DECIMALPLATFORM
-#include <bdldfp_decimalplatform.h>
+#include "bdldfp_decimalplatform.h"
 #endif
 
 #include <stdint.h>

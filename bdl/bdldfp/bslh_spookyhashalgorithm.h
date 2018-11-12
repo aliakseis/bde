@@ -276,10 +276,10 @@
 //
 //..
 
-#include <bdlscm_version.h>
+#include "bdlscm_version.h"
 
 #ifndef INCLUDED_BSLH_SPOOKYHASHALGORITHMIMP
-#include <bslh_spookyhashalgorithmimp.h>
+#include "bslh_spookyhashalgorithmimp.h"
 #endif
 
 

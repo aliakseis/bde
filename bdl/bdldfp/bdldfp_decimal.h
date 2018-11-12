@@ -534,13 +534,13 @@
 //..
 
 #ifndef INCLUDED_BDLSCM_VERSION
-#include <bdlscm_version.h>
+#include "bdlscm_version.h"
 #endif
 
-#include <bdldfp_decimalimputil_public.h>
+#include "bdldfp_decimalimputil_public.h"
 
 #ifndef INCLUDED_BSLH_HASH
-#include <bslh_hash.h>
+#include "bslh_hash.h"
 #endif
 
 

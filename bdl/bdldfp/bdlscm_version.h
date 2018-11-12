@@ -4,7 +4,7 @@
 #ifndef INCLUDED_BDLSCM_VERSION
 #define INCLUDED_BDLSCM_VERSION
 
-#include <bsls_compilerfeatures.h>
+#include "bsls_compilerfeatures.h"
 
 #pragma comment (lib, "bdldfp")
 #pragma comment (lib, "inteldfp")
