@@ -44,6 +44,8 @@
 #include <bdldfp_intelimpwrapper.h>
 #endif
 
+#include "bdldfp_decimalimputil_public.h"
+
 #include <cassert>
 #include <cstring>
 
@@ -61,9 +63,24 @@ namespace DecimalImpUtil_IntelDfp {
     // implementation, Intel's DFP library.
 
     // TYPES
-    struct ValueType32  { BID_UINT32  d_raw; };
-    struct ValueType64  { BID_UINT64  d_raw; };
-    struct ValueType128 { BID_UINT128 d_raw; };
+    struct ValueType32  { 
+        BID_UINT32  d_raw; 
+        ValueType32() = default;
+        ValueType32(const DecimalImpUtil::ValueType32& other) : d_raw(other.d_raw) {}
+        operator DecimalImpUtil::ValueType32() { return { d_raw }; }
+    };
+    struct ValueType64  { 
+        BID_UINT64  d_raw; 
+        ValueType64() = default;
+        ValueType64(const DecimalImpUtil::ValueType64& other) : d_raw(other.d_raw) {}
+        operator DecimalImpUtil::ValueType64() { return { d_raw }; }
+    };
+    struct ValueType128 { 
+        BID_UINT128 d_raw; 
+        ValueType128() = default;
+        ValueType128(const DecimalImpUtil::ValueType128& other) : d_raw(other.d_raw) {}
+        operator DecimalImpUtil::ValueType128() { return { d_raw }; }
+    };
 
     // CLASS METHODS
 

@@ -1164,37 +1164,6 @@ DecimalImpUtil::makeDecimalRaw128(int significand, int exponent)
 }
 
 
-namespace DecimalImpUtil {
-
-ValueType32::ValueType32(const DecimalImpUtil_IntelDfp::ValueType32& other)
-    : d_raw(other.d_raw)
-{}
-
-ValueType32::operator DecimalImpUtil_IntelDfp::ValueType32() const
-{
-    return { d_raw };
-}
-
-ValueType64::ValueType64(const DecimalImpUtil_IntelDfp::ValueType64& other)
-    : d_raw(other.d_raw)
-{}
-
-ValueType64::operator DecimalImpUtil_IntelDfp::ValueType64() const
-{
-    return { d_raw };
-}
-
-ValueType128::ValueType128(const DecimalImpUtil_IntelDfp::ValueType128& other)
-    : d_raw(other.d_raw)
-{}
-
-ValueType128::operator DecimalImpUtil_IntelDfp::ValueType128() const
-{
-    return { d_raw };
-}
-
-}
-
 }  // close package namespace
 }  // close enterprise namespace
 

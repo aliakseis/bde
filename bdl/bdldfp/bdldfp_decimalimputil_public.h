@@ -41,13 +41,6 @@
 namespace BloombergLP {
 namespace bdldfp {
 
-namespace DecimalImpUtil_IntelDfp {
-
-struct ValueType32;
-struct ValueType64;
-struct ValueType128;
-
-}
                         // ====================
                         // namespace DecimalImpUtil
                         // ====================
@@ -57,19 +50,11 @@ namespace DecimalImpUtil {
 struct ValueType32 
 { 
     uint32_t  d_raw; 
-
-    ValueType32() = default;
-    ValueType32(const DecimalImpUtil_IntelDfp::ValueType32& other);
-    operator DecimalImpUtil_IntelDfp::ValueType32() const;
 };
 
 struct ValueType64 
 { 
     uint64_t  d_raw; 
-
-    ValueType64() = default;
-    ValueType64(const DecimalImpUtil_IntelDfp::ValueType64& other);
-    operator DecimalImpUtil_IntelDfp::ValueType64() const;
 };
 
 struct ValueType128 
@@ -80,10 +65,6 @@ struct ValueType128
         template<typename T> operator T() const { return { { w[0], w[1] } }; }
         uint64_t w[2]; 
     } d_raw;
-
-    ValueType128() = default;
-    ValueType128(const DecimalImpUtil_IntelDfp::ValueType128& other);
-    operator DecimalImpUtil_IntelDfp::ValueType128() const;
 };
 
 // Parsing functions
