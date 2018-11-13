@@ -65,6 +65,7 @@
       </ModuleDefinitionFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>decnumber.lib;inteldfp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>decnumber.dll;inteldfp.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -98,6 +99,7 @@
       </ModuleDefinitionFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>decnumber.lib;inteldfp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>decnumber.dll;inteldfp.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>

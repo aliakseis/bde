@@ -4,7 +4,29 @@
 #include "stdafx.h"
 #include "NatvisAddIn.h"
 
+#pragma comment(lib, "delayimp")  
+
+#pragma comment(lib, "Shlwapi")
+
 #include "../bdl/bdldfp/bdldfp_decimal.h"
+
+#include <shlwapi.h>
+
+BOOL WINAPI DllMain(
+    _In_ HINSTANCE hinstDLL,
+    _In_ DWORD     fdwReason,
+    _In_ LPVOID    lpvReserved
+)
+{
+    if (fdwReason == DLL_PROCESS_ATTACH)
+    {
+        TCHAR path[MAX_PATH];
+        GetModuleFileName(hinstDLL, path, sizeof(path) / sizeof(path[0]));
+        PathRemoveFileSpec(path);
+        SetDllDirectory(path);
+    }
+    return TRUE;
+}
 
 /*
 Create a C++ library named "Library" as screenshot show

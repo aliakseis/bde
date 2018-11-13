@@ -22,6 +22,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bdldfp.unit", "bdl\bdldfp.unit\bdldfp.unit.vcxproj", "{6880C5EE-89A4-455B-AF50-EECFE6901A0E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NatvisAddIn", "NatvisAddIn\NatvisAddIn.vcxproj", "{49AFDA7C-6E77-4292-806D-A5A712E1A5C8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A4991889-BA1B-3E92-95F3-AC21B1D585E7} = {A4991889-BA1B-3E92-95F3-AC21B1D585E7}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
