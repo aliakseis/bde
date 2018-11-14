@@ -14,3 +14,5 @@
 
 #include <stdio.h>
 #include <sstream>
+
+#include <tchar.h>
