@@ -1065,6 +1065,11 @@ Decimal_Type32::Decimal_Type32(unsigned long long other)
 }
 
 
+Decimal_Type32::Decimal_Type32(const char* value)
+    : d_value(DecimalImpUtil::parse32(value))
+{
+}
+
 
 
 DecimalImpUtil::ValueType32 *Decimal_Type32::data()
@@ -1162,6 +1167,12 @@ Decimal_Type64::Decimal_Type64(long long other)
 
 Decimal_Type64::Decimal_Type64(unsigned long long other)
 : d_value(DecimalImpUtil::uint64ToDecimal64(other))
+{
+}
+
+
+Decimal_Type64::Decimal_Type64(const char* value)
+    : d_value(DecimalImpUtil::parse64(value))
 {
 }
 
@@ -1461,6 +1472,12 @@ Decimal_Type128::Decimal_Type128(int value)
 : d_value(DecimalImpUtil::uint64ToDecimal128(value))
 {
 }
+
+
+ Decimal_Type128::Decimal_Type128(const char* value)
+     : d_value(DecimalImpUtil::parse128(value))
+ {
+ }
 
 
 

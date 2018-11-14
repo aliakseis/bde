@@ -698,6 +698,8 @@ class Decimal_Type32 {
         //: o Otherwise initialize this object to the value of 'other' with
         //:   exponent 0.
 
+    explicit Decimal_Type32(const char* value);
+
     //! Decimal32_Type(const Decimal32_Type& original) = default;
         // Create a 'Decimal32_Type' object that is a copy of the specified
         // 'original' as defined by the 'copy' operation of IEEE-754 2008:
@@ -1055,6 +1057,8 @@ class Decimal_Type64 {
         //:
         //: o Otherwise initialize this object to the value of 'other' with
         //:   exponent 0.
+
+    explicit Decimal_Type64(const char* value);
 
     //! Decimal64_Type(const Decimal64_Type& original) = default;
         // Create a 'Decimal64_Type' object that is a copy of the specified
@@ -2189,6 +2193,8 @@ class Decimal_Type128 {
         //:   according to the rounding direction.
         //:
         //: o Otherwise initialize this object to 'value' with exponent 0.
+
+    explicit Decimal_Type128(const char* value);
 
     //! Decimal128_Type(const Decimal128_Type& original) = default;
         // Create a 'Decimal128_Type' object that is a copy of the specified

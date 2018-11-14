@@ -30,16 +30,18 @@ struct membuf: std::streambuf {
         this->setg(p, p, p + size);
     }
 };
-struct imemstream: virtual membuf, std::istream {
-    imemstream(char const* base, size_t size)
-        : membuf(base, size)
-        , std::istream(static_cast<std::streambuf*>(this)) {
-    }
-};
+
+//struct imemstream: virtual membuf, std::istream {
+//    imemstream(char const* base, size_t size)
+//        : membuf(base, size)
+//        , std::istream(static_cast<std::streambuf*>(this)) {
+//    }
+//};
 
 BDEC::Decimal128 GetDecimal128(const std::string_view& v)
 {
-    imemstream s(v.data(), v.size());
+    membuf mb(v.data(), v.size());
+    std::istream s(&mb);
     BDEC::Decimal128 result;
     s >> result;
     return result;
@@ -61,6 +63,7 @@ int main()
         std::istringstream("34.45") >> dec12;
 
         BDEC::Decimal128 dec2 = GetDecimal128("67.89");
+        BDEC::Decimal128 dec22("987.65");
 
         std::cout << dec1 << ", " << dec2 << '\n';
 
