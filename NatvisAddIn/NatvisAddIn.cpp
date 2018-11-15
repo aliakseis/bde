@@ -13,7 +13,7 @@
 namespace {
 
 // avoid any libraries
-TCHAR* GetDir(TCHAR* szPath)
+TCHAR* PathGetFileName(TCHAR* szPath)
 {
     TCHAR* result = nullptr;
     while (const TCHAR ch = *szPath++)
@@ -48,7 +48,7 @@ BOOL WINAPI DllMain(
 
         if (GetModuleFileName(hinstDLL, path, sizeof(path) / sizeof(path[0])))
         {
-            *GetDir(path) = _T('\0');
+            *PathGetFileName(path) = _T('\0');
             SetDllDirectory(path);
         }
     }
@@ -87,6 +87,8 @@ Reference the library file in the C++ project and write codes in source file
 Debug the source file
 We can see the Library.natvis file can be loaded successfully
 */
+
+// https://code.msdn.microsoft.com/vstudio/Writing-debugger-type-ff6a2fa8/sourcecode?fileId=82223&pathId=1003264534
 
 namespace BDEC = ::BloombergLP::bdldfp;
 
