@@ -599,7 +599,7 @@ class Decimal_Type32 {
 
 
     // CREATORS
-    Decimal_Type32() : d_value{} {}
+    Decimal_Type32();
         // Create a 'Decimal32_Type' object having the value positive zero and
         // the smallest exponent value.
 
@@ -947,7 +947,7 @@ class Decimal_Type64 {
     // CLASS METHODS
 
     // CREATORS
-    Decimal_Type64() : d_value{} {}
+    Decimal_Type64();
         // Create a 'Decimal64_Type' object having the value positive zero and
         // the smallest exponent value.
 
@@ -2115,7 +2115,7 @@ class Decimal_Type128 {
     //                               bsl::is_trivially_copyable);
 
     // CREATORS
-    Decimal_Type128() : d_value{} {}
+    Decimal_Type128();
         // Create a 'Decimal128_Type' object having the value positive zero and
         // the smallest exponent value.
 
