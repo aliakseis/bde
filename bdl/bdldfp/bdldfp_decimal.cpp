@@ -784,6 +784,7 @@ bdldfp::operator>> <wchar_t, std::char_traits<wchar_t> >(
 template
 std::basic_ostream<char>&
 bdldfp::operator<< <char, std::char_traits<char> >(
+
                                         std::basic_ostream<char>& out,
                                         bdldfp::Decimal128        value);
 template
@@ -795,10 +796,6 @@ bdldfp::operator<< <wchar_t, std::char_traits<wchar_t> >(
 }  // close enterprise namespace
                   // std::numeric_limits<> specializations
 
-#if defined(BSL_OVERRIDES_STD) && defined(std)
-#   undef std
-#   define BDLDFP_DECIMAL_RESTORE_STD
-#endif
 
             // ---------------------------------------------------
             // std::numeric_limits<BloombergLP::bdldfp::Decimal32>
