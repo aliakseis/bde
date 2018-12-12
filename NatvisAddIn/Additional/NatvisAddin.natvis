@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  <Type Name="BloombergLP::bdldfp::Decimal_Type32">
+    <!--If a legacy add-in exists, specifies the dll of the legacy addin. 
+    If a full path isn't specified, Visual Studio will look in the visualizer directory next to the .natvis file that specified the add-in. 
+    A regular display string is still allowed in conjunction with an add-in, and will be used as a fallback if the add-in dll cannot be loaded.-->
+    <DisplayString LegacyAddin="../../Debug/NatvisAddIn.dll" Export="?AddIn_Decimal_Type32@@YGJKPAUtagDEBUGHELPER@@HHPADIK@Z"></DisplayString>
+  </Type>
+  <Type Name="BloombergLP::bdldfp::Decimal_Type64">
+    <DisplayString LegacyAddin="../../Debug/NatvisAddIn.dll" Export="?AddIn_Decimal_Type64@@YGJKPAUtagDEBUGHELPER@@HHPADIK@Z"></DisplayString>
+  </Type>
+  <Type Name="BloombergLP::bdldfp::Decimal_Type128">
+    <DisplayString LegacyAddin="../../Debug/NatvisAddIn.dll" Export="?AddIn_Decimal_Type128@@YGJKPAUtagDEBUGHELPER@@HHPADIK@Z"></DisplayString>
+  </Type>
+</AutoVisualizer>
