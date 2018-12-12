@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include=".\bdldfp_decimal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalconvertutil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_denselypackeddecimalimputil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalconvertutil_decnumber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalutil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalimputil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\bdldfp_decimalimputil_decnumber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bslh_spookyhashalgorithmimp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bslim_printer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bdlb_float.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\bdldfp_binaryintegraldecimalimputil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalconvertutil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalconvertutil_decnumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalconvertutil_inteldfp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalimputil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalimputil_decnumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalimputil_inteldfp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalplatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_decimalutil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_denselypackeddecimalimputil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_intelimpwrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\bdldfp_uint128.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bdlb_float.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bdlscm_version.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslalg_hasstliterators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslh_defaulthashalgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslh_hash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslh_spookyhashalgorithm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslh_spookyhashalgorithmimp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslim_printer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslmf_functionpointertraits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslmf_metaint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslmf_selecttrait.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslmf_switch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslmf_tag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bslmf_typelist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bsls_byteorder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bsls_compilerfeatures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bsls_performancehint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bsls_platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bdldfp_decimalimputil_public.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{05D0D34C-180F-3390-AF69-14FC6B7D2BD6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{B71E3231-9D0D-3A73-9D96-AA9C1BDE1BE6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="bdldfp.natvis" />
+  </ItemGroup>
+</Project>

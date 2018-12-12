@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Filter="Source Files" Include=".\decContext.c" />
+    <ClCompile Filter="Source Files" Include=".\decDouble.c" />
+    <ClCompile Filter="Source Files" Include=".\decimal128.c" />
+    <ClCompile Filter="Source Files" Include=".\decimal32.c" />
+    <ClCompile Filter="Source Files" Include=".\decimal64.c" />
+    <ClCompile Filter="Source Files" Include=".\decNumber.c" />
+    <ClCompile Filter="Source Files" Include=".\decPacked.c" />
+    <ClCompile Filter="Source Files" Include=".\decQuad.c" />
+    <ClCompile Filter="Source Files" Include=".\decSingle.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Filter="Header Files" Include=".\decContext.h" />
+    <ClInclude Filter="Header Files" Include=".\decDouble.h" />
+    <ClInclude Filter="Header Files" Include=".\decDPD.h" />
+    <ClInclude Filter="Header Files" Include=".\decimal128.h" />
+    <ClInclude Filter="Header Files" Include=".\decimal32.h" />
+    <ClInclude Filter="Header Files" Include=".\decimal64.h" />
+    <ClInclude Filter="Header Files" Include=".\decNumber.h" />
+    <ClInclude Filter="Header Files" Include=".\decNumberLocal.h" />
+    <ClInclude Filter="Header Files" Include=".\decPacked.h" />
+    <ClInclude Filter="Header Files" Include=".\decQuad.h" />
+    <ClInclude Filter="Header Files" Include=".\decSingle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{05D0D34C-180F-3390-AF69-14FC6B7D2BD6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{B71E3231-9D0D-3A73-9D96-AA9C1BDE1BE6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="decnumber.def" />
+  </ItemGroup>
+</Project>
